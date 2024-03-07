@@ -4,6 +4,8 @@ import {
   globalFontFace,
   globalStyle,
 } from "@vanilla-extract/css";
+import "./layers.css";
+import "./reset.css";
 
 const nanumSquareNeo = "NanumSquareNeo";
 const poppins = "Poppins";
