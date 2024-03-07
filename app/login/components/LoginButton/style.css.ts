@@ -31,6 +31,14 @@ export const LoginButtonStyle = style({
   cursor: "pointer",
   border: "none",
   ":hover": {
-    transform: "translate(7px,-10px)",
+    transform: "translate(4px,-5px)",
+  },
+
+  "@media": {
+    "screen and (min-width: 768px)": {
+      ":hover": {
+        transform: "translate(7px,-10px)",
+      },
+    },
   },
 });
