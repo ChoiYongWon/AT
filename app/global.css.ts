@@ -40,4 +40,6 @@ globalFontFace(poppins, {
 
 globalStyle("html, body", {
   fontFamily: `${nanumSquareNeo}, ${poppins}`,
+  padding: 0,
+  margin: 0,
 });
