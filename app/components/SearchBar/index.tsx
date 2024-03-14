@@ -55,7 +55,7 @@ const SearchBar = ({
     // 열렸을때 Input 포커스
     if (!checkRef.current.checked) {
       inputRef.current.value = "";
-      inputRef.current.focus({ preventScroll: true });
+      setTimeout(() => inputRef.current.focus({ preventScroll: true }), 300);
     } else {
       e.preventDefault();
       onSearch();
