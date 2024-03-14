@@ -16,6 +16,7 @@ import {
 import SearchIcon from "../../../public/images/SearchIcon.svg";
 import { useRef } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
+import { setFocusTimeout } from "@toss/utils";
 
 type Props = {
   profileName: string;
@@ -54,8 +55,11 @@ const SearchBar = ({
   const onSearchBtnClick = (e: any) => {
     // 열렸을때 Input 포커스
     if (!checkRef.current.checked) {
-      // inputRef.current.value = "";
-      setTimeout(() => inputRef.current.focus({ preventScroll: true }), 300);
+      inputRef.current.value = "";
+      setFocusTimeout(
+        () => inputRef.current.focus({ preventScroll: true }),
+        300
+      );
     } else {
       e.preventDefault();
       onSearch();

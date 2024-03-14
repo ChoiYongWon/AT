@@ -66,7 +66,7 @@ export const SearchIconStyle = style({
 export const InputWrapperStyle = style({
   position: "absolute",
   left: "calc(18px + 50px)",
-  transition: "transform ease .2s",
+  transition: "transform ease .3s",
   // opacity: 0,
   width: "calc(100% - 36px - 100px)",
   height: "100%",
