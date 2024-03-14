@@ -11,17 +11,17 @@ const nanumSquareNeo = "NanumSquareNeo";
 const poppins = "Poppins";
 
 globalFontFace(nanumSquareNeo, {
-  src: "url(/fonts/NanumSquareNeo-aLt.woff), format('woff')",
+  src: "url(/fonts/NanumSquareNeoTTF-aLt.woff), format('woff')",
   fontWeight: "light",
 });
 
 globalFontFace(nanumSquareNeo, {
-  src: "url(/fonts/NanumSquareNeo-bRg.woff), format('woff')",
+  src: "url(/fonts/NanumSquareNeoTTF-bRg.woff), format('woff')",
   fontWeight: "normal",
 });
 
 globalFontFace(nanumSquareNeo, {
-  src: "url(/fonts/NanumSquareNeo-cBd.woff), format('woff')",
+  src: "url(/fonts/NanumSquareNeoTTF-cBd.woff), format('woff')",
   fontWeight: "bold",
 });
 

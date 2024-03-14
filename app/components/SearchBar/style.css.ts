@@ -19,7 +19,6 @@ export const ProfileImageWrapperStyle = style({
   height: "100%",
   aspectRatio: "1/1",
   borderRadius: "100px",
-  backgroundColor: "pink",
   overflow: "hidden"
 })
 
