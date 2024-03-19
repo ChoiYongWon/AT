@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./global.css";
 import "./theme/theme.css";
 import AuthContext from "./component/AuthContext";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthContext>{children}</AuthContext>
+        <SpeedInsights />
       </body>
     </html>
   );
