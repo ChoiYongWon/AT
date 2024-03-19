@@ -8,6 +8,7 @@ export default auth(async (req) => {
     secret: process.env.AUTH_SECRET as any,
     salt: process.env.AUTH_SALT as any,
   });
+
   if (!session) return NextResponse.redirect(new URL("/login", req.url));
 });
 
