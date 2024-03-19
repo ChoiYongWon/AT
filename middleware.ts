@@ -1,14 +1,10 @@
 import { NextResponse } from "next/server";
 import { auth } from "./auth";
 import { getToken } from "next-auth/jwt";
+import { Session } from "next-auth";
 
 export default auth(async (req) => {
-  const session = await getToken({
-    req,
-    secret: process.env.AUTH_SECRET as any,
-    salt: process.env.AUTH_SALT as any,
-  });
-  console.log(process.env.AUTH_SALT, req, session, process.env.AUTH_SECRET);
+  const session = await auth();
 
   if (!session) return NextResponse.redirect(new URL("/login", req.url));
 });
