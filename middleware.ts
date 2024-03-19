@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import { auth } from "./auth";
-import { getToken } from "next-auth/jwt";
-import { Session } from "next-auth";
 
 export default auth(async (req) => {
   const session = await auth();
