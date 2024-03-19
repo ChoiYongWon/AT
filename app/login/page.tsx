@@ -1,20 +1,21 @@
 import Link from "next/link";
-import GoogleLoginButton from "./components/LoginButton/GoogleLoginButton";
-import KakaoLoginButton from "./components/LoginButton/KakaoLoginButton";
-import NaverLoginButton from "./components/LoginButton/NaverLoginButton";
 import {
   BackLinkStyle,
   DescriptionEngStyle,
   DescriptionKorStyle,
-  Divider,
   FooterBackStyle,
   FooterInfoStyle,
   FooterWrapperStyle,
-  LoginButtonLayoutStyle,
   LogoStyle,
 } from "./style.css";
+import { auth } from "@/auth";
+import LoginButtonGroup from "./container/LoginButtonGroup";
+import { redirect } from "next/navigation";
 
-export default function LoginLayout() {
+export default async function LoginLayout() {
+  const session = await auth();
+  if (session) redirect("/");
+
   return (
     <>
       <div className={LogoStyle}>LOGO</div>
@@ -24,11 +25,8 @@ export default function LoginLayout() {
       <span className={DescriptionEngStyle}>
         IF YOU WANT TO START AT(엣), YOU MUST CLICK HERE👇
       </span>
-      <GoogleLoginButton className={LoginButtonLayoutStyle}></GoogleLoginButton>
-      <div className={Divider}></div>
-      <KakaoLoginButton className={LoginButtonLayoutStyle}></KakaoLoginButton>
-      <div className={Divider}></div>
-      <NaverLoginButton className={LoginButtonLayoutStyle}></NaverLoginButton>
+
+      <LoginButtonGroup />
 
       <div className={FooterWrapperStyle}>
         <div className={FooterInfoStyle}>

@@ -5,18 +5,23 @@ import { LoginButtonStyle, LoginButtonWrapperStyle } from "../style.css";
 type Props = {
   className?: string;
   style?: any;
+  onClick?: any;
 };
 
-const NaverLoginButton = ({ className, style }: Props) => {
+const NaverLoginButton = ({ className, style, onClick }: Props) => {
   return (
     <>
-      <div style={style} className={`${LoginButtonWrapperStyle} ${className}`}>
+      <button
+        onClick={onClick}
+        style={style}
+        className={`${LoginButtonWrapperStyle} ${className}`}
+      >
         <Image
           className={LoginButtonStyle}
           src={NaverLoginImage}
           alt=""
         ></Image>
-      </div>
+      </button>
     </>
   );
 };

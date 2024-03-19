@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import KakaoLoginImage from "../../../../../public/images/KakaoLogin.png";
 import { LoginButtonStyle, LoginButtonWrapperStyle } from "../style.css";
@@ -5,18 +7,25 @@ import { LoginButtonStyle, LoginButtonWrapperStyle } from "../style.css";
 type Props = {
   className?: string;
   style?: any;
+  onClick?: any;
+  formAction?: any;
 };
 
-const KakaoLoginButton = ({ className, style }: Props) => {
+const KakaoLoginButton = ({ className, style, onClick, formAction }: Props) => {
   return (
     <>
-      <div style={style} className={`${LoginButtonWrapperStyle} ${className}`}>
+      <button
+        onClick={onClick}
+        formAction={formAction}
+        style={style}
+        className={`${LoginButtonWrapperStyle} ${className}`}
+      >
         <Image
           className={LoginButtonStyle}
           src={KakaoLoginImage}
           alt=""
         ></Image>
-      </div>
+      </button>
     </>
   );
 };

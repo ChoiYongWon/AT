@@ -1,27 +1,15 @@
-"use client";
-
-import SearchBar from "./components/SearchBar";
-import { useInput } from "./hooks/useInput";
 import { GridLayoutStyle, SearchBarLayoutStyle } from "./style.css";
+import SearchBar from "./container/SearchBar";
+import { auth } from "../auth";
+import { Session } from "next-auth";
 
-export default function Home() {
-  const {
-    value: content,
-    onChange: onContentChange,
-    setValue: setContent,
-  } = useInput("");
+export default async function Home() {
+  const { user } = ((await auth()) as Session) || { user: null };
 
   return (
     <>
       <div className={GridLayoutStyle}>
-        <SearchBar
-          profileName="@rto_olzo"
-          profileImage="https://avatars.githubusercontent.com/u/40623433?v=4"
-          className={SearchBarLayoutStyle}
-          content={content}
-          onContentChange={onContentChange}
-          onSearch={() => console.log(content)}
-        ></SearchBar>
+        <SearchBar title={"전국 통합 맛집지도"} image={user?.image} />
       </div>
     </>
   );

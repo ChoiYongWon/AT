@@ -5,18 +5,23 @@ import { LoginButtonStyle, LoginButtonWrapperStyle } from "../style.css";
 type Props = {
   className?: string;
   style?: any;
+  onClick?: any;
 };
 
-const GoogleLoginButton = ({ className, style }: Props) => {
+const GoogleLoginButton = ({ className, style, onClick }: Props) => {
   return (
     <>
-      <div style={style} className={`${className} ${LoginButtonWrapperStyle} `}>
+      <button
+        style={style}
+        className={`${className} ${LoginButtonWrapperStyle} `}
+        onClick={onClick}
+      >
         <Image
           className={LoginButtonStyle}
           src={GoogleLoginImage}
           alt=""
         ></Image>
-      </div>
+      </button>
     </>
   );
 };
