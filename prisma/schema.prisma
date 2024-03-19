@@ -14,7 +14,6 @@ datasource db {
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["referentialActions"] // You won't need this in Prisma 3.X or higher.
 }
 
 model Account {
@@ -34,6 +33,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@map("accounts")
 }
 
 
@@ -45,6 +45,7 @@ model User {
   emailVerified DateTime?
   image         String?
   accounts      Account[]
+  @@map("users")
   // sessions      Session[]
 }
 
