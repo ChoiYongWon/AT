@@ -9,7 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "A Spot Thur",
+  title: "AT - A Spot Thur",
   description: "나만의 지도를 만들어보세요!",
 };
 
