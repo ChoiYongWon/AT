@@ -41,6 +41,7 @@ model Account {
 model User {
   id            String    @id @default(cuid())
   name          String?
+  at_id         String?   @unique
   email         String?   @unique
   emailVerified DateTime?
   image         String?
