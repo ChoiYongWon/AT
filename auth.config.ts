@@ -30,7 +30,6 @@ export default {
           where: {
             email: token.email as string,
           },
-          cacheStrategy: { ttl: 60 },
         });
         token.at_id = user?.at_id;
       }
