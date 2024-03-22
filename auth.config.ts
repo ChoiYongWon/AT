@@ -3,11 +3,11 @@ import Kakao from "next-auth/providers/kakao";
 
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client/edge";
-import { withAccelerate } from "@prisma/extension-accelerate";
+// import { withAccelerate } from "@prisma/extension-accelerate";
 import type { NextAuthConfig } from "next-auth";
 
-const prisma = new PrismaClient().$extends(withAccelerate());
-
+// const prisma = new PrismaClient().$extends(withAccelerate());
+const prisma = new PrismaClient();
 export default {
   providers: [Kakao],
   adapter: PrismaAdapter(prisma),

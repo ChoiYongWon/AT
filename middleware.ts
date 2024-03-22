@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { auth } from "./auth";
-import { PrismaClient } from "@prisma/client/edge";
-import { withAccelerate } from "@prisma/extension-accelerate";
+// import { PrismaClient } from "@prisma/client/edge";
+// import { withAccelerate } from "@prisma/extension-accelerate";
 
 export default auth(async (req) => {
   const session = await auth();
-  const prisma = new PrismaClient().$extends(withAccelerate());
+  // const prisma = new PrismaClient().$extends(withAccelerate());
+  // const prisma = new PrismaClient();
 
   if (req.nextUrl.pathname.startsWith("/profile")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
