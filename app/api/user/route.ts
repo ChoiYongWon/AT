@@ -4,6 +4,7 @@ import { InvalidATIDError } from "../error/user/InvalidATIDError";
 import { DuplicatedATIDError } from "../error/user/DuplicatedATIDError";
 import { auth } from "@/auth";
 import { useAuth } from "@/app/util/useAuth";
+import { InternalServerError } from "../error/server/InternalServerError";
 
 type Query = {
   at_id: string;
@@ -40,6 +41,6 @@ export async function PUT(request: NextRequest) {
       { status: 200, headers: { "content-type": "application/json" } }
     );
   } catch (e) {
-    return e;
+    return InternalServerError(e);
   }
 }

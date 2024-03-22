@@ -20,8 +20,9 @@ const Form = () => {
     data: isValidId,
     error: validIdError,
     isError: isValidIdError,
-    // query string 이스케이프 문자
-  } = useValidId(encodeURIComponent(inputName), { enabled: false });
+  } = useValidId(encodeURIComponent(inputName), { // query string 이스케이프 문자
+    enabled: false,
+  });
 
   const { mutate: updateUserInfo, isPending: isUpdateUserInfoLoading } =
     useMutateUserInfo();

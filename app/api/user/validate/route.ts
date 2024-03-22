@@ -4,6 +4,7 @@ import { InvalidATIDError } from "../../error/user/InvalidATIDError";
 import { DuplicatedATIDError } from "../../error/user/DuplicatedATIDError";
 import { auth } from "@/auth";
 import { useAuth } from "@/app/util/useAuth";
+import { InternalServerError } from "../../error/server/InternalServerError";
 
 type Query = {
   at_id: string;
@@ -17,12 +18,12 @@ export async function GET(request: NextRequest) {
     const decoded_at_id = decodeURIComponent(query.at_id);
 
     // AT_ID 규칙 검증
-    if (!regexp.test(decoded_at_id)) throw InvalidATIDError();
+    if (!regexp.test(decoded_at_id)) return InvalidATIDError();
 
     // AT_ID 중복성 검증
     const prisma = new PrismaClient();
     const isUserExist = await prisma.user.findUnique({ where: { ...query } });
-    if (isUserExist) throw DuplicatedATIDError();
+    if (isUserExist) return DuplicatedATIDError();
 
     // 통과
     return new NextResponse(
@@ -30,6 +31,6 @@ export async function GET(request: NextRequest) {
       { status: 200, headers: { "content-type": "application/json" } }
     );
   } catch (e) {
-    return e;
+    return InternalServerError(e);
   }
 }

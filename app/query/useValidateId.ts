@@ -6,7 +6,7 @@ export const QUERY_KEY = "/api/user/validate";
 export const fetcher = (id: string) =>
   axios.get(`${QUERY_KEY}?at_id=${id}`).then(({ data }) => data);
 
-export const useValidId = (id: string, options: UseQueryOptions | any) => {
+export const useValidId = (id: string, options: UseQueryOptions | any): any => {
   return useQuery({
     ...options,
     queryKey: [QUERY_KEY, id],
