@@ -12,15 +12,20 @@
   "dependencies": {
     "@auth/prisma-adapter": "^1.5.0",
     "@prisma/client": "^5.11.0",
+    "@prisma/extension-accelerate": "^1.0.0",
+    "@tanstack/react-query": "^5.28.6",
     "@toss/utils": "^1.4.6",
     "@vanilla-extract/css": "^1.14.1",
+    "@vanilla-extract/dynamic": "^2.1.0",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
+    "axios": "^1.6.8",
     "next": "14.1.0",
     "next-auth": "^5.0.0-beta.15",
     "react": "^18",
     "react-detect-click-outside": "^1.1.7",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "usehooks-ts": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
