@@ -5,10 +5,15 @@ import { useEffect } from "react";
 import { useDebounceValue } from "usehooks-ts";
 import Input from "../../component/Input";
 import Button from "../../component/Button";
-import { FormStyle } from "./style.css";
+import {
+  FormStyle,
+  LogoutDescriptionStyle,
+  LogoutLayoutStyle,
+  LogoutStyle,
+} from "./style.css";
 import { useMutateUserInfo } from "@/app/query/useMutateUserInfo";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const Form = () => {
   const router = useRouter();
@@ -20,7 +25,8 @@ const Form = () => {
     data: isValidId,
     error: validIdError,
     isError: isValidIdError,
-  } = useValidId(encodeURIComponent(inputName), { // query string 이스케이프 문자
+  } = useValidId(encodeURIComponent(inputName), {
+    // query string 이스케이프 문자
     enabled: false,
   });
 
@@ -51,20 +57,28 @@ const Form = () => {
   };
 
   return (
-    <form className={FormStyle}>
-      <Input
-        placeholder="사용자 이름"
-        onChange={(e: any) => setInputName(e.target.value)}
-        isError={isValidIdError as any}
-        errorMessage={validIdError?.response?.data?.message || ""}
-      />
+    <>
+      <form className={FormStyle}>
+        <Input
+          placeholder="사용자 이름"
+          onChange={(e: any) => setInputName(e.target.value)}
+          isError={isValidIdError as any}
+          errorMessage={validIdError?.response?.data?.message || ""}
+        />
 
-      <Button
-        disabled={isValidIdError || inputName.length == 0}
-        loading={isValidIdLoading || isUpdateUserInfoLoading}
-        onClick={onSubmit}
-      />
-    </form>
+        <Button
+          disabled={isValidIdError || inputName.length == 0}
+          loading={isValidIdLoading || isUpdateUserInfoLoading}
+          onClick={onSubmit}
+        />
+      </form>
+      <div className={LogoutLayoutStyle} style={{ marginTop: "18px" }}>
+        <span className={LogoutDescriptionStyle}>동기화가 안돼었다면 👉 </span>
+        <button className={LogoutStyle} onClick={() => signOut()}>
+          로그아웃
+        </button>
+      </div>
+    </>
   );
 };
 
