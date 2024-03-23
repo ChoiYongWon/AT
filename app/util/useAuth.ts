@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
-import { UnauthorizedError } from "../api/error/auth/UnauthorizedError";
 import { Session, User } from "next-auth";
+import { UnauthorizedError } from "../api/error/auth/Unauthorized.error";
 
 export const useAuth = async () => {
   const session = await auth();

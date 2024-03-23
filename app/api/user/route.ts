@@ -1,26 +1,29 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { InvalidATIDError } from "../error/user/InvalidATIDError";
-import { DuplicatedATIDError } from "../error/user/DuplicatedATIDError";
-import { auth } from "@/auth";
+import { InvalidATIDError } from "../error/user/InvalidATID.error";
 import { useAuth } from "@/app/util/useAuth";
-import { InternalServerError } from "../error/server/InternalServerError";
+import { InternalServerError } from "../error/server/InternalServer.error";
+import { UnavailableATIDError } from "../error/user/UnavailableATID.error";
+import { DuplicatedATIDError } from "../error/user/DuplicatedATID.error";
+import { ROUTES } from "@/app/util/constant";
 
 type Query = {
   at_id: string;
 };
 
 //at_id 변경 목적
-
 export async function PUT(request: NextRequest) {
   try {
     const session = await useAuth();
-    const regexp = /^[a-zA-Z0-9_\.]{3,30}$/g;
+    const regexp = /^[a-z0-9_\.]{3,30}$/g;
     const body = (await request.json()) as Query;
 
     // body 검증
     // TODO body 검증 개선
     if (!body.at_id) return InvalidATIDError();
+
+    // route랑 id랑 겹치는지 확인
+    if (ROUTES.includes(body.at_id)) return UnavailableATIDError();
 
     // AT_ID 규칙 검증
     if (!regexp.test(body.at_id)) return InvalidATIDError();
