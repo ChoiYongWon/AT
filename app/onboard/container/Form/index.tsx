@@ -73,7 +73,7 @@ const Form = () => {
         />
       </form>
       <div className={LogoutLayoutStyle} style={{ marginTop: "18px" }}>
-        <span className={LogoutDescriptionStyle}>동기화가 안돼었다면 👉 </span>
+        <span className={LogoutDescriptionStyle}>동기화가 안되었다면 👉 </span>
         <button className={LogoutStyle} onClick={() => signOut()}>
           로그아웃
         </button>
