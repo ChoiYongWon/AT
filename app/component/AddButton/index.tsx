@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import AddImage from "../../../public/images/AddButton.png";
+import AddImage from "../../../public/images/AddButton.svg";
 import { ButtonImageStyle, ButtonStyle } from "./style.css";
 import { useRouter } from "next/navigation";
 

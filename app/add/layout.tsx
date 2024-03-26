@@ -1,3 +1,4 @@
+import PageAnimateRight from "../provider/PageAnimate/PageAnimateRight";
 import PageAnimateUp from "../provider/PageAnimate/PageAnimateUp";
 import { GridLayoutStyle, TmpLayout } from "./style.css";
 
@@ -7,8 +8,8 @@ export default function AddLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <PageAnimateUp key="/add" className={GridLayoutStyle}>
+    <PageAnimateRight key="/add" className={GridLayoutStyle}>
       {children}
-    </PageAnimateUp>
+    </PageAnimateRight>
   );
 }

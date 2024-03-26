@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 const AnimateProvider = ({ children }: { children: any }) => {
-  return <AnimatePresence>{children}</AnimatePresence>;
+  return <AnimatePresence mode="wait">{children}</AnimatePresence>;
 };
 
 export default AnimateProvider;
