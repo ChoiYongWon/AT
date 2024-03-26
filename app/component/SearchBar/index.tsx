@@ -80,13 +80,16 @@ const SearchBar = ({
         className={`${SearchBarWrapperStyle} ${className}`}
         style={style}
       >
-        <Link className={ProfileImageWrapperStyle} href={"/profile"}>
-          {image ? (
+        {image ? (
+          <Link className={ProfileImageWrapperStyle} href={"/profile"}>
             <Image src={image} alt="" width={100} height={100} />
-          ) : (
+          </Link>
+        ) : (
+          <Link className={ProfileImageWrapperStyle} href={"/login"}>
             <div className={EmptyProfileImageStyle}></div>
-          )}
-        </Link>
+          </Link>
+        )}
+
         <div className={ProfileNameStyle}>{title}</div>
         <div className={SearchIconWrapperStyle}>
           <label

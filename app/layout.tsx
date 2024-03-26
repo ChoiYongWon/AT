@@ -10,10 +10,9 @@ import AnimateProvider from "./provider/AnimateProvider";
 
 // const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata | any = {
+export const metadata: Metadata = {
   title: "AT - A Spot Thur",
   description: "나만의 지도를 만들어보세요!",
-  google: "notranslate",
 };
 
 export default function RootLayout({
