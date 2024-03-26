@@ -1,4 +1,4 @@
-import PageAnimateOpacity from "../provider/PageAnimate/PageAnimateOpacity";
+import PageAnimateRight from "../provider/PageAnimate/PageAnimateRight";
 import { GridLayoutStyle } from "./style.css";
 
 export default function LoginLayout({
@@ -7,8 +7,8 @@ export default function LoginLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <PageAnimateOpacity key="/login" className={GridLayoutStyle}>
+    <PageAnimateRight key="/login" className={GridLayoutStyle}>
       {children}
-    </PageAnimateOpacity>
+    </PageAnimateRight>
   );
 }

@@ -1,4 +1,4 @@
-import PageAnimate from "../provider/PageAnimate/PageAnimateOpacity";
+import PageAnimateRight from "../provider/PageAnimate/PageAnimateRight";
 import { TmpLayout } from "./style.css";
 
 export default function ProfileLayout({
@@ -7,9 +7,9 @@ export default function ProfileLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <PageAnimate key="/profile" className={TmpLayout}>
+    <PageAnimateRight key="/profile" className={TmpLayout}>
       {children}
-    </PageAnimate>
+    </PageAnimateRight>
   );
   // return <div className={GridLayoutStyle}>{children}</div>;
 }
