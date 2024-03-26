@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
 import "./global.css";
 import "./theme/theme.css";
-import AuthContext from "./Provider/AuthContext";
+import AuthContext from "./provider/AuthContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import QueryProvider from "./Provider/QueryProvider";
-import AnimateProvider from "./Provider/AnimateProvider";
+import QueryProvider from "./provider/QueryProvider";
+import AnimateProvider from "./provider/AnimateProvider";
 
 // const inter = Inter({ subsets: ["latin"] });
 

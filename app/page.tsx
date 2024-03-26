@@ -1,13 +1,15 @@
 import { GridLayoutStyle } from "./style.css";
 import SearchBar from "./container/SearchBar";
-import PageAnimate from "./Provider/PageAnimate";
+import PageAnimateOpacity from "./provider/PageAnimate/PageAnimateOpacity";
+import AddButton from "./component/AddButton";
 
 export default function Home() {
   return (
     <>
-      <PageAnimate className={GridLayoutStyle}>
+      <PageAnimateOpacity key="/" className={GridLayoutStyle}>
         <SearchBar />
-      </PageAnimate>
+        <AddButton />
+      </PageAnimateOpacity>
     </>
   );
 }

@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 type Props = {
   className: string;
   children: any;
+  key: string;
 };
 
-const PageAnimate = ({ children, className }: Props) => {
+const PageAnimateOpacity = ({ children, className, key }: Props) => {
   return (
     <motion.div
+      key={key}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -20,4 +22,4 @@ const PageAnimate = ({ children, className }: Props) => {
   );
 };
 
-export default PageAnimate;
+export default PageAnimateOpacity;

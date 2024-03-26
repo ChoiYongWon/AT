@@ -1,4 +1,4 @@
-import PageAnimate from "../Provider/PageAnimate";
+import PageAnimateOpacity from "../provider/PageAnimate/PageAnimateOpacity";
 import { GridLayoutStyle, TmpLayout } from "./style.css";
 
 export default function OnBoardLayout({
@@ -6,6 +6,10 @@ export default function OnBoardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <PageAnimate className={TmpLayout}>{children}</PageAnimate>;
+  return (
+    <PageAnimateOpacity key="/onboard" className={TmpLayout}>
+      {children}
+    </PageAnimateOpacity>
+  );
   // return <div className={GridLayoutStyle}>{children}</div>;
 }

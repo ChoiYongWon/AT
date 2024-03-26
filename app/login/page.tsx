@@ -11,7 +11,7 @@ import {
 import { auth } from "@/auth";
 import LoginButtonGroup from "./container/LoginButtonGroup";
 import { redirect } from "next/navigation";
-import PageAnimate from "../Provider/PageAnimate";
+import PageAnimate from "../provider/PageAnimate/PageAnimateOpacity";
 
 export default async function LoginLayout() {
   const session = await auth();

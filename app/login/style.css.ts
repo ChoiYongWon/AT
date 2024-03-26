@@ -4,6 +4,7 @@ import { vars } from "../theme/contract.css";
 export const GridLayoutStyle = style({
   display: "grid",
   gridAutoRows: "auto",
+  position: "relative",
   gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
   columnGap: "16px",
   marginTop: "80px",
