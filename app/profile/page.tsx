@@ -1,22 +1,29 @@
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
+import { CancelButtonLayout, TmpRestLayout } from "./style.css";
+import CancelButton from "../component/CancelButton";
 
 export default function Profile() {
   const session = useSession();
 
   return (
     <>
-      <h1>{session.data?.user.name}</h1>
-      <h2>{session.data?.user.email}</h2>
-      <h2>{session.data?.user?.at_id}</h2>
+      <div className={CancelButtonLayout}>
+        <CancelButton />
+      </div>
+      <div className={TmpRestLayout}>{session.data?.user.name}</div>
+      <div className={TmpRestLayout}>{session.data?.user.email}</div>
+      <div className={TmpRestLayout}>{session.data?.user.at_id}</div>
 
-      <button
-        style={{ color: "black", padding: "8px" }}
-        onClick={() => signOut()}
-      >
-        로그아웃
-      </button>
+      <div className={TmpRestLayout}>
+        <button
+          style={{ color: "black", padding: "8px" }}
+          onClick={() => signOut()}
+        >
+          로그아웃
+        </button>
+      </div>
     </>
   );
 }

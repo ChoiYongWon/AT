@@ -6,7 +6,7 @@ export const GridLayoutStyle = style({
   gridAutoRows: "auto",
   gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
   columnGap: "16px",
-  marginTop: "80px",
+  marginTop: "25px",
   marginLeft: "16px",
   marginRight: "16px",
   boxSizing: "content-box",
@@ -28,4 +28,41 @@ export const TmpLayout = style({
   alignItems: "center",
   gap: "8px",
   marginTop: "16px",
+});
+
+export const CancelButtonLayout = style({
+  gridColumn: "1 / span 4",
+  height: "auto",
+  width: "100%",
+  display: "flex",
+  justifyContent: "flex-end",
+  alignItems: "center",
+
+  "@media": {
+    "screen and (min-width: 768px)": {
+      gridColumn: "3 / span 4",
+    },
+    "screen and (min-width: 1000px)": {
+      gridColumn: "5 / span 4",
+    },
+  },
+});
+
+export const TmpRestLayout = style({
+  margin: "4px auto",
+  gridColumn: "1 / span 4",
+  height: "auto",
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
+  "@media": {
+    "screen and (min-width: 768px)": {
+      gridColumn: "3 / span 4",
+    },
+    "screen and (min-width: 1000px)": {
+      gridColumn: "5 / span 4",
+    },
+  },
 });
