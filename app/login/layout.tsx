@@ -1,3 +1,4 @@
+import PageAnimate from "../Provider/PageAnimate";
 import { GridLayoutStyle } from "./style.css";
 
 export default function LoginLayout({
@@ -5,5 +6,5 @@ export default function LoginLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className={GridLayoutStyle}>{children}</div>;
+  return <PageAnimate className={GridLayoutStyle}>{children}</PageAnimate>;
 }

@@ -3,14 +3,12 @@
 import SearchBarView from "@/app/component/SearchBar";
 import { useInput } from "@/app/hook/useInput";
 import { SearchBarLayoutStyle } from "@/app/style.css";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-type Props = {
-  title?: string | null | undefined;
-  image?: string | null | undefined;
-};
+const SearchBar = () => {
+  const session = useSession();
 
-const SearchBar = ({ title, image }: Props) => {
   const {
     value: content,
     onChange: onContentChange,
@@ -20,8 +18,8 @@ const SearchBar = ({ title, image }: Props) => {
 
   return (
     <SearchBarView
-      title={title}
-      image={image}
+      title={"전국 통합 AT"}
+      image={session.data?.user?.image}
       className={SearchBarLayoutStyle}
       content={content}
       onContentChange={onContentChange}
