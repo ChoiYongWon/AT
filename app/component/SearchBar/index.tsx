@@ -17,6 +17,7 @@ import SearchIcon from "../../../public/images/SearchIcon.svg";
 import { useRef } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { setFocusTimeout } from "@toss/utils";
+import Link from "next/link";
 
 type Props = {
   title: string | null | undefined;
@@ -25,7 +26,6 @@ type Props = {
   style?: any;
   content: string;
   onSearch: () => any;
-  onProfileClick: () => any;
   onContentChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
 };
 
@@ -36,7 +36,6 @@ const SearchBar = ({
   style,
   content,
   onSearch,
-  onProfileClick,
   onContentChange,
 }: Props) => {
   const inputRef = useRef<any>(null);
@@ -81,13 +80,13 @@ const SearchBar = ({
         className={`${SearchBarWrapperStyle} ${className}`}
         style={style}
       >
-        <button className={ProfileImageWrapperStyle} onClick={onProfileClick}>
+        <Link className={ProfileImageWrapperStyle} href={"/profile"}>
           {image ? (
             <Image src={image} alt="" width={100} height={100} />
           ) : (
             <div className={EmptyProfileImageStyle}></div>
           )}
-        </button>
+        </Link>
         <div className={ProfileNameStyle}>{title}</div>
         <div className={SearchIconWrapperStyle}>
           <label

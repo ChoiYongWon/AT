@@ -24,7 +24,6 @@ const SearchBar = () => {
       content={content}
       onContentChange={onContentChange}
       onSearch={() => console.log(content)}
-      onProfileClick={() => router.push("/profile")}
     ></SearchBarView>
   );
 };

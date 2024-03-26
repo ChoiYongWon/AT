@@ -3,15 +3,13 @@
 import Image from "next/image";
 import AddImage from "../../../public/images/AddButton.svg";
 import { ButtonImageStyle, ButtonStyle } from "./style.css";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const AddButton = () => {
-  const router = useRouter();
-
   return (
-    <button className={ButtonStyle} onClick={() => router.push("/add")}>
+    <Link className={ButtonStyle} href={"/add"}>
       <Image className={ButtonImageStyle} src={AddImage} alt="+" />
-    </button>
+    </Link>
   );
 };
 
