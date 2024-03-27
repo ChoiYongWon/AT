@@ -1,10 +1,14 @@
-import { AnimatePresence, Reorder, useDragControls } from "framer-motion";
+import { Reorder, useDragControls } from "framer-motion";
 import Image from "next/image";
 
-import ImageAddButton from "../../../../../public/images/ImageAddButton.svg";
-import { forwardRef, useEffect, useRef } from "react";
-import { ImageStyle, PreviewImageItemStyle } from "../PreviewImage/style.css";
-import { DraggableStyle, DraggableWrapperStyle } from "./style.css";
+import { forwardRef } from "react";
+
+import {
+  DraggableStyle,
+  DraggableWrapperStyle,
+  ImageStyle,
+  PreviewImageItemStyle,
+} from "./style.css";
 
 type Props = {
   // children: any;
@@ -16,7 +20,6 @@ const PreviewImageItem = (
   { previewImageUrl, removePreviewImage }: Props,
   ref: any
 ) => {
-  const isDragging = useRef(false);
   const dragControl = useDragControls();
 
   return (
@@ -33,7 +36,7 @@ const PreviewImageItem = (
       drag="x"
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0.8, opacity: 0 }}
-      transition={{ type: "spring" }}
+      transition={{ type: "just" }}
     >
       <Image
         src={previewImageUrl}
@@ -43,12 +46,7 @@ const PreviewImageItem = (
         draggable={false}
         className={ImageStyle}
         onClick={() => {
-          if (!isDragging.current) {
-            // const arr = [...previewImage];
-            // removePreviewImage(arr, url);
-            // setPreviewImage(arr);
-            removePreviewImage();
-          }
+          removePreviewImage();
 
           // }
         }}

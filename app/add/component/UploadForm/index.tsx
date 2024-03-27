@@ -5,17 +5,12 @@ import { TitleStyle } from "./style.css";
 import ImageAddButton from "../../../../public/images/ImageAddButton.svg";
 import { useState } from "react";
 import { AnimatePresence, Reorder, motion } from "framer-motion";
-import PreviewImage from "./PreviewImage";
+import PreviewImageList from "./PreviewImageList";
 import PreviewImageItem from "./PreviewImageItem";
 
 type Props = {
   className?: any;
   style?: any;
-};
-
-const removePreviewImage = (arr: any, url: string) => {
-  const i = arr.indexOf(url);
-  if (i > -1) arr.splice(i, 1);
 };
 
 const UploadForm = ({ className, style }: Props) => {
@@ -26,12 +21,19 @@ const UploadForm = ({ className, style }: Props) => {
     "https://github.com/ChoiYongWon/AT/assets/40623433/acad298d-3bee-4774-a429-a70753475bd7",
   ]);
 
+  const removePreviewImage = (url: string) => {
+    const arr = [...previewImage];
+    const i = arr.indexOf(url);
+    if (i > -1) arr.splice(i, 1);
+    setPreviewImage(arr);
+  };
+
   return (
     <form className={className} style={style}>
       <div className={TitleStyle} style={{ marginBottom: "10px" }}>
         사진 추가
       </div>
-      <PreviewImage
+      <PreviewImageList
         previewImage={previewImage}
         setPreviewImage={setPreviewImage}
       >
@@ -40,15 +42,11 @@ const UploadForm = ({ className, style }: Props) => {
             <PreviewImageItem
               key={url}
               previewImageUrl={url}
-              removePreviewImage={() => {
-                const arr = [...previewImage];
-                removePreviewImage(arr, url);
-                setPreviewImage(arr);
-              }}
+              removePreviewImage={() => removePreviewImage(url)}
             />
           );
         })}
-      </PreviewImage>
+      </PreviewImageList>
 
       {/* <div>
         <div className={TitleStyle}>카테고리</div>
