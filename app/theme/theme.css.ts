@@ -4,7 +4,7 @@ import { vars } from "./contract.css";
 createGlobalTheme(":root", vars, {
   color: {
     primary: "#EF6F12",
-    secondary: "#FDAE74",
+    secondary: "#fff7f1",
     fontBlack: "#222222",
     strokeBlack: "#202020",
     white: "#FFFFFF",

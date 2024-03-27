@@ -47,13 +47,12 @@ export const CancelButtonLayout = style({
   },
 });
 
-export const ImageLayout = style({
+export const UploadFormLayoutStyle = style({
   gridColumn: "1 / span 4",
-  height: "64px",
+  height: "auto",
+  width: "100%",
   display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "24px",
+  flexDirection: "column",
 
   "@media": {
     "screen and (min-width: 768px)": {
