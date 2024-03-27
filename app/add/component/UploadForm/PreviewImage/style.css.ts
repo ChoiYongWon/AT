@@ -33,14 +33,19 @@ export const ImageAddButtonTitleStyle = style({
 export const ImageContainerStyle = style({
   display: "flex",
   width: "100%",
+  height: "calc(112px + 24px)",
   gap: "10px",
   overflowX: "scroll",
   overflowY: "hidden",
   marginLeft: "10px",
+  "::-webkit-scrollbar": {
+    display: "none",
+  },
 });
 
 export const PreviewImageItemStyle = style({
   flexShrink: 0,
+  position: "relative",
   width: "112px",
   height: "112px",
   border: `${vars.color.strokeBlack} 1.5px solid`,

@@ -6,6 +6,7 @@ import ImageAddButton from "../../../../public/images/ImageAddButton.svg";
 import { useState } from "react";
 import { AnimatePresence, Reorder, motion } from "framer-motion";
 import PreviewImage from "./PreviewImage";
+import PreviewImageItem from "./PreviewImageItem";
 
 type Props = {
   className?: any;
@@ -22,6 +23,7 @@ const UploadForm = ({ className, style }: Props) => {
     "https://github.com/ChoiYongWon/AT/assets/40623433/645f8238-ea27-4b02-9d64-1916d69ca560",
     "https://github.com/ChoiYongWon/AT/assets/40623433/2d9eaa62-43d3-4758-9b23-7743487a1412",
     "https://github.com/ChoiYongWon/AT/assets/40623433/6cc779f2-e6f9-494c-b31d-12aa475152a6",
+    "https://github.com/ChoiYongWon/AT/assets/40623433/acad298d-3bee-4774-a429-a70753475bd7",
   ]);
 
   return (
@@ -32,8 +34,21 @@ const UploadForm = ({ className, style }: Props) => {
       <PreviewImage
         previewImage={previewImage}
         setPreviewImage={setPreviewImage}
-        removePreviewImage={removePreviewImage}
-      ></PreviewImage>
+      >
+        {previewImage.map((url: string) => {
+          return (
+            <PreviewImageItem
+              key={url}
+              previewImageUrl={url}
+              removePreviewImage={() => {
+                const arr = [...previewImage];
+                removePreviewImage(arr, url);
+                setPreviewImage(arr);
+              }}
+            />
+          );
+        })}
+      </PreviewImage>
 
       {/* <div>
         <div className={TitleStyle}>카테고리</div>
