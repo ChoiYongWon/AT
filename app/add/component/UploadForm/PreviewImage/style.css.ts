@@ -34,7 +34,8 @@ export const ImageContainerStyle = style({
   display: "flex",
   width: "100%",
   gap: "10px",
-  overflow: "scroll",
+  overflowX: "scroll",
+  overflowY: "hidden",
   marginLeft: "10px",
 });
 
