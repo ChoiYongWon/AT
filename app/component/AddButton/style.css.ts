@@ -13,7 +13,9 @@ export const ButtonStyle = style({
   justifyContent: "center",
   alignItems: "center",
   backgroundColor: vars.color.primary,
-  userSelect: 'none'
+  userSelect: 'none',
+  outline: 'none',
+  WebkitTapHighlightColor: 'transparent'
 });
 
 export const ButtonImageStyle = style({

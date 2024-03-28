@@ -9,6 +9,8 @@ export const ButtonStyle = style({
   borderRadius: "50px",
   justifyContent: "center",
   alignItems: "center",
+  outline: 'none',
+  WebkitTapHighlightColor: 'transparent'
 });
 
 export const ButtonImageStyle = style({

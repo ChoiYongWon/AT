@@ -19,7 +19,9 @@ export const ProfileImageWrapperStyle = style({
   height: "100%",
   aspectRatio: "1/1",
   borderRadius: "100px",
-  overflow: "hidden"
+  overflow: "hidden",
+  outline: 'none',
+  WebkitTapHighlightColor: 'transparent'
 })
 
 export const EmptyProfileImageStyle = style({
@@ -53,7 +55,9 @@ export const SearchIconWrapperStyle = style({
   height: "100%",
   aspectRatio: "1/1",
   borderRadius: "30px",
-  zIndex: "1"
+  zIndex: "1",
+  outline: 'none',
+  WebkitTapHighlightColor: 'transparent'
 })
 
 
