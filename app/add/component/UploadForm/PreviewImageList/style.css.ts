@@ -22,6 +22,7 @@ export const ImageAddButtonWrapperStyle = style({
   alignItems: "center",
   flexDirection: "column",
   gap: "7px",
+  cursor: "pointer",
 });
 
 export const ImageAddButtonStyle = style({
