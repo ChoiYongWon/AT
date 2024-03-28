@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 // import { Inter } from "next/font/google";
 import "./global.css";
 import "./theme/theme.css";
@@ -14,6 +14,12 @@ export const metadata: Metadata = {
   title: "AT - A Spot Thur",
   description: "나만의 지도를 만들어보세요!",
 };
+
+export const viewport:Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  userScalable: false
+}
 
 export default function RootLayout({
   children,
