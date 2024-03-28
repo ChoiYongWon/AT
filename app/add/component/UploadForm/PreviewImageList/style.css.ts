@@ -40,7 +40,6 @@ export const ImageContainerStyle = style({
   height: "calc(112px + 24px)",
   gap: "10px",
   overflowY: "hidden",
-  marginLeft: "10px",
   "::-webkit-scrollbar": {
     display: "none",
   },

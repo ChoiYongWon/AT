@@ -24,7 +24,7 @@ const PreviewImageList = ({
       <input type="file" id="image-input" hidden />
       <Reorder.Group
         className={ImageContainerStyle}
-        style={{ marginRight: "10px", overflow: "visible" }}
+        style={{ overflow: "visible" }}
         values={previewImage}
         onReorder={setPreviewImage}
         axis="x"
