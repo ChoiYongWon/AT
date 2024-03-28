@@ -33,7 +33,7 @@ export const CategoryInputStyle = style({
   boxSizing: "border-box",
   fontSize: "14px",
   border: 'none',
-  
+  caretColor: "transparent",
 
   // ":focus": {
   //   border: `${vars.color.strokeBlack} 1px solid`,
@@ -42,6 +42,13 @@ export const CategoryInputStyle = style({
   "::placeholder": {
     opacity: 0.5,
     fontSize: "12px",
+  },
+
+  "@media": {
+    "screen and (min-width: 1000px)": {
+      caretColor: "unset",
+
+    },
   },
 });
 
