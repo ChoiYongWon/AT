@@ -3,7 +3,8 @@ import { CategoryInputStyle, CategoryInputWrapperStyle, ErrorMessageStyle, vibra
 import { AnimatePresence, motion } from "framer-motion";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { vars } from "@/app/theme/contract.css";
-import { useEffect, useRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
+import { useDetectClickOutside } from "react-detect-click-outside";
 
 type Props = {
   style?: any;
@@ -19,10 +20,10 @@ const CategoryList = ({
   onCategoryChange,
   categoryInput,
   categoryError
-}: Props) => {
+}: Props, ref:any) => {
   
   return (
-    <div style={{width: '100%', ...style}} >
+    <div ref={ref} style={{width: '100%', ...style}} >
       {/* <input ref={inputRef} type="text" /> */}
       <div style={style} className={CategoryInputWrapperStyle}>
         <AnimatePresence mode="popLayout">
@@ -50,4 +51,4 @@ const CategoryList = ({
   );
 };
 
-export default CategoryList;
+export default forwardRef(CategoryList);

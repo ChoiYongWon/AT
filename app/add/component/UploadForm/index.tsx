@@ -8,6 +8,7 @@ import CategoryList from "./CategoryList";
 import CategoryItem from "./CategoryItem";
 import { useInput } from "@/app/hook/useInput";
 import { v4 as uuidv4 } from "uuid";
+import { useDetectClickOutside } from "react-detect-click-outside";
 
 type Props = {
   className?: any;
@@ -30,6 +31,14 @@ const UploadForm = ({ className, style }: Props) => {
   const [category, setCategory] = useState<Category[]>([]);
   const { value: categoryInput, onChange: onCategoryInputChange, setValue: setCategoryInput } = useInput("");
   const [categoryError, setCategoryError] = useState({enable: false, message: ""})
+
+  // --- ref 영역
+
+  const detectRef = useDetectClickOutside({
+    onTriggered: () => {
+      if(categoryError.enable) setCategoryError({enable: false, message: ""})
+    },
+  });
 
   // --- 함수 영역
   const removePreviewImage = (url: string) => {
@@ -93,7 +102,7 @@ const UploadForm = ({ className, style }: Props) => {
         카테고리
         <span className={SubTitleStyle} style={{marginLeft: '4px'}}>(스페이스로 추가)</span>
       </div>
-      <CategoryList onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError}>
+      <CategoryList ref={detectRef} onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError}>
         {category.map((category, i) => (
           <CategoryItem
             key={category.id}
