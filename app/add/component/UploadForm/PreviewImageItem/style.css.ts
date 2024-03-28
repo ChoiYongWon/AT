@@ -6,6 +6,7 @@ export const PreviewImageItemStyle = style({
   position: "relative",
   width: "112px",
   height: "112px",
+  userSelect: "none",
   border: `${vars.color.strokeBlack} 1.5px solid`,
   borderRadius: "4px",
 });

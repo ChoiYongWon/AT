@@ -20,7 +20,7 @@ const PreviewImageList = ({
   setPreviewImage,
 }: Props) => {
   return (
-    <div className={ImageAddWrapper} onResize={(e) => e.stopPropagation()}>
+    <div className={ImageAddWrapper}>
       <input type="file" id="image-input" hidden />
       <Reorder.Group
         className={ImageContainerStyle}
