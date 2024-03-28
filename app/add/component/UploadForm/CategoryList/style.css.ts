@@ -32,10 +32,12 @@ export const CategoryInputStyle = style({
   padding: "4px 8px",
   boxSizing: "border-box",
   fontSize: "14px",
+  border: 'none',
+  
 
-  ":focus": {
-    border: `${vars.color.strokeBlack} 1px solid`,
-  },
+  // ":focus": {
+  //   border: `${vars.color.strokeBlack} 1px solid`,
+  // },
 
   "::placeholder": {
     opacity: 0.5,

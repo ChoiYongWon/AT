@@ -1,6 +1,6 @@
 "use client";
 
-import { TitleStyle } from "./style.css";
+import { SubTitleStyle, TitleStyle } from "./style.css";
 import { useState } from "react";
 import PreviewImageList from "./PreviewImageList";
 import PreviewImageItem from "./PreviewImageItem";
@@ -89,7 +89,10 @@ const UploadForm = ({ className, style }: Props) => {
       </PreviewImageList>
 
       {/* -- 카테고리 영역 */}
-      <div style={{ marginBottom: "10px" }} className={TitleStyle}>카테고리</div>
+      <div style={{ marginBottom: "10px" }} className={TitleStyle}>
+        카테고리
+        <span className={SubTitleStyle} style={{marginLeft: '4px'}}>(스페이스로 추가)</span>
+      </div>
       <CategoryList onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError}>
         {category.map((category, i) => (
           <CategoryItem

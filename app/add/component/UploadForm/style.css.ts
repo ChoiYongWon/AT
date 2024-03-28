@@ -6,6 +6,10 @@ export const TitleStyle = style({
   fontSize: "18px",
 });
 
+export const SubTitleStyle = style({
+  fontSize: '14px'
+})
+
 export const ImageAddLayoutStyle = style({
   display: "flex",
   width: "100%",
