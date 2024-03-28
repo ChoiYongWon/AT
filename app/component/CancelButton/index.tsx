@@ -1,9 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import CancelImage from "../../../public/images/CancelButton.svg";
 import { ButtonImageStyle, ButtonStyle } from "./style.css";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type Props = {
   style?: any;
@@ -11,16 +9,15 @@ type Props = {
 };
 
 const CancelButton = ({ style, className }: Props) => {
-  const router = useRouter();
 
   return (
-    <button
+    <Link
       style={style}
       className={`${ButtonStyle} ${className}`}
-      onClick={() => router.back()}
+      href={"/"}
     >
       <Image className={ButtonImageStyle} src={CancelImage} alt="x" />
-    </button>
+    </Link>
   );
 };
 

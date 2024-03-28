@@ -4,7 +4,6 @@ import SearchBarView from "@/app/component/SearchBar";
 import { useInput } from "@/app/hook/useInput";
 import { SearchBarLayoutStyle } from "@/app/style.css";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 const SearchBar = () => {
   const session = useSession();
@@ -14,7 +13,6 @@ const SearchBar = () => {
     onChange: onContentChange,
     setValue: setContent,
   } = useInput("");
-  const router = useRouter();
 
   return (
     <SearchBarView

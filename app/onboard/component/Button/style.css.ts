@@ -17,6 +17,7 @@ export const ButtonStyle = style({
   backgroundColor: vars.color.primary,
 
   ":disabled": {
-    backgroundColor: vars.color.secondary,
+    // backgroundColor: vars.color.secondary,
+    opacity: 0.6
   },
 });
