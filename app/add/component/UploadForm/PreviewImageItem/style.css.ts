@@ -9,6 +9,7 @@ export const PreviewImageItemStyle = style({
   userSelect: "none",
   border: `${vars.color.strokeBlack} 1.5px solid`,
   borderRadius: "4px",
+  cursor: "pointer",
 });
 
 export const ImageStyle = style({
