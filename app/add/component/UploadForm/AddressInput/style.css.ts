@@ -67,7 +67,7 @@ export const SelectedCloseStyle = style({
 })
 
 export const InputStyle = style({
-    flexBasis: "100%",
+    width: "100%",
     height: "48px",
     // display: "flex",
     // justifyContent: "space-between"
