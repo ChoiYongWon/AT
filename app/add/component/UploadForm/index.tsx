@@ -9,6 +9,8 @@ import CategoryItem from "./CategoryItem";
 import { useInput } from "@/app/hook/useInput";
 import { v4 as uuidv4 } from "uuid";
 import { useDetectClickOutside } from "react-detect-click-outside";
+import AddressInput from "./AddressInput";
+import DetailInput from "./DetailInput";
 
 type Props = {
   className?: any;
@@ -102,7 +104,7 @@ const UploadForm = ({ className, style }: Props) => {
         카테고리
         <span className={SubTitleStyle} style={{marginLeft: '4px'}}>(스페이스로 추가)</span>
       </div>
-      <CategoryList ref={detectRef} onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError}>
+      <CategoryList ref={detectRef} onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError} >
         {category.map((category, i) => (
           <CategoryItem
             key={category.id}
@@ -111,7 +113,18 @@ const UploadForm = ({ className, style }: Props) => {
           />
         ))}
       </CategoryList>
+
+
+      {/* -- 주소추가 영역 */}
+      <div className={TitleStyle} style={{ marginBottom: "10px", marginTop: "30px" }}>주소 추가</div>
+      <AddressInput style={{ marginBottom: "30px" }}/>
+
+      {/* -- 설명 영역 */}
+      <div className={TitleStyle} style={{ marginBottom: "10px" }}>자세한 설명</div>
+      <DetailInput/>
     </form>
+
+
   );
 };
 
