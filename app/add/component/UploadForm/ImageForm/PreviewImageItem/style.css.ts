@@ -15,6 +15,7 @@ export const PreviewImageItemStyle = style({
 export const ImageStyle = style({
   width: "100%",
   height: "100%",
+  objectFit: 'cover',
 });
 
 export const DraggableWrapperStyle = style({

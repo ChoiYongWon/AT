@@ -20,11 +20,7 @@ export type Address = {
 
 export const imageState = atom<ImageType[]>({
     key: 'image', 
-    default: [
-        {name: uuidv4(), data: null, previewUrl: "https://github.com/ChoiYongWon/AT/assets/40623433/645f8238-ea27-4b02-9d64-1916d69ca560"},
-        {name: uuidv4(), data: null, previewUrl: "https://github.com/ChoiYongWon/AT/assets/40623433/2d9eaa62-43d3-4758-9b23-7743487a1412"},
-        {name: uuidv4(), data: null, previewUrl: "https://github.com/ChoiYongWon/AT/assets/40623433/6cc779f2-e6f9-494c-b31d-12aa475152a6"}
-    ], 
+    default: [], 
 });
 
 export const categoryState = atom<Category[]>({
