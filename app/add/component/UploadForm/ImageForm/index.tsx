@@ -41,13 +41,13 @@ const ImageForm = ({style}: Props) => {
             promise.push(
                 new Promise(async (resolve, reject)=>{
                     const reader = new FileReader()
-                    const resizingBlob = await imageCompression(files[i], { maxSizeMB: 1 });
-                    const resizingFile = new File([resizingBlob], files[i].name, { type: files[i].type });
+                    // const resizingBlob = await imageCompression(files[i], { maxSizeMB: 1 });
+                    // const resizingFile = new File([resizingBlob], files[i].name, { type: files[i].type });
                     reader.onload = (e:any)=>{
-                        resolve({name: uuidv4(), data: resizingFile, previewUrl: e.target.result})
+                        resolve({name: uuidv4(), data: files[i], previewUrl: e.target.result})
                     }
 
-                    reader.readAsDataURL(resizingFile)
+                    reader.readAsDataURL(files[i])
                 })
             )
         }

@@ -34,6 +34,7 @@ export const CategoryInputStyle = style({
   fontSize: "14px",
   border: 'none',
   caretColor: "transparent",
+  willChange: 'transform',
 
   // ":focus": {
   //   border: `${vars.color.strokeBlack} 1px solid`,

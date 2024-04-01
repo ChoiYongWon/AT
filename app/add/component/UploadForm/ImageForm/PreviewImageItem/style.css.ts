@@ -10,6 +10,7 @@ export const PreviewImageItemStyle = style({
   border: `${vars.color.strokeBlack} 1.5px solid`,
   borderRadius: "4px",
   cursor: "pointer",
+  willChange: 'transform',
 });
 
 export const ImageStyle = style({
