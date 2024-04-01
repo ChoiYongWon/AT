@@ -22,30 +22,46 @@ const ImageForm = ({style}: Props) => {
         setImage(arr);
     };
 
+    useEffect(()=>{
+        return ()=>{
+            //unmount 될때 메모리 누수 방지
+            image.forEach((item)=> URL.revokeObjectURL(item.previewUrl))
+        }
+        // eslint-disable-next-line
+    }, [])
+
     const onImageUpload = (e: any) => {
         const files = e.target.files
         let promise = []
+        const images = []
         
         // 비동기 제어
+        // for(let i=0;i<files.length;i++){
+        //     promise.push(
+        //         new Promise((resolve, reject)=>{
+        //             const reader = new FileReader()
+        //             reader.onload = (e:any)=>{
+        //                 resolve({name: uuidv4(), data: "files[i]", previewUrl: e.target.result})
+        //             }
+        //             reader.readAsDataURL(files[i])
+        //         })
+        //     )
+        // }
+
+        // URL.createObjectURL이 용량을 덜 차지함
         for(let i=0;i<files.length;i++){
-            promise.push(
-                new Promise((resolve, reject)=>{
-                    const reader = new FileReader()
-                    reader.onload = (e:any)=>{
-                        resolve({name: uuidv4(), data: "files[i]", previewUrl: e.target.result})
-                    }
-                    reader.readAsDataURL(files[i])
-                })
-            )
+            images.push({name: uuidv4(), data: files[i], previewUrl: URL.createObjectURL(files[i])})
         }
 
-        // 이미지가 다 업로드 될때까지 대기
-        Promise.all(promise).then((data: any[])=>{
-            setImage([...image, ...data])
+        setImage([...image, ...images])
 
-            // 변화 감지 x
-            e.target.value = ''
-        })
+        // 이미지가 다 업로드 될때까지 대기
+        // Promise.all(promise).then((data: any[])=>{
+        //     setImage([...image, ...data])
+
+        //     // 변화 감지 x
+        //     e.target.value = ''
+        // })
         
     }
 
