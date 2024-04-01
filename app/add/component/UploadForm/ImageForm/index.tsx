@@ -50,7 +50,7 @@ const ImageForm = ({style}: Props) => {
 
         // URL.createObjectURL이 용량을 덜 차지함
         for(let i=0;i<files.length;i++){
-            images.push({name: uuidv4(), data: files[i], previewUrl: URL.createObjectURL(files[i])})
+            images.push({name: uuidv4(), data: "files[i]", previewUrl: URL.createObjectURL(files[i])})
         }
 
         setImage([...image, ...images])
