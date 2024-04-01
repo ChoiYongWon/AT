@@ -5,7 +5,7 @@ import {
   CategoryStyle,
 } from "./style.css";
 import Image from "next/image";
-import CancelButton from "../../../../../public/images/CancelButtonWhite.svg";
+import CancelButton from "../../../../../../public/images/CancelButtonWhite.svg";
 import { forwardRef } from "react";
 
 type Props = {

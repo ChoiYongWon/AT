@@ -14,7 +14,7 @@ export const ImageAddButtonWrapperStyle = style({
   flexShrink: 0,
   width: "112px",
   height: "112px",
-  border: `${vars.color.strokeBlack} 1.5px solid`,
+  border: `${vars.color.strokeBlack} 1px solid`,
   borderRadius: "4px",
   backgroundColor: vars.color.secondary,
   display: "flex",

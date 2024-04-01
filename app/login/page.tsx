@@ -3,15 +3,19 @@ import {
   BackLinkStyle,
   DescriptionEngStyle,
   DescriptionKorStyle,
+  Divider,
   FooterBackStyle,
   FooterInfoStyle,
   FooterWrapperStyle,
+  LoginButtonLayoutStyle,
   LogoStyle,
 } from "./style.css";
 import { auth } from "@/auth";
-import LoginButtonGroup from "./container/LoginButtonGroup";
 import { redirect } from "next/navigation";
 import PageAnimate from "../provider/PageAnimate/PageAnimateOpacity";
+import GoogleLoginButton from "./component/LoginButton/GoogleLoginButton";
+import KakaoLoginButton from "./component/LoginButton/KakaoLoginButton";
+import NaverLoginButton from "./component/LoginButton/NaverLoginButton";
 
 export default async function LoginLayout() {
   const session = await auth();
@@ -27,7 +31,11 @@ export default async function LoginLayout() {
         IF YOU WANT TO START AT(엣), YOU MUST CLICK HERE👇
       </span>
 
-      <LoginButtonGroup />
+      <GoogleLoginButton className={LoginButtonLayoutStyle}/>
+      <div className={Divider}></div>
+      <KakaoLoginButton className={LoginButtonLayoutStyle}/>
+      <div className={Divider}></div>
+      <NaverLoginButton className={LoginButtonLayoutStyle}/>
 
       <div className={FooterWrapperStyle}>
         <div className={FooterInfoStyle}>

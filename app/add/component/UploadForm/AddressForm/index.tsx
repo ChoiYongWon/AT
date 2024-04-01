@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import LoadingGif from "../../../../../public/images/loading.gif"
@@ -7,6 +9,8 @@ import { AddressInputWrapperStyle, AddressItemStyle, AddressItemSubTitleStyle, A
 import { useDebounceValue } from "usehooks-ts"
 import { useDetectClickOutside } from "react-detect-click-outside"
 import { useSearchAddress } from "@/app/query/useSearchAddress"
+import { useRecoilState } from "recoil"
+import { addressState } from "@/app/add/recoil"
 
 type Props = {
     style ?: any
@@ -18,12 +22,12 @@ type ATItemType = {
     category: string
 }
 
-const AddressInput = ({style}: Props) => {
+const AddressForm = ({style}: Props) => {
 
     // 요청에 대한 결과 저장
     const [isResultView, setIsResultView] = useState(false)
     // 선택된 주소 상태
-    const [selectedAddress, setSelectedAddress] = useState({enable: false, name: "", address: ""})
+    const [selectedAddress, setSelectedAddress] = useRecoilState(addressState)
 
     // 주소 입력창 상태 
     const [inputAddress, setInputAddress] = useDebounceValue("", 500);
@@ -49,15 +53,9 @@ const AddressInput = ({style}: Props) => {
     // fetch되었을때 결과창 표시 유무 상태
     useEffect(()=>{
         if(isSearchAddressFetched) {
-            console.log('fetched', searchAddress)
             setIsResultView(true)
         }
     }, [isSearchAddressFetched])
-
-    // fetch되었을때 결과창 표시 유무 상태
-    useEffect(()=>{
-        console.log(isSearchAddressError, "에러남")
-    }, [isSearchAddressError])
 
     // input값이 변함에 따라 검색
     useEffect(()=>{
@@ -81,15 +79,15 @@ const AddressInput = ({style}: Props) => {
         <div className={InputWrapperStyle}>
             {
                 selectedAddress.enable ? 
-                <div className={SelectedWrapperStyle}>
-                    <div className={SelectedContentWrapperStyle}>
-                        <p className={SelectedTitleStyle}>{selectedAddress.name}</p>
-                        <p className={SelectedAddressStyle}>{selectedAddress.address}</p>
-                    </div>
-                    <div className={SelectedCloseWrapperStyle} onClick={onSelectedCloseClick}>
-                        <Image alt="x" src={CancelIcon}></Image>
-                    </div>
-                </div> 
+                    <div className={SelectedWrapperStyle}>
+                        <div className={SelectedContentWrapperStyle}>
+                            <p className={SelectedTitleStyle}>{selectedAddress.name}</p>
+                            <p className={SelectedAddressStyle}>{selectedAddress.address}</p>
+                        </div>
+                        <div className={SelectedCloseWrapperStyle} onClick={onSelectedCloseClick}>
+                            <Image alt="x" src={CancelIcon}></Image>
+                        </div>
+                    </div> 
                 : 
                 <>
                     <input type="text" onChange={(e: any) => setInputAddress(e.target.value)} className={InputStyle} placeholder="장소를 입력해주세요."/>
@@ -133,4 +131,4 @@ const AddressInput = ({style}: Props) => {
     </div>
 }
 
-export default AddressInput
+export default AddressForm

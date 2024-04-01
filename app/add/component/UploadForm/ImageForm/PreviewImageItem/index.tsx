@@ -9,15 +9,16 @@ import {
   ImageStyle,
   PreviewImageItemStyle,
 } from "./style.css";
+import { ImageType } from "@/app/add/recoil";
 
 type Props = {
   // children: any;
-  previewImageUrl: any;
-  removePreviewImage: any;
+  image: ImageType;
+  removeImage: any;
 };
 
 const PreviewImageItem = (
-  { previewImageUrl, removePreviewImage }: Props,
+  { image, removeImage }: Props,
   ref: any
 ) => {
   const dragControl = useDragControls();
@@ -31,22 +32,22 @@ const PreviewImageItem = (
       //   onDragEnd={() => setTimeout(() => (isDragging.current = false), 1)}
       //   layout
       className={PreviewImageItemStyle}
-      key={previewImageUrl}
-      value={previewImageUrl}
+      key={image.name}
+      value={image}
       drag="x"
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ type: "just" }}
     >
       <Image
-        src={previewImageUrl}
-        alt={previewImageUrl}
+        src={image.previewUrl}
+        alt={image.previewUrl}
         width={100}
         height={100}
         draggable={false}
         className={ImageStyle}
         onClick={() => {
-          removePreviewImage();
+          removeImage();
 
           // }
         }}

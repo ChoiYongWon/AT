@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.5.0",
+    "@aws-sdk/credential-providers": "^3.540.0",
+    "@aws-sdk/s3-presigned-post": "^3.540.0",
     "@prisma/client": "^5.11.0",
     "@prisma/extension-accelerate": "^1.0.0",
     "@tanstack/react-query": "^5.28.6",
@@ -26,6 +28,7 @@
     "react": "^18",
     "react-detect-click-outside": "^1.1.7",
     "react-dom": "^18",
+    "recoil": "^0.7.7",
     "usehooks-ts": "^3.0.1",
     "uuid": "^9.0.1",
     "uuidv4": "^6.2.13"

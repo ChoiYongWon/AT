@@ -6,20 +6,21 @@ import {
   ImageAddWrapper,
   ImageContainerStyle,
 } from "./style.css";
-import ImageAddButton from "../../../../../public/images/ImageAddButton.svg";
+import ImageAddButton from "../../../../../../public/images/ImageAddButton.svg";
 
 type Props = {
-  previewImage: any;
-  setPreviewImage: any;
+  image: any;
+  setImage: any;
+  onImageUpload: any;
   children: any;
   style?: any;
 };
 
-const PreviewImageList = ({ children, previewImage, setPreviewImage, style}: Props) => {
+const PreviewImageList = ({ children, image, setImage, onImageUpload, style}: Props) => {
   return (
     <div className={ImageAddWrapper} style={style}>
-      <input type="file" id="image-input" hidden />
-      <Reorder.Group className={ImageContainerStyle} style={{ overflow: "visible" }} values={previewImage} onReorder={setPreviewImage} axis="x">
+      <input type="file" id="image-input" hidden onChange={onImageUpload} multiple={true} accept=".jpg, .jpeg, .png" />
+      <Reorder.Group className={ImageContainerStyle} style={{ overflow: "visible" }} values={image} onReorder={setImage} axis="x">
         <AnimatePresence mode="popLayout">
           {children}
           <motion.label key={"add"} htmlFor="image-input" className={ImageAddButtonWrapperStyle} layout animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ type: "just" }}>

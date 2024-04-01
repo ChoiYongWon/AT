@@ -16,8 +16,10 @@ export const DetailInputStyle = style({
     height: 'auto',
     resize: "none",
     fontSize: "16px",
+    lineHeight: 1.5,
     
     "::placeholder": {
         opacity: 0.5,
+        lineHeight: 1.5
     },
 })
