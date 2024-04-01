@@ -32,7 +32,7 @@ const ImageForm = ({style}: Props) => {
                 new Promise((resolve, reject)=>{
                     const reader = new FileReader()
                     reader.onload = (e:any)=>{
-                        resolve({name: uuidv4(), data: files[i], previewUrl: e.target.result})
+                        resolve({name: uuidv4(), data: "files[i]", previewUrl: e.target.result})
                     }
                     reader.readAsDataURL(files[i])
                 })

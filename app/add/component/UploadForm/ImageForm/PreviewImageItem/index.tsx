@@ -41,7 +41,7 @@ const PreviewImageItem = (
     >
       <Image
         src={image.previewUrl}
-        alt={image.previewUrl}
+        alt={image.name}
         width={100}
         height={100}
         draggable={false}

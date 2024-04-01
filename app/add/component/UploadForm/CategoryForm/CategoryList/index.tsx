@@ -11,7 +11,8 @@ type Props = {
   children: any;
   onCategoryChange: any;
   categoryInput: string;
-  categoryError: any
+  categoryError: any;
+  onKeyDown: any;
 };
 
 const CategoryList = ({
@@ -19,7 +20,8 @@ const CategoryList = ({
   children,
   onCategoryChange,
   categoryInput,
-  categoryError
+  categoryError,
+  onKeyDown
 }: Props, ref:any) => {
   
   return (
@@ -31,6 +33,7 @@ const CategoryList = ({
           <motion.input
             layout
             transition={{ type: "just", duration: 0.2}}
+            onKeyDown={onKeyDown}
             key={Symbol("CategoryInput").toString()}
             type="text"
             value={categoryInput}

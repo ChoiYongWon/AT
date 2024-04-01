@@ -51,6 +51,12 @@ const CategoryForm = () => {
     } else onCategoryInputChange(e);
   };
 
+  const onKeyDown = (e: any) => {
+    if(e.keyCode == 8 && categoryInput.length == 0){
+      setCategory([...category.slice(0,category.length-1)])
+    }
+  }
+
   const removeCategory = (e: any, id: string) => {
     e.preventDefault();
     const newCategory = [...category];
@@ -60,7 +66,7 @@ const CategoryForm = () => {
   };
 
     return (
-        <CategoryList ref={detectRef} onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError} >
+        <CategoryList ref={detectRef} onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError} onKeyDown={onKeyDown}>
             {category.map((category, i) => (
             <CategoryItem
                 key={category.id}
