@@ -41,10 +41,9 @@ const ImageForm = ({style}: Props) => {
             promise.push(
                 new Promise(async (resolve, reject)=>{
                     const reader = new FileReader()
-                    const resizingBlob = await imageCompression(files[i], { maxSizeMB: 0.1 });
+                    const resizingBlob = await imageCompression(files[i], { maxSizeMB: 1 });
                     const resizingFile = new File([resizingBlob], files[i].name, { type: files[i].type });
                     reader.onload = (e:any)=>{
-                        console.log(e)
                         resolve({name: uuidv4(), data: resizingFile, previewUrl: e.target.result})
                     }
 
