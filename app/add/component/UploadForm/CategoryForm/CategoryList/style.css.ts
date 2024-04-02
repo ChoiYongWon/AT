@@ -33,7 +33,7 @@ export const CategoryInputStyle = style({
   boxSizing: "border-box",
   fontSize: "14px",
   border: 'none',
-  caretColor: "transparent",
+  // caretColor: "transparent",
   willChange: 'transform',
 
   // ":focus": {
