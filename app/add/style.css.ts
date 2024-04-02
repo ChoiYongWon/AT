@@ -63,3 +63,18 @@ export const UploadFormLayoutStyle = style({
     },
   },
 });
+
+export const TitleStyle = style({
+  //   fontWeight: "bold",
+  fontSize: "18px",
+});
+
+export const SubTitleStyle = style({
+  fontSize: '14px'
+})
+
+export const ImageAddLayoutStyle = style({
+  display: "flex",
+  width: "100%",
+});
+

@@ -2,9 +2,9 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import LoadingGif from "../../../../../public/images/loading.gif"
-import SearchIcon from "../../../../../public/images/SearchIcon.svg"
-import CancelIcon from "../../../../../public/images/CancelButton.svg"
+import LoadingGif from "../../../../public/images/loading.gif"
+import SearchIcon from "../../../../public/images/SearchIcon.svg"
+import CancelIcon from "../../../../public/images/CancelButton.svg"
 import { AddressInputWrapperStyle, AddressItemStyle, AddressItemSubTitleStyle, AddressListWrapperStyle, AddressNothingFindStyle, InputStyle, InputWrapperStyle, LoadingStyle, LoadingWrapperStyle, SearchButtonStyleWrapper, SelectedAddressStyle, SelectedCloseWrapperStyle, SelectedContentWrapperStyle, SelectedTitleStyle, SelectedWrapperStyle } from "./style.css"
 import { useDebounceValue } from "usehooks-ts"
 import { useDetectClickOutside } from "react-detect-click-outside"

@@ -6,7 +6,7 @@ import {
   ImageAddWrapper,
   ImageContainerStyle,
 } from "./style.css";
-import ImageAddButton from "../../../../../../public/images/ImageAddButton.svg";
+import ImageAddButton from "../../../../../public/images/ImageAddButton.svg";
 
 type Props = {
   image: any;
