@@ -30,6 +30,7 @@
     "react-detect-click-outside": "^1.1.7",
     "react-dom": "^18",
     "recoil": "^0.7.7",
+    "sharp": "^0.33.3",
     "usehooks-ts": "^3.0.1",
     "uuid": "^9.0.1",
     "uuidv4": "^6.2.13"
