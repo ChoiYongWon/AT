@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 import PreviewImageList from "./PreviewImageList"
 import PreviewImageItem from "./PreviewImageItem";
 import { v4 as uuidv4 } from "uuid";
-import { ImageType, imageState, isCompressQueueEmptyState } from "@/app/add/recoil";
+import { ImageType, imageState } from "@/app/add/recoil";
 import { useRecoilState } from "recoil";
-import imageCompression from 'browser-image-compression';
-import { CompressQueue } from "@/app/util/CompressQueue";
-import copy from 'fast-copy';
 
 type Props = {
     style ?: any
@@ -17,9 +14,6 @@ type Props = {
 const ImageForm = ({style}: Props) => {
 
     const [image, setImage] = useRecoilState(imageState);
-    const [isCompressQueueEmpty, setIsCompressQueueEmpty] = useRecoilState(isCompressQueueEmptyState)
-    const compressQueue = new CompressQueue()
-    compressQueue.setSubscriber(setIsCompressQueueEmpty)
 
     const removeImage = (removeImage: ImageType) => {
         const arr = [...image];
@@ -27,20 +21,6 @@ const ImageForm = ({style}: Props) => {
         if (i > -1) arr.splice(i, 1);
         setImage(arr);
     };
-
-    const onCompress = async (resizedFile: any)=>{
-        const previewUrl = await imageCompression.getDataUrlFromFile(resizedFile.data)
-        setImage((image)=>{
-            let copyImage = copy(image)
-            return copyImage.map((item)=>{
-                if(item.name == resizedFile.name) return ({
-                    ...resizedFile,
-                    previewUrl
-                })
-                return item
-            })
-        })
-    }
 
 
     const onImageUpload = async (e: any) => {
@@ -73,10 +53,7 @@ const ImageForm = ({style}: Props) => {
         // 이미지가 다 업로드 될때까지 대기
         Promise.all(promise).then((data: any[])=>{
             setImage([...image, ...data])
-            // setResizeQueue([...resizeQueue, ...data.map(item=>item.data)])
-            for(let i in data){
-                compressQueue.add(data[i], onCompress) // 백그라운드에서 동작
-            }
+
             // 변화 감지 x
             e.target.value = ''
         })

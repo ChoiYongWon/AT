@@ -26,11 +26,6 @@ export const imageState = atom<ImageType[]>({
     default: [], 
 });
 
-export const isCompressQueueEmptyState = atom<boolean>({
-    key: 'isCompressQueueEmptyState', 
-    default: true, 
-});
-
 export const categoryState = atom<Category[]>({
     key: 'category', 
     default: [], 

@@ -19,7 +19,6 @@ export async function PUT(request: NextRequest) {
     const body = (await request.json()) as Query;
 
     // body 검증
-    // TODO body 검증 개선
     if (!body.at_id) return InvalidATIDError();
 
     // route랑 id랑 겹치는지 확인

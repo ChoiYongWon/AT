@@ -17,6 +17,7 @@ export type PresignedUrlBody = {
 
 export async function POST(req: Request) {
   try {
+
     const session = await useAuth();
     const body: PresignedUrlBody = await req.json()
     console.log(body)
