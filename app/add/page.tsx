@@ -35,7 +35,7 @@ export default async function AddPage() {
         <DetailForm/>
 
         {/* --- 제출 버튼 */}
-        <SubmitButton style={{ marginTop: "34px" }}/>
+        <SubmitButton style={{ marginTop: "34px", marginBottom: "40px" }}/>
       </form>
     </>
   );

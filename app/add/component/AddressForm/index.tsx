@@ -110,7 +110,7 @@ const AddressForm = ({style}: Props) => {
                     {
                         searchAddress.data.map((data: any)=>{
                             return (
-                                <li className={AddressItemStyle} key={data.address} onClick={()=>onAddressClick(data.name, data.address)}>{data.name}
+                                <li className={AddressItemStyle} key={data.name + data.address} onClick={()=>onAddressClick(data.name, data.address)}>{data.name}
                                     <p className={AddressItemSubTitleStyle}>{data.address}</p>
                                 </li>
                             )

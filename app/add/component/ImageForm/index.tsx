@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import PreviewImageList from "./PreviewImageList"
 import PreviewImageItem from "./PreviewImageItem";
 import { v4 as uuidv4 } from "uuid";
-import { ImageType, imageState } from "@/app/add/recoil";
+import { ImageType, imageState, isCompressQueueEmptyState } from "@/app/add/recoil";
 import { useRecoilState } from "recoil";
 import imageCompression from 'browser-image-compression';
+import { CompressQueue } from "@/app/util/CompressQueue";
+import copy from 'fast-copy';
 
 type Props = {
     style ?: any
@@ -15,6 +17,9 @@ type Props = {
 const ImageForm = ({style}: Props) => {
 
     const [image, setImage] = useRecoilState(imageState);
+    const [isCompressQueueEmpty, setIsCompressQueueEmpty] = useRecoilState(isCompressQueueEmptyState)
+    const compressQueue = new CompressQueue()
+    compressQueue.setSubscriber(setIsCompressQueueEmpty)
 
     const removeImage = (removeImage: ImageType) => {
         const arr = [...image];
@@ -23,28 +28,40 @@ const ImageForm = ({style}: Props) => {
         setImage(arr);
     };
 
-    // useEffect(()=>{
-    //     return ()=>{
-    //         //unmount 될때 메모리 누수 방지
-    //         image.forEach((item)=> URL.revokeObjectURL(item.previewUrl))
-    //     }
-    //     // eslint-disable-next-line
-    // }, [])
+    const onCompress = async (resizedFile: any)=>{
+        const previewUrl = await imageCompression.getDataUrlFromFile(resizedFile.data)
+        setImage((image)=>{
+            let copyImage = copy(image)
+            return copyImage.map((item)=>{
+                if(item.name == resizedFile.name) return ({
+                    ...resizedFile,
+                    previewUrl
+                })
+                return item
+            })
+        })
+    }
+
 
     const onImageUpload = async (e: any) => {
-        const files = e.target.files
+        const files: FileList = e.target.files
         let promise = []
         const images = []
         
         // 비동기 제어
         for(let i=0;i<files.length;i++){
             promise.push(
-                new Promise(async (resolve, reject)=>{
+                new Promise<ImageType>(async (resolve, reject)=>{
                     const reader = new FileReader()
-                    // const resizingBlob = await imageCompression(files[i], { maxSizeMB: 1 });
-                    // const resizingFile = new File([resizingBlob], files[i].name, { type: files[i].type });
                     reader.onload = (e:any)=>{
-                        resolve({name: uuidv4(), data: files[i], previewUrl: e.target.result})
+                        resolve({
+                             name: uuidv4(),
+                             data: files[i], 
+                             size: files[i].size,
+                             type: files[i].type,
+                             previewUrl: e.target.result, 
+                             ext: files[i].type.split("/")[1]
+                            })
                     }
 
                     reader.readAsDataURL(files[i])
@@ -52,19 +69,14 @@ const ImageForm = ({style}: Props) => {
             )
         }
 
-        // URL.createObjectURL이 용량을 덜 차지함
-        // for(let i=0;i<files.length;i++){
-        //     const resizingBlob = await imageCompression(files[i], { maxSizeMB: 0.1 });
-        //     const resizingFile = new File([resizingBlob], files[i].name, { type: files[i].type });
-        //     images.push({name: uuidv4(), data: files[i], previewUrl: URL.createObjectURL(resizingFile)})
-        // }
-
-        // setImage([...image, ...images])
 
         // 이미지가 다 업로드 될때까지 대기
         Promise.all(promise).then((data: any[])=>{
             setImage([...image, ...data])
-
+            // setResizeQueue([...resizeQueue, ...data.map(item=>item.data)])
+            for(let i in data){
+                compressQueue.add(data[i], onCompress) // 백그라운드에서 동작
+            }
             // 변화 감지 x
             e.target.value = ''
         })

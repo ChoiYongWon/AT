@@ -23,6 +23,7 @@ export default {
       // 회원가입
       if (trigger == "signUp") {
         token.at_id = null;
+        token.id = null;
       }
       // 로그인
       else if (trigger == "signIn") {
@@ -32,10 +33,13 @@ export default {
           },
         });
         token.at_id = user?.at_id;
+        token.id = user?.id;
       }
       // AT_ID 업데이트 (온보딩 과정)
       else if (trigger == "update" && session?.at_id) {
         token.at_id = session.at_id;
+        token.id = session.id;
+
       }
       return token;
     },
@@ -43,6 +47,8 @@ export default {
     async session({ session, trigger, newSession, token }) {
       // Note, that `rest.session` can be any arbitrary object, remember to validate it!
       session.user.at_id = token?.at_id as string;
+      session.user.id = token?.id as string;
+
 
       return session;
     },

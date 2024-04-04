@@ -7,9 +7,9 @@ import PageAnimateLeft from "./provider/PageAnimate/PageAnimateLeft";
 export default function Home() {
   return (
     <>
-      <PageAnimateLeft key="/" className={GridLayoutStyle}>
+      <PageAnimateOpacity key="/" className={GridLayoutStyle}>
         <SearchBar />
-      </PageAnimateLeft>
+      </PageAnimateOpacity>
       <AddButton />
     </>
   );

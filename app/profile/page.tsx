@@ -15,6 +15,8 @@ export default function Profile() {
       <div className={TmpRestLayout}>{session.data?.user.name}</div>
       <div className={TmpRestLayout}>{session.data?.user.email}</div>
       <div className={TmpRestLayout}>{session.data?.user.at_id}</div>
+      <div className={TmpRestLayout}>{session.data?.user.id}</div>
+
 
       <div className={TmpRestLayout}>
         <button

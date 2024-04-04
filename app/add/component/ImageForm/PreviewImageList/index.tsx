@@ -19,7 +19,7 @@ type Props = {
 const PreviewImageList = ({ children, image, setImage, onImageUpload, style}: Props) => {
   return (
     <div className={ImageAddWrapper} style={style}>
-      <input type="file" id="image-input" hidden onChange={onImageUpload} multiple={true} accept=".jpg, .jpeg, .png" />
+      <input type="file" id="image-input" hidden onChange={onImageUpload} multiple={true} accept=".jpg, .jpeg, .png, .webp" />
       <Reorder.Group className={ImageContainerStyle} style={{ overflow: "visible" }} values={image} onReorder={setImage} axis="x">
         <AnimatePresence mode="popLayout">
           {children}
