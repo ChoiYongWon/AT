@@ -55,10 +55,9 @@ model User {
 
 model Map {
   id            String @id @default(cuid())
+  name          String
   userId        String
-  view_count    Int
   spots         Spot[]
-  images        Image[]
 
   created_at    DateTime @default(now()) @db.Timestamptz(6)
 
@@ -79,7 +78,7 @@ model Spot {
   address               String
   primary_address       String
   secondary_address     String
-  view_count            Int
+  view_count            Int @default(0)
   created_at            DateTime @default(now()) @db.Timestamptz(6)
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -92,7 +91,6 @@ model Spot {
 model Image {
   id                    String @id @default(cuid())
   userId                String
-  mapId                 String
   spotId                String
   url                   String
   sequence              Int
@@ -100,7 +98,6 @@ model Image {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   spot Spot @relation(fields: [spotId], references: [id], onDelete: Cascade)
-  map Map @relation(fields: [mapId], references: [id], onDelete: Cascade)
 
   @@map("image")
 }

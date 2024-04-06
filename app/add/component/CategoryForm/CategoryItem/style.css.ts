@@ -3,14 +3,15 @@ import { style } from "@vanilla-extract/css";
 
 export const CategoryStyle = style({
   padding: "8px 16px",
-  paddingRight: "28px",
+  paddingRight: "38px",
+  // paddingLeft: "25px",
   boxSizing: "border-box",
   fontSize: "12px",
   fontWeight: "bold",
   border: `${vars.color.strokeBlack} 1px solid`,
-  borderRadius: "20px",
+  borderRadius: "100px",
   width: "auto",
-  height: "30px",
+  height: "40px",
   backgroundColor: vars.color.primary,
   color: vars.color.white,
   display: "flex",
@@ -19,6 +20,12 @@ export const CategoryStyle = style({
   gap: "8px",
   position: "relative",
 });
+
+export const CategoryTextStyle = style({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+})
 
 export const CategoryDeleteButtonStyle = style({
   width: "30px",
@@ -29,8 +36,8 @@ export const CategoryDeleteButtonStyle = style({
   alignItems: "center",
   position: "absolute",
   boxSizing: "border-box",
-  right: 0,
-  top: -1,
+  right: 2,
+  top: 4,
   cursor: "pointer",
 });
 

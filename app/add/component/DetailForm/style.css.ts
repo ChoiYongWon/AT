@@ -4,7 +4,7 @@ import { style } from "@vanilla-extract/css";
 export const DetailInputWrapperStyle = style({
     width: "100%",
     height: 'auto',
-    fontSize: "16px",
+    fontSize: "14px",
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: "5px",
     padding: "17px 22px"
@@ -15,7 +15,7 @@ export const DetailInputStyle = style({
     minHeight: "148px",
     height: 'auto',
     resize: "none",
-    fontSize: "16px",
+    fontSize: "14px",
     lineHeight: 1.5,
     
     "::placeholder": {

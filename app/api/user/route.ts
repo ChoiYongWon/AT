@@ -11,6 +11,9 @@ type Query = {
   at_id: string;
 };
 
+const prisma = new PrismaClient();
+
+
 //at_id 변경 목적
 export async function PUT(request: NextRequest) {
   try {
@@ -28,7 +31,6 @@ export async function PUT(request: NextRequest) {
     if (!regexp.test(body.at_id)) return InvalidATIDError();
 
     // AT_ID 중복성 검증
-    const prisma = new PrismaClient();
     const isUserExist = await prisma.user.findUnique({ where: { ...body } });
     if (isUserExist) return DuplicatedATIDError();
 

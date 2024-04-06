@@ -15,6 +15,8 @@ export default async function AddPage() {
       </div>
       <form className={UploadFormLayoutStyle}>
 
+        {/* // TODO 지도 선택 영역 */}
+
         {/* -- 사진 영역 */}
         <div className={TitleStyle} style={{ marginBottom: "10px" }}>사진 추가</div>
         <ImageForm style={{ marginBottom: "30px" }}/>

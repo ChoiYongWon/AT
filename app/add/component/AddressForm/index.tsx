@@ -48,10 +48,13 @@ const AddressForm = ({style}: Props) => {
         },
       });
 
+    // TODO 가끔 검색 안되는 에러 isFetched가 문제인듯
+
     // --- useEffect 영역
 
     // fetch되었을때 결과창 표시 유무 상태
     useEffect(()=>{
+        console.log(isSearchAddressFetched)
         if(isSearchAddressFetched) {
             setIsResultView(true)
         }

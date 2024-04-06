@@ -11,7 +11,7 @@ export const vibrate = keyframes({
 
 export const CategoryInputWrapperStyle = style({
   width: "100%",
-  minHeight: "38px",
+  minHeight: "48px",
   height: "auto",
   border: `${vars.color.strokeBlack} 1px solid`,
   borderRadius: "5px",
@@ -27,7 +27,7 @@ export const CategoryInputStyle = style({
   // maxWidth: "200px",
   minWidth: "100px",
   width: "auto",
-  height: "30px",
+  height: "40px",
   borderRadius: "5px",
   padding: "4px 8px",
   boxSizing: "border-box",
@@ -42,7 +42,7 @@ export const CategoryInputStyle = style({
 
   "::placeholder": {
     opacity: 0.5,
-    fontSize: "12px",
+    fontSize: "14px",
   },
 
   "@media": {

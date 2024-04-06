@@ -41,6 +41,20 @@ export const detailState = atom<string>({
     default: "", 
 });
 
+// type FormSelector = {
+//     image: {
+//         name: string;
+//         data: any;
+//         ext: string;
+//     }[];
+//     category: string[];
+//     address: {
+//         name: string;
+//         address: string;
+//     };
+//     detail: string;
+// }
+
 export const formSelector = selector({
     key: 'form',
     get: ({get}) => {
@@ -50,7 +64,7 @@ export const formSelector = selector({
         const detail = get(detailState)
 
         const result = {
-            image: image.map((item: ImageType)=>({name: item.name, data: item.data, ext: item.ext})),
+            image: image.map((item: ImageType)=>({name: item.name, data: item.data, ext: item.ext, size: item.size})),
             category: category.map((item: Category)=>item.name),
             address: {name: address.name, address: address.address},
             detail

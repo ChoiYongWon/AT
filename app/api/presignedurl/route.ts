@@ -20,12 +20,13 @@ export async function POST(req: Request) {
 
     const session = await useAuth();
     const body: PresignedUrlBody = await req.json()
-    console.log(body)
     const result: any = {}
 
     const client = new S3Client({
         region: 'ap-northeast-2',
         credentials: fromEnv(),
+        // endpoint: "https://s3.a-spot-thur.app/",
+        // bucketEndpoint: true
     });
     const Conditions: any = [
       ["eq", "$acl", "public-read"], 

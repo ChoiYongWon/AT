@@ -71,13 +71,14 @@ export const InputStyle = style({
     height: "48px",
     // display: "flex",
     // justifyContent: "space-between"
-    fontSize: "16px",
+    fontSize: "14px",
     padding: "15px 0",
     paddingRight: "10px",
     boxSizing: "border-box",
 
     "::placeholder": {
         opacity: 0.5,
+        fontSize: "14px"
     },
 
 })
