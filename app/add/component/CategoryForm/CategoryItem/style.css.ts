@@ -11,7 +11,7 @@ export const CategoryStyle = style({
   border: `${vars.color.strokeBlack} 1px solid`,
   borderRadius: "100px",
   width: "auto",
-  height: "40px",
+  height: "35px",
   backgroundColor: vars.color.primary,
   color: vars.color.white,
   display: "flex",
@@ -19,6 +19,7 @@ export const CategoryStyle = style({
   justifyContent: "space-between",
   gap: "8px",
   position: "relative",
+  alignSelf: "center"
 });
 
 export const CategoryTextStyle = style({
