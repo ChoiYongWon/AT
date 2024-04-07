@@ -48,7 +48,6 @@ const AddressForm = ({style}: Props) => {
         },
       });
 
-    // TODO 가끔 검색 안되는 에러 isFetched가 문제인듯
 
     // --- useEffect 영역
 
@@ -58,10 +57,6 @@ const AddressForm = ({style}: Props) => {
             setIsResultView(true)
         }
     }, [isSearchAddressFetched, isSearchAddressFetching])
-
-    // useEffect(()=>{
-    //     console.log("Fetching", isSearchAddressFetching)
-    // }, [isSearchAddressFetching])
 
     // input값이 변함에 따라 검색
     useEffect(()=>{

@@ -42,7 +42,6 @@ export async function POST(request: NextRequest) {
 
     if(spot !== null) return SpotDuplicatedError()
 
-    // // TODO AT등록 API
     const result = await prisma.spot.create({
       data: {
         user: {

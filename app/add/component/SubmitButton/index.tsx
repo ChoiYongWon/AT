@@ -10,6 +10,7 @@ import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useUploadAT } from "@/app/_common/query/useUploadAT";
 import { useSession } from "next-auth/react";
 import { PostBody } from "@/app/api/at/route";
+import { useRouter } from "next/navigation";
 
 type Props = {
     style ?: any;
@@ -18,6 +19,7 @@ type Props = {
 const SubmitButton = ({ style }: Props) => {
 
     const session = useSession();
+    const router = useRouter();
     const formState = useRecoilValue(formSelector)
     const imageMap = useRecoilValue(imageMapSelector)
     const [errorState, setErrorState] = useState({
@@ -36,11 +38,13 @@ const SubmitButton = ({ style }: Props) => {
 
             setErrorState({isError: false, message: ""})
 
-            // TODO 모든 폼 검증
             if(formState.image.length == 0 || formState.category.length == 0 || formState.address.name == "" || formState.detail.length == 0){
                 setErrorState({isError: true, message: "폼을 모두 입력해주세요"})
                 return;
             }
+
+            alert("구현중입니다.")
+            return;
 
             /*
             presignedUrl 요청을 위한 정보
@@ -85,6 +89,8 @@ const SubmitButton = ({ style }: Props) => {
 
             alert("모든 이미지 등록 완료")
 
+            router.push("/")
+
         }catch(e: any){
             console.log(e)
             setErrorState({isError: true, message: "서버 에러"})
@@ -97,6 +103,7 @@ const SubmitButton = ({ style }: Props) => {
             <div style={style} className={ButtonWrapperStyle}>
                 {/* input이 하나만 있어도 제출됨 */}
                 <input type="text" hidden />
+                {/* TODO 버튼 로딩 상태 */}
                 <div className={ButtonStyle} onClick={onClick}>추가 하기</div>
                 { isPresignedUrlError || isUplaodError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>서버 에러</div> : <></>}
                 { errorState.isError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>{errorState.message}</div> : <></>}
