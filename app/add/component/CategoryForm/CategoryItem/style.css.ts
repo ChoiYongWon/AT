@@ -38,7 +38,7 @@ export const CategoryDeleteButtonStyle = style({
   position: "absolute",
   boxSizing: "border-box",
   right: 2,
-  top: 4,
+  top: 'calc((100% - 30px) / 2)',
   cursor: "pointer",
 });
 
