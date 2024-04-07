@@ -1,11 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { InvalidATIDError } from "../error/user/InvalidATID.error";
-import { useAuth } from "@/app/util/useAuth";
+import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
 import { UnavailableATIDError } from "../error/user/UnavailableATID.error";
 import { DuplicatedATIDError } from "../error/user/DuplicatedATID.error";
-import { ROUTES } from "@/app/util/constant";
+import { ROUTES } from "@/app/_common/util/constant";
 
 type Query = {
   at_id: string;

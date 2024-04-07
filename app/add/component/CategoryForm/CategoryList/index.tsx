@@ -2,7 +2,7 @@ import Image from "next/image";
 import { CategoryInputStyle, CategoryInputWrapperStyle, ErrorMessageStyle, vibrate } from "./style.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { vars } from "@/app/theme/contract.css";
+import { vars } from "@/app/_common/theme/contract.css";
 import { forwardRef, useEffect, useRef } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 

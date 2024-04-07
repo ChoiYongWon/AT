@@ -1,4 +1,4 @@
-import PageAnimateOpacity from "../provider/PageAnimate/PageAnimateOpacity";
+import PageAnimateOpacity from "../_common/provider/PageAnimate/PageAnimateOpacity";
 import { GridLayoutStyle } from "./style.css";
 
 export default function LoginLayout({

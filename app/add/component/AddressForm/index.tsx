@@ -8,7 +8,7 @@ import CancelIcon from "../../../../public/images/CancelButton.svg"
 import { AddressInputWrapperStyle, AddressItemStyle, AddressItemSubTitleStyle, AddressListWrapperStyle, AddressNothingFindStyle, InputStyle, InputWrapperStyle, LoadingStyle, LoadingWrapperStyle, SearchButtonStyleWrapper, SelectedAddressStyle, SelectedCloseWrapperStyle, SelectedContentWrapperStyle, SelectedTitleStyle, SelectedWrapperStyle } from "./style.css"
 import { useDebounceValue } from "usehooks-ts"
 import { useDetectClickOutside } from "react-detect-click-outside"
-import { useSearchAddress } from "@/app/query/useSearchAddress"
+import { useSearchAddress } from "@/app/_common/query/useSearchAddress"
 import { useRecoilState } from "recoil"
 import { addressState } from "@/app/add/recoil"
 

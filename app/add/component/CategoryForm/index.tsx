@@ -5,7 +5,7 @@ import CategoryItem from "./CategoryItem"
 import CategoryList from "./CategoryList"
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { v4 as uuidv4 } from "uuid";
-import { useInput } from "@/app/hook/useInput";
+import { useInput } from "@/app/_common/hook/useInput";
 import { Category, categoryState } from "@/app/add/recoil";
 import { useRecoilState } from "recoil";
 

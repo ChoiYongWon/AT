@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
 // import { Inter } from "next/font/google";
 import "./global.css";
-import "./theme/theme.css";
-import AuthContext from "./provider/AuthContext";
+import "./_common/theme/theme.css";
+import AuthContext from "./_common/provider/AuthContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import QueryProvider from "./provider/QueryProvider";
-import AnimateProvider from "./provider/AnimateProvider";
+import QueryProvider from "./_common/provider/QueryProvider";
+import AnimateProvider from "./_common/provider/AnimateProvider";
 
 // const inter = Inter({ subsets: ["latin"] });
 

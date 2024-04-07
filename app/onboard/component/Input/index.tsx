@@ -5,7 +5,7 @@ import {
   InputWrapperStyle,
   vibrate,
 } from "./style.css";
-import { vars } from "@/app/theme/contract.css";
+import { vars } from "@/app/_common/theme/contract.css";
 
 type Props = {
   onChange: any;

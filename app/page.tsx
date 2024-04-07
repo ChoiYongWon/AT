@@ -1,14 +1,17 @@
 import { GridLayoutStyle } from "./style.css";
-import SearchBar from "./container/SearchBar";
-import AddButton from "./component/AddButton";
-import PageAnimateOpacity from "./provider/PageAnimate/PageAnimateOpacity";
-import PageAnimateLeft from "./provider/PageAnimate/PageAnimateLeft";
+import SearchBar from "./component/SearchBar";
+import AddButton from "./_common/component/AddButton";
+import PageAnimateOpacity from "./_common/provider/PageAnimate/PageAnimateOpacity";
+import { auth } from "@/auth";
 
-export default function Home() {
+export default async function Home() {
+
+  const session = await auth()
+
   return (
     <>
       <PageAnimateOpacity key="/" className={GridLayoutStyle}>
-        <SearchBar />
+        <SearchBar image={session?.user.image}/>
       </PageAnimateOpacity>
       <AddButton />
     </>

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { useAuth } from "@/app/util/useAuth";
+import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
 import { createPresignedPost } from "@aws-sdk/s3-presigned-post";
 import { S3Client } from "@aws-sdk/client-s3";

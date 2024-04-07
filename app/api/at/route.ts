@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { useAuth } from "@/app/util/useAuth";
+import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
 import { SpotDuplicatedError } from "../error/at/SpotDuplicated.error";
 import { InvalidDataError } from "../error/at/InvalidData.error";

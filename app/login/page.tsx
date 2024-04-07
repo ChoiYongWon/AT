@@ -12,7 +12,7 @@ import {
 } from "./style.css";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
-import PageAnimate from "../provider/PageAnimate/PageAnimateOpacity";
+import PageAnimate from "../_common/provider/PageAnimate/PageAnimateOpacity";
 import GoogleLoginButton from "./component/LoginButton/GoogleLoginButton";
 import KakaoLoginButton from "./component/LoginButton/KakaoLoginButton";
 import NaverLoginButton from "./component/LoginButton/NaverLoginButton";

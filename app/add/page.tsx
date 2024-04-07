@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import { CancelButtonLayout, SubTitleStyle, TitleStyle, UploadFormLayoutStyle } from "./style.css";
-import CancelButton from "../component/CancelButton";
+import CancelButton from "../_common/component/CancelButton";
 import ImageForm from "./component/ImageForm";
 import CategoryForm from "./component/CategoryForm";
 import AddressForm from "./component/AddressForm";

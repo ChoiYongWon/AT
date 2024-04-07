@@ -1,4 +1,4 @@
-import { vars } from "@/app/theme/contract.css";
+import { vars } from "@/app/_common/theme/contract.css";
 import { style } from "@vanilla-extract/css";
 
 export const ImageAddWrapper = style({

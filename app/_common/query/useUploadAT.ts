@@ -1,6 +1,6 @@
 import { UseQueryOptions, useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { PostBody } from "../api/at/route";
+import { PostBody } from "../../api/at/route";
 
 export const URL = "/api/at/";
 

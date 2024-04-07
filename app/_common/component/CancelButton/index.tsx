@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CancelImage from "../../../public/images/CancelButton.svg";
+import CancelImage from "../../../../public/images/CancelButton.svg";
 import { ButtonImageStyle, ButtonStyle } from "./style.css";
 import Link from "next/link";
 

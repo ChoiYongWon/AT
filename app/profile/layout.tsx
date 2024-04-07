@@ -1,4 +1,4 @@
-import PageAnimateRight from "../provider/PageAnimate/PageAnimateRight";
+import PageAnimateRight from "../_common/provider/PageAnimate/PageAnimateRight";
 import { GridLayoutStyle, TmpLayout } from "./style.css";
 
 export default function ProfileLayout({
