@@ -11,6 +11,9 @@ export default auth(async (req) => {
   if (req.nextUrl.pathname.startsWith("/profile")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
   }
+  if (req.nextUrl.pathname.startsWith("/add")) {
+    if (!session) return NextResponse.redirect(new URL("/login", req.url));
+  }
   if (req.nextUrl.pathname.startsWith("/onboard")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
     else if (session.user?.at_id)
@@ -26,5 +29,5 @@ export default auth(async (req) => {
 
 // Optionally, don't invoke Middleware on some paths
 export const config = {
-  matcher: ["/profile", "/", "/onboard"],
+  matcher: ["/profile", "/", "/onboard", "/add"],
 };
