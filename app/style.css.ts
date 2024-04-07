@@ -5,7 +5,7 @@ export const GridLayoutStyle = style({
   gridAutoRows: "auto",
   gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
   columnGap: "16px",
-  marginTop: "80px",
+  marginTop: "24px",
   marginLeft: "16px",
   marginRight: "16px",
   boxSizing: "content-box",
@@ -13,9 +13,13 @@ export const GridLayoutStyle = style({
   "@media": {
     "screen and (min-width: 768px)": {
       gridTemplateColumns: "repeat(8, minmax(0, 1fr))",
+      marginTop: "36px",
+
     },
     "screen and (min-width: 1000px)": {
       gridTemplateColumns: "repeat(12, minmax(0, 1fr))",
+      marginTop: "48px",
+
     },
   },
 });
