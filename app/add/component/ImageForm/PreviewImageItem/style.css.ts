@@ -16,6 +16,7 @@ export const PreviewImageItemStyle = style({
 export const ImageStyle = style({
   width: "100%",
   height: "100%",
+  borderRadius: "3px",
   objectFit: 'cover',
 });
 
