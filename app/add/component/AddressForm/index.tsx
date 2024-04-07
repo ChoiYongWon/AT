@@ -33,7 +33,7 @@ const AddressForm = ({style}: Props) => {
     const [inputAddress, setInputAddress] = useDebounceValue("", 500);
     const {
         refetch: getSearchAddress,
-        isLoading: isSearchAddressLoading,
+        isFetching: isSearchAddressFetching,
         data: searchAddress,
         isFetched: isSearchAddressFetched,
         error: searchAddressError,
@@ -54,11 +54,14 @@ const AddressForm = ({style}: Props) => {
 
     // fetch되었을때 결과창 표시 유무 상태
     useEffect(()=>{
-        console.log(isSearchAddressFetched)
-        if(isSearchAddressFetched) {
+        if(isSearchAddressFetched && !isSearchAddressFetching) {
             setIsResultView(true)
         }
-    }, [isSearchAddressFetched])
+    }, [isSearchAddressFetched, isSearchAddressFetching])
+
+    // useEffect(()=>{
+    //     console.log("Fetching", isSearchAddressFetching)
+    // }, [isSearchAddressFetching])
 
     // input값이 변함에 따라 검색
     useEffect(()=>{
@@ -75,6 +78,7 @@ const AddressForm = ({style}: Props) => {
     const onSelectedCloseClick = () => {
         setIsResultView(false)
         setSelectedAddress({enable: false, name: "", address: ""})
+        setInputAddress("")
     }
 
     return <div className={AddressInputWrapperStyle} style={style} ref={detectRef}>
@@ -95,7 +99,7 @@ const AddressForm = ({style}: Props) => {
                 <>
                     <input type="text" onChange={(e: any) => setInputAddress(e.target.value)} className={InputStyle} placeholder="장소를 입력해주세요."/>
                     {
-                        isSearchAddressLoading ? 
+                        isSearchAddressFetching ? 
                         <div className={LoadingWrapperStyle}><Image src={LoadingGif} alt="loading" className={LoadingStyle}/></div> 
                         : 
                         <div className={SearchButtonStyleWrapper}><Image src={SearchIcon} alt="search"/></div>
