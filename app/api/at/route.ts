@@ -76,6 +76,14 @@ export async function POST(request: NextRequest) {
             }))
           }
         },
+        categories: {
+          createMany: {
+            data: [...body.category.map(item=>({
+              name: item,
+              userId: session.user.id as string
+            }))]
+          }
+        },
         title : body.name,
         address: body.address,
         primary_address: body.address.split(" ")[0],

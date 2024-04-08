@@ -1,6 +1,8 @@
 import { TmpLayout } from "./style.css";
 
-export default function OnBoardLayout({
+// TODO 레이아웃 그룹 어떻게 나눌지 고민
+
+export default function MapLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
