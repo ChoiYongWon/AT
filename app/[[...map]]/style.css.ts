@@ -65,6 +65,7 @@ export const SearchBarLayoutStyle = style({
 });
 
 export const MapTmpLayoutStyle = style({
+  userSelect: 'none',
   gridRowStart: '2',
   gridColumn: "1 / span 4",
   marginTop: '60px',

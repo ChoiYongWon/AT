@@ -90,6 +90,7 @@ export const InputWrapperStyle = style({
 export const SearchInputStyle = style({
   width: "100%",
   height: "100%",
+  textTransform: 'lowercase',
   color: vars.color.fontBlack,
   "::placeholder":{
     color: "#e3e2e1",

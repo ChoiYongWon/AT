@@ -24,6 +24,7 @@ export const CategoryInputWrapperStyle = style({
 
 export const CategoryInputStyle = style({
   flex: 1,
+  textTransform: 'lowercase',
   // maxWidth: "200px",
   minWidth: "100px",
   width: "auto",

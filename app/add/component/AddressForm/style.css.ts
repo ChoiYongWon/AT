@@ -69,6 +69,7 @@ export const SelectedCloseStyle = style({
 export const InputStyle = style({
     width: "100%",
     height: "48px",
+    textTransform: 'lowercase',
     // display: "flex",
     // justifyContent: "space-between"
     fontSize: "14px",
