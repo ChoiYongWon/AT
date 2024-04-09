@@ -3,6 +3,7 @@ import { auth } from "./auth";
 // import { PrismaClient } from "@prisma/client/edge";
 // import { withAccelerate } from "@prisma/extension-accelerate";
 
+
 export default auth(async (req) => {
   const session = await auth();
   // const prisma = new PrismaClient().$extends(withAccelerate());

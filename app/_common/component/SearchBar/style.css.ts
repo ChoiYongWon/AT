@@ -32,7 +32,8 @@ export const EmptyProfileImageStyle = style({
 
 
 export const ProfileNameStyle = style({
-  fontSize: "18px"
+  fontSize: "18px",
+  // fontWeight: "bold"
 })
 
 

@@ -2,14 +2,16 @@
 
 import SearchBarView from "@/app/_common/component/SearchBar";
 import { useInput } from "@/app/_common/hook/useInput";
-import { SearchBarLayoutStyle } from "@/app/style.css";
 import { useSession } from "next-auth/react";
+import { SearchBarLayoutStyle } from "../../style.css";
 
 type Props = {
   image: string | undefined | null
+  className: any
+  title : string
 }
 
-const SearchBar = ({image}: Props) => {
+const SearchBar = ({image, title, className}: Props) => {
 
   const {
     value: content,
@@ -19,9 +21,9 @@ const SearchBar = ({image}: Props) => {
 
   return (
     <SearchBarView
-      title={"전국 통합 AT"}
+      title={title}
       image={image}
-      className={SearchBarLayoutStyle}
+      className={className}
       content={content}
       onContentChange={onContentChange}
       onSearch={() => console.log(content)}
