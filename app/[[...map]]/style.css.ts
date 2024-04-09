@@ -67,14 +67,14 @@ export const SearchBarLayoutStyle = style({
 export const MapTmpLayoutStyle = style({
   gridRowStart: '2',
   gridColumn: "1 / span 4",
-  marginTop: '40px',
+  marginTop: '60px',
   boxSizing: 'border-box',
   padding: '0 10px',
 
   "@media": {
     "screen and (min-width: 768px)": {
       gridColumn: "2 / span 6",
-      marginTop: '50px',
+      marginTop: '80px',
     },
     "screen and (min-width: 1000px)": {
       gridColumn: "5 / span 4",
@@ -84,6 +84,17 @@ export const MapTmpLayoutStyle = style({
 })
 
 export const MapStyle = style({
-  width: '95%',
-  height: 'auto'
+  width: '90%',
+  height: 'auto',
+
+  "@media": {
+    "screen and (min-width: 768px)": {
+      width: '95%',
+
+    },
+    "screen and (min-width: 1000px)": {
+      width: '95%',
+
+    },
+  },
 })
