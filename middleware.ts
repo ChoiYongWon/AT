@@ -7,7 +7,9 @@ export default auth(async (req) => {
   const session = await auth();
   // const prisma = new PrismaClient().$extends(withAccelerate());
   // const prisma = new PrismaClient();
-
+  if (req.nextUrl.pathname.startsWith("/login")) {
+    if (session) return NextResponse.redirect(new URL("/", req.url));
+  }
   if (req.nextUrl.pathname.startsWith("/profile")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
   }
@@ -29,5 +31,5 @@ export default auth(async (req) => {
 
 // Optionally, don't invoke Middleware on some paths
 export const config = {
-  matcher: ["/profile", "/", "/onboard", "/add"],
+  matcher: ["/profile", "/", "/onboard", "/add", "/login"],
 };
