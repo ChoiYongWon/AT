@@ -36,17 +36,15 @@ export const TmpLayout = style({
 
 export const MainLayoutStyle = style({
   gridColumn: "1 / span 4",
-  marginRight: "auto",
-  marginLeft: "auto",
   display: "flex",
   justifyContent: 'center',
 
   "@media": {
     "screen and (min-width: 768px)": {
-      gridColumn: "1 / span 8",
+      gridColumn: "2 / span 6",
     },
     "screen and (min-width: 1000px)": {
-      gridColumn: "1 / span 12",
+      gridColumn: "5 / span 4",
     },
   },
 });
@@ -58,7 +56,7 @@ export const SearchBarLayoutStyle = style({
 
   "@media": {
     "screen and (min-width: 768px)": {
-      gridColumn: "3 / span 4",
+      gridColumn: "2 / span 6",
     },
     "screen and (min-width: 1000px)": {
       gridColumn: "5 / span 4",
@@ -67,17 +65,25 @@ export const SearchBarLayoutStyle = style({
 });
 
 export const MapTmpLayoutStyle = style({
-  width: '95%',
-  height: 'auto',
+  gridRowStart: '2',
+  gridColumn: "1 / span 4",
   marginTop: '40px',
+  boxSizing: 'border-box',
+  padding: '0 10px',
 
   "@media": {
     "screen and (min-width: 768px)": {
-      width: '100%',
+      gridColumn: "2 / span 6",
       marginTop: '50px',
     },
     "screen and (min-width: 1000px)": {
+      gridColumn: "5 / span 4",
       marginTop: '80px',
     },
   },
+})
+
+export const MapStyle = style({
+  width: '95%',
+  height: 'auto'
 })
