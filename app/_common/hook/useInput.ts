@@ -1,9 +1,15 @@
 import { useState } from "react";
 
-export const useInput = (initialValue: string) => {
+type Option = {
+  lower: boolean;
+}
+
+export const useInput = (initialValue: string, option?: Option) => {
   const [value, setValue] = useState(initialValue);
   const onChange = (event: any) => {
-    setValue(event.target.value);
+    let value = event.target.value as string
+    if(option?.lower) value = value.toString().toLowerCase()
+    setValue(value);
   };
   return { value, setValue, onChange };
 };

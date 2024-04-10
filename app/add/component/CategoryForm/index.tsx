@@ -14,7 +14,7 @@ const CategoryForm = () => {
 
 
   const [category, setCategory] = useRecoilState<Category[]>(categoryState);
-  const { value: categoryInput, onChange: onCategoryInputChange, setValue: setCategoryInput } = useInput("");
+  const { value: categoryInput, onChange: onCategoryInputChange, setValue: setCategoryInput } = useInput("", {lower: true});
   const [categoryError, setCategoryError] = useState({enable: false, message: ""})
 
 

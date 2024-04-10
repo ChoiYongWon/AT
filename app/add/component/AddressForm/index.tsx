@@ -38,7 +38,7 @@ const AddressForm = ({style}: Props) => {
         isFetched: isSearchAddressFetched,
         error: searchAddressError,
         isError: isSearchAddressError,
-      } = useSearchAddress(encodeURIComponent(inputAddress), {
+      } = useSearchAddress(encodeURIComponent(inputAddress).toLowerCase(), {
         // query string 이스케이프 문자
         enabled: false,
       });

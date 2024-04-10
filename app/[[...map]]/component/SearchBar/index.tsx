@@ -17,7 +17,7 @@ const SearchBar = ({image, title, className}: Props) => {
     value: content,
     onChange: onContentChange,
     setValue: setContent,
-  } = useInput("");
+  } = useInput("", { lower: true });
 
   return (
     <SearchBarView
