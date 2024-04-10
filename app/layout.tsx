@@ -13,6 +13,9 @@ import AnimateProvider from "./_common/provider/AnimateProvider";
 export const metadata: Metadata = {
   title: "AT - A Spot Thur",
   description: "나만의 지도를 만들어보세요!",
+  other: {
+    google: 'notranslate'
+  }
 };
 
 export const viewport:Viewport = {
