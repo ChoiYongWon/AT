@@ -11,6 +11,7 @@ export const vars = createGlobalThemeContract({
     point_1: "point-1",
     point_2: "point-2",
     point_3: "point-3",
+    error: "error"
   },
 
   font: {

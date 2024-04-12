@@ -6,6 +6,7 @@ import CategoryForm from "./component/CategoryForm";
 import AddressForm from "./component/AddressForm";
 import DetailForm from "./component/DetailForm";
 import SubmitButton from "./component/SubmitButton";
+import MapForm from "./component/MapForm";
 
 export default async function AddPage() {
   return (
@@ -15,7 +16,9 @@ export default async function AddPage() {
       </div>
       <form className={UploadFormLayoutStyle}>
 
-        {/* // TODO 지도 선택 영역 */}
+        {/* -- 지도 선택 영역 */}
+        <div className={TitleStyle} style={{ marginBottom: "10px" }}>지도 선택</div>
+        <MapForm style={{ marginBottom: "30px" }}/>
 
         {/* -- 사진 영역 */}
         <div className={TitleStyle} style={{ marginBottom: "10px" }}>사진 추가</div>

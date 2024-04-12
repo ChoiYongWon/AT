@@ -21,6 +21,16 @@ export type Address = {
     address: string;
 };
 
+export type Map = {
+    id: string | null,
+    name: string | null
+};
+
+export const mapState = atom<Map>({
+    key: 'map', 
+    default: {id: null, name: null} 
+});
+
 export const imageState = atom<ImageType[]>({
     key: 'image', 
     default: [], 
@@ -41,6 +51,7 @@ export const detailState = atom<string>({
     default: "", 
 });
 
+
 // type FormSelector = {
 //     image: {
 //         name: string;
@@ -58,12 +69,14 @@ export const detailState = atom<string>({
 export const formSelector = selector({
     key: 'form',
     get: ({get}) => {
+        const map = get(mapState)
         const image = get(imageState)
         const category = get(categoryState)
         const address = get(addressState)
         const detail = get(detailState)
 
         const result = {
+            map: {mapId: map.id, mapName: map.name},
             image: image.map((item: ImageType)=>({name: item.name, data: item.data, ext: item.ext, size: item.size})),
             category: category.map((item: Category)=>item.name),
             address: {name: address.name, address: address.address},
