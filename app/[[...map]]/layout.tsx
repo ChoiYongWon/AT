@@ -16,9 +16,9 @@ export default async function Layout({ params, children }: { params: { map: stri
     }
 
     return (
-        <PageAnimateOpacity key="/" className={GridLayoutStyle}>
+        <div className={GridLayoutStyle}>
             <SearchBar image={session?.user.image} title={title} className={SearchBarLayoutStyle}/>
             {children}
-        </PageAnimateOpacity>
+        </div>
     );
 }

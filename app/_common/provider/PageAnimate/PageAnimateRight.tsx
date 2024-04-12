@@ -12,14 +12,14 @@ const PageAnimateRight = ({ children, className, key }: Props) => {
   return (
     <motion.div
       key={key}
-      initial={{ x: "100vw" }}
+      initial={{ x: "150vw" }}
       animate={{ x: 0 }}
       transition={{
         type: "spring",
         damping: 50,
         stiffness: 500,
       }}
-      exit={{ x: "100vw" }}
+      exit={{ x: "150vw" }}
       className={className}
     >
       {children}
