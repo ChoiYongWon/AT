@@ -84,7 +84,7 @@ const SubmitButton = ({ style }: Props) => {
 
             await uploadAT(postBody)
 
-            alert("모든 이미지 등록 완료")
+            alert("등록 완료")
 
             router.push("/")
 

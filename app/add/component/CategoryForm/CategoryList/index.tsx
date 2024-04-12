@@ -39,7 +39,7 @@ const CategoryList = ({
             value={categoryInput}
             onChange={onCategoryChange}
             className={CategoryInputStyle}
-            placeholder="양식, 분위기"
+            placeholder="키워드 (메뉴, 장소, 특징)"
             style={assignInlineVars({
               borderColor: categoryError.enable ? "#ee2e3d" : vars.color.strokeBlack,
               animation: categoryError.enable ? `${vibrate} .3s` : "",

@@ -92,7 +92,7 @@ const AddressForm = ({style}: Props) => {
                     </div> 
                 : 
                 <>
-                    <input type="text" onChange={(e: any) => setInputAddress(e.target.value)} className={InputStyle} placeholder="장소를 입력해주세요."/>
+                    <input type="text" onChange={(e: any) => setInputAddress(e.target.value)} className={InputStyle} placeholder="위치를 입력해주세요."/>
                     {
                         isSearchAddressFetching ? 
                         <div className={LoadingWrapperStyle}><Image src={LoadingGif} alt="loading" className={LoadingStyle}/></div> 

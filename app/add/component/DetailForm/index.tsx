@@ -13,7 +13,7 @@ const DetailForm = () => {
     }
 
     return <div className={DetailInputWrapperStyle}>
-        <textarea className={DetailInputStyle} value={detailInput} onChange={onChange} spellCheck={false} placeholder="해당 맛집에 대해 간단한 내용을 작성해 주세요. (솔직한 후기, 맛집 소개, 추천 사유 등등)"/>
+        <textarea className={DetailInputStyle} value={detailInput} onChange={onChange} spellCheck={false} placeholder="해당 장소에 대해 간단한 내용을 작성해 주세요. (솔직한 후기, 참고 사항, 비고 등등)"/>
     </div>
 }
 
