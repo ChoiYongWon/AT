@@ -32,7 +32,7 @@ const MapList = ({className, style, closeToggle}: Props) => {
     const [selectedMap, setSelectedMap] = useRecoilState(mapState)
     const {value: mapInput, setValue: setMapInput, onChange: onMapInputChange} = useInput("")
     const [error, setError] = useState<ErrorType>({enabled: false, message: ""})
-    const {mutateAsync: createMap} = useCreateMap()
+    const {mutateAsync: createMap, isPending: isCreateMapPending} = useCreateMap()
 
         // TODO 세션이 undefined일때 전송되는 부분 고안해볼것
         const {
@@ -81,8 +81,10 @@ const MapList = ({className, style, closeToggle}: Props) => {
                 // TODO 에러 처리 고민해보기
                 // 지도 추가 로직
                 try{
-                    await createMap({ name: mapInput })
+                    const {data} = await createMap({ name: mapInput })
                     setMapInput("")
+                    setSelectedMap({id: data.id, name: data.name})
+                    closeToggle()
                     getAllMap()
     
                 }catch(e: any){
@@ -97,25 +99,30 @@ const MapList = ({className, style, closeToggle}: Props) => {
                 closeToggle()
                 setMapInput("")
             },
+            disableTouch: true
           });
 
     return (
         <div className={MapFormContentWrapperStyle} style={style} ref={detectRef}>
+            <div className={MapFormContentFooterStyle}>
+               총 {mapList.length}개의 지도
+            </div>
             <div className={MapFormInputWrapperStyle}>
                 <input type="text" className={MapFormInputStyle} placeholder="지도 명" value={mapInput} onChange={onMapInputChange}/>
                 <Image src={Search} alt="" className={MapFormInputSearchIconStyle}/>
             </div>
 
+
             {
                 // 내 지도가 아예 없고 입력창의 길이가 0일때 (에러 X)
-                mapList.length == 0 && mapInput.length == 0 && !error.enabled && !isGetAllMapFetching ? 
+                mapList.length == 0 && mapInput.length == 0 && !error.enabled && (!isGetAllMapFetching || !isCreateMapPending) ? 
                 <div className={MapFormCreateInfoTextWrapperStyle}>입력해서 지도를 생성해보세요!</div>
                 : 
                 <></>
             }
             {
                 // 내 지도가 존재하고 필터된 결과가 존재할 때 (에러 X)
-                mapList.length > 0 && filteredList.length != 0 && !error.enabled && !isGetAllMapFetching ? 
+                mapList.length > 0 && filteredList.length != 0 && !error.enabled && (!isGetAllMapFetching || !isCreateMapPending) ? 
                 <ul className={MapFormListWrapperStyle}>
                     {
                         filteredList.map((item)=>{
@@ -132,9 +139,9 @@ const MapList = ({className, style, closeToggle}: Props) => {
                 </ul>
                 : <></>
             }
-                            {
+            {
                 // 입력창에 입력된 상태에서 입력창 내용이랑 내 지도가 일치하는게 없을 때, 입력창에 아무것도 없을 때 (에러 X)
-                mapInput.length > 0 && mapList.filter(item=>item.name == mapInput).length == 0 && !error.enabled && !isGetAllMapFetching ? 
+                mapInput.length > 0 && mapList.filter(item=>item.name == mapInput).length == 0 && !error.enabled && (!isGetAllMapFetching && !isCreateMapPending) ? 
                     <div className={MapFormCreateTextWrapperStyle} onClick={()=>onMapAddClick()}>
                         <span className={MapFormCreateTextBoldStyle}>"{mapInput}"</span> 생성하기
                     </div>
@@ -142,7 +149,7 @@ const MapList = ({className, style, closeToggle}: Props) => {
                     <></>
             }
             {
-                isGetAllMapFetching ? 
+                isGetAllMapFetching || isCreateMapPending ? 
                 <div className={MapFormLoadingWrapperStyle}>
                     <Image src={Loading} alt="" className={MapFormLoadingStyle}/>        
                 </div>
@@ -154,10 +161,8 @@ const MapList = ({className, style, closeToggle}: Props) => {
                 <div className={MapFormInputErrorMessageStyle}>{error.message}</div> : <></>
             }
                 
-            <div className={Divider}></div>
-            <div className={MapFormContentFooterStyle}>
-                모든 지도 보기
-            </div>
+            {/* <div className={Divider}></div> */}
+
         </div>
     )
 

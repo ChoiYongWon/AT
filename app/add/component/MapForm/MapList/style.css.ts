@@ -24,6 +24,7 @@ export const MapFormContentWrapperStyle = style({
     backgroundColor: `${vars.color.white}`,
     display: "flex",
     flexDirection: "column",
+    gap: "16px",
     alignItems: "center",
 })
 
@@ -59,10 +60,10 @@ export const MapFormInputSearchIconStyle = style({
 export const MapFormListWrapperStyle = style({
     fontSize: "14px",
     width: "100%",
-    maxHeight: "200px",
+    maxHeight: "150px",
     display: "flex",
     flexDirection: "column",
-    padding: "16px 0",
+    // padding: "16px 0",
     gap: "16px",
     paddingInlineStart: "4px",
     overflow: "scroll"
@@ -82,21 +83,21 @@ export const MapFormCheckStyle = style({
 
 export const MapFormCreateTextWrapperStyle = style({
     width: "100%",
-    padding: "16px 0",
+    // paddingTop: "16px",
     fontSize: "13px",
     cursor: "pointer"
 })
 
 export const MapFormCreateInfoTextWrapperStyle = style({
     width: "100%",
-    padding: "16px 0",
+    // paddingTop: "16px",
     fontSize: "13px",
     textAlign: "center"
 })
 
 export const MapFormInputErrorMessageStyle = style({
     width: "100%",
-    padding: "16px 0",
+    // paddingTop: "16px",
     fontSize: "12px",
     textAlign: "center",
     color: vars.color.error,
@@ -109,9 +110,9 @@ export const MapFormCreateTextBoldStyle = style({
 })
 
 export const Divider = style({
-    width: "100%",
+    width: "80%",
     height: "1px",
-    opacity: "80%",
+    opacity: "40%",
     backgroundColor: vars.color.strokeBlack,
 })
 
@@ -119,7 +120,7 @@ export const MapFormLoadingWrapperStyle = style({
     display: "flex",
     width: "100%",
     height: "auto",
-    padding: "16px 0",
+    // padding: "16px 0",
     justifyContent: "center",
     alignItems: "center",
     
@@ -135,10 +136,10 @@ export const MapFormContentFooterStyle = style({
     height: "auto",
     fontSize: "12px",
     display: "flex",
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
     boxSizing: "border-box",
-    fontWeight: "bold",
-    paddingTop: "14px",
+    // fontWeight: "bold",
+    // paddingBottom: "14px",
     cursor: "pointer"
 })

@@ -6,7 +6,6 @@ import ArrowDown from "../../../../public/images/ArrowDown.svg"
 
 import { useState } from "react"
 import { assignInlineVars } from "@vanilla-extract/dynamic"
-import { useDetectClickOutside } from "react-detect-click-outside"
 import { useRecoilValue } from "recoil"
 import { mapState } from "../../recoil"
 
@@ -22,16 +21,15 @@ const MapForm = ({className, style}: Props) => {
     const [toggle, setToggle] = useState(false)
     const selectedMap = useRecoilValue(mapState)
 
-
-
     // 지도 버튼 클릭 시
-    const onButtonClick = () => {
+    const onButtonClick = (e: any) => {
         setToggle(!toggle)
     }
 
     const closeToggle = () => {
         setToggle(false)
     }
+    
     return (
         <div style={style} className={MapFormWrapperStyle}>
             <div className={MapFormButtonWrapperStyle} onClick={onButtonClick}>
