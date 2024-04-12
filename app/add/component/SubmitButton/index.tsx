@@ -38,13 +38,10 @@ const SubmitButton = ({ style }: Props) => {
 
             setErrorState({isError: false, message: ""})
 
-            if(formState.image.length == 0 || formState.category.length == 0 || formState.address.name == "" || formState.detail.length == 0){
+            if(formState.image.length == 0 || formState.category.length == 0 || formState.address.name == "" || formState.detail.length == 0 || !formState.map.id){
                 setErrorState({isError: true, message: "폼을 모두 입력해주세요"})
                 return;
             }
-
-            alert("구현중입니다.")
-            return;
 
             /*
             presignedUrl 요청을 위한 정보
@@ -82,7 +79,7 @@ const SubmitButton = ({ style }: Props) => {
                 name: formState.address.name,
                 address: formState.address.address,
                 detail: formState.detail,
-                mapId: "default",
+                mapId: formState.map.id as string,
             }
 
             await uploadAT(postBody)

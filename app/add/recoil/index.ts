@@ -76,7 +76,7 @@ export const formSelector = selector({
         const detail = get(detailState)
 
         const result = {
-            map: {mapId: map.id, mapName: map.name},
+            map: {id: map.id, name: map.name},
             image: image.map((item: ImageType)=>({name: item.name, data: item.data, ext: item.ext, size: item.size})),
             category: category.map((item: Category)=>item.name),
             address: {name: address.name, address: address.address},

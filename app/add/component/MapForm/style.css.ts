@@ -55,7 +55,7 @@ export const MapFormContentWrapperStyle = style({
     top: "100%",
     width: "250px",
     height: 'auto',
-    maxHeight: "300px",
+    
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: "5px",
     padding: "16px 12px",
@@ -98,11 +98,13 @@ export const MapFormInputSearchIconStyle = style({
 export const MapFormListWrapperStyle = style({
     fontSize: "14px",
     width: "100%",
+    maxHeight: "200px",
     display: "flex",
     flexDirection: "column",
     padding: "16px 0",
     gap: "16px",
     paddingInlineStart: "4px",
+    overflow: "scroll"
 })
 
 export const MapFormListItemWrapperStyle = style({
@@ -150,6 +152,21 @@ export const Divider = style({
     height: "1px",
     opacity: "80%",
     backgroundColor: vars.color.strokeBlack,
+})
+
+export const MapFormLoadingWrapperStyle = style({
+    display: "flex",
+    width: "100%",
+    height: "auto",
+    padding: "16px 0",
+    justifyContent: "center",
+    alignItems: "center",
+    
+})
+
+export const MapFormLoadingStyle = style({
+    width: "16px",
+    height: "16px",
 })
 
 export const MapFormContentFooterStyle = style({
