@@ -12,11 +12,13 @@ export const ButtonWrapperStyle = style({
     display: "flex",
     flexDirection: "column",
     gap: "4px",
+
 })
 
 export const ButtonStyle = style({
     width: "100%",
-    padding: '14px',
+    // padding: '14px',
+    height: "50px",
     boxSizing: 'border-box',
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: '5px',
@@ -24,7 +26,13 @@ export const ButtonStyle = style({
     color: vars.color.white,
     fontSize: '18px',
     textAlign: 'center',
-    cursor: 'pointer'
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    cursor: 'pointer',
+    ":disabled": {
+        opacity: "0.7"
+    }
 })
 
 export const ButtonMessageStyle = style({
@@ -34,3 +42,7 @@ export const ButtonMessageStyle = style({
     transformOrigin: "center"
 })
 
+export const LoadingLottieStyle = style({
+    width: "100%",
+    height: "100%",
+})

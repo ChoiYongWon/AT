@@ -3,8 +3,8 @@
 import { useValidId, useValidIdDTO } from "@/app/_common/query/useValidateId";
 import { useEffect } from "react";
 import { useDebounceValue } from "usehooks-ts";
-import Input from "../../component/Input";
-import Button from "../../component/Button";
+import Input from "../Input";
+import Button from "../Button";
 import {
   FormStyle,
   LogoutDescriptionStyle,

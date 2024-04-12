@@ -23,7 +23,7 @@ const PreviewImageList = ({ children, image, setImage, onImageUpload, style}: Pr
       <Reorder.Group className={ImageContainerStyle} style={{ overflow: "visible" }} values={image} onReorder={setImage} axis="x">
         <AnimatePresence mode="popLayout">
           {children}
-          <motion.label key={"add"} htmlFor="image-input" className={ImageAddButtonWrapperStyle} layout animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ type: "just" }}>
+          <motion.label key={"add"} htmlFor="image-input" className={ImageAddButtonWrapperStyle} layout animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ type: "just" }} {...{whileTap: {scale: 0.96}}}>
             <Image src={ImageAddButton} alt="+" />
             <div className={ImageAddButtonTitleStyle}>사진 찾기</div>
           </motion.label>

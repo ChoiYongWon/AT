@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { CancelButtonLayout, SubTitleStyle, TitleStyle, UploadFormLayoutStyle } from "./style.css";
+import { CancelButtonLayout, SubTitleStyle, TitleStyle } from "./style.css";
 import CancelButton from "../_common/component/CancelButton";
 import ImageForm from "./component/ImageForm";
 import CategoryForm from "./component/CategoryForm";
@@ -7,6 +7,7 @@ import AddressForm from "./component/AddressForm";
 import DetailForm from "./component/DetailForm";
 import SubmitButton from "./component/SubmitButton";
 import MapForm from "./component/MapForm";
+import Form from "./component/Form";
 
 export default async function AddPage() {
   return (
@@ -14,7 +15,7 @@ export default async function AddPage() {
       <div className={CancelButtonLayout}>
         <CancelButton />
       </div>
-      <form className={UploadFormLayoutStyle}>
+      <Form>
 
         {/* -- 지도 선택 영역 */}
         <div className={TitleStyle} style={{ marginBottom: "10px" }}>지도 선택</div>
@@ -41,7 +42,8 @@ export default async function AddPage() {
 
         {/* --- 제출 버튼 */}
         <SubmitButton style={{ marginTop: "34px", marginBottom: "40px" }}/>
-      </form>
+
+      </Form>
     </>
   );
 }

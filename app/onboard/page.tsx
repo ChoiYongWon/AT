@@ -1,6 +1,6 @@
 import { DescriptionStyle, TitleStyle } from "./style.css";
 
-import Form from "./container/Form";
+import Form from "./component/Form";
 
 export default function OnBoard() {
   return (

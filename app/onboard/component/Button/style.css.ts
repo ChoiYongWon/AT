@@ -2,7 +2,7 @@ import { vars } from "@/app/_common/theme/contract.css";
 import { style } from "@vanilla-extract/css";
 
 export const ButtonStyle = style({
-  padding: "8px 18px",
+  padding: "0 18px",
   //   border: `solid 1px ${vars.color.strokeBlack}`,
   borderRadius: "6px",
   width: "100%",
@@ -21,3 +21,8 @@ export const ButtonStyle = style({
     opacity: 0.6
   },
 });
+
+export const LoadingLottieStyle = style({
+  width: "100%",
+  height: "100%",
+})

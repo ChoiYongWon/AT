@@ -1,16 +1,21 @@
 'use client'
 
 import { useRecoilValue } from "recoil";
-import { ButtonMessageStyle, ButtonStyle, ButtonWrapperStyle, vibrate } from "./style.css";
+import { ButtonMessageStyle, ButtonStyle, ButtonWrapperStyle, LoadingLottieStyle, vibrate } from "./style.css";
 import { formSelector, imageMapSelector } from "../../recoil";
 import { usePresignedUrl } from "@/app/_common/query/usePresignedUrl";
 import { useUploadImageToS3 } from "@/app/_common/query/useUploadImageToS3";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useUploadAT } from "@/app/_common/query/useUploadAT";
 import { useSession } from "next-auth/react";
 import { PostBody } from "@/app/api/at/route";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import Lottie from 'lottie-react'
+import loadingJson from '../../../../public/assets/loading.json'
+
+
 
 type Props = {
     style ?: any;
@@ -21,6 +26,7 @@ const SubmitButton = ({ style }: Props) => {
     const session = useSession();
     const router = useRouter();
     const formState = useRecoilValue(formSelector)
+    const [isDisabled, setDisable] = useState(true)
     const imageMap = useRecoilValue(imageMapSelector)
     const [errorState, setErrorState] = useState({
         isError: false,
@@ -28,10 +34,14 @@ const SubmitButton = ({ style }: Props) => {
     })
 
     const {mutateAsync: getPresignedUrl, data: presignedData, isSuccess, isError: isPresignedUrlError} = usePresignedUrl()
-    const {mutateAsync: uploadImageToS3, isError: isUplaodError} = useUploadImageToS3()
-    const {mutateAsync: uploadAT, data: uploadATResponse, isSuccess: isUploadATSuccess, isError: isUploadATError} = useUploadAT()
+    const {mutateAsync: uploadImageToS3, isError: isUplaodError, isPending: isUploadImagePending} = useUploadImageToS3()
+    const {mutateAsync: uploadAT, data: uploadATResponse, isPending: isUploadATPending, isError: isUploadATError} = useUploadAT()
 
-
+    useEffect(()=>{
+        if(isUploadImagePending || isUploadATPending || formState.image.length == 0 || formState.category.length == 0 || formState.address.name == "" || formState.detail.length == 0 || !formState.map.id){
+            setDisable(true)
+        }else setDisable(false)
+    }, )
 
     const onClick = async () => {
         try{
@@ -96,12 +106,18 @@ const SubmitButton = ({ style }: Props) => {
     }
 
     return (
-            // 엔터 시 제출되는거 방지하기위해 div로 함 
-            <div style={style} className={ButtonWrapperStyle}>
-                {/* input이 하나만 있어도 제출됨 */}
-                <input type="text" hidden />
-                {/* TODO 버튼 로딩 상태 */}
-                <div className={ButtonStyle} onClick={onClick}>추가 하기</div>
+            <div style={style} className={ButtonWrapperStyle}> 
+                <motion.button className={ButtonStyle} onClick={onClick} disabled={isDisabled} {...(!isDisabled ? { whileTap: { scale: 0.96 } } : {})}>
+                    
+                    {(isUploadImagePending || isUploadATPending) ? (
+                    <Lottie
+                        animationData={loadingJson}
+                        loop={true}
+                        className={LoadingLottieStyle}
+                    />
+                    ) : ( "추가 하기" )}         
+                </motion.button>
+                
                 { isPresignedUrlError || isUplaodError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>서버 에러</div> : <></>}
                 { errorState.isError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>{errorState.message}</div> : <></>}
             </div>
