@@ -13,7 +13,8 @@ export const useGetAllMap = (query: string, options?: UseQueryOptions | any): an
     queryKey: [GETALLMAP_QUERY_KEY, query],
     queryFn: () => fetcher(query),
     retry: false,
-    staleTime: 5000
+    staleTime: Infinity,
+    gcTime: Infinity
   });
 };
 
