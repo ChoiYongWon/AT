@@ -42,11 +42,6 @@ const MapList = ({className, style, closeToggle}: Props) => {
             isFetching: isGetAllMapFetching,
         } = useGetAllMap(session.data?.user.id as string)
     
-        useEffect(()=>{
-            console.log("mount")
-            return () => console.log("unmount")
-        }, [])
-        
         // 지도 불러 온 후 값
         useEffect(()=>{
             if(isGetAllMapSuccess) {
