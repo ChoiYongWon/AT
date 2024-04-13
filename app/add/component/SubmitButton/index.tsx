@@ -107,7 +107,7 @@ const SubmitButton = ({ style }: Props) => {
 
     return (
             <div style={style} className={ButtonWrapperStyle}> 
-                <motion.button className={ButtonStyle} onClick={onClick} disabled={isDisabled} {...(!isDisabled ? { whileTap: { scale: 0.96 } } : {})}>
+                <motion.button className={ButtonStyle} onClick={onClick} disabled={isDisabled} {...(!isDisabled ? { whileTap: { scale: 0.9, transition: { duration: 0.08 } } } : {})}>
                     
                     {(isUploadImagePending || isUploadATPending) ? (
                     <Lottie

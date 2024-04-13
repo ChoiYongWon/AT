@@ -23,6 +23,8 @@ export const ImageAddButtonWrapperStyle = style({
   flexDirection: "column",
   gap: "7px",
   cursor: "pointer",
+  outline: 'none',
+  WebkitTapHighlightColor: 'transparent'
 });
 
 export const ImageAddButtonStyle = style({

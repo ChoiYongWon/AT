@@ -18,7 +18,7 @@ const Button = ({ disabled, loading, onClick }: Props) => {
       className={ButtonStyle}
       disabled={disabled || loading}
       onClick={onClick}
-      {...(!disabled ? { whileTap: { scale: 0.96 } } : {})}
+      {...(!disabled ? { whileTap: { scale: 0.9, transition: { duration: 0.08 }} } : {})}
     >
       
       {loading ?

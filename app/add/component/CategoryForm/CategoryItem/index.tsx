@@ -16,7 +16,7 @@ type Props = {
 
 const CategoryItem = ({ categoryName, onDeleteClick }: Props, ref: any) => {
   return (
-    <motion.div ref={ref} className={CategoryStyle} onClick={onDeleteClick} layout animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.1, opacity: 0 }} transition={{ type: "just", duration: 0.2 }} key={categoryName} {...{ whileTap: { scale: 0.96 } }}>
+    <motion.div ref={ref} className={CategoryStyle} onClick={onDeleteClick} layout animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.1, opacity: 0 }} transition={{ type: "just", duration: 0.2 }} key={categoryName} {...{ whileTap: { scale: 0.9, transition: { duration: 0.08 } } }}>
       <div className={CategoryTextStyle}>
         {categoryName}
       </div>

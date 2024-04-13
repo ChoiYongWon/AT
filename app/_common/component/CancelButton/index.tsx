@@ -14,7 +14,7 @@ type Props = {
 const CancelButton = ({ style, className }: Props) => {
 
   return (
-    <motion.div className={ButtonStyle} {...{whileTap: {scale: 0.96}}}>
+    <motion.div className={ButtonStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
       <Link
         style={style}
         className={`${ButtonLinkStyle} ${className}`}
