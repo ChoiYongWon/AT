@@ -13,7 +13,7 @@ const AddButton = () => {
   // const [isClicked, setClicked] = useState(false)
 
   return (
-    <motion.div className={ButtonStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}
+    
     // onAnimationComplete={(definition: Record<'scale', number>) => {
     //   if (definition.scale === 1 && isClicked) {
     //     onAnimationCompleteClick?.()
@@ -23,11 +23,13 @@ const AddButton = () => {
     //   setClicked(true)
     //   onClick?.(e)
     // }}
-    >
-      <Link className={ButtonLinkStyle} href={"/add"}>
-        <Image className={ButtonImageStyle} src={AddImage} alt="+" />
+    
+      <Link className={ButtonStyle} href={"/add"}>
+        <motion.div className={ButtonLinkStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
+          <Image className={ButtonImageStyle} src={AddImage} alt="+" />
+        </motion.div>
       </Link>
-    </motion.div>
+   
     
   );
 };

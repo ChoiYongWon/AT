@@ -8,7 +8,6 @@ export const ButtonStyle = style({
   width: "60px",
   height: "60px",
   
-  border: `${vars.color.strokeBlack} 1px solid`,
   borderRadius: "100px",
  
   userSelect: 'none',
@@ -21,6 +20,7 @@ export const ButtonLinkStyle = style({
   justifyContent: "center",
   alignItems: "center",
   backgroundColor: vars.color.primary,
+  border: `${vars.color.strokeBlack} 1px solid`,
   width: "100%",
   height: "100%",
   borderRadius: "100px",
