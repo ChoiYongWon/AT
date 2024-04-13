@@ -39,6 +39,10 @@ export async function PUT(request: NextRequest) {
       data: {
         ...body,
       },
+      select: {
+        id: true,
+        at_id: true
+      }
     });
     return new NextResponse(
       JSON.stringify({ data: updatedUser, message: "정보가 수정되었습니다." }),

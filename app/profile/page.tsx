@@ -7,6 +7,8 @@ import CancelButton from "../_common/component/CancelButton";
 export default function Profile() {
   const session = useSession();
 
+  console.log(session)
+
   return (
     <>
       <div className={CancelButtonLayout}>
