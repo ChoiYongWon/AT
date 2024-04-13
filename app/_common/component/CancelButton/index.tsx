@@ -14,15 +14,17 @@ type Props = {
 const CancelButton = ({ style, className }: Props) => {
 
   return (
-    <motion.div className={ButtonStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
+    
       <Link
         style={style}
-        className={`${ButtonLinkStyle} ${className}`}
+        className={`${ButtonStyle} ${className}`}
         href={"/"}
       >
-        <Image className={ButtonImageStyle} src={CancelImage} alt="x" />
+        <motion.div className={ButtonLinkStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
+          <Image className={ButtonImageStyle} src={CancelImage} alt="x" />
+        </motion.div>
+
       </Link>
-    </motion.div>
     
   );
 };
