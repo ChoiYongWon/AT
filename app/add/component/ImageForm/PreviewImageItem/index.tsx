@@ -1,4 +1,4 @@
-import { Reorder, useDragControls } from "framer-motion";
+import { Reorder, useDragControls, motion } from "framer-motion";
 import Image from "next/image";
 
 import { forwardRef } from "react";
@@ -7,6 +7,7 @@ import {
   DraggableStyle,
   DraggableWrapperStyle,
   ImageStyle,
+  ImageWrapperStyle,
   PreviewImageItemStyle,
 } from "./style.css";
 import { ImageType } from "@/app/add/recoil";
@@ -38,22 +39,21 @@ const PreviewImageItem = (
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ type: "just" }}
-      {...{ whileTap: { scale: 0.9, transition: { duration: 0.08 } } }}
     >
-
-      <Image
-        src={image.previewUrl}
-        alt={image.name}
-        width={100}
-        height={100}
-        draggable={false}
-        className={ImageStyle}
-        onClick={() => {
-          removeImage();
-
-          // }
-        }}
-      />
+      <motion.div className={ImageWrapperStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
+        <Image
+          src={image.previewUrl}
+          alt={image.name}
+          width={100}
+          height={100}
+          draggable={false}
+          className={ImageStyle}
+          onClick={() => {
+            removeImage();
+          }}
+        />
+      </motion.div>
+      
       <div
         className={DraggableWrapperStyle}
         onPointerDown={(e) => dragControl.start(e)}

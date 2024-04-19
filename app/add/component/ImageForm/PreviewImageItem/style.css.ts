@@ -7,16 +7,22 @@ export const PreviewImageItemStyle = style({
   width: "112px",
   height: "112px",
   userSelect: "none",
-  border: `${vars.color.strokeBlack} 1.5px solid`,
   borderRadius: "4px",
   cursor: "pointer",
   willChange: 'transform',
 });
 
-export const ImageStyle = style({
+export const ImageWrapperStyle = style({
+  border: `${vars.color.strokeBlack} 1.5px solid`,
   width: "100%",
   height: "100%",
   borderRadius: "3px",
+})
+
+export const ImageStyle = style({
+  width: "100%",
+  height: "100%",
+  borderRadius: "1px",
   objectFit: 'cover',
 });
 
