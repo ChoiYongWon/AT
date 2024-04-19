@@ -26,6 +26,7 @@ const SubmitButton = ({ style }: Props) => {
     const session = useSession();
     const router = useRouter();
     const formState = useRecoilValue(formSelector)
+    const [loading, setLoading] = useState(false)
     const [isDisabled, setDisable] = useState(true)
     const imageMap = useRecoilValue(imageMapSelector)
     const [errorState, setErrorState] = useState({
@@ -38,20 +39,21 @@ const SubmitButton = ({ style }: Props) => {
     const {mutateAsync: uploadAT, data: uploadATResponse, isPending: isUploadATPending, isError: isUploadATError} = useUploadAT()
 
     useEffect(()=>{
-        if(isUploadImagePending || isUploadATPending || formState.image.length == 0 || formState.category.length == 0 || formState.address.name == "" || formState.detail.length == 0 || !formState.map.id){
+        if(loading || isUploadImagePending || isUploadATPending || formState.image.length == 0 || formState.category.length == 0 || formState.address.name == "" || formState.detail.length == 0 || !formState.map.id){
             setDisable(true)
         }else setDisable(false)
-    }, )
+    }, [loading, isUploadImagePending, isUploadATPending, formState.image, formState.category, formState.address.name, formState.detail, formState.map.id])
 
     const onClick = async () => {
         try{
-
             setErrorState({isError: false, message: ""})
 
             if(formState.image.length == 0 || formState.category.length == 0 || formState.address.name == "" || formState.detail.length == 0 || !formState.map.id){
                 setErrorState({isError: true, message: "폼을 모두 입력해주세요"})
                 return;
             }
+
+            setLoading(true)
 
             /*
             presignedUrl 요청을 위한 정보
@@ -100,7 +102,10 @@ const SubmitButton = ({ style }: Props) => {
 
         }catch(e: any){
             console.log(e)
+            setLoading(false)
             setErrorState({isError: true, message: "서버 에러"})
+        }finally{
+            setLoading(false)
         }
 
     }
@@ -109,7 +114,7 @@ const SubmitButton = ({ style }: Props) => {
             <div style={style} className={ButtonWrapperStyle}> 
                 <motion.button className={ButtonStyle} onClick={onClick} disabled={isDisabled} {...(!isDisabled ? { whileTap: { scale: 0.9, transition: { duration: 0.08 } } } : {})}>
                     
-                    {(isUploadImagePending || isUploadATPending) ? (
+                    {(loading) ? (
                     <Lottie
                         animationData={loadingJson}
                         loop={true}
