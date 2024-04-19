@@ -6,6 +6,7 @@ export const UploadFormLayoutStyle = style({
     width: "100%",
     display: "flex",
     flexDirection: "column",
+    userSelect: 'none',
   
     "@media": {
       "screen and (min-width: 768px)": {
