@@ -19,7 +19,8 @@ export const CategoryStyle = style({
   justifyContent: "space-between",
   gap: "8px",
   position: "relative",
-  alignSelf: "center"
+  alignSelf: "center",
+  cursor: "pointer"
 });
 
 export const CategoryTextStyle = style({
