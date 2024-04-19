@@ -25,6 +25,18 @@ globalFontFace(nanumSquareNeo, {
   fontWeight: "bold",
 });
 
+globalFontFace(nanumSquareNeo, {
+  src: "url(/fonts/NanumSquareNeoTTF-dEb.woff), format('woff')",
+  fontWeight: 800,
+});
+
+globalFontFace(nanumSquareNeo, {
+  src: "url(/fonts/NanumSquareNeoTTF-eHv.woff), format('woff')",
+  fontWeight: 900,
+});
+
+
+
 globalFontFace(poppins, {
   src: "url(/fonts/Poppins-Light.woff), format('woff')",
   fontWeight: "light",

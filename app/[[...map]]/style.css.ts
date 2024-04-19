@@ -64,38 +64,3 @@ export const SearchBarLayoutStyle = style({
   },
 });
 
-export const MapTmpLayoutStyle = style({
-  userSelect: 'none',
-  gridRowStart: '2',
-  gridColumn: "1 / span 4",
-  marginTop: '60px',
-  boxSizing: 'border-box',
-  padding: '0 10px',
-
-  "@media": {
-    "screen and (min-width: 768px)": {
-      gridColumn: "2 / span 6",
-      marginTop: '80px',
-    },
-    "screen and (min-width: 1000px)": {
-      gridColumn: "5 / span 4",
-      marginTop: '80px',
-    },
-  },
-})
-
-export const MapStyle = style({
-  width: '90%',
-  height: 'auto',
-
-  "@media": {
-    "screen and (min-width: 768px)": {
-      width: '95%',
-
-    },
-    "screen and (min-width: 1000px)": {
-      width: '95%',
-
-    },
-  },
-})
