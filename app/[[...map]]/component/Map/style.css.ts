@@ -6,7 +6,7 @@ export const MapLayoutStyle = style({
     userSelect: 'none',
     gridRowStart: '2',
     gridColumn: "1 / span 4",
-    marginTop: '60px',
+    marginTop: '12px',
     boxSizing: 'border-box',
     padding: '0 10px',
     display: "flex",

@@ -2,6 +2,7 @@ import { useAuth } from "@/app/_common/util/useAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { InternalServerError } from "../../error/server/InternalServer.error";
+import { UnauthorizedError } from "../../error/auth/Unauthorized.error";
 
 type Query = {
     query?: string;
@@ -75,6 +76,7 @@ const prisma = new PrismaClient()
     )
   
     } catch (e) {
+      if(typeof UnauthorizedError == e) return UnauthorizedError()
       return InternalServerError(e);
     }
   }
