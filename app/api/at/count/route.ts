@@ -13,7 +13,7 @@ const prisma = new PrismaClient()
   
   export async function GET(request: NextRequest) {
     try {
-      const session = useAuth();
+      const session = await useAuth();
       const {query, at_id, name} = Object.fromEntries(request.nextUrl.searchParams) as Query;
       // TODO 서비스 레이어 코드정리
       let orm: any = {
