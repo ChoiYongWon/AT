@@ -14,7 +14,7 @@ export const GETALLMAP_QUERY_KEY = `${URL}[GET]`;
 export const fetcher = ({query, name, at_id}: Param) =>{
   const querie_str = query ? `query=${query}` : ''
   const name_str = name ? `name=${name}` : ''
-  const at_id_str = at_id ? `at_id=${at_id}` : ''
+  const at_id_str = at_id && at_id != "index" ? `at_id=${at_id}` : ''
   const merge = [querie_str, name_str, at_id_str].filter(str=>str != '')
   const query_string = merge.length ? `?${merge.join("&")}` : ''
 
