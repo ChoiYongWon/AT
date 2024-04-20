@@ -25,7 +25,7 @@ export const MapLayoutStyle = style({
   })
   
   export const MapStyle = style({
-    width: '95%',
+    width: '90%',
     height: 'auto',
   
     "@media": {
