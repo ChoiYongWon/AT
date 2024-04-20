@@ -1,8 +1,6 @@
-import { useAuth } from "@/app/_common/util/useAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { InternalServerError } from "../../error/server/InternalServer.error";
-import { UnauthorizedError } from "../../error/auth/Unauthorized.error";
 
 type Query = {
     query?: string;
@@ -14,7 +12,7 @@ const prisma = new PrismaClient()
   
   export async function GET(request: NextRequest) {
     try {
-      const session = await useAuth();
+      // const session = await useAuth();
       const {query, at_id, name} = Object.fromEntries(request.nextUrl.searchParams) as Query;
       // TODO 서비스 레이어 코드정리
       let orm: any = {
@@ -65,10 +63,7 @@ const prisma = new PrismaClient()
         }
       }
   
-      const result = await prisma.spot.groupBy(orm).catch((e)=>{
-        throw e
-      })
-      
+      const result = await prisma.spot.groupBy(orm)
   
       return new NextResponse(
         JSON.stringify({ data: result, message: "데이터 조회가 성공적으로 수행되었습니다." }),
@@ -76,7 +71,6 @@ const prisma = new PrismaClient()
     )
   
     } catch (e) {
-      if(typeof UnauthorizedError == e) return UnauthorizedError()
       return InternalServerError(e);
     }
   }
