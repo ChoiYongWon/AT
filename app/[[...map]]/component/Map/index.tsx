@@ -35,7 +35,7 @@ const Map = () => {
                     indicatorData.data.map((data, i)=>{
 
                         return (
-                            <Indicator key={i} x={data.coord[0]} y={data.coord[1]} name={data.name} count={Math.floor(Math.random() * 100)}/>
+                            <Indicator key={i} x={data.coord[0]} y={data.coord[1]} name={data.name}/>
                         )
                     })
                 }

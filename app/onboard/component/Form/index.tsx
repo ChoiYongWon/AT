@@ -43,7 +43,6 @@ const Form = () => {
       { at_id: inputName }, // 수정할 닉
       {
         onSuccess: async (res) => {
-          console.log(res)
           // 성공시 서버에 세션 업데이트 (AT_ID 추가)
           await update({ at_id: res.data.at_id, id: res.data.id });
           // 홈화면 이동

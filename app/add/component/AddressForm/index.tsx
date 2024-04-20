@@ -11,6 +11,7 @@ import { useDetectClickOutside } from "react-detect-click-outside"
 import { useSearchAddress } from "@/app/_common/query/useSearchAddress"
 import { useRecoilState } from "recoil"
 import { addressState } from "@/app/add/recoil"
+import Loading from "@/app/_common/component/Loading"
 
 type Props = {
     style ?: any
@@ -95,7 +96,8 @@ const AddressForm = ({style}: Props) => {
                     <input type="text" onChange={(e: any) => setInputAddress(e.target.value)} className={InputStyle} placeholder="위치를 입력해주세요."/>
                     {
                         isSearchAddressFetching ? 
-                        <div className={LoadingWrapperStyle}><Image src={LoadingGif} alt="loading" className={LoadingStyle}/></div> 
+                        <Loading className={LoadingWrapperStyle}/>
+                        // <div className={LoadingWrapperStyle}><Image src={LoadingGif} alt="loading" className={LoadingStyle}/></div> 
                         : 
                         <div className={SearchButtonStyleWrapper}><Image src={SearchIcon} alt="search"/></div>
                     }

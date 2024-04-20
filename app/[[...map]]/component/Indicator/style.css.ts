@@ -27,6 +27,10 @@ export const CountStyle = style({
     fontWeight: 900
 })
 
+export const LoadingStyle = style({
+    fill: vars.color.primary
+})
+
 // dark 테마
 
 // export const CardSyle = style({

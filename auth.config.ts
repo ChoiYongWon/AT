@@ -37,7 +37,6 @@ export default {
       }
       // AT_ID 업데이트 (온보딩 과정)
       else if (trigger == "update" && session?.at_id) {
-        console.log(session)
         token.at_id = session.at_id;
         token.id = session.id;
 

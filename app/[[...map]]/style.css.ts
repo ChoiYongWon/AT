@@ -36,6 +36,7 @@ export const TmpLayout = style({
 
 export const MainLayoutStyle = style({
   gridColumn: "1 / span 4",
+  gridRow: 3,
   display: "flex",
   justifyContent: 'center',
 
@@ -51,6 +52,7 @@ export const MainLayoutStyle = style({
 
 export const SearchBarLayoutStyle = style({
   gridColumn: "1 / span 4",
+  gridRow: 1,
   marginRight: "auto",
   marginLeft: "auto",
 
@@ -63,4 +65,21 @@ export const SearchBarLayoutStyle = style({
     },
   },
 });
+
+export const QueryLayoutStyle = style({
+  gridColumn: "1 / span 4",
+  gridRow: 2,
+  marginRight: "auto",
+  marginLeft: "auto",
+
+  "@media": {
+    "screen and (min-width: 768px)": {
+      gridColumn: "2 / span 6",
+    },
+    "screen and (min-width: 1000px)": {
+      gridColumn: "5 / span 4",
+    },
+  },
+});
+
 

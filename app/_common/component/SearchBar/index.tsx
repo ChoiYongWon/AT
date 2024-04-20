@@ -25,6 +25,7 @@ type Props = {
   className?: string;
   style?: any;
   content: string;
+  onBlur?: () => any;
   onSearch: () => any;
   onContentChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
 };
@@ -36,6 +37,7 @@ const SearchBar = ({
   style,
   content,
   onSearch,
+  onBlur,
   onContentChange,
 }: Props) => {
   const inputRef = useRef<any>(null);
@@ -70,6 +72,8 @@ const SearchBar = ({
   // 2. 엔터 버튼
   const onSubmitBtnClick = (e: any) => {
     e.preventDefault();
+    checkRef.current.checked = false;
+    inputRef.current.blur()
     onSearch();
   };
 
@@ -114,6 +118,7 @@ const SearchBar = ({
             placeholder="검색어를 입력해주세요"
             value={content}
             onChange={onContentChange}
+            onBlur={onBlur}
           />
           <input type="submit" hidden onClick={onSubmitBtnClick} />
         </form>

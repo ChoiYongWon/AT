@@ -101,9 +101,6 @@ export const SearchButtonStyle = style({
 })
 
 export const LoadingWrapperStyle = style({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     minWidth: "34px",
     minHeight: "34px"
 })
