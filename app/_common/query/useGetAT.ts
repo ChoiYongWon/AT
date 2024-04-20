@@ -8,7 +8,7 @@ type Param = {
 }
 
 // TODO axios 테스트환경 & 배포환경 baseurl 지정해주기
-export const URL = "https://a-spot-thur.app/api/at/count"
+export const URL = "https://www.a-spot-thur.app/api/at/count"
 export const GETALLMAP_QUERY_KEY = `${URL}[GET]`;
 
 export const fetcher = ({query, name, at_id}: Param) =>{
