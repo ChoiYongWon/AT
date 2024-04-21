@@ -13,7 +13,9 @@ export const QueryWrapperStyle = style({
     overflowX: "scroll",
     gap: "8px",
     userSelect: "none",
-
+    outline: 'none',
+    WebkitTapHighlightColor: 'transparent',
+    
     "::-webkit-scrollbar": {
         display: "none",
       },
