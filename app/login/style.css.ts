@@ -21,14 +21,13 @@ export const GridLayoutStyle = style({
   },
 });
 
-export const LogoStyle = style({
+export const LogoWrapperStyle = style({
   gridColumn: "2 / 4",
   height: "64px",
-  backgroundColor: "#d9d9d9",
+  // backgroundColor: "#d9d9d9",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  padding: "24px",
 
   "@media": {
     "screen and (min-width: 768px)": {
@@ -39,6 +38,11 @@ export const LogoStyle = style({
     },
   },
 });
+
+export const LogoStyle = style({
+  height: "100%",
+  aspectRatio: "1 / 1",
+})
 
 export const DescriptionKorStyle = style({
   textAlign: "center",

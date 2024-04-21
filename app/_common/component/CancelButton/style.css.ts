@@ -7,7 +7,8 @@ export const ButtonStyle = style({
   borderRadius: "50px",
   outline: 'none',
   WebkitTapHighlightColor: 'transparent',
-  userSelect: 'none'
+  userSelect: 'none',
+  backgroundColor: vars.color.white
 });
 
 export const ButtonLinkStyle = style({

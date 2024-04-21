@@ -7,15 +7,20 @@ import {
   FooterInfoStyle,
   FooterWrapperStyle,
   LogoStyle,
+  LogoWrapperStyle,
 } from "./style.css";
 import LoginButtonGroup from "./LoginButtonGroup";
+import Image from "next/image";
+import Logo from "../../public/images/Loading.svg"
 
 
 export default function LoginLayout() {
 
   return (
     <>
-      <div className={LogoStyle}>LOGO</div>
+      <div className={LogoWrapperStyle}>
+        <Image src={Logo} className={LogoStyle} alt=""/>
+      </div>
       <span className={DescriptionKorStyle}>
         엣(AT)을 시작하려면 <br></br> 아주 간단한 로그인이 필요합니다😓
       </span>
