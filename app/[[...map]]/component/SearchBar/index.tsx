@@ -25,7 +25,7 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
   const [queryList, setQueryList] = useRecoilState(atQueryState)
   const [queryStage, setQueryStage] = useRecoilState(atQueryStageState)
   const { refetch: getAT,  isLoading: isGetATLoading, isFetching: isGetATFetching, data: atData} = useGetAT({
-    query: encodeURI([...queryStage].sort().join(",")),
+    query: encodeURI([...queryStage].sort().join(",")) || null,
     name,
     at_id
   })

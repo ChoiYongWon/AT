@@ -3,9 +3,9 @@ import axios from "axios";
 import { atAxios } from "../../axios/atAxios";
 
 type Param = {
-  query: string;
-  name: string;
-  at_id: string;
+  query?: string | null;
+  name?: string | null;
+  at_id?: string | null;
 }
 
 export const URL = "/at/count"
