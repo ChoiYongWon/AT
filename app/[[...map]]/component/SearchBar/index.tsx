@@ -4,7 +4,7 @@ import SearchBarView from "@/app/_common/component/SearchBar";
 import { useInput } from "@/app/_common/hook/useInput";
 import { useSession } from "next-auth/react";
 import { SearchBarLayoutStyle } from "../../style.css";
-import { useGetAT } from "@/app/_common/query/useGetAT";
+import { useGetAT } from "@/app/_common/query/get/useGetAT";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { atLoadingState, atQueryStageState, atQueryState, atState } from "../../recoil";
 import { useEffect, useState } from "react";

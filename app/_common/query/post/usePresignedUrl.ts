@@ -1,12 +1,12 @@
 import { UseQueryOptions, useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { PresignedUrlBody } from "../../api/presignedurl/route";
+import { PresignedUrlBody } from "../../../api/presignedurl/route";
+import { atAxios } from "../../axios/atAxios";
 
-export const URL = "/api/presignedurl/";
-export const QUERY_KEY = `${URL}/[post]`;
+export const URL = "/presignedurl";
 
 export const fetcher = (data: PresignedUrlBody) =>
-  axios.post(`${URL}`, { ...data }).then(({ data }) => data);
+  atAxios.post(`${URL}`, { ...data }).then(({ data }) => data);
 
 export const usePresignedUrl = () =>
   useMutation({

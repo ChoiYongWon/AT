@@ -1,7 +1,5 @@
-import { UseQueryOptions, useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-
-export const URL = "/api/presignedurl/";
 
 export const fetcher = (presignedUrl: string, form: any, type: string) =>{
 

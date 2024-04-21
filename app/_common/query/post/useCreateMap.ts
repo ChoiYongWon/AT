@@ -1,8 +1,9 @@
 import { PostBody } from "@/app/api/map/route";
 import { UseQueryOptions, useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { atAxios } from "../../axios/atAxios";
 
-export const URL = "/api/map";
+export const URL = "/map";
 
 const SERVER_ERROR = {
     data: false,
@@ -10,7 +11,7 @@ const SERVER_ERROR = {
 }
 
 export const fetcher = (data: PostBody) =>
-  axios.post(`${URL}`, { ...data }).then(({ data }) => data).catch((e:any)=>{
+  atAxios.post(`${URL}`, { ...data }).then(({ data }) => data).catch((e:any)=>{
     if(e?.response?.data) throw e.response.data
     throw SERVER_ERROR
   });

@@ -1,16 +1,20 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { atAxios } from "../../axios/atAxios";
 
-export const URL = "api/map"
-export const GETALLMAP_QUERY_KEY = `${URL}[GET]`;
+export const URL = "/map"
 
 export const fetcher = (query: string) =>
-  axios.get(`${URL}?userId=${query}`).then(({ data }) => data);
+  atAxios.get(`${URL}`,{
+    params: {
+      userId: query
+    }
+  }).then(({ data }) => data);
 
 export const useGetAllMap = (query: string, options?: UseQueryOptions | any): any => {
   return useQuery({
     ...options,
-    queryKey: [GETALLMAP_QUERY_KEY, query],
+    queryKey: [URL, query],
     queryFn: () => fetcher(query),
     retry: false,
     staleTime: Infinity,

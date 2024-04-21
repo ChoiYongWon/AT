@@ -3,11 +3,11 @@
 import { useRecoilValue } from "recoil";
 import { ButtonMessageStyle, ButtonStyle, ButtonWrapperStyle, LoadingLottieStyle, vibrate } from "./style.css";
 import { formSelector, imageMapSelector } from "../../recoil";
-import { usePresignedUrl } from "@/app/_common/query/usePresignedUrl";
-import { useUploadImageToS3 } from "@/app/_common/query/useUploadImageToS3";
+import { usePresignedUrl } from "@/app/_common/query/post/usePresignedUrl";
+import { useUploadImageToS3 } from "@/app/_common/query/post/useUploadImageToS3";
 import { useEffect, useState } from "react";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { useUploadAT } from "@/app/_common/query/useUploadAT";
+import { useUploadAT } from "@/app/_common/query/post/useUploadAT";
 import { useSession } from "next-auth/react";
 import { PostBody } from "@/app/api/at/route";
 import { useRouter } from "next/navigation";

@@ -1,15 +1,19 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export const QUERY_KEY = "/api/user/validate";
+export const URL = "/user/validate";
 
 export const fetcher = (id: string) =>
-  axios.get(`${QUERY_KEY}?at_id=${id}`).then(({ data }) => data);
+  axios.get(`${URL}`, {
+    params: {
+      at_id: id
+    }
+  }).then(({ data }) => data);
 
 export const useValidId = (id: string, options: UseQueryOptions | any): any => {
   return useQuery({
     ...options,
-    queryKey: [QUERY_KEY, id],
+    queryKey: [URL, id],
     queryFn: () => fetcher(id),
     retry: false,
   });

@@ -1,6 +1,6 @@
 "use client";
 
-import { useValidId, useValidIdDTO } from "@/app/_common/query/useValidateId";
+import { useValidId, useValidIdDTO } from "@/app/_common/query/get/useValidateId";
 import { useEffect } from "react";
 import { useDebounceValue } from "usehooks-ts";
 import Input from "../Input";
@@ -11,7 +11,7 @@ import {
   LogoutLayoutStyle,
   LogoutStyle,
 } from "./style.css";
-import { useMutateUserInfo } from "@/app/_common/query/useMutateUserInfo";
+import { useMutateUserInfo } from "@/app/_common/query/put/useMutateUserInfo";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 
