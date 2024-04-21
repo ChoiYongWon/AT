@@ -1,10 +1,11 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { atAxios } from "../../axios/atAxios";
 
 export const URL = "/address";
 
 export const fetcher = (query: string) =>
-  axios.get(`${URL}`,{
+  atAxios.get(`${URL}`,{
     params: {
       query
     }

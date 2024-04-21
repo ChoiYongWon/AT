@@ -1,10 +1,11 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { atAxios } from "../../axios/atAxios";
 
 export const URL = "/user/validate";
 
 export const fetcher = (id: string) =>
-  axios.get(`${URL}`, {
+  atAxios.get(`${URL}`, {
     params: {
       at_id: id
     }
