@@ -15,7 +15,7 @@ const prisma = new PrismaClient()
       // const session = await useAuth();
       const {query, at_id, name} = Object.fromEntries(request.nextUrl.searchParams) as Query;
       // TODO 서비스 레이어 코드정리
-      let orm: any = {
+      let orm = {
         by: ['primary_address'],
         _count:{
           primary_address: true
@@ -32,11 +32,37 @@ const prisma = new PrismaClient()
                 categories: {
                     some: {
                         name: {
-                            in: decoded_query
-                        }
+                          in: decoded_query
+                      }
                     }
                 }
             },
+        }
+        if(!name){
+          orm = {
+            ...orm,
+            where: {
+                OR: [
+                  {
+                    map: {
+                      name: {
+                        in: decoded_query
+                      }
+                    }
+                  },
+                  {
+                    categories: {
+                      some: {
+                          name: {
+                            in: decoded_query
+                        }
+                      }
+                    }
+                  },
+                ]              
+                
+            },
+        }
         }
       }
       if(name){
@@ -63,7 +89,7 @@ const prisma = new PrismaClient()
         }
       }
   
-      const result = await prisma.spot.groupBy(orm)
+      const result = await prisma.spot.groupBy(orm as any)
   
       return new NextResponse(
         JSON.stringify({ data: result, message: "데이터 조회가 성공적으로 수행되었습니다." }),
