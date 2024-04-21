@@ -24,7 +24,8 @@ export const MapFormButtonWrapperStyle = style({
     fontSize: "14px",
     gap: "16px",
     cursor: "pointer",
-    padding: "0 16px"
+    padding: "0 16px",
+    backgroundColor: vars.color.white,
 })
 
 export const MapFormButtonStyle = style({

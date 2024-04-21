@@ -21,7 +21,7 @@ export const MapFormContentWrapperStyle = style({
     borderRadius: "5px",
     padding: "16px 12px",
     boxSizing: "border-box",
-    backgroundColor: `${vars.color.white}`,
+    backgroundColor: vars.color.white,
     display: "flex",
     flexDirection: "column",
     gap: "16px",

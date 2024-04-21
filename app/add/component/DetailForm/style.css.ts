@@ -6,6 +6,7 @@ export const DetailInputWrapperStyle = style({
     height: 'auto',
     fontSize: "14px",
     border: `${vars.color.strokeBlack} 1px solid`,
+    backgroundColor: vars.color.white,
     borderRadius: "5px",
     padding: "17px 22px"
 })

@@ -7,7 +7,8 @@ export const AddressInputWrapperStyle = style({
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: "5px",
     position: "relative",
-    zIndex: 50
+    zIndex: 50,
+    backgroundColor: vars.color.white,
 })
 
 export const InputWrapperStyle = style({

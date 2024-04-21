@@ -14,6 +14,7 @@ export const CategoryInputWrapperStyle = style({
   minHeight: "48px",
   height: "auto",
   border: `${vars.color.strokeBlack} 1px solid`,
+  backgroundColor: vars.color.white,
   borderRadius: "5px",
   display: "flex",
   flexWrap: "wrap",
