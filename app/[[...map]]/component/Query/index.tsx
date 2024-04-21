@@ -9,10 +9,11 @@ import Image from "next/image"
 import { useRef } from "react"
 
 type Props = {
-    className: any
+    className?: any
+    style?: any
 }
 
-const Query = ({className}: Props) => {
+const Query = ({className, style}: Props) => {
 
     const [queries, setQueries] = useRecoilState(atQueryState)
     const [queryStage, setQueryStage] = useRecoilState(atQueryStageState)
@@ -27,7 +28,7 @@ const Query = ({className}: Props) => {
       };
 
     return (
-        <div className={className} style={{width: "100%"}}>
+        <div className={className} style={{...style, width: "100%"}}>
             {/* TODO 추가할때마다 맨 끝으로 스크롤 */}
             <div className={QueryWrapperStyle}>
                 <AnimatePresence mode="popLayout">

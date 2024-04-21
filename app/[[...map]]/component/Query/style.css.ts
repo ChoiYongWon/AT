@@ -3,12 +3,12 @@ import { style } from "@vanilla-extract/css";
 
 export const QueryWrapperStyle = style({
     width: "100%",
-    minHeight: "48px",
+    minHeight: "30px",
     height: "auto",
     borderRadius: "5px",
     display: "flex",
     flexWrap: "nowrap",
-    padding: "4px",
+    // padding: "4px",
     boxSizing: "border-box",
     overflowX: "scroll",
     gap: "8px",
@@ -31,7 +31,7 @@ export const QueryStyle = style({
   border: `${vars.color.strokeBlack} 1px solid`,
   borderRadius: "100px",
   width: "auto",
-  height: "35px",
+  height: "30px",
   backgroundColor: vars.color.white,
   color: vars.color.primary,
   display: "flex",
@@ -40,7 +40,8 @@ export const QueryStyle = style({
   gap: "8px",
   position: "relative",
   alignSelf: "center",
-  cursor: "pointer"
+  cursor: "pointer",
+  boxShadow: "2px 2px 4px 0px rgba(0,0,0,0.15)"
 });
 
 export const QueryTextStyle = style({

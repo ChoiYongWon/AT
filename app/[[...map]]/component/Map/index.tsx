@@ -5,10 +5,14 @@ import indicatorData from "../../data/indicator.json"
 import Indicator from "../Indicator"
 
 
-const Map = () => {
+type Props = {
+    style?: any
+}
+
+const Map = ({style}: Props) => {
 
     return (
-        <div className={MapLayoutStyle}>
+        <div style={{...style}} className={MapLayoutStyle}>
             <svg className={MapStyle} width="374" height="603" viewBox="0 0 374 603" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g>
                     <g className={MapAreaStyle}>

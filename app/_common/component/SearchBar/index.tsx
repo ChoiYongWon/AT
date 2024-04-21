@@ -4,6 +4,7 @@ import Image from "next/image";
 import {
   EmptyProfileImageStyle,
   InputWrapperStyle,
+  LogoStyle,
   ProfileImageWrapperStyle,
   ProfileNameStyle,
   SearchBarWrapperStyle,
@@ -14,6 +15,7 @@ import {
   SearchInputStyle,
 } from "./style.css";
 import SearchIcon from "../../../../public/images/SearchIcon.svg";
+import Logo from "../../../../public/images/Loading.svg"
 import { useRef } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { setFocusTimeout } from "@toss/utils";
@@ -90,7 +92,7 @@ const SearchBar = ({
           </Link>
         ) : (
           <Link className={ProfileImageWrapperStyle} href={"/login"}>
-            <div className={EmptyProfileImageStyle}></div>
+            <Image src={Logo} className={LogoStyle} alt="" width={100} height={100} />
           </Link>
         )}
 
@@ -115,7 +117,7 @@ const SearchBar = ({
             ref={inputRef}
             type="text"
             className={SearchInputStyle}
-            placeholder="검색어를 입력해주세요"
+            placeholder="검색어를 입력해주세요 (스페이스로 추가)"
             value={content}
             onChange={onContentChange}
             onBlur={onBlur}

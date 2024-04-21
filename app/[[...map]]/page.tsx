@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <PageAnimateOpacity key="/" className={MainLayoutStyle}>
-        <Map/>
+        <Map style={{marginTop: '30px'}}/>
       </PageAnimateOpacity>
       <AddButton />
     </>

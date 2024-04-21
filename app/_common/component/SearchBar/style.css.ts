@@ -12,7 +12,9 @@ export const SearchBarWrapperStyle = style({
   justifyContent: "space-between",
   position: "relative",
   boxSizing: "border-box",
-  overflow: "hidden"
+  overflow: "hidden",
+  backgroundColor: vars.color.white,
+  boxShadow: "2px 2px 4px 0px rgba(0,0,0,0.15)"
 });
 
 export const ProfileImageWrapperStyle = style({
@@ -21,7 +23,15 @@ export const ProfileImageWrapperStyle = style({
   borderRadius: "100px",
   overflow: "hidden",
   outline: 'none',
-  WebkitTapHighlightColor: 'transparent'
+  WebkitTapHighlightColor: 'transparent',
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+})
+
+export const LogoStyle = style({
+  width: "22px",
+  height: "auto"
 })
 
 export const EmptyProfileImageStyle = style({
