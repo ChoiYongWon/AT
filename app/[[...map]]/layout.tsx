@@ -9,12 +9,15 @@ import Query from "./component/Query";
 
 export default async function Layout({ params, children }: { params: { map: string[] },  children: React.ReactNode}) {
     const session = await auth()
-    const [at_id, name] = params.map || []
+    let [at_id, name]: any = params.map || []
     let title = "전국 통합 지도"
+    
+    // 리다이렉션시 index로 바뀜
+    if(at_id == 'index') at_id = undefined
 
     // 왜인지 모르겠는데 router.push로 돌아올때 at_id가 index로 나옴
     if(at_id && at_id !== 'index'){
-        title = `${at_id}의 ${decodeURI(name || "")}지도`
+        title = `${decodeURI(at_id)}의 ${decodeURI(name || "")}지도`
     }
 
     return (
