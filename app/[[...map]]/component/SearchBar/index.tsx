@@ -41,10 +41,6 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
     setATLoading(isGetATFetching || isGetATLoading)
   }, [isGetATFetching, isGetATLoading])
 
-  // useEffect(()=>{
-  //   if(queryStage.length > 0) getAT()
-  // }, [queryStage])
-
   const onQueryInput = (e: any) => {
     // 카테고리 입력시 발동
     const query = e.target.value; 
@@ -52,19 +48,38 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
     if (query.length > 0 && query[query.length - 1] == " ") {
       if(!queryList.includes(queryValue) && queryValue.length > 0){
         const newQueryList = [...queryList, queryValue]
-        setQueryList(newQueryList)
+        console.log("newQuery", newQueryList)
+        setQueryList([...newQueryList])
       }
       setQuery("")
      
     } else onQueryChange(e);
   };
 
+  // 엔터를 통해 닫으면 onQueryBlur, onSearch 둘다 실행
+  // 그냥 blur를 통해 닫으면 onQueryBlur만 실행
+
   const onQueryBlur = () => {
-    setQueryStage(queryList)
+
+    // onSearch에서 바꾸는 state를 추적하기 위해 prev 사용 (항상 최신 state가 아니므로 중복 가능성 있음)
+    setQueryStage((prev)=>{
+      const duplicateless = new Set([...prev, ...queryList])
+      const newArray = Array.from(duplicateless)
+      return newArray
+    })
   }
 
   const onSearch = () => {
-    // getAT()
+    let additionalQuery: string[] = []
+    
+    if(!queryList.includes(queryValue) && queryValue.length > 0){
+      additionalQuery = [...queryList, queryValue]
+      setQueryList([...queryList, queryValue])
+        // onQueryBlur에서 바꾸는 state를 추적하기 위해 prev 사용 (해당 상태가 항상 최신이기 때매 중복될일없음)
+      setQueryStage((prev)=>[...prev, queryValue])
+    }
+    setQuery("")
+
   }
   
 

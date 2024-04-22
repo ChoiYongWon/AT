@@ -74,9 +74,9 @@ const SearchBar = ({
   // 2. 엔터 버튼
   const onSubmitBtnClick = (e: any) => {
     e.preventDefault();
+    onSearch();
     checkRef.current.checked = false;
     inputRef.current.blur()
-    onSearch();
   };
 
   return (
