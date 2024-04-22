@@ -54,10 +54,7 @@ globalFontFace(poppins, {
 
 globalStyle("html, body", {
   fontFamily: `${nanumSquareNeo}, ${poppins}`,
-  backgroundColor: "#F7F7F7",
-  width: "100%",
-  height: "100%",
-  
+  backgroundColor: "#F7F7F7",  
   padding: 0,
   margin: 0,
 });
