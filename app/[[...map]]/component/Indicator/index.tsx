@@ -42,14 +42,15 @@ const Indicator = ({x, y, name}: Props) => {
                 {
                     loading ?  
                     <motion.rect 
-                        key={name+"loading"} 
+                        // key={name+"loading"} 
                         initial={{ y: 0, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -5, opacity: 0 }}
                         transition={{ duration: 0.2 }} className={LoadingStyle} fill="#e6e6e6" x={width.current / 2 - 6} y={height.current - 15} width={12} height={2} rx={1} ry={1}></motion.rect>
                     : 
+
                     <motion.text
-                        key={name+"value"} 
+                        // key={name+"value"} 
                         initial={{ y: 5, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -5, opacity: 0 }}
