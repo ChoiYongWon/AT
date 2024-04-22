@@ -48,7 +48,6 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
     if (query.length > 0 && query[query.length - 1] == " ") {
       if(!queryList.includes(queryValue) && queryValue.length > 0){
         const newQueryList = [...queryList, queryValue]
-        console.log("newQuery", newQueryList)
         setQueryList([...newQueryList])
       }
       setQuery("")

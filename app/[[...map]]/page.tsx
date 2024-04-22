@@ -1,14 +1,14 @@
 import AddButton from "../_common/component/AddButton";
 import PageAnimateOpacity from "../_common/provider/PageAnimate/PageAnimateOpacity";
+import ContentManagePage from "./view";
 import { MainLayoutStyle } from "./style.css";
-import Map from "./component/Map";
 
 export default function Home() {
 
   return (
     <>
       <PageAnimateOpacity key="/" className={MainLayoutStyle}>
-        <Map style={{marginTop: '30px'}}/>
+        <ContentManagePage/>
       </PageAnimateOpacity>
       <AddButton />
     </>

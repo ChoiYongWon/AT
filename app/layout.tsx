@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import QueryProvider from "./_common/provider/QueryProvider";
 import AnimateProvider from "./_common/provider/AnimateProvider";
+import RecoilRootProvider from "./_common/provider/RecoilRootProvider";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,9 @@ export default function RootLayout({
       <body>
         <QueryProvider>
           <AuthContext>
-            <AnimateProvider>{children}</AnimateProvider>
+            <RecoilRootProvider>
+              <AnimateProvider>{children}</AnimateProvider>
+            </RecoilRootProvider>
           </AuthContext>
         </QueryProvider>
         <SpeedInsights />

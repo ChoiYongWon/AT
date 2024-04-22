@@ -14,11 +14,11 @@ export const MapLayoutStyle = style({
     "@media": {
       "screen and (min-width: 768px)": {
         gridColumn: "2 / span 6",
-        marginTop: '80px',
+        // marginTop: '80px',
       },
       "screen and (min-width: 1000px)": {
         gridColumn: "5 / span 4",
-        marginTop: '80px',
+        // marginTop: '80px',
       },
     },
   })

@@ -3,10 +3,13 @@
 import { useEffect, useRef } from "react";
 import { CardSyle, CountStyle, IndicatorWrapperStyle, LoadingStyle, NameStyle } from "./style.css"
 import { useCountUp } from 'react-countup';
-import { useRecoilValue } from "recoil";
-import { atLoadingState, atSelector } from "../../recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { areaNameReverse, atLoadingState, atSelector } from "../../recoil";
 import Loading from "@/app/_common/component/Loading";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { selectedAreaState } from "@/app/_common/recoil";
+import { useGhostHistory } from "@/app/_common/hook/useGhostHistory";
 
 type Props = {
     x: number
@@ -20,7 +23,12 @@ const Indicator = ({x, y, name}: Props) => {
     const width = useRef(56)
     const height = useRef(38)
     const at = useRecoilValue(atSelector)
+    const setSelectedArea = useSetRecoilState(selectedAreaState)
+    const { push } = useGhostHistory({})
+
+
     const loading = useRecoilValue(atLoadingState)
+    const router = useRouter()
 
     const { start, pauseResume, reset, update } = useCountUp({
 		end: at[name],
@@ -33,8 +41,14 @@ const Indicator = ({x, y, name}: Props) => {
         start()
     }, [])
 
+    const onClick = () => {
+        // 스택만 쌓기 위해 (뒤로가기를 위한 스택)
+        push()
+        setSelectedArea(areaNameReverse[name])
+    }
+
     return (
-        <g transform={`translate(${x},${y}) scale(1.1)`} className={IndicatorWrapperStyle}>
+        <g transform={`translate(${x},${y}) scale(1.1)`} className={IndicatorWrapperStyle} onClick={onClick}>
             <rect x={0} y={0} width={width.current} height={height.current} rx={5} ry={5} className={CardSyle}/>
             <text className={NameStyle} x={width.current / 2} y={height.current - 24}>{name}</text>
 

@@ -21,13 +21,13 @@ export default async function Layout({ params, children }: { params: { map: stri
     }
 
     return (
-        <RecoilRootProvider>
+        // <RecoilRootProvider>
             <div className={GridLayoutStyle}>
                 <SearchBar name={name} at_id={at_id} image={session?.user.image} title={title} className={SearchBarLayoutStyle}/>
                 <Query className={QueryLayoutStyle} style={{marginTop: '12px'}}/>
                 {children}
             </div>
-        </RecoilRootProvider>
+        // </RecoilRootProvider>
        
     );
 }

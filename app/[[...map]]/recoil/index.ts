@@ -8,6 +8,25 @@ export type AT = {
     }
 }
 
+export type Area = 
+"서울특별시"
+  | "인천광역시"
+  | "경기도" 
+  | "강원특별자치도" 
+  | "충청남도" 
+  | "대전광역시" 
+  | "세종특별자치시" 
+  | "충청북도" 
+  | "경상북도" 
+  | "대구광역시" 
+  | "광주광역시" 
+  | "전라남도" 
+  | "전북특별자치도" 
+  | "경상남도" 
+  | "울산광역시" 
+  | "부산광역시" 
+  | "제주특별자치도"
+
 export const areaName: any = {
     "서울특별시": "서울",
     "인천광역시": "인천",
@@ -28,22 +47,51 @@ export const areaName: any = {
     "제주특별자치도": "제주"
 }
 
+export const areaNameReverse: any = {
+    "서울": "서울특별시",
+    "인천": "인천광역시",
+    "경기": "경기도",
+    "강원": "강원특별자치도",
+    "충남": "충청남도",
+    "대전": "대전광역시",
+    "세종": "세종특별자치시",
+    "충북": "충청북도",
+    "경북": "경상북도",
+    "대구": "대구광역시",
+    "광주": "광주광역시",
+    "전남": "전라남도",
+    "전북": "전북특별자치도",
+    "경남": "경상남도",
+    "울산": "울산광역시",
+    "부산": "부산광역시",
+    "제주": "제주특별자치도"
+}
 
+// // 선택한 지역을 저장하고 있는 상태
+// export const selectedAreaState = atom<Area | null>({
+//     key: 'selected_area',
+//     default: null
+// })
+
+// 지역별 at count 정보를 담고있는 배열 (서버 respone 그대로), 사용은 atSelector로 사용
 export const atState = atom<AT[]>({
     key: 'at', 
     default: []
 });
 
+// 입력한 쿼리 input들을 저장하는 상태
 export const atQueryState = atom<string[]>({
     key: 'at_query', 
     default: []
 });
 
+// reactQuery가 의존하고 있는 상태 (이 상태에 따라 refetch함)
 export const atQueryStageState = atom<string[]>({
     key: 'at_query_stage', 
     default: []
 });
 
+// at 검색 로딩 상태 저장 SearchBar에서 검색하고 Map에 표시하기 위함
 export const atLoadingState = atom<boolean>({
     key:'at_loading',
     default: false
