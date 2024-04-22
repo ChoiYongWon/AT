@@ -13,7 +13,7 @@ export const MapView = ({className}: Props, ref: any) => {
     return (
         <motion.div 
             className={MapLayoutStyle}
-            initial={{ y: 0, opacity: 0 }}
+            initial={{ y: 0, opacity: 1 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.2 }}
