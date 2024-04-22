@@ -74,7 +74,7 @@ export const areaNameReverse: any = {
 // })
 
 // 지역별 at count 정보를 담고있는 배열 (서버 respone 그대로), 사용은 atSelector로 사용
-export const atState = atom<AT[]>({
+export const atCountState = atom<AT[]>({
     key: 'at', 
     default: []
 });
@@ -92,15 +92,28 @@ export const atQueryStageState = atom<string[]>({
 });
 
 // at 검색 로딩 상태 저장 SearchBar에서 검색하고 Map에 표시하기 위함
-export const atLoadingState = atom<boolean>({
-    key:'at_loading',
+export const atMapLoadingState = atom<boolean>({
+    key:'at_map_loading',
     default: false
 })
 
-export const atSelector = selector({
+type ATUrlType = {
+    name: string | null
+    at_id: string | null
+}
+
+export const atUrlState = atom<ATUrlType>({
+    key: "at_url",
+    default: {
+        name: null,
+        at_id: null,
+    }
+})
+
+export const atCountSelector = selector({
     key: 'at_selector',
     get: ({get}) => {
-        const at = get(atState)
+        const at = get(atCountState)
         const result = at.reduce((acc: any, cur)=> {
             const area = areaName[cur.primary_address]
             const count = cur._count.primary_address

@@ -1,15 +1,11 @@
-import Image from "next/image"
 import { MapAreaStyle, MapLayoutStyle, MapStyle, StrokeStyle } from "./style.css"
-import MapSvg from "../../../../public/images/map.svg"
-import indicatorData from "../../data/indicator.json"
-import Indicator from "../Indicator"
-
 
 type Props = {
     style?: any
+    children: any
 }
 
-const Map = ({style}: Props) => {
+const Map = ({style, children}: Props) => {
 
     return (
         
@@ -36,12 +32,7 @@ const Map = ({style}: Props) => {
                 
             </g>
             {
-                indicatorData.data.map((data, i)=>{
-
-                    return (
-                        <Indicator key={i} x={data.coord[0]} y={data.coord[1]} name={data.name}/>
-                    )
-                })
+                children
             }
         </svg>
         

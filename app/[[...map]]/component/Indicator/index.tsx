@@ -3,35 +3,25 @@
 import { useEffect, useRef } from "react";
 import { CardSyle, CountStyle, IndicatorWrapperStyle, LoadingStyle, NameStyle } from "./style.css"
 import { useCountUp } from 'react-countup';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { areaNameReverse, atLoadingState, atSelector } from "../../recoil";
-import Loading from "@/app/_common/component/Loading";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { selectedAreaState } from "@/app/_common/recoil";
-import { useGhostHistory } from "@/app/_common/hook/useGhostHistory";
 
 type Props = {
     x: number
     y: number
     name: string
+    count: number
+    onClick: any
+    isLoading: boolean
 }
 
-const Indicator = ({x, y, name}: Props) => {
+const Indicator = ({x, y, name, count, onClick, isLoading}: Props) => {
 
     const countUpRef = useRef(null)
     const width = useRef(56)
     const height = useRef(38)
-    const at = useRecoilValue(atSelector)
-    const setSelectedArea = useSetRecoilState(selectedAreaState)
-    const { push } = useGhostHistory({})
-
-
-    const loading = useRecoilValue(atLoadingState)
-    const router = useRouter()
 
     const { start, pauseResume, reset, update } = useCountUp({
-		end: at[name],
+		end: count,
 		duration: 2,
 		useEasing: true,
 		ref: countUpRef,
@@ -39,13 +29,7 @@ const Indicator = ({x, y, name}: Props) => {
 
     useEffect(()=>{
         start()
-    }, [])
-
-    const onClick = () => {
-        // 스택만 쌓기 위해 (뒤로가기를 위한 스택)
-        push()
-        setSelectedArea(areaNameReverse[name])
-    }
+    }, [count])
 
     return (
         <g transform={`translate(${x},${y}) scale(1.1)`} className={IndicatorWrapperStyle} onClick={onClick}>
@@ -54,7 +38,7 @@ const Indicator = ({x, y, name}: Props) => {
 
             <AnimatePresence mode="wait">
                 {
-                    loading ?  
+                    isLoading ?  
                     <motion.rect 
                         // key={name+"loading"} 
                         initial={{ y: 0, opacity: 0 }}
@@ -69,7 +53,7 @@ const Indicator = ({x, y, name}: Props) => {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -5, opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        ref={countUpRef} className={CountStyle} x={width.current / 2} y={height.current - 10}>{at[name] || 0}</motion.text>
+                        ref={countUpRef} className={CountStyle} x={width.current / 2} y={height.current - 10}>{count || 0}</motion.text>
                 }
 
             </AnimatePresence>

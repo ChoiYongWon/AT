@@ -3,9 +3,8 @@
 import { useGhostHistory } from "@/app/_common/hook/useGhostHistory"
 import { selectedAreaState } from "@/app/_common/recoil"
 import { motion } from "framer-motion"
-import { useRouter } from "next/navigation"
-import { forwardRef, useEffect } from "react"
-import { useSetRecoilState } from "recoil"
+import { forwardRef } from "react"
+import { useRecoilState } from "recoil"
 
 type Props = {
     className?: any
@@ -13,9 +12,11 @@ type Props = {
 
 export const ATListView = ({className}: Props, ref: any) => {
 
-    const setSelectedArea = useSetRecoilState(selectedAreaState)
+    const [selectedArea, setSelectedArea] = useRecoilState(selectedAreaState)
     const { use } = useGhostHistory({onPopState: ()=>setSelectedArea(null)})
-    use()
+    use() // useGhostHistory를 사용하는 곳
+
+    // TODO SearchBar 상태 + url 상태 + selectedArea 상태에 따라 쿼리문 요청
 
     return (
         <motion.div 
@@ -25,7 +26,7 @@ export const ATListView = ({className}: Props, ref: any) => {
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.2 }}
             ref={ref} style={{marginTop: '30px'}}>
-            <div>안녕하세요</div>
+            <div>{selectedArea}</div>
         </motion.div>
     )
 }

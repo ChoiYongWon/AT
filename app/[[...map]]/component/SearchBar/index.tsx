@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { SearchBarLayoutStyle } from "../../style.css";
 import { useGetAT } from "@/app/_common/query/get/useGetAT";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { atLoadingState, atQueryStageState, atQueryState, atState } from "../../recoil";
+import { atQueryStageState, atQueryState, atUrlState } from "../../recoil";
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -20,26 +20,16 @@ type Props = {
 const SearchBar = ({at_id, name, image, title, className}: Props) => {
 
   const { value: queryValue, onChange: onQueryChange, setValue: setQuery } = useInput("", { lower: true });
-  const [at, setAT] = useRecoilState(atState)
-  const setATLoading = useSetRecoilState(atLoadingState)
   const [queryList, setQueryList] = useRecoilState(atQueryState)
   const [queryStage, setQueryStage] = useRecoilState(atQueryStageState)
-  const { refetch: getAT,  isLoading: isGetATLoading, isFetching: isGetATFetching, data: atData} = useGetAT({
-    query: encodeURI([...queryStage].sort().join(",")) || null,
-    name,
-    at_id
-  })
+  const [atUrl, setATUrl] = useRecoilState(atUrlState)
 
   useEffect(()=>{
-    if(atData?.data){
-      setAT(atData.data)
-    }
-  }, [atData])
-
-
-  useEffect(()=>{
-    setATLoading(isGetATFetching || isGetATLoading)
-  }, [isGetATFetching, isGetATLoading])
+    setATUrl({
+      name,
+      at_id
+    })
+  }, [name, at_id])
 
   const onQueryInput = (e: any) => {
     // 카테고리 입력시 발동
