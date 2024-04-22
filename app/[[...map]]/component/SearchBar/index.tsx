@@ -2,12 +2,9 @@
 
 import SearchBarView from "@/app/_common/component/SearchBar";
 import { useInput } from "@/app/_common/hook/useInput";
-import { useSession } from "next-auth/react";
-import { SearchBarLayoutStyle } from "../../style.css";
-import { useGetAT } from "@/app/_common/query/get/useGetAT";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { atQueryStageState, atQueryState, atUrlState } from "../../recoil";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 type Props = {
   image: string | undefined | null
@@ -21,8 +18,12 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
 
   const { value: queryValue, onChange: onQueryChange, setValue: setQuery } = useInput("", { lower: true });
   const [queryList, setQueryList] = useRecoilState(atQueryState)
-  const [queryStage, setQueryStage] = useRecoilState(atQueryStageState)
-  const [atUrl, setATUrl] = useRecoilState(atUrlState)
+
+  /* SearchBar에서 다른 컴포넌트(Map, ATList)들이 요청하는 조건 */
+  const setQueryStage = useSetRecoilState(atQueryStageState)
+
+  /* 현재 URL을 map과 at_id로 분류하여 상태로 관리 (SearchBar은 Layout 단위에서 관리되기 때문)*/
+  const setATUrl = useSetRecoilState(atUrlState)
 
   useEffect(()=>{
     setATUrl({

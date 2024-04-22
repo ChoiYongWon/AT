@@ -4,15 +4,15 @@ import { style } from "@vanilla-extract/css";
 export const IndicatorWrapperStyle = style({
     cursor: "pointer",
 	transition: "transform ease .5s",
+    userSelect: 'none',
+    outline: 'none',
+    WebkitTapHighlightColor: 'transparent',
 })
 
 export const CardSyle = style({
     transformOrigin: "center",
     fill: vars.color.white,
     stroke: vars.color.strokeBlack,
-    userSelect: 'none',
-    outline: 'none',
-    WebkitTapHighlightColor: 'transparent',
 })
 
 export const NameStyle = style({

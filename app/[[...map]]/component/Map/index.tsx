@@ -1,4 +1,4 @@
-import { MapAreaStyle, MapLayoutStyle, MapStyle, StrokeStyle } from "./style.css"
+import { MapAreaStyle, MapStyle, StrokeStyle } from "./style.css"
 
 type Props = {
     style?: any

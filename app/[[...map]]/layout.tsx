@@ -1,11 +1,7 @@
 import { auth } from "@/auth";
-import PageAnimateOpacity from "../_common/provider/PageAnimate/PageAnimateOpacity";
 import SearchBar from "./component/SearchBar";
 import { GridLayoutStyle, QueryLayoutStyle, SearchBarLayoutStyle } from "./style.css";
-import RecoilRootProvider from "../_common/provider/RecoilRootProvider";
 import Query from "./component/Query";
-// import { TmpLayout } from "./style.css";
-// import { GridLayoutStyle } from "./style.css";
 
 export default async function Layout({ params, children }: { params: { map: string[] },  children: React.ReactNode}) {
     const session = await auth()
