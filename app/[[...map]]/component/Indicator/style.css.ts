@@ -10,7 +10,9 @@ export const CardSyle = style({
     transformOrigin: "center",
     fill: vars.color.white,
     stroke: vars.color.strokeBlack,
-    
+    userSelect: 'none',
+    outline: 'none',
+    WebkitTapHighlightColor: 'transparent',
 })
 
 export const NameStyle = style({
