@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { InternalServerError } from "../../error/server/InternalServer.error";
+import { ATQueryBuilder } from "@/app/_common/builder/ATQueryBuilder";
 
 type Query = {
     query?: string;
@@ -9,87 +10,30 @@ type Query = {
   };
   
 const prisma = new PrismaClient()
+const atQueryBuilder = new ATQueryBuilder()
   
   export async function GET(request: NextRequest) {
     try {
       // const session = await useAuth();
       const {query, at_id, name} = Object.fromEntries(request.nextUrl.searchParams) as Query;
+      let sqlQuery = atQueryBuilder.init()
       // TODO 서비스 레이어 코드정리
-      let orm = {
-        by: ['primary_address'],
-        _count:{
-          primary_address: true
-        },
-        where: {
 
-        }
-      }
       if(query){
-        const decoded_query = decodeURIComponent(query).split(",");
-        orm = {
-            ...orm,
-            where: {
-                categories: {
-                    some: {
-                        name: {
-                          in: decoded_query
-                      }
-                    }
-                }
-            },
-        }
-        if(!name){
-          orm = {
-            ...orm,
-            where: {
-                OR: [
-                  {
-                    map: {
-                      name: {
-                        in: decoded_query
-                      }
-                    }
-                  },
-                  {
-                    categories: {
-                      some: {
-                          name: {
-                            in: decoded_query
-                        }
-                      }
-                    }
-                  },
-                ]              
-                
-            },
-        }
-        }
+        const decoded_query = decodeURIComponent(query as string).split(",");
+        sqlQuery.addQuery(decoded_query)
       }
       if(name){
         const decoded_name = decodeURIComponent(name)
-        orm = {
-            ...orm,
-            where: {
-                ...orm.where,
-                map: {
-                    name: decoded_name
-                }
-            }
-        }
+        sqlQuery.addMapName(decoded_name)
       }
       if(at_id){
-        orm = {
-            ...orm,
-            where: {
-                ...orm.where,
-                user: {
-                    at_id
-                },
-            }
-        }
+        sqlQuery.addATID(at_id)
       }
+
+      sqlQuery = sqlQuery.build()
   
-      const result = await prisma.spot.groupBy(orm as any)
+      const result = await prisma.spot.groupBy(sqlQuery as any)
   
       return new NextResponse(
         JSON.stringify({ data: result, message: "데이터 조회가 성공적으로 수행되었습니다." }),

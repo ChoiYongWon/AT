@@ -11,6 +11,7 @@ import { MapView } from "./Map"
 import { usePathname } from "next/navigation"
 import { useEffect } from "react"
 import { selectedAreaState } from "@/app/_common/recoil"
+import { ATListLayoutStyle } from "./style.css"
 
 
 // Map과 ATlist를 상태에 따라 보여주는 컴포넌트
@@ -22,7 +23,7 @@ const ContentManage = () => {
         <AnimatePresence mode="wait">
         {
             selectedArea ? 
-                <ATListView key={"ListView"}/>
+                <ATListView key={"ListView"} className={ATListLayoutStyle}/>
                 :
                 <MapView key={"MapView"}/>
 

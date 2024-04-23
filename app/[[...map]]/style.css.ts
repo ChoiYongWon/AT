@@ -45,6 +45,9 @@ export const MainLayoutStyle = style({
       gridColumn: "2 / span 6",
     },
     "screen and (min-width: 1000px)": {
+      gridColumn: "4 / span 6",
+    },
+    "screen and (min-width: 1400px)": {
       gridColumn: "5 / span 4",
     },
   },
@@ -61,6 +64,9 @@ export const SearchBarLayoutStyle = style({
       gridColumn: "2 / span 6",
     },
     "screen and (min-width: 1000px)": {
+      gridColumn: "4 / span 6",
+    },
+    "screen and (min-width: 1400px)": {
       gridColumn: "5 / span 4",
     },
   },
@@ -77,6 +83,9 @@ export const QueryLayoutStyle = style({
       gridColumn: "2 / span 6",
     },
     "screen and (min-width: 1000px)": {
+      gridColumn: "4 / span 6",
+    },
+    "screen and (min-width: 1400px)": {
       gridColumn: "5 / span 4",
     },
   },

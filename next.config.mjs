@@ -27,6 +27,11 @@ const nextConfig = {
         hostname: "k.kakaocdn.net",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "s3.a-spot-thur.app",
+        pathname: "/**",
+      },
     ],
   },
 };
