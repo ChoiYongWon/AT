@@ -20,7 +20,8 @@ const ContentManage = () => {
     const [selectedArea, setSelectedArea] = useRecoilState(selectedAreaState)
 
     return (
-        <AnimatePresence mode="wait">
+        <>
+        {/* // <AnimatePresence mode="wait"> */}
         {
             selectedArea ? 
                 <ATListView key={"ListView"} className={ATListLayoutStyle}/>
@@ -29,8 +30,8 @@ const ContentManage = () => {
 
 
         }
-            
-        </AnimatePresence>
+        </>
+        // {/* </AnimatePresence> */}
         
     )
 }

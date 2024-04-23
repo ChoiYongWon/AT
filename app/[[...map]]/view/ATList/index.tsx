@@ -16,7 +16,7 @@ type Props = {
 }
 
 
-export const ATListView = ({className}: Props, ref: any) => {
+export const ATListView = ({className}: Props) => {
 
     const [selectedArea, setSelectedArea] = useRecoilState(selectedAreaState)
     const atListData  = useRecoilValue(atListSelector)
@@ -39,13 +39,13 @@ export const ATListView = ({className}: Props, ref: any) => {
     return (
 
         <>
-            <motion.div 
-                layout
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -10, opacity: 0 }}
-                transition={{ duration: 0.1 }}
-                ref={ref} style={{marginTop: '30px'}} className={className}>
+            <div 
+                // layout
+                // initial={{ y: 10, opacity: 0 }}
+                // animate={{ y: 0, opacity: 1 }}
+                // exit={{ y: -10, opacity: 0 }}
+                // transition={{ duration: 0.1 }}
+                style={{marginTop: '30px'}} className={className}>
                 <div className={ATListWrapper}>
                     {
                         atListData.map((data: any, i: any)=>{
@@ -55,11 +55,11 @@ export const ATListView = ({className}: Props, ref: any) => {
                     }
                 </div>
                 <Observer/>
-            </motion.div>
+            </div>
 
         </>
         
     )
 }
 
-export default forwardRef(ATListView)
+export default ATListView

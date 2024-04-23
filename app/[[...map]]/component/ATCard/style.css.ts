@@ -16,7 +16,6 @@ export const ATCardWrapperStyle = style({
     outline: 'none',
     WebkitTapHighlightColor: 'transparent',
     cursor: "pointer",
-    zIndex: 10
 })
 
 export const ATCardIDStyle = style({

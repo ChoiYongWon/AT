@@ -17,7 +17,7 @@ type Props = {
     className?: any
 }
 
-export const MapView = ({className}: Props, ref: any) => {
+export const MapView = ({className}: Props) => {
 
 
     /* SearchBar에서 Managing 하는 상태 */
@@ -57,13 +57,13 @@ export const MapView = ({className}: Props, ref: any) => {
   
 
     return (
-        <motion.div 
+        <div 
             className={MapLayoutStyle}
-            initial={{ y: 0, opacity: 1 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.1 }}
-            ref={ref} style={{marginTop: '30px'}}>
+            // initial={{ y: 0, opacity: 1 }}
+            // animate={{ y: 0, opacity: 1 }}
+            // exit={{ y: -10, opacity: 0 }}
+            // transition={{ duration: 0.1 }}
+             style={{marginTop: '30px'}}>
             <Map>
                 {
                     indicatorData.data.map((data, i)=>{
@@ -73,8 +73,8 @@ export const MapView = ({className}: Props, ref: any) => {
                     })
                 }
             </Map>
-        </motion.div>
+        </div>
     )
 }
 
-export default forwardRef(MapView)
+export default MapView
