@@ -1,29 +1,33 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 type Props = {
-    callback: any,
+    callback?: any,
     options?: any
 }
 
-export const useObserver = ({callback, options}: Props) => {
-    const observerInstance = useRef(new IntersectionObserver(callback, options))
-    const observeTarget = useRef(null)
+export const useObserver = ({options}: Props) => {
+    const targetRef = useRef(null)
+    const observerInstance = useRef(new IntersectionObserver(([entry])=>{
+        setIntersecting(entry.isIntersecting)
+    }, options))
+    const [isIntersecting, setIntersecting] = useState<boolean>(false)
     
-    function setObserveTarget(target: any){
-        observerInstance.current.observe(target)
-        observeTarget.current = target
-    }
+    // function setObserveTarget(target: any){
+    //     observerInstance.current.observe(target)
+    //     observeTarget.current = target
+    // }
 
     useEffect(()=>{
-        return ()=>{
 
-            if(observeTarget.current){
-                console.log("UNOBSERVE")
-                observerInstance.current.unobserve(observeTarget.current)
+        if(targetRef.current) observerInstance.current.observe(targetRef.current)
+
+        return ()=>{
+            if(targetRef.current){
+                observerInstance.current.unobserve(targetRef.current)
             }
         }
     }, [])
     
-    return {setObserveTarget}
+    return [isIntersecting, targetRef]
 
 }

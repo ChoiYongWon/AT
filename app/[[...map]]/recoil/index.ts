@@ -110,6 +110,11 @@ export const atUrlState = atom<ATUrlType>({
     }
 })
 
+export const atListState = atom<any>({
+    key: "at_list",
+    default: {}
+})
+
 export const atCountSelector = selector({
     key: 'at_selector',
     get: ({get}) => {
@@ -123,3 +128,39 @@ export const atCountSelector = selector({
         return result
     }
 })
+
+export const atListSelector = selector({
+    key: 'at_list_selector',
+    get: ({get}) => {
+        const at: any = get(atListState)
+
+        if(at?.pages){
+            const pages = at.pages
+
+            const result = pages.reduce((acc: any, cur: any)=>{
+                const {data, message} = cur
+                const spots = data[1].map((d:any)=>{
+                    return  ({
+                        title: d.title,
+                        address: d.address,
+                        at_id: d.user.at_id,
+                        map_name: d.map.name,
+                        images: d.images.map((image:any)=>image.url),
+                        categories: d.categories.map((category:any)=>category.name),
+                        count: data[0]
+                    })
+                })
+
+
+                acc = [...acc, ...spots]
+                return acc
+            }, [])
+    
+    
+            return result
+        }
+        return []
+        
+    }
+})
+

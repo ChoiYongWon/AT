@@ -2,7 +2,7 @@ import { vars } from "@/app/_common/theme/contract.css";
 import { style } from "@vanilla-extract/css";
 
 export const ButtonStyle = style({
-  position: "absolute",
+  position: "fixed",
   bottom: "5%",
   right: "5%",
   width: "60px",

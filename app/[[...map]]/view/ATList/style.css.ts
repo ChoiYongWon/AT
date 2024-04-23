@@ -5,5 +5,6 @@ export const ATListWrapper = style({
     width: "100%",
     flexDirection: "column",
     gap: "16px",
-    margin: "0 auto"
+    margin: "0 auto",
+    position: "relative",
 })

@@ -16,7 +16,7 @@ type Props = {
 const ATCard = ({title, at_id, map_name, images, address, categories, className}: Props) => {
 
     return (
-        <motion.div className={ATCardWrapperStyle} {...{whileTap: {scale: 0.97, transition: { duration: 0.08 }}}}>
+        <div className={ATCardWrapperStyle}>
             <div className={ATCardInfoWrapperStyle}>
                 <div className={ATCardIDStyle}>@ {at_id}의 {map_name} 지도</div>
                 <button className={ATCardNaverButtonStyle}>네이버 지도</button>
@@ -25,7 +25,7 @@ const ATCard = ({title, at_id, map_name, images, address, categories, className}
             <div className={ATCardImageWrapperStyle}>
                 {
                     images.map((data: any, i)=>{
-                        return <Image  src={data.url} alt="" width={120} height={120} className={ATCardImageStyle}/>
+                        return <Image key={i} src={data} alt="" width={120} height={120} className={ATCardImageStyle}/>
                     })
                 }
             </div>
@@ -39,7 +39,7 @@ const ATCard = ({title, at_id, map_name, images, address, categories, className}
                 <div className={ATCardCategoryWrapperStyle}>
                     {
                         categories.map((data, i)=>{
-                            return <div className={ATCardCategoryStyle}>{data}</div>
+                            return <div key={i} className={ATCardCategoryStyle}>{data}</div>
                         })
                     }
                 </div>
@@ -47,8 +47,8 @@ const ATCard = ({title, at_id, map_name, images, address, categories, className}
 
            
 
-        </motion.div>
+        </div>
     )
 }
 
-export default forwardRef(ATCard)
+export default ATCard
