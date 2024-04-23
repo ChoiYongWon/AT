@@ -87,11 +87,11 @@ const SearchBar = ({
         style={style}
       >
         {image ? (
-          <Link className={ProfileImageWrapperStyle} href={"/profile"}>
+          <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
             <Image src={image} alt="" width={100} height={100} />
           </Link>
         ) : (
-          <Link className={ProfileImageWrapperStyle} href={"/login"}>
+          <Link className={ProfileImageWrapperStyle} href={"/login"} prefetch={true}>
             <Image src={Logo} className={LogoStyle} alt="" width={100} height={100} />
           </Link>
         )}

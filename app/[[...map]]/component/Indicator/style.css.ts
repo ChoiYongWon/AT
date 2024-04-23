@@ -9,6 +9,12 @@ export const IndicatorWrapperStyle = style({
     WebkitTapHighlightColor: 'transparent',
 })
 
+export const IndicatorTapGroupStyle = style({
+    userSelect: 'none',
+    outline: 'none',
+    WebkitTapHighlightColor: 'transparent',
+})
+
 export const CardSyle = style({
     transformOrigin: "center",
     fill: vars.color.white,

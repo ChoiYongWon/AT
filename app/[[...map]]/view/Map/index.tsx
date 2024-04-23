@@ -61,8 +61,8 @@ export const MapView = ({className}: Props, ref: any) => {
             className={MapLayoutStyle}
             initial={{ y: 0, opacity: 1 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.1 }}
             ref={ref} style={{marginTop: '30px'}}>
             <Map>
                 {

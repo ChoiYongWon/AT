@@ -5,6 +5,7 @@ import CancelImage from "../../../../public/images/CancelButton.svg";
 import { ButtonImageStyle, ButtonLinkStyle, ButtonStyle } from "./style.css";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Props = {
   style?: any;
@@ -13,18 +14,20 @@ type Props = {
 
 const CancelButton = ({ style, className }: Props) => {
 
+  const router = useRouter()
+
   return (
     
-      <Link
+      <button
         style={style}
         className={`${ButtonStyle} ${className}`}
-        href={"/"}
+        onClick={()=>router.back()}
       >
         <motion.div className={ButtonLinkStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
           <Image className={ButtonImageStyle} src={CancelImage} alt="x" />
         </motion.div>
 
-      </Link>
+      </button>
     
   );
 };
