@@ -7,7 +7,7 @@ export const ATCardWrapperStyle = style({
     width: "100%",
     display: "flex",
     flexDirection: "column",
-    gap: "13px",
+    gap: "14px",
     color: vars.color.fontBlack,
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: "5px",
