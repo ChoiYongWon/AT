@@ -6,7 +6,7 @@ import { selectedAreaState } from "@/app/_common/recoil"
 import { AnimatePresence, motion } from "framer-motion"
 import { forwardRef, useEffect, useRef } from "react"
 import { useRecoilState, useRecoilValue } from "recoil"
-import { ATListWrapper } from "./style.css"
+import { ATListCountStyle, ATListWrapper } from "./style.css"
 import ATCard from "../../component/ATCard"
 import Observer from "../../component/Observer"
 import { atListSelector, atListState } from "../../recoil"
@@ -19,7 +19,7 @@ type Props = {
 export const ATListView = ({className}: Props) => {
 
     const [selectedArea, setSelectedArea] = useRecoilState(selectedAreaState)
-    const atListData  = useRecoilValue(atListSelector)
+    const atListData: any  = useRecoilValue(atListSelector)
     const atListRawData  = useRecoilValue(atListState)
 
 
@@ -39,16 +39,15 @@ export const ATListView = ({className}: Props) => {
     return (
 
         <>
-            <div 
-                // layout
-                // initial={{ y: 10, opacity: 0 }}
-                // animate={{ y: 0, opacity: 1 }}
-                // exit={{ y: -10, opacity: 0 }}
-                // transition={{ duration: 0.1 }}
-                style={{marginTop: '30px'}} className={className}>
+            <div style={{marginTop: '30px'}} className={className}>
+                {
+                    atListData.count ? 
+                    <div className={ATListCountStyle}>총 {atListData.count}개의 검색결과</div> : 
+                    <></>
+                }
                 <div className={ATListWrapper}>
                     {
-                        atListData.map((data: any, i: any)=>{
+                        atListData?.data?.map((data: any, i: any)=>{
                             const {title, at_id, map_name, address, images, categories} = data
                             return <ATCard key={i} title={title} at_id={at_id} map_name={map_name} address={address} images={images} categories={categories}/>
                         })

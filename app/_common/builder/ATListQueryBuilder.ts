@@ -5,15 +5,23 @@ export class ATListQueryBuilder {
     constructor(){
     }
 
-    init(offset: number, limit: number){
+    init(){
         this.query = {
-            skip: Number(offset),
-            take: Number(limit),
             where: {
 
             }
             
         }
+        return this
+    }
+
+    setOffset(offset: number){
+        this.query.skip = offset;
+        return this
+    }
+
+    setLimit(limit: number){
+        this.query.take = limit;
         return this
     }
 

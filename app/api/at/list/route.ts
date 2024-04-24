@@ -20,7 +20,7 @@ type Query = {
   export async function GET(request: NextRequest) {
     try {
         let {query, at_id, name, area, offset, limit} = Object.fromEntries(request.nextUrl.searchParams) as Query;
-        let sqlQuery = atListQueryBuilder.init(Number(offset), Number(limit))
+        let sqlQuery = atListQueryBuilder.init()
         
         const decoded_area = decodeURIComponent(area)
         sqlQuery.addArea(decoded_area)
@@ -38,10 +38,13 @@ type Query = {
         sqlQuery.addATID(at_id)
         }
 
-        
+
+        // 여기까지 count
         const countSql = JSON.parse(JSON.stringify(sqlQuery.build()))
 
-        sqlQuery.setSelect()
+        // 여기서부터 findMany
+        sqlQuery.setLimit(Number(limit)).setOffset(Number(offset)).setSelect()
+        
         const findManySql = JSON.parse(JSON.stringify(sqlQuery.build()))
 
         const [count, spots] = await prisma.$transaction([

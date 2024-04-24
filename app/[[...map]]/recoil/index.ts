@@ -133,11 +133,15 @@ export const atListSelector = selector({
     key: 'at_list_selector',
     get: ({get}) => {
         const at: any = get(atListState)
+        const result = {
+            data : [],
+            count: 0
+        }
 
         if(at?.pages){
             const pages = at.pages
 
-            const result = pages.reduce((acc: any, cur: any)=>{
+            result.data = pages.reduce((acc: any, cur: any)=>{
                 const {data, message} = cur
                 const spots = data[1].map((d:any)=>{
                     return  ({
@@ -147,7 +151,6 @@ export const atListSelector = selector({
                         map_name: d.map.name,
                         images: d.images.map((image:any)=>image.url),
                         categories: d.categories.map((category:any)=>category.name),
-                        count: data[0]
                     })
                 })
 
@@ -155,6 +158,7 @@ export const atListSelector = selector({
                 acc = [...acc, ...spots]
                 return acc
             }, [])
+            result.count = pages[0]?.data[0]|| 0
     
     
             return result

@@ -8,3 +8,8 @@ export const ATListWrapper = style({
     margin: "0 auto",
     position: "relative",
 })
+
+export const ATListCountStyle = style({
+    padding: "8px 0",
+    fontSize: "14px"
+})
