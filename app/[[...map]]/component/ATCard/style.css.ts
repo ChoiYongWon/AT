@@ -88,6 +88,19 @@ export const ATCardNaverButtonStyle = style({
     
 })
 
+export const ATCardNextButtonSyle = style({
+    height: "16px",
+    width: "16px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+})
+
+export const ATCardNextImageStyle = style({
+    width: "100%",
+    height: "100%"
+})
+
 export const ATCardDivider = style({
     width: "100%",
     height: "1px",
