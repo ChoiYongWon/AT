@@ -1,10 +1,11 @@
 import { useObserver } from "@/app/_common/hook/useObserver"
 import { useEffect } from "react"
-import { ObserverStyle } from "./style.css"
+import { LoadingStyle, NonLoadingStyle, ObserverStyle } from "./style.css"
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
 import { atListState, atQueryStageState, atUrlState } from "../../recoil"
 import { useInfiniteATLists } from "@/app/_common/query/get/useInfiniteATLists"
 import { selectedAreaState } from "@/app/_common/recoil"
+import Loading from "@/app/_common/component/Loading"
 
 type Props = {
     className ?: any
@@ -47,7 +48,7 @@ const Observer = ({className}: Props) => {
 
     return (
         <div  ref={ref as any} className={`${ObserverStyle} ${className}`}>
-
+            { isFetching ? <Loading className={LoadingStyle}/> : <div className={NonLoadingStyle}></div> }
         </div>
     )
 }
