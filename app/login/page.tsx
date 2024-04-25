@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  BackLinkStyle,
   DescriptionEngStyle,
   DescriptionKorStyle,
   FooterBackStyle,
@@ -9,9 +8,10 @@ import {
   LogoStyle,
   LogoWrapperStyle,
 } from "./style.css";
-import LoginButtonGroup from "./LoginButtonGroup";
+import LoginButtonGroup from "./component/LoginButtonGroup";
 import Image from "next/image";
 import Logo from "../../public/images/Loading.svg"
+import BackLink from "./component/BackLink";
 
 
 export default function LoginLayout() {
@@ -36,9 +36,9 @@ export default function LoginLayout() {
         </div>
         <div className={FooterBackStyle}>
           에잇! 로그인 귀찮아!{" "}
-          <Link href={"/"} className={BackLinkStyle}>
+          <BackLink>
             나 도라갈뤠~
-          </Link>
+          </BackLink>
         </div>
       </div>
     </>

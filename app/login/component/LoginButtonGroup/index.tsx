@@ -1,10 +1,10 @@
 'use client'
 
 import { AnimatePresence, motion } from "framer-motion"
-import GoogleLoginButton from "../component/LoginButton/GoogleLoginButton"
+import GoogleLoginButton from "../LoginButton/GoogleLoginButton"
 import { Divider, LoginButtonLayoutStyle } from "./style.css"
-import KakaoLoginButton from "../component/LoginButton/KakaoLoginButton"
-import NaverLoginButton from "../component/LoginButton/NaverLoginButton"
+import KakaoLoginButton from "../LoginButton/KakaoLoginButton"
+import NaverLoginButton from "../LoginButton/NaverLoginButton"
 
 const LoginButtonGroup = () => {
     return(

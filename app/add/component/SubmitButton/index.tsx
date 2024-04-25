@@ -106,7 +106,7 @@ const SubmitButton = ({ style }: Props) => {
 
             alert("등록 완료")
 
-            router.push("/")
+            router.back()
 
         }catch(e: any){
             console.log(e)

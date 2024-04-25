@@ -146,9 +146,3 @@ export const FooterBackStyle = style({
     },
   },
 });
-
-export const BackLinkStyle = style({
-  color: vars.color.point_3,
-  borderBottom: `1px solid ${vars.color.point_3}`,
-});
-
