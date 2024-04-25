@@ -69,10 +69,10 @@ export const areaNameReverse: any = {
 }
 
 // // 선택한 지역을 저장하고 있는 상태
-// export const selectedAreaState = atom<Area | null>({
-//     key: 'selected_area',
-//     default: null
-// })
+export const selectedAreaState = atom<Area | null>({
+    key: 'selected_area',
+    default: null
+})
 
 // 지역별 at count 정보를 담고있는 배열 (서버 respone 그대로), 사용은 atSelector로 사용
 export const atCountState = atom<AT[]>({

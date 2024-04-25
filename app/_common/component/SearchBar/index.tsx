@@ -20,6 +20,8 @@ import { useRef } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { setFocusTimeout } from "@toss/utils";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import PrevButton from "../PrevButton";
 
 type Props = {
   title: string | null | undefined;
@@ -27,6 +29,7 @@ type Props = {
   className?: string;
   style?: any;
   content: string;
+  state: string | null;
   onBlur?: () => any;
   onSearch: () => any;
   onContentChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
@@ -38,6 +41,7 @@ const SearchBar = ({
   className,
   style,
   content,
+  state,
   onSearch,
   onBlur,
   onContentChange,
@@ -86,15 +90,22 @@ const SearchBar = ({
         className={`${SearchBarWrapperStyle} ${className}`}
         style={style}
       >
-        {image ? (
-          <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
-            <Image src={image} alt="" width={100} height={100} priority={true} />
-          </Link>
-        ) : (
-          <Link className={ProfileImageWrapperStyle} href={"/login"} prefetch={true}>
-            <Image src={Logo} className={LogoStyle} alt="" width={100} height={100} />
-          </Link>
-        )}
+
+        {
+          state ? 
+          <PrevButton></PrevButton>
+          :
+          image ? (
+            <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
+              <Image src={image} alt="" width={100} height={100} priority={true} />
+            </Link>
+          ) : (
+            <Link className={ProfileImageWrapperStyle} href={"/login"} prefetch={true}>
+              <Image src={Logo} className={LogoStyle} alt="" width={100} height={100} />
+            </Link>
+          )
+        }
+        
 
         <div className={ProfileNameStyle}>{title}</div>
         <div className={SearchIconWrapperStyle}>

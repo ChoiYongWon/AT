@@ -2,14 +2,13 @@
 
 import { useGhostHistory } from "@/app/_common/hook/useGhostHistory"
 import { useObserver } from "@/app/_common/hook/useObserver"
-import { selectedAreaState } from "@/app/_common/recoil"
 import { AnimatePresence, motion } from "framer-motion"
 import { forwardRef, useEffect, useRef } from "react"
 import { useRecoilState, useRecoilValue } from "recoil"
 import { ATListCountStyle, ATListWrapper } from "./style.css"
 import ATCard from "../../component/ATCard"
 import Observer from "../../component/Observer"
-import { atListSelector, atListState } from "../../recoil"
+import { atListSelector, atListState, selectedAreaState } from "../../recoil"
 
 type Props = {
     className?: any

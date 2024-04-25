@@ -10,8 +10,8 @@ import Map from "../component/Map"
 import { MapView } from "./Map"
 import { usePathname } from "next/navigation"
 import { useEffect } from "react"
-import { selectedAreaState } from "@/app/_common/recoil"
 import { ATListLayoutStyle } from "./style.css"
+import { selectedAreaState } from "../recoil"
 
 
 // Map과 ATlist를 상태에 따라 보여주는 컴포넌트

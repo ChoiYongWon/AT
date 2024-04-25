@@ -5,11 +5,10 @@ import { forwardRef, useEffect } from "react"
 import Map from "../../component/Map"
 import { MapLayoutStyle } from "./style.css"
 import { useRecoilValue, useSetRecoilState } from "recoil"
-import { areaNameReverse, atCountSelector, atCountState, atQueryStageState, atUrlState } from "../../recoil"
+import { areaNameReverse, atCountSelector, atCountState, atQueryStageState, atUrlState, selectedAreaState } from "../../recoil"
 import { useGetAT } from "@/app/_common/query/get/useGetAT"
 import indicatorData from "../../data/indicator.json"
 import Indicator from "../../component/Indicator"
-import { selectedAreaState } from "@/app/_common/recoil"
 import { useGhostHistory } from "@/app/_common/hook/useGhostHistory"
 
 
