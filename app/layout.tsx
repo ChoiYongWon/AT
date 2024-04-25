@@ -14,6 +14,11 @@ import RecoilRootProvider from "./_common/provider/RecoilRootProvider";
 export const metadata: Metadata = {
   title: "AT - A Spot Thur",
   description: "나만의 지도를 만들어보세요!",
+  manifest: "/manifest.json",
+  icons: [
+    { rel: "icon", url: "/icons/icon-192x192.png", sizes: "192x192" }
+    // 추가 아이콘 정보
+  ],
   other: {
     google: 'notranslate'
   }
@@ -22,7 +27,8 @@ export const metadata: Metadata = {
 export const viewport:Viewport = {
   width: "device-width",
   initialScale: 1,
-  userScalable: false
+  userScalable: false,
+  themeColor: "#f7f7f7",
 }
 
 export default function RootLayout({

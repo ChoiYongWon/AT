@@ -2,6 +2,12 @@
 import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
 const withVanillaExtract = createVanillaExtractPlugin();
 
+import nextPWA from 'next-pwa'
+
+const withPWA = nextPWA({
+  dest: 'public',
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
@@ -36,4 +42,4 @@ const nextConfig = {
   },
 };
 
-export default withVanillaExtract(nextConfig);
+export default withPWA(withVanillaExtract(nextConfig));
