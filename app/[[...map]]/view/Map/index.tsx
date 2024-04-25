@@ -14,9 +14,10 @@ import { useGhostHistory } from "@/app/_common/hook/useGhostHistory"
 
 type Props = {
     className?: any
+    style?: any
 }
 
-export const MapView = ({className}: Props) => {
+export const MapView = ({className, style}: Props) => {
 
 
     /* SearchBar에서 Managing 하는 상태 */
@@ -62,7 +63,7 @@ export const MapView = ({className}: Props) => {
             // animate={{ y: 0, opacity: 1 }}
             // exit={{ y: -10, opacity: 0 }}
             // transition={{ duration: 0.1 }}
-             style={{marginTop: '30px'}}>
+             style={style}>
             <Map>
                 {
                     indicatorData.data.map((data, i)=>{
