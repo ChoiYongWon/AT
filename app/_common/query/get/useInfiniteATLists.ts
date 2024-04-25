@@ -1,8 +1,7 @@
-import { QueryClient, useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { atAxios } from "../../axios/atAxios";
-import { useEffect } from "react";
 
-type Param = {
+export type GetATListDTO = {
   query?: string | null;
   name?: string | null;
   at_id?: string | null;
@@ -11,9 +10,35 @@ type Param = {
   offset?: number;
 }
 
+export type GetATListData = {
+  count: number,
+  list: {
+    title: string,
+    address: string,
+    user: {
+      at_id: string
+    },
+    map: {
+      name: string
+    },
+    images: {
+      url: string,
+      sequence: number
+    }[],
+    categories: {
+      name: string
+    }[]
+  }[]
+}
+
+export type getATListResponseDTO = {
+  data: GetATListData;
+  message: string;
+};
+
 export const URL = "/at/list"
 
-export const fetcher = ({query, name, at_id, area, limit, offset}: Param) =>{
+export const fetcher = ({query, name, at_id, area, limit, offset}: GetATListDTO) =>{
   return atAxios.get(`${URL}`, {
     params: {
       query,
@@ -26,23 +51,17 @@ export const fetcher = ({query, name, at_id, area, limit, offset}: Param) =>{
   }).then(({ data }) => data);
 }
 
-export const useInfiniteATLists = ({query, name, at_id, area, limit}: Param) => {
+export const useInfiniteATLists = ({query, name, at_id, area, limit}: GetATListDTO) => {
 
-  return useInfiniteQuery({
+  return useInfiniteQuery<getATListResponseDTO>({
       queryKey: [URL, query, name, at_id, area],
       queryFn: ({pageParam}) => fetcher({query, name, at_id, area, limit, offset: Number(pageParam) * Number(limit)}),
       getNextPageParam:(lastPage, pages)=>{
             const nextPage = pages.length;
-            return lastPage.data[1].length < limit ? null : nextPage; // 마지막 페이지 데이터가 limit 보다 적으면 이제 그만 불러옴
+            return lastPage.data.list.length < limit ? null : nextPage; // 마지막 페이지 데이터가 limit 보다 적으면 이제 그만 불러옴
       },
       initialPageParam: 0,
       staleTime: 1000 * 60 * 5,
       gcTime: 1000 * 60 * 5
   })
 }
-
-
-export type useGetATDTO = {
-data: any;
-message: string;
-};

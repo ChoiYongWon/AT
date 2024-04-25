@@ -47,7 +47,7 @@ export const ATListView = ({className}: Props) => {
                 }
                 <div className={ATListWrapper}>
                     {
-                        atListData?.data?.map((data: any, i: any)=>{
+                        atListData?.list?.map((data: any, i: any)=>{
                             const {title, at_id, map_name, address, images, categories} = data
                             return <ATCard key={i} title={title} at_id={at_id} map_name={map_name} address={address} images={images} categories={categories}/>
                         })

@@ -4,25 +4,38 @@ import { atAxios } from "../../axios/atAxios";
 
 export const URL = "/map"
 
-export const fetcher = (query: string) =>
+export type GetAllMapDTO = {
+  userId: string
+}
+
+export type GetAllMapData = {
+  id: string
+  name: string
+}
+
+export type GetAllMapResponseDTO = {
+  data: GetAllMapData[];
+  message: string;
+};
+
+
+export const fetcher = ({
+  userId
+}: GetAllMapDTO) =>
   atAxios.get(`${URL}`,{
     params: {
-      userId: query
+      userId
     }
   }).then(({ data }) => data);
 
-export const useGetAllMap = (query: string, options?: UseQueryOptions | any): any => {
-  return useQuery({
+export const useGetAllMap = (data: GetAllMapDTO, options?: UseQueryOptions | any): any => {
+  return useQuery<GetAllMapResponseDTO>({
     ...options,
-    queryKey: [URL, query],
-    queryFn: () => fetcher(query),
+    queryKey: [URL, data?.userId],
+    queryFn: () => fetcher(data),
     retry: false,
     staleTime: Infinity,
     gcTime: Infinity
   });
 };
 
-export type useSearchAddressDTO = {
-  data: any;
-  message: string;
-};

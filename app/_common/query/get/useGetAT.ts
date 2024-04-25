@@ -2,15 +2,28 @@ import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { atAxios } from "../../axios/atAxios";
 
-type Param = {
+export type GetATDTO = {
   query?: string | null;
   name?: string | null;
   at_id?: string | null;
 }
 
+export type GetATData = {
+  _count: {
+    primary_address: number
+  }
+  primary_address: string
+}
+
+export type GetATResponseDTO = {
+  data: GetATData[];
+  message: string;
+};
+
+
 export const URL = "/at/count"
 
-export const fetcher = ({query, name, at_id}: Param) =>{
+export const fetcher = ({query, name, at_id}: GetATDTO) =>{
   return atAxios.get(`${URL}`, {
     params: {
       query,
@@ -24,8 +37,8 @@ export const fetcher = ({query, name, at_id}: Param) =>{
 
 export const useGetAT = ({
   query, name, at_id
-}: Param, options?: UseQueryOptions | any): any => {
-  return useQuery({
+}: GetATDTO, options?: UseQueryOptions | any): any => {
+  return useQuery<GetATResponseDTO>({
     ...options,
     queryKey: [URL, query, name, at_id],
     queryFn: () => fetcher({query, name, at_id}),
@@ -35,7 +48,3 @@ export const useGetAT = ({
   });
 };
 
-export type useGetATDTO = {
-  data: any;
-  message: string;
-};

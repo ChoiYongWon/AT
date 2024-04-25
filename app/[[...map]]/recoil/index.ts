@@ -1,3 +1,4 @@
+import { getATListResponseDTO } from "@/app/_common/query/get/useInfiniteATLists";
 import { atom, selector } from "recoil";
 import { v4 as uuidv4 } from "uuid";
 
@@ -134,16 +135,16 @@ export const atListSelector = selector({
     get: ({get}) => {
         const at: any = get(atListState)
         const result = {
-            data : [],
+            list : [],
             count: 0
         }
 
         if(at?.pages){
             const pages = at.pages
 
-            result.data = pages.reduce((acc: any, cur: any)=>{
-                const {data, message} = cur
-                const spots = data[1].map((d:any)=>{
+            result.list = pages.reduce((acc: any, cur: any)=>{
+                const {data, message}: getATListResponseDTO = cur
+                const spots = data.list.map((d:any)=>{
                     return  ({
                         title: d.title,
                         address: d.address,
@@ -158,7 +159,7 @@ export const atListSelector = selector({
                 acc = [...acc, ...spots]
                 return acc
             }, [])
-            result.count = pages[0]?.data[0]|| 0
+            result.count = pages[0]?.data.count|| 0
     
     
             return result
