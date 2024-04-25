@@ -55,7 +55,7 @@ const Query = ({className, style}: Props) => {
             <>
                 <div className={QueryStyle} style={{opacity: 0.4}}>
                     <div className={QueryTextStyle}>
-                        # 본인만의
+                        # 나만의
                     </div>
                     <div className={QueryDeleteButtonStyle}>
                         <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x"/>
