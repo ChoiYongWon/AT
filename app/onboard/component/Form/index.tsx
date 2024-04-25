@@ -25,7 +25,9 @@ const Form = () => {
     data: isValidId,
     error: validIdError,
     isError: isValidIdError,
-  } = useValidId(encodeURIComponent(inputName), {
+  } = useValidId({
+    at_id: encodeURIComponent(inputName)
+  }, {
     // query string 이스케이프 문자
     enabled: false,
   });
