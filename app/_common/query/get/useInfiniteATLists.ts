@@ -36,8 +36,8 @@ export const useInfiniteATLists = ({query, name, at_id, area, limit}: Param) => 
             return lastPage.data[1].length < limit ? null : nextPage; // 마지막 페이지 데이터가 limit 보다 적으면 이제 그만 불러옴
       },
       initialPageParam: 0,
-      staleTime: Infinity,
-      gcTime: Infinity
+      staleTime: 1000 * 60 * 5,
+      gcTime: 1000 * 60 * 5
   })
 }
 

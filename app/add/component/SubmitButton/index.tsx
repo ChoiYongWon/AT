@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Lottie from 'lottie-react'
 import loadingJson from '../../../../public/assets/loading.json'
+import { useQueryClient } from "@tanstack/react-query";
 
 
 
@@ -25,6 +26,7 @@ const SubmitButton = ({ style }: Props) => {
 
     const session = useSession();
     const router = useRouter();
+    const queryClient = useQueryClient()
     const formState = useRecoilValue(formSelector)
     const [loading, setLoading] = useState(false)
     const [isDisabled, setDisable] = useState(true)
@@ -95,6 +97,12 @@ const SubmitButton = ({ style }: Props) => {
             }
 
             await uploadAT(postBody)
+
+
+            // 캐시 초기화
+            queryClient.invalidateQueries({ queryKey: ['/at/count'] })
+            queryClient.invalidateQueries({ queryKey: ['/at/list'] })
+
 
             alert("등록 완료")
 
