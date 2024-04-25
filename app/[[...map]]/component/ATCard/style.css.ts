@@ -44,6 +44,8 @@ export const ATCardImageStyle = style({
     objectFit: "cover",
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: "5px",
+    minHeight: '120px',
+    minWidth: '120px',
 })
 
 export const ATCardInfoWrapperStyle = style({
