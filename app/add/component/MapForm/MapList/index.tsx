@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Search from "../../../../../public/images/SearchIcon.svg"
 import Check from "../../../../../public/images/Check.svg"
-import Loading from "../../../../../public/images/loading.gif"
+// import Loading from "../../../../../public/images/loading.gif"
 import { Divider, MapFormCheckStyle, MapFormContentFooterStyle, MapFormContentWrapperStyle, MapFormCreateInfoTextWrapperStyle, MapFormCreateTextBoldStyle, MapFormCreateTextWrapperStyle, MapFormInputErrorMessageStyle, MapFormInputSearchIconStyle, MapFormInputStyle, MapFormInputWrapperStyle, MapFormListItemWrapperStyle, MapFormListWrapperStyle, MapFormLoadingStyle, MapFormLoadingWrapperStyle } from "./style.css"
 import { useEffect, useState } from "react"
 import { useRecoilState } from "recoil"
@@ -11,6 +11,7 @@ import { useCreateMap } from "@/app/_common/query/post/useCreateMap"
 import { useGetAllMap } from "@/app/_common/query/get/useGetAllMap"
 import { useSession } from "next-auth/react"
 import { useDetectClickOutside } from "react-detect-click-outside"
+import Loading from "@/app/_common/component/Loading"
 
 type Props = {
     className ?: any
@@ -151,7 +152,8 @@ const MapList = ({className, style, closeToggle}: Props) => {
             {
                 isGetAllMapFetching || isCreateMapPending ? 
                 <div className={MapFormLoadingWrapperStyle}>
-                    <Image src={Loading} alt="" className={MapFormLoadingStyle}/>        
+                    <Loading className={MapFormLoadingStyle}/>
+                    {/* <Image src={Loading} alt="" className={MapFormLoadingStyle}/> */}
                 </div>
                 : <></>
             }
