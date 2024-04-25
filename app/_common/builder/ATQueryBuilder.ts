@@ -28,6 +28,18 @@ export class ATQueryBuilder {
                 }
               },
               {
+                user: {
+                  at_id: {
+                    in: query
+                  }
+                }
+              },
+              {
+                secondary_address: {
+                    in: query
+                }
+              },
+              {
                 categories: {
                   some: {
                       name: {
