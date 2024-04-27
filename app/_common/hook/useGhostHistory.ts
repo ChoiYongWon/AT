@@ -4,14 +4,14 @@ type Props = {
     onPopState?: any
 }
 
-export const useGhostHistory = ({onPopState}: Props) => {
+export const useGhostHistory = () => {
 
     const push = () => {
         // ghost stack 하나 쌓기
         window.history.pushState(null, "", '/')
     }
 
-    function use(){
+    function use({onPopState}: Props){
 
         const handlePopState = (e:any) => {
             // 뒤로가기 시 호출

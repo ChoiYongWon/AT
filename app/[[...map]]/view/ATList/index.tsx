@@ -20,6 +20,7 @@ export const ATListView = ({className}: Props) => {
     const [selectedArea, setSelectedArea] = useRecoilState(selectedAreaState)
     const atListData: any  = useRecoilValue(atListSelector)
     const atListRawData  = useRecoilValue(atListState)
+    const { use } = useGhostHistory()
 
 
     useEffect(()=>{
@@ -30,8 +31,7 @@ export const ATListView = ({className}: Props) => {
         console.log(atListRawData)
     }, [atListRawData])
 
-    const { use } = useGhostHistory({onPopState: ()=>setSelectedArea(null)})
-    use() // useGhostHistory를 사용하는 곳
+    use({onPopState: ()=>setSelectedArea(null)}) // useGhostHistory를 사용하는 곳
 
     // TODO SearchBar 상태 + url 상태 + selectedArea 상태에 따라 쿼리문 요청
 

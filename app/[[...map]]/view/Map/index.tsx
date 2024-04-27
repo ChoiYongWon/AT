@@ -36,7 +36,7 @@ export const MapView = ({className, style}: Props) => {
     /* 선택한 도에 대한 전체 상태 */
     const setSelectedArea = useSetRecoilState(selectedAreaState)
 
-    const { push } = useGhostHistory({})
+    const { push } = useGhostHistory()
     const { refetch: getAT,  isLoading: isGetATLoading, isFetching: isGetATFetching, data: atData} = useGetAT({
       query: encodeURI([...queryStage].sort().join(",")) || null,
       name,
