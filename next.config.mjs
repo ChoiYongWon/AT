@@ -4,8 +4,13 @@ const withVanillaExtract = createVanillaExtractPlugin();
 
 import nextPWA from 'next-pwa'
 
+const prod = process.env.NODE_ENV === 'production'
+
 const withPWA = nextPWA({
   dest: 'public',
+  register: true,
+  disable: prod ? false : true,
+  skipWaiting: true
 });
 
 /** @type {import('next').NextConfig} */
