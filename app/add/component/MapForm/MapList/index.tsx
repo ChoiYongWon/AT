@@ -1,8 +1,10 @@
 import Image from "next/image"
 import Search from "../../../../../public/images/SearchIcon.svg"
 import Check from "../../../../../public/images/Check.svg"
+import Add from "../../../../../public/images/AddButton.svg"
+
 // import Loading from "../../../../../public/images/loading.gif"
-import { Divider, MapFormCheckStyle, MapFormContentFooterStyle, MapFormContentWrapperStyle, MapFormCreateInfoTextWrapperStyle, MapFormCreateTextBoldStyle, MapFormCreateTextWrapperStyle, MapFormInputErrorMessageStyle, MapFormInputSearchIconStyle, MapFormInputStyle, MapFormInputWrapperStyle, MapFormListItemWrapperStyle, MapFormListWrapperStyle, MapFormLoadingStyle, MapFormLoadingWrapperStyle } from "./style.css"
+import { Divider, MapFormCheckStyle, MapFormContentFooterStyle, MapFormContentWrapperStyle, MapFormCreateButtonImageStyle, MapFormCreateButtonStyle, MapFormCreateInfoTextWrapperStyle, MapFormCreateTextBoldStyle, MapFormCreateTextWrapperStyle, MapFormInputErrorMessageStyle, MapFormInputSearchIconStyle, MapFormInputStyle, MapFormInputWrapperStyle, MapFormListItemWrapperStyle, MapFormListWrapperStyle, MapFormLoadingStyle, MapFormLoadingWrapperStyle } from "./style.css"
 import { useEffect, useState } from "react"
 import { useRecoilState } from "recoil"
 import { Map, mapState } from "../../../recoil"
@@ -146,6 +148,9 @@ const MapList = ({className, style, closeToggle}: Props) => {
                 // 입력창에 입력된 상태에서 입력창 내용이랑 내 지도가 일치하는게 없을 때, 입력창에 아무것도 없을 때 (에러 X)
                 mapInput.length > 0 && mapList.filter(item=>item.name == mapInput).length == 0 && !error.enabled && (!isGetAllMapFetching && !isCreateMapPending) ? 
                     <div className={MapFormCreateTextWrapperStyle} onClick={()=>onMapAddClick()}>
+                        <div className={MapFormCreateButtonStyle} style={{marginRight: '8px'}}>
+                            <Image src={Add} width={12} height={12} className={MapFormCreateButtonImageStyle} alt=""/>
+                        </div>
                         <span className={MapFormCreateTextBoldStyle}>"{mapInput}"</span> 생성하기
                     </div>
                     : 

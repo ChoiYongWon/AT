@@ -85,14 +85,18 @@ export const MapFormCreateTextWrapperStyle = style({
     width: "100%",
     // paddingTop: "16px",
     fontSize: "13px",
-    cursor: "pointer"
+    cursor: "pointer",
+    textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    whiteSpace: "nowrap",
+    overflowX: "hidden"
 })
 
 export const MapFormCreateInfoTextWrapperStyle = style({
     width: "100%",
     // paddingTop: "16px",
     fontSize: "13px",
-    textAlign: "center"
 })
 
 export const MapFormInputErrorMessageStyle = style({
@@ -104,6 +108,22 @@ export const MapFormInputErrorMessageStyle = style({
     animation: `${vibrate} .2s`
 })
 
+export const MapFormCreateButtonStyle = style({
+    minHeight: "16px",
+    minWidth: "16px",
+    borderRadius: "20px",
+    border: `${vars.color.strokeBlack} 0.5px solid`,
+    backgroundColor: vars.color.primary,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+})
+
+export const MapFormCreateButtonImageStyle = style({
+    width: "8px",
+    height: "8px",
+    objectFit: "cover"
+})
 
 export const MapFormCreateTextBoldStyle = style({
     fontWeight: "bold",
