@@ -65,7 +65,7 @@ const Form = () => {
           placeholder="사용자 이름"
           onChange={(e: any) => setInputName(e.target.value)}
           isError={isValidIdError as any}
-          errorMessage={validIdError?.response?.data?.message || ""}
+          errorMessage={validIdError?.message || ""}
         />
 
         <Button

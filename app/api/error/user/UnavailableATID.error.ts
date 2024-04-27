@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 export const UnavailableATIDError = () => {
   return new NextResponse(
     JSON.stringify({
-      data: 40007,
+      status: 'E10002',
       message: "해당 이름은 사용할 수 없습니다.",
     }),
-    { status: 400, headers: { "content-type": "application/json" } }
+    { status: 419, headers: { "content-type": "application/json" } }
   );
 };
