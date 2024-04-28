@@ -13,6 +13,7 @@
     "@auth/prisma-adapter": "^1.5.0",
     "@aws-sdk/credential-providers": "^3.540.0",
     "@aws-sdk/s3-presigned-post": "^3.540.0",
+    "@nextui-org/skeleton": "^2.0.27",
     "@prisma/client": "^5.11.0",
     "@prisma/extension-accelerate": "^1.0.0",
     "@tanstack/react-query": "^5.28.6",
@@ -36,6 +37,7 @@
     "react-dom": "^18",
     "recoil": "^0.7.7",
     "sharp": "^0.33.3",
+    "swiper": "^11.1.1",
     "usehooks-ts": "^3.0.1",
     "uuid": "^9.0.1",
     "uuidv4": "^6.2.13"

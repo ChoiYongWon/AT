@@ -13,6 +13,7 @@ export type GetATListDTO = {
 export type GetATListData = {
   count: number,
   list: {
+    id: string,
     title: string,
     address: string,
     user: {

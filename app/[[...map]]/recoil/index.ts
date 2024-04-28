@@ -146,6 +146,7 @@ export const atListSelector = selector({
                 const {data, message}: getATListResponseDTO = cur
                 const spots = data.list.map((d:any)=>{
                     return  ({
+                        id: d.id,
                         title: d.title,
                         address: d.address,
                         at_id: d.user.at_id,

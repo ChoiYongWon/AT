@@ -102,3 +102,56 @@ export async function POST(request: NextRequest) {
     return InternalServerError(e);
   }
 }
+
+type Query = {
+  id: string;
+};
+
+export async function GET(request: NextRequest) {
+  try {
+    // const session = await useAuth();
+    const {id} = Object.fromEntries(request.nextUrl.searchParams) as Query;
+    
+    const result = await prisma.spot.findUnique({
+      select: {
+        title: true,
+        address: true,
+        categories: {
+          select: {
+            name: true
+          }
+        },
+        map: {
+          select: {
+            name: true
+          }
+        },
+        user: {
+          select: {
+            at_id: true
+          }
+        },
+        images: {
+          select: {
+            url: true,
+            sequence: true
+          }
+        },
+        body: true,
+        created_at: true,
+        view_count: true,
+      },
+      where: {
+        id
+      }
+    })
+
+    return new NextResponse(
+      JSON.stringify({ data: result, message: "데이터 조회가 성공적으로 수행되었습니다." }),
+    { status: 200, headers: { "content-type": "application/json" } }
+  )
+
+  } catch (e) {
+    return InternalServerError(e);
+  }
+}

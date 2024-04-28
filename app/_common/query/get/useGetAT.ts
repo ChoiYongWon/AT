@@ -1,18 +1,29 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { atAxios } from "../../axios/atAxios";
 
 export type GetATDTO = {
-  query?: string | null;
-  name?: string | null;
-  at_id?: string | null;
+  id: string;
 }
 
 export type GetATData = {
-  _count: {
-    primary_address: number
-  }
-  primary_address: string
+    title: string;
+    address: string;
+    categories: {
+        name: string;
+    }[],
+    map: {
+        name: string;
+    },
+    user: {
+        at_id: string;
+    },
+    images: {
+        url: string;
+        sequence: number;
+    }[],
+    body: string;
+    created_at: string;
+    view_count: number;
 }
 
 export type GetATResponseDTO = {
@@ -21,14 +32,12 @@ export type GetATResponseDTO = {
 };
 
 
-export const URL = "/at/count"
+export const URL = "/at"
 
-export const fetcher = ({query, name, at_id}: GetATDTO) =>{
+export const fetcher = ({id}: GetATDTO) =>{
   return atAxios.get(`${URL}`, {
     params: {
-      query,
-      name,
-      at_id
+        id
     }
   }).then(({ data }) => data);
 }
@@ -36,12 +45,12 @@ export const fetcher = ({query, name, at_id}: GetATDTO) =>{
 
 
 export const useGetAT = ({
-  query, name, at_id
+  id
 }: GetATDTO, options?: UseQueryOptions | any): any => {
   return useQuery<GetATResponseDTO>({
     ...options,
-    queryKey: [URL, query, name, at_id],
-    queryFn: () => fetcher({query, name, at_id}),
+    queryKey: [URL, id],
+    queryFn: () => fetcher({id}),
     retry: false,
     staleTime: 1000 * 60 * 5,
     gcTime: 1000 * 60 * 5

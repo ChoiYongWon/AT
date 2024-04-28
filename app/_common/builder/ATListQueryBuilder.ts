@@ -27,6 +27,7 @@ export class ATListQueryBuilder {
 
     setSelect(){
         this.query.select = {
+            id: true,
             title: true,
             address: true,
 

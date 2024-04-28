@@ -1,5 +1,4 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { atAxios } from "../../axios/atAxios";
 
 type GetValidIdDTO = {

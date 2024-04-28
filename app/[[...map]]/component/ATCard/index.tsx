@@ -10,13 +10,14 @@ type Props = {
     map_name: string,
     images: any[],
     address: string,
-    categories: string[]
+    categories: string[],
+    onClick: any
 }
 
-const ATCard = ({title, at_id, map_name, images, address, categories, className}: Props) => {
+const ATCard = ({onClick, title, at_id, map_name, images, address, categories, className}: Props) => {
 
     return (
-        <div className={ATCardWrapperStyle}>
+        <div className={ATCardWrapperStyle} onClick={onClick}>
             <div className={ATCardInfoWrapperStyle}>
                 <div className={ATCardIDStyle}>@{at_id}의 {map_name} 지도</div>
                 {/* <button className={ATCardNaverButtonStyle}>네이버 지도</button> */}

@@ -6,7 +6,7 @@ import Map from "../../component/Map"
 import { MapLayoutStyle } from "./style.css"
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import { areaNameReverse, atCountSelector, atCountState, atQueryStageState, atUrlState, selectedAreaState } from "../../recoil"
-import { useGetAT } from "@/app/_common/query/get/useGetAT"
+import { useGetATCount } from "@/app/_common/query/get/useGetATCount"
 import indicatorData from "../../data/indicator.json"
 import Indicator from "../../component/Indicator"
 import { useGhostHistory } from "@/app/_common/hook/useGhostHistory"
@@ -37,7 +37,7 @@ export const MapView = ({className, style}: Props) => {
     const setSelectedArea = useSetRecoilState(selectedAreaState)
 
     const { push } = useGhostHistory()
-    const { refetch: getAT,  isLoading: isGetATLoading, isFetching: isGetATFetching, data: atData} = useGetAT({
+    const { refetch: getAT,  isLoading: isGetATLoading, isFetching: isGetATFetching, data: atData} = useGetATCount({
       query: encodeURI([...queryStage].sort().join(",")) || null,
       name,
       at_id
