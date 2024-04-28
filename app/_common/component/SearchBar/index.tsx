@@ -20,7 +20,7 @@ import { useRef } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { setFocusTimeout } from "@toss/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import PrevButton from "../PrevButton";
 
 type Props = {
@@ -48,6 +48,8 @@ const SearchBar = ({
 }: Props) => {
   const inputRef = useRef<any>(null);
   const checkRef = useRef<any>(null);
+  const router = useRouter()
+  const pathname = usePathname()
   // 검색창 밖에 터치시 닫힘
   const searchRef = useDetectClickOutside({
     onTriggered: () => {
@@ -83,6 +85,11 @@ const SearchBar = ({
     inputRef.current.blur()
   };
 
+  // 제목 클릭 핸들러
+  const onTitleClick = () => {
+    if(pathname != '/') router.push("/")
+  }
+
   return (
     <>
       <div
@@ -107,7 +114,7 @@ const SearchBar = ({
         }
         
 
-        <Link href={"/"} className={ProfileNameStyle}>{title}</Link>
+        <div onClick={onTitleClick} className={ProfileNameStyle}>{title}</div>
         <div className={SearchIconWrapperStyle}>
           <label
             htmlFor="checkbox"
