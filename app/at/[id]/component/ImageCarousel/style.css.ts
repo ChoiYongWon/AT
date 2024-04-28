@@ -9,16 +9,16 @@ export const ImageCarouselWrapperStyle = style({
 
 export const SwiperStyle = style({
     width: "100%",
-    height: "100%"
+    aspectRatio: "9 / 10",
 })
 
 export const SliderStyle = style({
     width: "100%",
-    height: "100%",
+    aspectRatio: "9 / 10",
 })
 
 export const ImageStyle = style({
-    width: "auto",
+    width: "100%",
     height: "100%",
     objectFit: "cover"
 })
@@ -74,8 +74,8 @@ export const PrevButtonStyle = style({
 
 
 export const BackButtonWrapperStyle = style({
-    width: "30px",
-    height: "30px",
+    width: "36px",
+    height: "36px",
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: "100px",
     backgroundColor: vars.color.white,
