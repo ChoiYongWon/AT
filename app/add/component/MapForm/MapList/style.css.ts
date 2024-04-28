@@ -60,13 +60,18 @@ export const MapFormInputSearchIconStyle = style({
 export const MapFormListWrapperStyle = style({
     fontSize: "14px",
     width: "100%",
+    height: "auto",
     maxHeight: "150px",
     display: "flex",
     flexDirection: "column",
     // padding: "16px 0",
     gap: "16px",
     paddingInlineStart: "4px",
-    overflow: "scroll"
+    overflowY: "scroll",
+
+    // "::-webkit-scrollbar": {
+    //     display: "none"
+    // }
 })
 
 export const MapFormListItemWrapperStyle = style({
