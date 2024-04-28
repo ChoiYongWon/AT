@@ -37,7 +37,7 @@ const SubmitButton = ({ style }: Props) => {
     })
 
     const {mutateAsync: getPresignedUrl, data: presignedData, isSuccess, isError: isPresignedUrlError} = usePresignedUrl()
-    const {mutateAsync: uploadImageToS3, isError: isUplaodError, isPending: isUploadImagePending} = useUploadImageToS3()
+    const {mutateAsync: uploadImageToS3, isError: isUplaodError, error: uploadError, isPending: isUploadImagePending} = useUploadImageToS3()
     const {mutateAsync: uploadAT, data: uploadATResponse, isPending: isUploadATPending, isError: isUploadATError} = useUploadAT()
 
     useEffect(()=>{
@@ -109,9 +109,8 @@ const SubmitButton = ({ style }: Props) => {
             router.back()
 
         }catch(e: any){
-            console.log(e)
             setLoading(false)
-            setErrorState({isError: true, message: "서버 에러"})
+            setErrorState({isError: true, message: e.message})
         }finally{
             setLoading(false)
         }
@@ -131,7 +130,7 @@ const SubmitButton = ({ style }: Props) => {
                     ) : ( "추가 하기" )}         
                 </motion.button>
                 
-                { isPresignedUrlError || isUplaodError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>서버 에러</div> : <></>}
+                {/* { isPresignedUrlError || isUplaodError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>업로드 에러 {isUplaodError ? uploadError.message : ""}</div> : <></>} */}
                 { errorState.isError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>{errorState.message}</div> : <></>}
             </div>
             

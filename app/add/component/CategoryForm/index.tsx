@@ -25,11 +25,18 @@ const CategoryForm = () => {
   });
 
   const addCategory = (place: any) => {
-    const i = category.findIndex((c) => c.name == place); 
-    if (i == -1) setCategory([...category, { name: place, id: uuidv4() }]);
-    else setCategoryError({enable: true, message: "카테고리는 중복될 수 없습니다."})
+    const regexp = /^[가-힣a-z0-9]{1,10}$/g
+      if(regexp.test(categoryInput)){
+        const i = category.findIndex((c) => c.name == place); 
+        if (i == -1) setCategory([...category, { name: place, id: uuidv4() }]);
+        else setCategoryError({enable: true, message: "카테고리는 중복될 수 없습니다."})
+        setCategoryInput("");
+      }else {
+        setCategoryError({enable: true, message: "카테고리는 완성된 한글, 영소문자, 숫자가 10자 내외로 구성되야합니다."})
+        setCategoryInput("");
+      }
+    
   };
-
   
   const onCategoryInput = (e: any) => {
     // 카테고리 입력시 발동
@@ -37,23 +44,17 @@ const CategoryForm = () => {
     if(categoryError.enable){
       setCategoryError({enable: false, message: ""})
     }
-    if (name.length > 0 && name[name.length - 1] == " ") {
-      const regexp = /^[가-힣a-z0-9]{1,10}$/g
-      if(regexp.test(categoryInput)){
-        
-        addCategory(categoryInput);
-        setCategoryInput("");
-      }else {
-        setCategoryError({enable: true, message: "카테고리는 완성된 한글, 영소문자, 숫자가 10자 내외로 구성되야합니다."})
-        setCategoryInput("");
-      }
-     
+    if (name.length > 0 && (name[name.length - 1] == " ")) {
+      addCategory(categoryInput);
     } else onCategoryInputChange(e);
   };
 
   const onKeyDown = (e: any) => {
     if(e.keyCode == 8 && categoryInput.length == 0){
       setCategory([...category.slice(0,category.length-1)])
+    }
+    if(e.keyCode == 13 && categoryInput.length > 0){
+      addCategory(categoryInput);
     }
   }
 
