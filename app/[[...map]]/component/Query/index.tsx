@@ -55,7 +55,7 @@ const Query = ({className, style}: Props) => {
             <>
                 <div className={QueryStyle} style={{opacity: 0.4}}>
                     <div className={QueryTextStyle}>
-                        # 나만의
+                        # 맛집
                     </div>
                     <div className={QueryDeleteButtonStyle}>
                         <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x"/>
@@ -63,7 +63,7 @@ const Query = ({className, style}: Props) => {
                 </div>
                 <div className={QueryStyle} style={{opacity: 0.4}}>
                     <div className={QueryTextStyle}>
-                        # 지도를
+                        # 방탈출
                     </div>
                     <div className={QueryDeleteButtonStyle}>
                         <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x"/>
@@ -71,7 +71,7 @@ const Query = ({className, style}: Props) => {
                 </div>
                 <div className={QueryStyle} style={{opacity: 0.4}}>
                     <div className={QueryTextStyle}>
-                        # 만들어보세요
+                        # 캠핑
                     </div>
                     <div className={QueryDeleteButtonStyle}>
                         <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x"/>
