@@ -107,7 +107,7 @@ const SearchBar = ({
         }
         
 
-        <div className={ProfileNameStyle}>{title}</div>
+        <Link href={"/"} className={ProfileNameStyle}>{title}</Link>
         <div className={SearchIconWrapperStyle}>
           <label
             htmlFor="checkbox"
