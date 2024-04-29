@@ -72,7 +72,7 @@ const Info = ({
                         isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :   session.data?.user.at_id == user.at_id ? <span className={EditStyle}>수정</span> : <></>
                     }
                     {
-                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  <>조회 {view_count}</>
+                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  <>조회 {view_count.toLocaleString()}</>
                     }
                     
                 </div>         
