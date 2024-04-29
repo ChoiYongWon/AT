@@ -44,22 +44,6 @@ export const AddressStyle = style({
     color: vars.color.fontBlack,
 })
 
-export const MapButtonStyle = style({
-    width: "34px",
-    height: "34px",
-    border: `${vars.color.strokeBlack} 1px solid`,
-    borderRadius: "100px",
-    backgroundColor: vars.color.white,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-})
-
-export const MapButtonImageStyle = style({
-    width: "17px",
-    height: "13px",
-})
-
 export const MetaInfoWrapperStyle = style({
     display: "flex",
     width: "100%",

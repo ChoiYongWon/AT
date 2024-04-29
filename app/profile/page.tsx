@@ -2,7 +2,7 @@
 
 import { signOut, useSession } from "next-auth/react";
 import { CancelButtonLayout, TmpRestLayout } from "./style.css";
-import CancelButton from "../_common/component/CancelButton";
+import CancelButton from "./component/CancelButton";
 
 export default function Profile() {
   const session = useSession();

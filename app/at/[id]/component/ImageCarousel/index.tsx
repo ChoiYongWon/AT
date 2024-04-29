@@ -13,10 +13,11 @@ import PrevArrow from "../../../../../public/images/PrevArrow.svg"
 // Import Swiper styles
 import 'swiper/css';
 // import 'swiper/css/pagination';
-import { BackButtonStyle, BackButtonWrapperStyle, CountStyle, ImageCarouselWrapperStyle, ImageStyle, NextButtonStyle, NextButtonWrapperStyle, PrevButtonStyle, PrevButtonWrapperStyle, SliderStyle, SwiperStyle,  } from "./style.css";
+import { BackButtonStyle, BackButtonWrapperStyle, CountStyle, ImageCarouselWrapperStyle, ImageStyle, NextButtonWrapperStyle, PrevButtonWrapperStyle, SliderStyle, SwiperStyle,  } from "./style.css";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import IconButton from "@/app/_common/component/IconButton";
 
 
 type Props = {
@@ -48,15 +49,11 @@ const ImageCarousel = ({
             <div className={CountStyle}>
                 {page+1} / {images.length}
             </div>
-            <button className={BackButtonWrapperStyle} onClick={()=>router.back()}>
-                <Image src={PrevArrow} alt="" className={BackButtonStyle}/>
-            </button>
-            <button className={NextButtonWrapperStyle} onClick={onNextClick} disabled={page == images.length - 1}>
-                <Image src={NextArrow} alt="" className={NextButtonStyle}/>
-            </button>
-            <button className={PrevButtonWrapperStyle} onClick={onPrevClick} disabled={page == 0}>
-                <Image src={PrevArrow} alt="" className={PrevButtonStyle}/>
-            </button>
+
+            <IconButton size="34px" className={BackButtonWrapperStyle} type="prev" onClick={()=>router.back()}/>
+            <IconButton size="30px" className={NextButtonWrapperStyle} type="next" disabled={page == images.length - 1} onClick={onNextClick}/>
+            <IconButton size="30px" className={PrevButtonWrapperStyle} type="prev" disabled={page == 0} onClick={onPrevClick}/>
+            
             <Swiper
                 modules={[A11y]}
                 className={`${SwiperStyle} ${className}`} 

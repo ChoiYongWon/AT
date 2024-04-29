@@ -12,6 +12,7 @@ import { useSearchAddress } from "@/app/_common/query/get/useSearchAddress"
 import { useRecoilState } from "recoil"
 import { addressState } from "@/app/add/recoil"
 import Loading from "@/app/_common/component/Loading"
+import IconButton from "@/app/_common/component/IconButton"
 
 type Props = {
     style ?: any
@@ -101,7 +102,8 @@ const AddressForm = ({style}: Props) => {
                         <Loading className={LoadingWrapperStyle}/>
                         // <div className={LoadingWrapperStyle}><Image src={LoadingGif} alt="loading" className={LoadingStyle}/></div> 
                         : 
-                        <div className={SearchButtonStyleWrapper}><Image src={SearchIcon} alt="search"/></div>
+                        <IconButton type="search" size="34px"/>
+                        // <div className={SearchButtonStyleWrapper}><Image src={SearchIcon} alt="search"/></div>
                     }
                 </>
             }

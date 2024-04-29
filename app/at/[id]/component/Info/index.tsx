@@ -3,7 +3,7 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { atDataSelector, atDataState, loadingState } from "../../recoil";
 import { GetATData } from "@/app/_common/query/get/useGetAT";
-import { AddressStyle, AddressWrapperStyle, AuthorInfoStyle, BodyStyle, CategoryStyle, CategoryWrapperStyle, DividerStyle, EditStyle, EditWrapperStyle, InfoWrapperStyle, MapButtonImageStyle, MapButtonStyle, MetaInfoWrapperStyle, ReportStyle, TitleStyle, TitleWrapperStyle } from "./style.css";
+import { AddressStyle, AddressWrapperStyle, AuthorInfoStyle, BodyStyle, CategoryStyle, CategoryWrapperStyle, DividerStyle, EditStyle, EditWrapperStyle, InfoWrapperStyle, MetaInfoWrapperStyle, ReportStyle, TitleStyle, TitleWrapperStyle } from "./style.css";
 import NextArrow from "../../../../../public/images/NextArrow.svg"
 import Image from "next/image";
 import Skeleton from 'react-loading-skeleton'
@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { selectedAreaState } from "@/app/[[...map]]/recoil";
+import IconButton from "@/app/_common/component/IconButton";
 
 type Props = {
     className?: any;
@@ -55,7 +56,7 @@ const Info = ({
                 }
                 </div>
                 {
-                        isLoading || initialLoading ? <Skeleton circle style={{width: "34px", height: "34px"}}/> :  <button className={MapButtonStyle}><Image src={NextArrow} alt="" className={MapButtonImageStyle}/></button>
+                        isLoading || initialLoading ? <Skeleton circle style={{width: "34px", height: "34px"}}/> :  <IconButton size="34px" type="next" onClick={()=>alert("구현중")}/>
                 }
                 
             </div>

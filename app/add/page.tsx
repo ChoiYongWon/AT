@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import { CancelButtonLayout, SubTitleStyle, TitleStyle } from "./style.css";
-import CancelButton from "../_common/component/CancelButton";
 import ImageForm from "./component/ImageForm";
 import CategoryForm from "./component/CategoryForm";
 import AddressForm from "./component/AddressForm";
@@ -8,12 +7,13 @@ import DetailForm from "./component/DetailForm";
 import SubmitButton from "./component/SubmitButton";
 import MapForm from "./component/MapForm";
 import Form from "./component/Form";
+import CancelButton from "./component/CancelButton";
 
 export default async function AddPage() {
   return (
     <>
       <div className={CancelButtonLayout}>
-        <CancelButton />
+        <CancelButton/>
       </div>
       <Form>
 

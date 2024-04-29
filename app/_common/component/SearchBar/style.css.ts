@@ -66,7 +66,7 @@ export const SearchIconLabelStyle = style({
 export const SearchIconWrapperStyle = style({
   height: "100%",
   aspectRatio: "1/1",
-  borderRadius: "30px",
+  // borderRadius: "30px",
   zIndex: "1",
   outline: 'none',
   WebkitTapHighlightColor: 'transparent'

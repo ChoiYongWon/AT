@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import {
-  EmptyProfileImageStyle,
   InputWrapperStyle,
   LogoStyle,
   ProfileImageWrapperStyle,
@@ -21,7 +20,7 @@ import { useDetectClickOutside } from "react-detect-click-outside";
 import { setFocusTimeout } from "@toss/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import PrevButton from "../PrevButton";
+import IconButton from "../IconButton";
 
 type Props = {
   title: string | null | undefined;
@@ -90,6 +89,10 @@ const SearchBar = ({
     if(pathname != '/') router.push("/")
   }
 
+  const onPrevClick = () => {
+    router.back()
+  }
+
   return (
     <>
       <div
@@ -100,7 +103,7 @@ const SearchBar = ({
 
         {
           state ? 
-          <PrevButton></PrevButton>
+          <IconButton size="34px" type="prev" onClick={onPrevClick}/>
           :
           image ? (
             <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
@@ -121,6 +124,7 @@ const SearchBar = ({
             className={SearchIconLabelStyle}
             onClick={onSearchBtnClick}
           >
+            {/* <IconButton size="34px" className={SearchIconWrapperStyle} type="search"/> */}
             <Image src={SearchIcon} alt="" className={SearchIconStyle} />
           </label>
           <input

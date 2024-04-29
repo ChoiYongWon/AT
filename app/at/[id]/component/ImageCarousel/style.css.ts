@@ -24,14 +24,6 @@ export const ImageStyle = style({
 })
 
 export const NextButtonWrapperStyle = style({
-    width: "30px",
-    height: "30px",
-    border: `${vars.color.strokeBlack} 1px solid`,
-    borderRadius: "100px",
-    backgroundColor: vars.color.white,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     position: "absolute",
     top: "calc(50% - 15px)",
     right: "12px",
@@ -42,21 +34,7 @@ export const NextButtonWrapperStyle = style({
     }
 })
 
-export const NextButtonStyle = style({
-    width: "15px",
-    height: "15px"
-})
-
-
 export const PrevButtonWrapperStyle = style({
-    width: "30px",
-    height: "30px",
-    border: `${vars.color.strokeBlack} 1px solid`,
-    borderRadius: "100px",
-    backgroundColor: vars.color.white,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     position: "absolute",
     top: "calc(50% - 15px)",
     left: "12px",
@@ -67,21 +45,8 @@ export const PrevButtonWrapperStyle = style({
     }
 })
 
-export const PrevButtonStyle = style({
-    width: "15px",
-    height: "15px"
-})
-
 
 export const BackButtonWrapperStyle = style({
-    width: "36px",
-    height: "36px",
-    border: `${vars.color.strokeBlack} 1px solid`,
-    borderRadius: "100px",
-    backgroundColor: vars.color.white,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     position: "absolute",
     top: "12px",
     left: "12px",

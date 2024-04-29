@@ -8,7 +8,10 @@ export const ButtonStyle = style({
   outline: 'none',
   WebkitTapHighlightColor: 'transparent',
   userSelect: 'none',
-  backgroundColor: vars.color.white
+  backgroundColor: vars.color.white,
+  ":disabled": {
+    opacity: "0.2"
+}
 });
 
 export const ButtonLinkStyle = style({
@@ -22,6 +25,18 @@ export const ButtonLinkStyle = style({
 });
 
 export const ButtonImageStyle = style({
-  width: "14.5px",
-  height: "14.5px",
+  width: "47%",
+  height: "47%",
 });
+
+export const CancelButtonImageStyle = style({
+  width: "40%",
+  height: "40%",
+});
+
+export const SearchButtonImageStyle = style({
+  width: "60%",
+  height: "60%",
+});
+
+
