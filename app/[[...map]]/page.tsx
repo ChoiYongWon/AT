@@ -1,7 +1,7 @@
-import AddButton from "../_common/component/AddButton";
 import PageAnimateOpacity from "../_common/provider/PageAnimate/PageAnimateOpacity";
 import ContentManagePage from "./view";
 import { MainLayoutStyle } from "./style.css";
+import AddButton from "./component/AddButton";
 
 export default function Home() {
 
