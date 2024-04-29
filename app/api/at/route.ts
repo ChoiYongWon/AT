@@ -145,6 +145,16 @@ export async function GET(request: NextRequest) {
         id
       }
     })
+    await prisma.spot.update({
+      where:{
+        id
+      },
+      data: {
+        view_count: {
+          increment: 1
+        }
+      }
+    })
 
     return new NextResponse(
       JSON.stringify({ data: result, message: "데이터 조회가 성공적으로 수행되었습니다." }),
