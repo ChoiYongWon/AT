@@ -3,18 +3,18 @@ import { style } from "@vanilla-extract/css";
 
 export const ImageCarouselWrapperStyle = style({
     width: "100%",
-    aspectRatio: "9 / 10",
+    aspectRatio: "1 / 1",
     position: "relative"
 })
 
 export const SwiperStyle = style({
     width: "100%",
-    aspectRatio: "9 / 10",
+    aspectRatio: "1 / 1",
 })
 
 export const SliderStyle = style({
     width: "100% !important",
-    aspectRatio: "9 / 10",
+    aspectRatio: "1 / 1",
 })
 
 export const ImageStyle = style({
