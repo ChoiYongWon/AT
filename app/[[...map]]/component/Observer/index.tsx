@@ -40,6 +40,7 @@ const Observer = ({className}: Props) => {
     }, [data])
 
     useEffect(()=>{
+        console.log('INTERSECTING', isIntersecting)
         if(isIntersecting){
             fetchNextPage().then(()=>setIntersecting(false))
             
