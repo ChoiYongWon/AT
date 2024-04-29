@@ -28,6 +28,6 @@ export const useObserver = ({options}: Props) => {
         }
     }, [])
     
-    return [isIntersecting, setIntersecting, targetRef]
+    return [isIntersecting, targetRef]
 
 }
