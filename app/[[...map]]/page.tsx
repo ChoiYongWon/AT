@@ -7,9 +7,9 @@ export default function Home() {
 
   return (
     <>
-      <PageAnimateOpacity key="/" className={MainLayoutStyle}>
+      <div className={MainLayoutStyle}>
         <ContentManagePage/>
-      </PageAnimateOpacity>
+      </div>
       <AddButton />
     </>
   );
