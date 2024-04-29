@@ -14,6 +14,7 @@ import {
 import { useMutateUserInfo } from "@/app/_common/query/put/useMutateUserInfo";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
+import ConfirmButton from "@/app/_common/component/ConfirmButton";
 
 const Form = () => {
   const router = useRouter();
@@ -68,10 +69,12 @@ const Form = () => {
           errorMessage={validIdError?.message || ""}
         />
 
-        <Button
+        <ConfirmButton
           disabled={isValidIdError || inputName.length == 0}
           loading={isValidIdLoading || isUpdateUserInfoLoading}
           onClick={onSubmit}
+          style={{maxWidth: "280px"}}
+          text="완료"
         />
       </form>
       <div className={LogoutLayoutStyle} style={{ marginTop: "18px" }}>

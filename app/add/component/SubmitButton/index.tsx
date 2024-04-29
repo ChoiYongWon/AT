@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import Lottie from 'lottie-react'
 import loadingJson from '../../../../public/assets/loading.json'
 import { useQueryClient } from "@tanstack/react-query";
+import ConfirmButton from "@/app/_common/component/ConfirmButton";
 
 
 
@@ -119,7 +120,8 @@ const SubmitButton = ({ style }: Props) => {
 
     return (
             <div style={style} className={ButtonWrapperStyle}> 
-                <motion.button className={ButtonStyle} onClick={onClick} disabled={isDisabled} {...(!isDisabled ? { whileTap: { scale: 0.9, transition: { duration: 0.08 } } } : {})}>
+                <ConfirmButton loading={loading} onClick={onClick} disabled={isDisabled} text="추가하기" style={{height: "50px", fontSize: "18px" }}/>
+                {/* <motion.button className={ButtonStyle} onClick={onClick} disabled={isDisabled} {...(!isDisabled ? { whileTap: { scale: 0.9, transition: { duration: 0.08 } } } : {})}>
                     
                     {(loading) ? (
                     <Lottie
@@ -128,7 +130,7 @@ const SubmitButton = ({ style }: Props) => {
                         className={LoadingLottieStyle}
                     />
                     ) : ( "추가 하기" )}         
-                </motion.button>
+                </motion.button> */}
                 
                 {/* { isPresignedUrlError || isUplaodError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>업로드 에러 {isUplaodError ? uploadError.message : ""}</div> : <></>} */}
                 { errorState.isError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>{errorState.message}</div> : <></>}
