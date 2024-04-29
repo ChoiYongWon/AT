@@ -9,11 +9,11 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <RecoilRootProvider>
+    // <RecoilRootProvider>
       <div className={GridLayoutStyle}>
         {children}
       </div>
-    </RecoilRootProvider>
+    // </RecoilRootProvider>
 
   );
 }

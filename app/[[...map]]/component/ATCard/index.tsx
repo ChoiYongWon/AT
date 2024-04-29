@@ -29,7 +29,8 @@ const ATCard = ({onClick, title, at_id, map_name, images, address, categories, c
             <div className={ATCardImageWrapperStyle}>
                 {
                     images.map((data: any, i)=>{
-                        return <Image key={i} src={data} alt="" width={120} height={120} className={ATCardImageStyle}/>
+                        return <Image key={i} src={data} alt="" width={120} height={120} className={ATCardImageStyle} placeholder="blur"
+                        blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
                     })
                 }
             </div>

@@ -1,13 +1,13 @@
 import { GetATData } from "@/app/_common/query/get/useGetAT";
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export const loadingState = atom({
-    key: "at_loading",
+    key: "/at/loading",
     default: false
 })
 
 export const atDataState = atom<GetATData>({
-    key: "at_data",
+    key: "/at/data",
     default: {
         title: '',
         address: '',
@@ -22,5 +22,19 @@ export const atDataState = atom<GetATData>({
         body: '',
         created_at: '',
         view_count: 0
+    }
+})
+
+export const atDataSelector = selector<GetATData>({
+    key: '/at/data_selector',
+    get: ({get}) => {
+        const at = get(atDataState)
+        const date = new Date(at.created_at)
+        console.log(date)
+        const result = {
+            ...at,
+            created_at: `${date.getFullYear()}. ${date.getMonth()+1}. ${date.getDate()}.`
+        }
+        return result
     }
 })

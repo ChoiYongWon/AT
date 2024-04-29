@@ -76,25 +76,25 @@ export const selectedAreaState = atom<Area | null>({
 
 // 지역별 at count 정보를 담고있는 배열 (서버 respone 그대로), 사용은 atSelector로 사용
 export const atCountState = atom<AT[]>({
-    key: 'at', 
+    key: '/at', 
     default: []
 });
 
 // 입력한 쿼리 input들을 저장하는 상태
 export const atQueryState = atom<string[]>({
-    key: 'at_query', 
+    key: '/at_query', 
     default: []
 });
 
 // reactQuery가 의존하고 있는 상태 (이 상태에 따라 refetch함)
 export const atQueryStageState = atom<string[]>({
-    key: 'at_query_stage', 
+    key: '/at_query_stage', 
     default: []
 });
 
 // at 검색 로딩 상태 저장 SearchBar에서 검색하고 Map에 표시하기 위함
 export const atMapLoadingState = atom<boolean>({
-    key:'at_map_loading',
+    key:'/at_map_loading',
     default: false
 })
 
@@ -104,7 +104,7 @@ type ATUrlType = {
 }
 
 export const atUrlState = atom<ATUrlType>({
-    key: "at_url",
+    key: "/at_url",
     default: {
         name: null,
         at_id: null,
@@ -112,12 +112,12 @@ export const atUrlState = atom<ATUrlType>({
 })
 
 export const atListState = atom<any>({
-    key: "at_list",
+    key: "/at_list",
     default: {}
 })
 
 export const atCountSelector = selector({
-    key: 'at_selector',
+    key: '/at_selector',
     get: ({get}) => {
         const at = get(atCountState)
         const result = at.reduce((acc: any, cur)=> {
@@ -131,7 +131,7 @@ export const atCountSelector = selector({
 })
 
 export const atListSelector = selector({
-    key: 'at_list_selector',
+    key: '/at_list_selector',
     get: ({get}) => {
         const at: any = get(atListState)
         const result = {

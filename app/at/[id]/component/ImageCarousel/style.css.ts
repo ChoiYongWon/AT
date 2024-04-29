@@ -13,7 +13,7 @@ export const SwiperStyle = style({
 })
 
 export const SliderStyle = style({
-    width: "100%",
+    width: "100% !important",
     aspectRatio: "9 / 10",
 })
 
