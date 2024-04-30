@@ -63,7 +63,7 @@ export const ModalButtonStyle = style({
 })
 
 globalStyle(`body:has(${BackgroundStyle})`, {
-    height: "100vh",
+    // height: "100vh",
     overflowY: "hidden",
     // paddingRight: "15px"
 });

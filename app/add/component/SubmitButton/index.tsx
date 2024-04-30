@@ -101,8 +101,8 @@ const SubmitButton = ({ style }: Props) => {
 
 
             // 캐시 초기화
-            queryClient.invalidateQueries({ queryKey: ['/at/count'] })
-            queryClient.invalidateQueries({ queryKey: ['/at/list'] })
+            queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
+            queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
 
 
             alert("등록 완료")

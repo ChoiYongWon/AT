@@ -9,6 +9,7 @@ export const loadingState = atom({
 export const atDataState = atom<GetATData>({
     key: "/at/data",
     default: {
+        id: '',
         title: '',
         address: '',
         categories: [],

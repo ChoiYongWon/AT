@@ -15,6 +15,9 @@ import { selectedAreaState } from "@/app/[[...map]]/recoil";
 import IconButton from "@/app/_common/component/IconButton";
 import Modal from "@/app/_common/component/Modal";
 import ConfirmButton from "@/app/_common/component/ConfirmButton";
+import { useDeleteAT } from "@/app/_common/query/delete/useDeleteAT";
+import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 
 type Props = {
     className?: any;
@@ -26,11 +29,25 @@ const Info = ({
 }: Props) => {
 
     const session = useSession()
-    const { title, user, categories, map, created_at, view_count, body, address } = useRecoilValue(atDataSelector)
-    const [initialLoading, setInitialLoading] = useState(true)
-    const [showModal, setModal] = useState(false)
+    const router = useRouter()
+    const queryClient = useQueryClient()
+
+
+
+    /* Recoil 상태 */
+    const { title, user, categories, map, created_at, view_count, body, address, id } = useRecoilValue(atDataSelector)
     const isLoading = useRecoilValue(loadingState)
     const setSelectedArea = useSetRecoilState(selectedAreaState)
+
+    /* 로컬 상태 */
+    const [initialLoading, setInitialLoading] = useState(true)
+    const [showModal, setModal] = useState(false)
+    const [isDeleteLoading , setDeleteLoading] = useState(false)
+
+    /* API */
+    const {mutateAsync: deleteAT, isPending: isDeleteATPending} = useDeleteAT()
+
+
 
     useEffect(()=>{
         setInitialLoading(isLoading)
@@ -39,6 +56,22 @@ const Info = ({
     const onInfoClick = () => {
         setSelectedArea(null)
     }
+
+    const onDeleteClick = async () => {
+        setDeleteLoading(true)
+        const result = await deleteAT({
+            id
+        })
+        queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
+        queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
+        router.back()
+        setSelectedArea(null)
+        
+    }
+
+    useEffect(()=>{
+        if(!isDeleteATPending) setDeleteLoading(false)
+    }, [isDeleteATPending])
 
 
     return (
@@ -83,7 +116,15 @@ const Info = ({
             </div>
             <div className={DividerStyle} style={{marginBottom: "40px"}}/>
             {
-                isLoading || initialLoading ? <Skeleton count={5} style={{height: "14px", marginBottom: "8px"}}/> :  <p className={BodyStyle}>{body}</p>
+                isLoading || initialLoading ? <Skeleton count={5} style={{height: "14px", marginBottom: "8px"}}/> 
+                :  
+                <>
+                {
+                    body.split("\n").map(data=>{
+                        return <p className={BodyStyle}>{data}</p>
+                    })
+                }
+                </>
             }
             
             <div style={{marginBottom: "24px", marginTop: "50px"}}>
@@ -104,7 +145,7 @@ const Info = ({
                 <Modal.Content>한번 삭제하면 되돌릴 수 없습니다.</Modal.Content>
                 <Modal.ButtonGroup style={{marginTop: "14px"}}>
                     <Modal.Button onClick={()=>setModal(false)}>취소</Modal.Button>
-                    <ConfirmButton style={{flex: 1}} text="삭제"/>
+                    <ConfirmButton onClick={onDeleteClick} loading={isDeleteATPending || isDeleteLoading} style={{flex: 1}} text="삭제"/>
                 </Modal.ButtonGroup>
             </Modal>
         </div>

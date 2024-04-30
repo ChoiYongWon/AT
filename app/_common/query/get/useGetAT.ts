@@ -6,6 +6,7 @@ export type GetATDTO = {
 }
 
 export type GetATData = {
+    id: string,
     title: string;
     address: string;
     categories: {

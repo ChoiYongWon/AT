@@ -4,6 +4,8 @@ import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
 import { SpotDuplicatedError } from "../error/at/SpotDuplicated.error";
 import { InvalidDataError } from "../error/at/InvalidData.error";
+import { S3Client, DeleteObjectsCommand, DeleteObjectsRequest } from "@aws-sdk/client-s3";
+import { fromEnv } from "@aws-sdk/credential-providers";
 
 export type PostBody = {
   mapId: string;
@@ -114,6 +116,7 @@ export async function GET(request: NextRequest) {
     
     const result = await prisma.spot.findUnique({
       select: {
+        id: true,
         title: true,
         address: true,
         categories: {
@@ -158,6 +161,70 @@ export async function GET(request: NextRequest) {
 
     return new NextResponse(
       JSON.stringify({ data: result, message: "데이터 조회가 성공적으로 수행되었습니다." }),
+    { status: 200, headers: { "content-type": "application/json" } }
+  )
+
+  } catch (e) {
+    return InternalServerError(e);
+  }
+}
+
+
+type DeleteBody = {
+  id: string
+}
+
+const client = new S3Client({
+  region: 'ap-northeast-2',
+  credentials: fromEnv(),
+  // endpoint: "https://s3.a-spot-thur.app/",
+  // bucketEndpoint: true
+});
+
+export async function DELETE(request: NextRequest) {
+  try {
+
+    const session = await useAuth();
+    const body: DeleteBody = await request.json()
+
+    const result =  await prisma.$transaction(async (tx) => {
+
+      const deleteResponse = await tx.spot.delete({
+        where: {
+          id: body.id
+        },
+        select: {
+          images: {
+            select: {
+              url: true
+            }
+          }
+        }
+      })
+
+      const imageUrls = deleteResponse.images.map(image=>{
+        const Key = `user/${image.url.split("/").at(-2)}/${image.url.split("/").at(-1)}`
+        return {
+          Key
+        }
+      })
+
+      const input: DeleteObjectsRequest = { // DeleteObjectsRequest
+        Bucket: "a-spot-thur", // required
+        Delete: { // Delete
+          Objects: [ // ObjectIdentifierList // required
+            ...imageUrls
+          ],
+        },
+      };
+      const command = new DeleteObjectsCommand(input);
+      const response = await client.send(command);
+
+      return response
+    })
+
+    return new NextResponse(
+      JSON.stringify({ data: true, message: "데이터가 성공적으로 삭제되었습니다." }),
     { status: 200, headers: { "content-type": "application/json" } }
   )
 

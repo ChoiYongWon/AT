@@ -14,6 +14,12 @@ export type PresignedUrlBody = {
   images: ImageMetaData[];
 };
 
+const client = new S3Client({
+  region: 'ap-northeast-2',
+  credentials: fromEnv(),
+  // endpoint: "https://s3.a-spot-thur.app/",
+  // bucketEndpoint: true
+});
 
 export async function POST(req: Request) {
   try {
@@ -22,12 +28,6 @@ export async function POST(req: Request) {
     const body: PresignedUrlBody = await req.json()
     const result: any = {}
 
-    const client = new S3Client({
-        region: 'ap-northeast-2',
-        credentials: fromEnv(),
-        // endpoint: "https://s3.a-spot-thur.app/",
-        // bucketEndpoint: true
-    });
     const Conditions: any = [
       ["eq", "$acl", "public-read"], 
       ["eq", "$bucket", process.env.AWS_S3_BUCKET as string], // 버킷
