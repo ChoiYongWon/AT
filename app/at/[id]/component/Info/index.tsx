@@ -154,7 +154,7 @@ const Info = ({
                 <Modal.Content>한번 삭제하면 되돌릴 수 없습니다.</Modal.Content>
                 <Modal.ButtonGroup style={{marginTop: "14px"}}>
                     <Modal.Button onClick={()=>setModal(false)}>취소</Modal.Button>
-                    <ConfirmButton onClick={onDeleteClick} loading={isDeleteATPending || isDeleteLoading} style={{flex: 1}} text="삭제"/>
+                    <ConfirmButton onClick={onDeleteClick} loading={isDeleteATPending || isDeleteLoading} style={{flex: 1, width: 'unset'}} text="삭제"/>
                 </Modal.ButtonGroup>
             </Modal>
         </div>
