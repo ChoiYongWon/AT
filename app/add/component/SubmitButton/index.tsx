@@ -120,7 +120,7 @@ const SubmitButton = ({ style }: Props) => {
 
     return (
             <div style={style} className={ButtonWrapperStyle}> 
-                <ConfirmButton loading={loading} onClick={onClick} disabled={isDisabled} text="추가하기" style={{height: "50px", fontSize: "18px" }}/>
+                <ConfirmButton loading={loading} onClick={onClick} disabled={isDisabled} text="추가하기" style={{height: "50px", fontSize: "18px", marginTop: "8px" }}/>
                 {/* <motion.button className={ButtonStyle} onClick={onClick} disabled={isDisabled} {...(!isDisabled ? { whileTap: { scale: 0.9, transition: { duration: 0.08 } } } : {})}>
                     
                     {(loading) ? (

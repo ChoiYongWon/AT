@@ -13,6 +13,8 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { selectedAreaState } from "@/app/[[...map]]/recoil";
 import IconButton from "@/app/_common/component/IconButton";
+import Modal from "@/app/_common/component/Modal";
+import ConfirmButton from "@/app/_common/component/ConfirmButton";
 
 type Props = {
     className?: any;
@@ -26,6 +28,7 @@ const Info = ({
     const session = useSession()
     const { title, user, categories, map, created_at, view_count, body, address } = useRecoilValue(atDataSelector)
     const [initialLoading, setInitialLoading] = useState(true)
+    const [showModal, setModal] = useState(false)
     const isLoading = useRecoilValue(loadingState)
     const setSelectedArea = useSetRecoilState(selectedAreaState)
 
@@ -67,10 +70,10 @@ const Info = ({
                 
                 <div className={EditWrapperStyle}>
                     {
-                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  session.data?.user.at_id == user.at_id ? <span className={EditStyle}>삭제</span> : <></>
+                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  session.data?.user.at_id == user.at_id ? <button onClick={()=>setModal(true)} className={EditStyle}>삭제</button> : <></>
                     }
                     {
-                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :   session.data?.user.at_id == user.at_id ? <span className={EditStyle}>수정</span> : <></>
+                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :   session.data?.user.at_id == user.at_id ? <button className={EditStyle}>수정</button> : <></>
                     }
                     {
                         isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  <>조회 {view_count.toLocaleString()}</>
@@ -96,6 +99,14 @@ const Info = ({
                     })
                 }
             </div>
+            <Modal show={showModal}>
+                <Modal.Title>정말 삭제할까요?</Modal.Title>
+                <Modal.Content>한번 삭제하면 되돌릴 수 없습니다.</Modal.Content>
+                <Modal.ButtonGroup style={{marginTop: "14px"}}>
+                    <Modal.Button onClick={()=>setModal(false)}>취소</Modal.Button>
+                    <ConfirmButton style={{flex: 1}} text="삭제"/>
+                </Modal.ButtonGroup>
+            </Modal>
         </div>
     )
 }

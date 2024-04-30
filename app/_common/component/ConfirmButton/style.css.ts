@@ -3,8 +3,8 @@ import { style } from "@vanilla-extract/css";
 
 export const ButtonStyle = style({
   padding: "0 18px",
-  //   border: `solid 1px ${vars.color.strokeBlack}`,
-  borderRadius: "6px",
+  border: `solid 1px ${vars.color.strokeBlack}`,
+  borderRadius: "5px",
   width: "100%",
 //   maxWidth: "280px",
   height: "40px",
@@ -12,7 +12,7 @@ export const ButtonStyle = style({
   alignItems: "center",
   justifyContent: "center",
   boxSizing: "border-box",
-  marginTop: "8px",
+  // marginTop: "8px",
   color: vars.color.white,
   backgroundColor: vars.color.primary,
 

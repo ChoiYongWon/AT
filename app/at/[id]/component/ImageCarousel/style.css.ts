@@ -10,6 +10,8 @@ export const ImageCarouselWrapperStyle = style({
 export const SwiperStyle = style({
     width: "100%",
     aspectRatio: "1 / 1",
+    backgroundColor: "#e5e5e6"
+
 })
 
 export const SliderStyle = style({

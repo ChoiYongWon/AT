@@ -30,7 +30,6 @@ export const atDataSelector = selector<GetATData>({
     get: ({get}) => {
         const at = get(atDataState)
         const date = new Date(at.created_at)
-        console.log(date)
         const result = {
             ...at,
             created_at: `${date.getFullYear()}. ${date.getMonth()+1}. ${date.getDate()}.`

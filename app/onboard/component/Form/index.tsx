@@ -73,7 +73,7 @@ const Form = () => {
           disabled={isValidIdError || inputName.length == 0}
           loading={isValidIdLoading || isUpdateUserInfoLoading}
           onClick={onSubmit}
-          style={{maxWidth: "280px"}}
+          style={{maxWidth: "280px",  marginTop: "8px"}}
           text="완료"
         />
       </form>

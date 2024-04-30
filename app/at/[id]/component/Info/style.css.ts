@@ -34,8 +34,18 @@ export const AddressWrapperStyle = style({
 
 export const TitleStyle = style({
     fontSize: "24px",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
     fontWeight: 900,
     color: vars.color.fontBlack,
+
+    "@media": {
+        "screen and (max-width: 500px)": {
+            maxWidth: "300px",
+        },
+    },
+
 })
 
 export const AddressStyle = style({
