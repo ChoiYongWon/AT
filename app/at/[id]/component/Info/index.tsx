@@ -68,7 +68,7 @@ const Info = ({
             queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
             queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
             router.back()
-            setSelectedArea(null)
+            // setSelectedArea(null)
             toast("삭제 성공")
         }catch(e){
             setModal(false)
