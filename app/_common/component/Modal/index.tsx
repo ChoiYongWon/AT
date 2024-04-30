@@ -1,6 +1,7 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic"
 import { BackgroundStyle, ModalButtonGroupStyle, ModalButtonStyle, ModalContentStyle, ModalTitleStyle, ModalWrapperStyle } from "./style.css"
 import { AnimatePresence, motion } from "framer-motion"
+import { useEffect } from "react"
 
 type Props = {
     className?: any
@@ -11,6 +12,24 @@ type Props = {
 }
 
 const Modal = ({className, style, show, setShow, children}: Props) => {
+
+    useEffect(()=>{
+
+        if(show){
+            document.body.style.top = `-${window.scrollY}px`
+            document.body.style.position = 'fixed'
+            document.body.style.overflow = 'hidden'
+
+        }
+        else{
+            const scrollY = document.body.style.top
+            document.body.style.overflow = 'unset'
+            document.body.style.position = ''
+            document.body.style.top = ''
+            window.scrollTo(0, parseInt(scrollY || '0') * -1)
+        }
+            
+    }, [show])
 
 
     return (
