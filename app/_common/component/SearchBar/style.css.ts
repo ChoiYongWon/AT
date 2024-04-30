@@ -18,8 +18,9 @@ export const SearchBarWrapperStyle = style({
 });
 
 export const ProfileImageWrapperStyle = style({
-  height: "100%",
-  aspectRatio: "1/1",
+  height: "34px",
+  width: "34px",
+  // aspectRatio: "1/1",
   borderRadius: "100px",
   overflow: "hidden",
   outline: 'none',
