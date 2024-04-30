@@ -62,13 +62,13 @@ const Info = ({
     const onDeleteClick = async () => {
         try{
             setDeleteLoading(true)
-            // const result = await deleteAT({
-            //     id
-            // })
-            // queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
-            // queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
-            // router.back()
-            // setSelectedArea(null)
+            const result = await deleteAT({
+                id
+            })
+            queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
+            queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
+            router.back()
+            setSelectedArea(null)
             toast("삭제 성공")
         }catch(e){
             setModal(false)
