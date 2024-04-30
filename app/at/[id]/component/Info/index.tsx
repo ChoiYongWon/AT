@@ -130,6 +130,7 @@ const Info = ({
                 <>
                 {
                     body.split("\n").map((data, i)=>{
+                        if(data == "") return <br key={i}></br>
                         return <p key={i} className={BodyStyle}>{data}</p>
                     })
                 }

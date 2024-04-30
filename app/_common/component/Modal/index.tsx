@@ -19,23 +19,33 @@ const Modal = ({className, style, show, setShow, children}: Props) => {
             document.body.style.top = `-${window.scrollY}px`
             document.body.style.position = 'fixed'
             document.body.style.overflow = 'hidden'
+            document.body.style.width = '100%'
 
         }
         else{
             const scrollY = document.body.style.top
             document.body.style.overflow = 'unset'
-            document.body.style.position = ''
-            document.body.style.top = ''
+            document.body.style.width = 'unset'
+            document.body.style.position = 'unset'
+            document.body.style.top = 'unset'
             window.scrollTo(0, parseInt(scrollY || '0') * -1)
         }
 
-        return ()=>{
-            document.body.style.overflow = 'unset'
-            document.body.style.position = ''
-            document.body.style.top = ''
-        }
+
             
     }, [show])
+
+    useEffect(()=>{
+        return ()=>{
+            const scrollY = document.body.style.top
+            document.body.style.overflow = 'unset'
+            document.body.style.width = 'unset'
+            document.body.style.position = ''
+            document.body.style.top = ''
+            window.scrollTo(0, parseInt(scrollY || '0') * -1)
+
+        }
+    }, [])
 
 
     return (
