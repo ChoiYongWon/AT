@@ -12,11 +12,10 @@ export const BackgroundStyle = style({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    overflow: "auto",
-    overscrollBehavior: "contain"
 })
 
 export const ModalWrapperStyle = style({
+    flex: 0,
     userSelect: 'none',
     opacity: 1,
     minWidth: "260px",
@@ -28,11 +27,10 @@ export const ModalWrapperStyle = style({
     flexDirection: "column",
     gap: "12px",
     fontSize: "14px",
-    overscrollBehavior: "contain",
     padding: "14px",
     paddingTop: "28px",
     boxSizing: "border-box",
-    borderRadius: "8px"
+    borderRadius: "8px",
 })
 
 export const ModalTitleStyle = style({
