@@ -22,7 +22,7 @@ const SERVER_ERROR = {
 
 export const fetcher = (data: CreateMapDTO) =>
   atAxios.post(`${URL}`, { ...data }).then(({ data }) => data).catch((e:any)=>{
-    if(e?.response?.data) throw e.response.data
+    if(e?.data) throw e.data
     throw SERVER_ERROR
   });
 

@@ -6,10 +6,13 @@ type Props = {
     className?: any
     style?: any
     show: boolean
+    setShow: (status: boolean)=>void
     children: any
 }
 
-const Modal = ({className, style, show, children}: Props) => {
+const Modal = ({className, style, show, setShow, children}: Props) => {
+
+
     return (
         <>
             <AnimatePresence mode="wait">
@@ -17,12 +20,13 @@ const Modal = ({className, style, show, children}: Props) => {
             {
                 show ? 
                     <motion.div 
+                        onClick={()=>setShow(false)}
                         key={'modal'}
                         initial={{ y: 5, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -5, opacity: 0 }}
                         transition={{ duration: 0.2 }} className={BackgroundStyle}>
-                            <div className={ModalWrapperStyle}>
+                            <div className={ModalWrapperStyle} onClick={(e)=>e.stopPropagation()}>
                                 {children}
                             </div>
                     </motion.div>

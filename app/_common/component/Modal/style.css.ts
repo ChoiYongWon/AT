@@ -17,6 +17,7 @@ export const BackgroundStyle = style({
 })
 
 export const ModalWrapperStyle = style({
+    userSelect: 'none',
     opacity: 1,
     minWidth: "260px",
     width: "auto",

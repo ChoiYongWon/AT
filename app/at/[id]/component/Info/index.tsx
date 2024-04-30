@@ -18,6 +18,8 @@ import ConfirmButton from "@/app/_common/component/ConfirmButton";
 import { useDeleteAT } from "@/app/_common/query/delete/useDeleteAT";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast/headless";
+
 
 type Props = {
     className?: any;
@@ -58,14 +60,21 @@ const Info = ({
     }
 
     const onDeleteClick = async () => {
-        setDeleteLoading(true)
-        const result = await deleteAT({
-            id
-        })
-        queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
-        queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
-        router.back()
-        setSelectedArea(null)
+        try{
+            setDeleteLoading(true)
+            const result = await deleteAT({
+                id
+            })
+            queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
+            queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
+            router.back()
+            setSelectedArea(null)
+            toast("삭제 성공")
+        }catch(e){
+            setModal(false)
+            toast.error("삭제 실패")
+
+        }
         
     }
 
@@ -120,8 +129,8 @@ const Info = ({
                 :  
                 <>
                 {
-                    body.split("\n").map(data=>{
-                        return <p className={BodyStyle}>{data}</p>
+                    body.split("\n").map((data, i)=>{
+                        return <p key={i} className={BodyStyle}>{data}</p>
                     })
                 }
                 </>
@@ -140,7 +149,7 @@ const Info = ({
                     })
                 }
             </div>
-            <Modal show={showModal}>
+            <Modal show={showModal} setShow={setModal}>
                 <Modal.Title>정말 삭제할까요?</Modal.Title>
                 <Modal.Content>한번 삭제하면 되돌릴 수 없습니다.</Modal.Content>
                 <Modal.ButtonGroup style={{marginTop: "14px"}}>

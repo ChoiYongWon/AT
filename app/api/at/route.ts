@@ -183,7 +183,6 @@ const client = new S3Client({
 
 export async function DELETE(request: NextRequest) {
   try {
-
     const session = await useAuth();
     const body: DeleteBody = await request.json()
 

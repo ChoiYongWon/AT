@@ -12,6 +12,7 @@ createGlobalTheme(":root", vars, {
     point_1: "#04C75B",
     point_2: "#FAE100",
     point_3: "#4285F4",
+    point_4: "#EA4336",
     error: "#ee2e3d"
   },
 

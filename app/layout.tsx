@@ -8,6 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import QueryProvider from "./_common/provider/QueryProvider";
 import AnimateProvider from "./_common/provider/AnimateProvider";
 import RecoilRootProvider from "./_common/provider/RecoilRootProvider";
+import Toast from "./_common/component/Toast";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -39,10 +40,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Toast/>
         <QueryProvider>
           <AuthContext>
             <RecoilRootProvider>
-              <AnimateProvider>{children}</AnimateProvider>
+              <AnimateProvider>
+                {children}
+              </AnimateProvider>
             </RecoilRootProvider>
           </AuthContext>
         </QueryProvider>
