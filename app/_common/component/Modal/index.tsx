@@ -28,6 +28,12 @@ const Modal = ({className, style, show, setShow, children}: Props) => {
             document.body.style.top = ''
             window.scrollTo(0, parseInt(scrollY || '0') * -1)
         }
+
+        return ()=>{
+            document.body.style.overflow = 'unset'
+            document.body.style.position = ''
+            document.body.style.top = ''
+        }
             
     }, [show])
 
