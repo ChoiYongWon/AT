@@ -23,6 +23,7 @@ export const ButtonStyle = style({
 });
 
 export const LoadingLottieStyle = style({
-  width: "100%",
+  // width: "100%",
+  width: "auto",
   height: "100%",
 })
