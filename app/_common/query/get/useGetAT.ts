@@ -13,10 +13,12 @@ export type GetATData = {
         name: string;
     }[],
     map: {
+        id: string;
         name: string;
     },
     user: {
         at_id: string;
+        id: string;
     },
     images: {
         url: string;

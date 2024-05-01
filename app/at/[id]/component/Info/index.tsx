@@ -65,9 +65,13 @@ const Info = ({
             const result = await deleteAT({
                 id
             })
+
+            router.back()
+
             queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
             queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
-            router.back()
+            queryClient.invalidateQueries({ queryKey: ['/at', id],  refetchType: 'all' })
+
             // setSelectedArea(null)
             toast("삭제 성공")
         }catch(e){
@@ -115,7 +119,7 @@ const Info = ({
                         isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  session.data?.user.at_id == user.at_id ? <button onClick={()=>setModal(true)} className={EditStyle}>삭제</button> : <></>
                     }
                     {
-                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :   session.data?.user.at_id == user.at_id ? <button className={EditStyle}>수정</button> : <></>
+                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :   session.data?.user.at_id == user.at_id ? <Link href={`/edit/${id}`} className={EditStyle} prefetch={true}>수정</Link> : <></>
                     }
                     {
                         isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  <>조회 {view_count.toLocaleString()}</>

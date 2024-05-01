@@ -23,7 +23,7 @@ export const fetcher = (query: string) =>
     params: {
       query
     }
-  }).then(({ data }) => data);
+  }).then(({ data }) => data)
 
 export const useSearchAddress = ({ query }: GetAddressDTO, options: UseQueryOptions | any): any => {
   return useQuery<GetAddressResponseDTO>({

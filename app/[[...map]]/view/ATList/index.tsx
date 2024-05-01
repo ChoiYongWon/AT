@@ -1,14 +1,11 @@
 'use client'
 
 import { useGhostHistory } from "@/app/_common/hook/useGhostHistory"
-import { useObserver } from "@/app/_common/hook/useObserver"
-import { AnimatePresence, motion } from "framer-motion"
-import { forwardRef, useEffect, useRef } from "react"
 import { useRecoilState, useRecoilValue } from "recoil"
 import { ATListCountStyle, ATListWrapper } from "./style.css"
 import ATCard from "../../component/ATCard"
 import Observer from "../../component/Observer"
-import { atListSelector, atListState, selectedAreaState } from "../../recoil"
+import { atListSelector, atListState, atUrlSelector, selectedAreaState } from "../../recoil"
 
 type Props = {
     className?: any
@@ -22,17 +19,19 @@ export const ATListView = ({className}: Props) => {
     const atListRawData  = useRecoilValue(atListState)
     const { use } = useGhostHistory()
 
+    // useEffect(()=>{
+    //     console.log(cache)
+    // }, [cache])
 
-    useEffect(()=>{
-        // console.log(atListData)
-    }, [atListData])
+    // useEffect(()=>{
+    //     // console.log(atListData)
+    // }, [atListData])
 
-    useEffect(()=>{
+    // useEffect(()=>{
         // console.log(atListRawData)
-    }, [atListRawData])
+    // }, [atListRawData])
 
     use({onPopState: ()=>setSelectedArea(null)}) // useGhostHistory를 사용하는 곳
-    // TODO SearchBar 상태 + url 상태 + selectedArea 상태에 따라 쿼리문 요청
 
     return (
 

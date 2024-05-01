@@ -27,27 +27,27 @@ export type Map = {
 };
 
 export const mapState = atom<Map>({
-    key: 'map', 
+    key: '/add/map', 
     default: {id: null, name: null} 
 });
 
 export const imageState = atom<ImageType[]>({
-    key: 'image', 
+    key: '/add/image', 
     default: [], 
 });
 
 export const categoryState = atom<Category[]>({
-    key: 'category', 
+    key: '/add/category', 
     default: [], 
 });
 
 export const addressState = atom<Address>({
-    key: 'address', 
+    key: '/add/address', 
     default: {enable: false, name: "", address: ""}, 
 });
 
 export const detailState = atom<string>({
-    key: 'detail', 
+    key: '/add/detail', 
     default: "", 
 });
 
@@ -67,7 +67,7 @@ export const detailState = atom<string>({
 // }
 
 export const formSelector = selector({
-    key: 'form',
+    key: '/add/form',
     get: ({get}) => {
         const map = get(mapState)
         const image = get(imageState)
@@ -88,7 +88,7 @@ export const formSelector = selector({
 })
 
 export const imageMapSelector = selector({
-    key: 'imageMap',
+    key: '/add/imageMap',
     get: ({get}) => {
         const image = get(imageState)
         const result:any = {}

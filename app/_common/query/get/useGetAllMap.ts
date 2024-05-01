@@ -25,7 +25,7 @@ export const fetcher = ({
     params: {
       userId
     }
-  }).then(({ data }) => data);
+  }).then(({ data }) => data)
 
 export const useGetAllMap = (data: GetAllMapDTO, options?: UseQueryOptions | any): any => {
   return useQuery<GetAllMapResponseDTO>({

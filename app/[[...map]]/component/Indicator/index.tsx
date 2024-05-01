@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CardSyle, CountStyle, IndicatorTapGroupStyle, IndicatorWrapperStyle, LoadingStyle, NameStyle } from "./style.css"
 import { useCountUp } from 'react-countup';
 import { AnimatePresence, motion } from "framer-motion";
@@ -42,7 +42,7 @@ const Indicator = ({x, y, name, count, onClick, isLoading}: Props) => {
                         isLoading ?  
                         <motion.rect 
                             // key={name+"loading"} 
-                            initial={{ y: 0, opacity: 0 }}
+                            initial={{ y: 0, opacity: 1 }}
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: -5, opacity: 0 }}
                             transition={{ duration: 0.2 }} className={LoadingStyle} fill="#e6e6e6" x={width.current / 2 - 6} y={height.current - 15} width={12} height={2} rx={1} ry={1}></motion.rect>

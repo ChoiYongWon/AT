@@ -33,7 +33,6 @@ export const fetcher = ({query, name, at_id}: GetATCountDTO) =>{
 }
 
 
-
 export const useGetATCount = ({
   query, name, at_id
 }: GetATCountDTO, options?: UseQueryOptions | any): any => {

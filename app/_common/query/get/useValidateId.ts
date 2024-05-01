@@ -19,7 +19,7 @@ export const fetcher = ({ at_id }: GetValidIdDTO) =>
     params: {
       at_id
     }
-  }).then(({ data }) => data);
+  }).then(({ data }) => data)
 
 export const useValidId = (data: GetValidIdDTO, options: UseQueryOptions | any): any => {
   return useQuery<GetValidIdResponseDTO>({

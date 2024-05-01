@@ -1,7 +1,7 @@
 'use client'
 
 import { useRecoilValue } from "recoil";
-import { ButtonMessageStyle, ButtonStyle, ButtonWrapperStyle, LoadingLottieStyle, vibrate } from "./style.css";
+import { ButtonMessageStyle, ButtonWrapperStyle, vibrate } from "./style.css";
 import { formSelector, imageMapSelector } from "../../recoil";
 import { usePresignedUrl } from "@/app/_common/query/post/usePresignedUrl";
 import { useUploadImageToS3 } from "@/app/_common/query/post/useUploadImageToS3";
@@ -11,11 +11,9 @@ import { useUploadAT } from "@/app/_common/query/post/useUploadAT";
 import { useSession } from "next-auth/react";
 import { PostBody } from "@/app/api/at/route";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import Lottie from 'lottie-react'
-import loadingJson from '../../../../public/assets/loading.json'
 import { useQueryClient } from "@tanstack/react-query";
 import ConfirmButton from "@/app/_common/component/ConfirmButton";
+import toast from "react-hot-toast/headless";
 
 
 
@@ -66,6 +64,21 @@ const SubmitButton = ({ style }: Props) => {
                 ]
             }
             */
+
+            const imageNameList = formState.image.map((item)=>(`${item.name}.${item.ext}`))
+            
+
+            const postBody:PostBody = {
+                imagesUrl: imageNameList.map((image: string)=>(`https://s3.a-spot-thur.app/user/${session.data?.user.id}/${image}`)),
+                category: [...formState.category],
+                name: formState.address.name,
+                address: formState.address.address,
+                detail: formState.detail,
+                mapId: formState.map.id as string,
+            }
+
+            await uploadAT(postBody)
+            console.log("여기 실행되냐?")
             const presignedUrlBody = [...formState.image.map((item)=>({
                 filename: `${item.name}.${item.ext}`,
                 filesize: item.size
@@ -88,17 +101,6 @@ const SubmitButton = ({ style }: Props) => {
                 await uploadImageToS3({presignedUrl, form})
             }
 
-            const postBody:PostBody = {
-                imagesUrl: Object.keys(data).map((image: string)=>(`https://s3.a-spot-thur.app/user/${session.data?.user.id}/${image}`)),
-                category: [...formState.category],
-                name: formState.address.name,
-                address: formState.address.address,
-                detail: formState.detail,
-                mapId: formState.map.id as string,
-            }
-
-            await uploadAT(postBody)
-
 
             // 캐시 초기화
             queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
@@ -111,6 +113,7 @@ const SubmitButton = ({ style }: Props) => {
 
         }catch(e: any){
             setLoading(false)
+            toast.error(e.message)
             setErrorState({isError: true, message: e.message})
         }finally{
             setLoading(false)

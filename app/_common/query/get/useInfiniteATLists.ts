@@ -49,7 +49,7 @@ export const fetcher = ({query, name, at_id, area, limit, offset}: GetATListDTO)
       offset,
       area
     }
-  }).then(({ data }) => data);
+  }).then(({ data }) => data)
 }
 
 export const useInfiniteATLists = ({query, name, at_id, area, limit}: GetATListDTO) => {

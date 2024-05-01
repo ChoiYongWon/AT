@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { auth } from "./auth";
-// import { PrismaClient } from "@prisma/client/edge";
-// import { withAccelerate } from "@prisma/extension-accelerate";
+import { PrismaClient } from "@prisma/client/edge";
+import { withAccelerate } from "@prisma/extension-accelerate";
 
+const prisma = new PrismaClient().$extends(withAccelerate());
 
 export default auth(async (req) => {
+
   const session = await auth();
-  // const prisma = new PrismaClient().$extends(withAccelerate());
-  // const prisma = new PrismaClient();
   if (req.nextUrl.pathname.startsWith("/login")) {
     if (session) return NextResponse.redirect(new URL("/", req.url));
   }
@@ -16,6 +16,19 @@ export default auth(async (req) => {
   }
   if (req.nextUrl.pathname.startsWith("/add")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
+  }
+  if (req.nextUrl.pathname.startsWith("/edit")) {
+    if (!session) return NextResponse.redirect(new URL("/", req.url));
+    const spotId = req.nextUrl.pathname.split("/").at(-1)
+    const owner = await prisma.spot.findUnique({
+      where: {
+        id: spotId
+      },
+      select: {
+        userId: true
+      }
+    })
+    if (owner?.userId != session.user.id) return NextResponse.redirect(new URL("/403", req.url));
   }
   if (req.nextUrl.pathname.startsWith("/onboard")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
@@ -32,5 +45,5 @@ export default auth(async (req) => {
 
 // Optionally, don't invoke Middleware on some paths
 export const config = {
-  matcher: ["/profile", "/", "/onboard", "/add", "/login"],
+  matcher: ["/profile", "/", "/onboard", "/add", "/login", "/edit/:path*"],
 };

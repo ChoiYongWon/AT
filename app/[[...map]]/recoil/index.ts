@@ -116,6 +116,18 @@ export const atListState = atom<any>({
     default: {}
 })
 
+
+// AT List Query Cache 초기화를 위한 셀렉터
+export const atUrlSelector = selector({
+    key: '/at_url_selector',
+    get: ({get}) => {
+        const queries = get(atQueryStageState).toSorted().length ? get(atQueryStageState).toSorted() : [null]
+        const {name:map, at_id} = get(atUrlState)
+        const area = get(selectedAreaState)
+        return [...queries, map || null, at_id || null , area]
+    }
+})
+
 export const atCountSelector = selector({
     key: '/at_selector',
     get: ({get}) => {

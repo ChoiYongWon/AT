@@ -14,16 +14,8 @@ export type GetPresignedUrlDTO = {
   images: ImageMetaData[];
 };
 
-const SERVER_ERROR = {
-  data: false,
-  message: "서버 에러"
-}
-
 export const fetcher = (data: GetPresignedUrlDTO) =>
-  atAxios.post(`${URL}`, { ...data }).then(({ data }) => data).catch((e:any)=>{
-    if(e?.data) throw e.data
-    throw SERVER_ERROR
-  });;
+  atAxios.post(`${URL}`, { ...data }).then(({ data }) => data)
 
 export const usePresignedUrl = () =>
   useMutation({

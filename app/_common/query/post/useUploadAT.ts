@@ -13,10 +13,7 @@ const SERVER_ERROR = {
 export const fetcher = (body: PostBody) =>{
 
   return atAxios.post(`${URL}`, body, {
-  }).then(({ data }) => data).catch((e:any)=>{
-    if(e?.data) throw e.data
-    throw SERVER_ERROR
-  });;
+  }).then(({ data }) => data)
 }
 
 export const useUploadAT = () =>

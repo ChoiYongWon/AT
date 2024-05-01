@@ -1,6 +1,6 @@
 'use client'
 
-import { useGetAT } from "@/app/_common/query/get/useGetAT";
+import { GetATData, useGetAT } from "@/app/_common/query/get/useGetAT";
 import { useEffect } from "react";
 import { useRecoilState, useResetRecoilState } from "recoil";
 import { atDataState, loadingState } from "../../recoil";
@@ -29,8 +29,9 @@ const ATProvider = ({
     }, [isGetATLoading, isGetATFetching])
 
     useEffect(()=>{
-        if(atData?.data){
-          setAT(atData.data)
+        const data: GetATData | undefined = atData?.data
+        if(data){
+            setAT(atData.data)
         }
     }, [atData])
 

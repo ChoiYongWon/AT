@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from "framer-motion"
-import { forwardRef, useEffect } from "react"
+import { forwardRef, useEffect, useState } from "react"
 import Map from "../../component/Map"
 import { MapLayoutStyle } from "./style.css"
 import { useRecoilValue, useSetRecoilState } from "recoil"
@@ -27,6 +27,7 @@ export const MapView = ({className, style}: Props) => {
     /* 응답 정보를 selector로 보기 좋게 가공 */
     const atCountInfo = useRecoilValue(atCountSelector) // 응답 정보 가공
 
+    const [initLoading, setInitLoading] = useState(true)
     /* 
         MapView와 Map 간에 상태 
         selector로 가공해주기 위해 사용
@@ -48,6 +49,10 @@ export const MapView = ({className, style}: Props) => {
         setATCount(atData.data)
       }
     }, [atData])
+
+    useEffect(()=>{
+        setInitLoading(isGetATFetching || isGetATLoading)
+    }, [isGetATFetching, isGetATLoading])
   
     const onIndicatorClick = (name: string) => {
         // 스택만 쌓기 위해 (뒤로가기를 위한 스택)
@@ -68,7 +73,7 @@ export const MapView = ({className, style}: Props) => {
                 {
                     indicatorData.data.map((data, i)=>{
                         return (
-                            <Indicator key={data.name} x={data.coord[0]} y={data.coord[1]} name={data.name} count={atCountInfo[data.name]} isLoading={isGetATFetching || isGetATLoading} onClick={()=>onIndicatorClick(data.name)}/>
+                            <Indicator key={data.name} x={data.coord[0]} y={data.coord[1]} name={data.name} count={atCountInfo[data.name]} isLoading={initLoading} onClick={()=>onIndicatorClick(data.name)}/>
                         )
                     })
                 }

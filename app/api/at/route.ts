@@ -6,6 +6,7 @@ import { SpotDuplicatedError } from "../error/at/SpotDuplicated.error";
 import { InvalidDataError } from "../error/at/InvalidData.error";
 import { S3Client, DeleteObjectsCommand, DeleteObjectsRequest } from "@aws-sdk/client-s3";
 import { fromEnv } from "@aws-sdk/credential-providers";
+import { UnauthorizedError } from "../error/auth/Unauthorized.error";
 
 export type PostBody = {
   mapId: string;
@@ -126,12 +127,14 @@ export async function GET(request: NextRequest) {
         },
         map: {
           select: {
+            id: true,
             name: true
           }
         },
         user: {
           select: {
-            at_id: true
+            at_id: true,
+            id: true
           }
         },
         images: {
@@ -169,6 +172,149 @@ export async function GET(request: NextRequest) {
   }
 }
 
+export type PutBody = {
+  id: string;
+  mapId: string;
+  imagesUrl: string[];
+  category: string[];
+  name: string;
+  address: string;
+  detail: string;
+  deletedImage: string[];
+}
+
+//at 수정
+export async function PUT(request: NextRequest) {
+  try {
+
+    const session = await useAuth();
+    const body: PutBody = await request.json()
+
+    const prevSpot = await prisma.spot.findUnique({
+      where: {id: body.id},
+      select: {
+        userId: true, 
+        address: true
+      }
+    })
+
+    if(prevSpot?.userId != session.user.id) return UnauthorizedError()
+
+    // 데이터 검증 로직
+    if(body.imagesUrl.length == 0 || body.category.length == 0 || body.name.length == 0 || body.address.length == 0 || body.detail.length == 0) return InvalidDataError()
+
+    // 카테고리 검증
+    if(body.category.filter((c=>{
+      const regexp = /^[가-힣a-z0-9]{1,10}$/g
+      return regexp.test(c)
+    })).length != body.category.length ) return InvalidDataError()
+
+    // 중복 방지 로직
+    const spot = await prisma.spot.findFirst({
+      where: {
+        mapId: body.mapId,
+        AND: [
+          {
+            address: body.address
+          },
+          {
+            address: {
+              not: prevSpot?.address
+            }
+          }
+        ]
+        
+      }
+    })
+    // spot이 존재하는데 spot 주소가 동일하지 않을 시
+    if(spot !== null) return SpotDuplicatedError()
+
+    const result =  await prisma.$transaction(async (tx) => {
+
+      // db내에 spotId와 관련된 모든 이미지 제거
+      await tx.image.deleteMany({
+        where: {
+          spotId: body.id
+        },
+      })
+
+      // db내에 spotId와 관련된 모든 카테고리 제거
+      await tx.category.deleteMany({
+        where: {
+          spotId: body.id
+        }
+      })
+      
+      // 업데이트
+      const updateResponse = await tx.spot.update({
+        where: {
+          id: body.id,
+        },
+        data: {
+          map: {
+            connect: {
+              id: body.mapId
+            }
+          },
+          images: {
+            createMany: {
+              data: body.imagesUrl.map((url, i)=>({
+                url, 
+                sequence: i+1,
+                userId: session.user.id as string,
+              }))
+            }
+          },
+          categories: {
+            createMany: {
+              data: [...body.category.map(item=>({
+                name: item,
+                userId: session.user.id as string
+              }))]
+            }
+          },
+          title : body.name,
+          address: body.address,
+          primary_address: body.address.split(" ")[0],
+          secondary_address: body.address.split(" ")[1],
+          body: body.detail,
+        }
+      })
+
+
+      if(body.deletedImage.length > 0){
+        // s3에 deletedImage에 저장된 이미지 모두 제거
+        const imageUrls = body.deletedImage.map(image=>{
+          const Key = `user/${session.user.id}/${image}`
+          return {
+            Key
+          }
+        })
+
+        const input: DeleteObjectsRequest = { // DeleteObjectsRequest
+          Bucket: "a-spot-thur", // required
+          Delete: { // Delete
+            Objects: [ // ObjectIdentifierList // required
+              ...imageUrls
+            ],
+          },
+        };
+        const command = new DeleteObjectsCommand(input);
+        await client.send(command);
+      }
+      return updateResponse
+    })
+
+    return new NextResponse(
+      JSON.stringify({ data: result, message: "AT이 수정되었습니다." }),
+      { status: 200, headers: { "content-type": "application/json" } }
+    );
+  } catch (e) {
+    console.log(e)
+    return InternalServerError(e);
+  }
+}
+
 
 type DeleteBody = {
   id: string
@@ -185,6 +331,13 @@ export async function DELETE(request: NextRequest) {
   try {
     const session = await useAuth();
     const body: DeleteBody = await request.json()
+
+    const owner = await prisma.spot.findUnique({
+      where: {id: body.id},
+      select: {userId: true}
+    })
+
+    if(owner?.userId != session.user.id) return UnauthorizedError()
 
     const result =  await prisma.$transaction(async (tx) => {
 
