@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic'
-
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { useAuth } from "@/app/_common/util/useAuth";
