@@ -1,23 +1,24 @@
 import { ATCardAddressStyle, ATCardCategoryStyle, ATCardCategoryWrapperStyle, ATCardDivider, ATCardIDStyle, ATCardImageStyle, ATCardImageWrapperStyle, ATCardInfoWrapperStyle, ATCardNaverButtonStyle, ATCardNextButtonSyle, ATCardNextImageStyle, ATCardTextWrapperStyle, ATCardTitleStyle, ATCardWrapperStyle } from "./style.css"
 import Image from "next/image"
 import NextArrow from "../../../../public/images/NextArrow.svg"
+import Link from "next/link"
 
 
 type Props = {
     className ?: any
+    id: string,
     title: string,
     at_id: string,
     map_name: string,
     images: any[],
     address: string,
     categories: string[],
-    onClick: any
 }
 
-const ATCard = ({onClick, title, at_id, map_name, images, address, categories, className}: Props) => {
+const ATCard = ({id, title, at_id, map_name, images, address, categories, className}: Props) => {
 
     return (
-        <div className={ATCardWrapperStyle} onClick={onClick}>
+        <Link href={"/at/"+id} className={ATCardWrapperStyle} prefetch={true}>
             <div className={ATCardInfoWrapperStyle}>
                 <div className={ATCardIDStyle}>@{at_id}의 {map_name} 지도</div>
                 {/* <button className={ATCardNaverButtonStyle}>네이버 지도</button> */}
@@ -52,7 +53,7 @@ const ATCard = ({onClick, title, at_id, map_name, images, address, categories, c
 
            
 
-        </div>
+        </Link>
     )
 }
 

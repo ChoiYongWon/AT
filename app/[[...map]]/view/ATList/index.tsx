@@ -9,7 +9,6 @@ import { ATListCountStyle, ATListWrapper } from "./style.css"
 import ATCard from "../../component/ATCard"
 import Observer from "../../component/Observer"
 import { atListSelector, atListState, selectedAreaState } from "../../recoil"
-import { useRouter } from "next/navigation"
 
 type Props = {
     className?: any
@@ -21,7 +20,6 @@ export const ATListView = ({className}: Props) => {
     const [selectedArea, setSelectedArea] = useRecoilState(selectedAreaState)
     const atListData: any  = useRecoilValue(atListSelector)
     const atListRawData  = useRecoilValue(atListState)
-    const router = useRouter()
     const { use } = useGhostHistory()
 
 
@@ -34,11 +32,6 @@ export const ATListView = ({className}: Props) => {
     }, [atListRawData])
 
     use({onPopState: ()=>setSelectedArea(null)}) // useGhostHistory를 사용하는 곳
-
-    const onATCardClick = (id: string) => {
-        router.push("/at/"+id)
-    }
-
     // TODO SearchBar 상태 + url 상태 + selectedArea 상태에 따라 쿼리문 요청
 
     return (
@@ -54,7 +47,7 @@ export const ATListView = ({className}: Props) => {
                     {
                         atListData?.list?.map((data: any, i: any)=>{
                             const {id, title, at_id, map_name, address, images, categories} = data
-                            return <ATCard onClick={()=>onATCardClick(id)} key={i} title={title} at_id={at_id} map_name={map_name} address={address} images={images} categories={categories}/>
+                            return <ATCard id={id} key={i} title={title} at_id={at_id} map_name={map_name} address={address} images={images} categories={categories}/>
                         })
                     }
                 </div>
