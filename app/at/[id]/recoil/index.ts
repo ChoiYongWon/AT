@@ -14,9 +14,11 @@ export const atDataState = atom<GetATData>({
         address: '',
         categories: [],
         map: {
+            id: '',
             name: '',
         },
         user: {
+            id: '',
             at_id: '',
         },
         images: [],

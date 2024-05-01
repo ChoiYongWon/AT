@@ -55,11 +55,11 @@ export const fetcher = ({query, name, at_id, area, limit, offset}: GetATListDTO)
 export const useInfiniteATLists = ({query, name, at_id, area, limit}: GetATListDTO) => {
 
   return useInfiniteQuery<getATListResponseDTO>({
-      queryKey: [URL, query, name, at_id, area],
+      queryKey: [URL, area, query, name, at_id],
       queryFn: ({pageParam}) => fetcher({query, name, at_id, area, limit, offset: Number(pageParam) * Number(limit)}),
       getNextPageParam:(lastPage, pages)=>{
             const nextPage = pages.length;
-            return lastPage.data.list.length < limit ? null : nextPage; // 마지막 페이지 데이터가 limit 보다 적으면 이제 그만 불러옴
+            return lastPage.data.list.length < limit ? undefined : nextPage; // 마지막 페이지 데이터가 limit 보다 적으면 이제 그만 불러옴
       },
       initialPageParam: 0,
       staleTime: 1000 * 60 * 5,

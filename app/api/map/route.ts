@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { useAuth } from "@/app/_common/util/useAuth";
@@ -55,9 +57,10 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams
+
   try {
     const session = await useAuth();
-    const searchParams = request.nextUrl.searchParams
     const userId = searchParams.get('userId')
 
     if(session.user.id != userId) return UnauthorizedError()

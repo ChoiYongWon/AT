@@ -78,7 +78,6 @@ const SubmitButton = ({ style }: Props) => {
             }
 
             await uploadAT(postBody)
-            console.log("여기 실행되냐?")
             const presignedUrlBody = [...formState.image.map((item)=>({
                 filename: `${item.name}.${item.ext}`,
                 filesize: item.size
@@ -101,15 +100,18 @@ const SubmitButton = ({ style }: Props) => {
                 await uploadImageToS3({presignedUrl, form})
             }
 
+            router.back()
 
             // 캐시 초기화
-            queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
-            queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
+
+            // Observer가 보일 경우 안됨
+
+            await queryClient.invalidateQueries({ queryKey: ['/at/list', formState.address.address.split(" ")[0]],  refetchType: 'all' })
+            await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
 
 
-            alert("등록 완료")
+            toast("등록 완료")
 
-            router.back()
 
         }catch(e: any){
             setLoading(false)

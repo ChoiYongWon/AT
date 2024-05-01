@@ -1,6 +1,6 @@
 'use client'
 
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { atDataSelector, atDataState, loadingState } from "../../recoil";
 import { GetATData } from "@/app/_common/query/get/useGetAT";
 import { AddressStyle, AddressWrapperStyle, AuthorInfoStyle, BodyStyle, CategoryStyle, CategoryWrapperStyle, DividerStyle, EditStyle, EditWrapperStyle, InfoWrapperStyle, MetaInfoWrapperStyle, ReportStyle, TitleStyle, TitleWrapperStyle } from "./style.css";
@@ -39,7 +39,7 @@ const Info = ({
     /* Recoil 상태 */
     const { title, user, categories, map, created_at, view_count, body, address, id } = useRecoilValue(atDataSelector)
     const isLoading = useRecoilValue(loadingState)
-    const setSelectedArea = useSetRecoilState(selectedAreaState)
+    const [selectedArea, setSelectedArea] = useRecoilState(selectedAreaState)
 
     /* 로컬 상태 */
     const [initialLoading, setInitialLoading] = useState(true)
@@ -66,13 +66,16 @@ const Info = ({
                 id
             })
 
+
             router.back()
 
-            queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
-            queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
-            queryClient.invalidateQueries({ queryKey: ['/at', id],  refetchType: 'all' })
 
-            // setSelectedArea(null)
+            await queryClient.invalidateQueries({ queryKey: ['/at/list', selectedArea],  refetchType: 'all' })
+            await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
+
+
+
+            
             toast("삭제 성공")
         }catch(e){
             setModal(false)

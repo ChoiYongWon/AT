@@ -105,14 +105,16 @@ const SubmitButton = ({ style }: Props) => {
 
             await updateAT(putBody)
 
-            // 캐시 초기화
-            queryClient.invalidateQueries({ queryKey: ['/at', formState.id],  refetchType: 'all' })
-            queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
 
+
+            // 캐시 초기화
+            await queryClient.invalidateQueries({ queryKey: ['/at', formState.id],  refetchType: 'all' })
+            await queryClient.invalidateQueries({ queryKey: ['/at/list', formState.address.address.split(" ")[0]],  refetchType: 'all' })
+
+            router.back()
 
             toast("수정 완료")
 
-            router.back()
 
         }catch(e: any){
             setLoading(false)

@@ -12,9 +12,10 @@ type Query = {
 };
 
 export async function GET(request: NextRequest) {
+  const query = Object.fromEntries(request.nextUrl.searchParams) as Query;
+
   try {
     const session = await useAuth();
-    const query = Object.fromEntries(request.nextUrl.searchParams) as Query;
     const regexp = /^[a-z0-9_\.]{3,30}$/g;
     const decoded_at_id = decodeURIComponent(query.at_id);
 

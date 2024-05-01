@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { useAuth } from "@/app/_common/util/useAuth";
@@ -111,9 +113,10 @@ type Query = {
 };
 
 export async function GET(request: NextRequest) {
+  const {id} = Object.fromEntries(request.nextUrl.searchParams) as Query;
+
   try {
     // const session = await useAuth();
-    const {id} = Object.fromEntries(request.nextUrl.searchParams) as Query;
     
     const result = await prisma.spot.findUnique({
       select: {

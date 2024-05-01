@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { NextRequest, NextResponse } from "next/server";
 import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
@@ -7,9 +9,10 @@ type Query = {
 };
 
 export async function GET(request: NextRequest) {
+  const query = Object.fromEntries(request.nextUrl.searchParams) as Query;
+
   try {
     const session = useAuth();
-    const query = Object.fromEntries(request.nextUrl.searchParams) as Query;
     // const decoded_query = decodeURIComponent(query.query);
     var api_url = 'https://openapi.naver.com/v1/search/local.json?display=5&query=' + query.query;
     const res = await fetch(`${api_url}`, {

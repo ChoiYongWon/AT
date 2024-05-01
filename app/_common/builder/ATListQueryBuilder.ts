@@ -7,6 +7,10 @@ export class ATListQueryBuilder {
 
     init(){
         this.query = {
+            orderBy: {
+                created_at: 'desc'
+            },
+
             where: {
 
             }

@@ -2,6 +2,8 @@ import { ATCardAddressStyle, ATCardCategoryStyle, ATCardCategoryWrapperStyle, AT
 import Image from "next/image"
 import NextArrow from "../../../../public/images/NextArrow.svg"
 import Link from "next/link"
+import { forwardRef } from "react"
+import { motion } from "framer-motion"
 
 
 type Props = {
@@ -15,10 +17,11 @@ type Props = {
     categories: string[],
 }
 
-const ATCard = ({id, title, at_id, map_name, images, address, categories, className}: Props) => {
+const ATCard = ({id, title, at_id, map_name, images, address, categories, className}: Props, ref: any) => {
 
     return (
-        <Link href={"/at/"+id} className={ATCardWrapperStyle} prefetch={true}>
+        <motion.div ref={ref} key={id} layout animate={{ }} exit={{  }} transition={{ type: "just", duration: 0.2 }}>
+            <Link href={"/at/"+id} className={ATCardWrapperStyle} prefetch={true}>
             <div className={ATCardInfoWrapperStyle}>
                 <div className={ATCardIDStyle}>@{at_id}의 {map_name} 지도</div>
                 {/* <button className={ATCardNaverButtonStyle}>네이버 지도</button> */}
@@ -53,8 +56,10 @@ const ATCard = ({id, title, at_id, map_name, images, address, categories, classN
 
            
 
-        </Link>
+            </Link>
+        </motion.div>
+        
     )
 }
 
-export default ATCard
+export default forwardRef(ATCard)

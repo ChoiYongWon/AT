@@ -12,6 +12,9 @@ type Props = {
 
 const Observer = ({className}: Props) => {
 
+    const setATList = useSetRecoilState(atListState)
+
+
     /* SearchBar에서 Managing 하는 상태 */
     const queryStage = useRecoilValue(atQueryStageState) // useQuery가 의존하는 상태 (이 값이 변경함에 따라 query가 요청함)
     const {at_id, name} = useRecoilValue(atUrlState) // 현재 url 상태
@@ -25,7 +28,7 @@ const Observer = ({className}: Props) => {
         }
     })
 
-    const { data, fetchNextPage, isFetching } = useInfiniteATLists({
+    const { data, fetchNextPage, isFetching, isSuccess, isFetched } = useInfiniteATLists({
         query: encodeURI([...queryStage].sort().join(",")) || null,
         at_id,
         name,
@@ -33,16 +36,18 @@ const Observer = ({className}: Props) => {
         area: selectedArea as string
     })
 
-    const setATList = useSetRecoilState(atListState)
-
     useEffect(()=>{
         setATList(data)
     }, [data])
 
+
     useEffect(()=>{
-        if(isIntersecting){
-            fetchNextPage()
+        async function f(){
+            if(isIntersecting){
+                await fetchNextPage()
+            }
         }
+        
     }, [isIntersecting])
 
     return (

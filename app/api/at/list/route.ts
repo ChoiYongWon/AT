@@ -1,8 +1,9 @@
+export const dynamic = 'force-dynamic'
+
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { InternalServerError } from "../../error/server/InternalServer.error";
 import { ATListQueryBuilder } from "@/app/_common/builder/ATListQueryBuilder";
-import { off } from "process";
 
 type Query = {
     query?: string;
@@ -18,8 +19,9 @@ type Query = {
   
   
   export async function GET(request: NextRequest) {
+    let {query, at_id, name, area, offset, limit} = Object.fromEntries(request.nextUrl.searchParams) as Query;
+
     try {
-        let {query, at_id, name, area, offset, limit} = Object.fromEntries(request.nextUrl.searchParams) as Query;
         let sqlQuery = atListQueryBuilder.init()
         
         const decoded_area = decodeURIComponent(area)

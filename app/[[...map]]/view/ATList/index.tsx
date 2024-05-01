@@ -1,11 +1,13 @@
 'use client'
 
 import { useGhostHistory } from "@/app/_common/hook/useGhostHistory"
-import { useRecoilState, useRecoilValue } from "recoil"
+import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil"
 import { ATListCountStyle, ATListWrapper } from "./style.css"
 import ATCard from "../../component/ATCard"
 import Observer from "../../component/Observer"
 import { atListSelector, atListState, atUrlSelector, selectedAreaState } from "../../recoil"
+import { AnimatePresence } from "framer-motion"
+import { useEffect } from "react"
 
 type Props = {
     className?: any
@@ -17,6 +19,8 @@ export const ATListView = ({className}: Props) => {
     const [selectedArea, setSelectedArea] = useRecoilState(selectedAreaState)
     const atListData: any  = useRecoilValue(atListSelector)
     const atListRawData  = useRecoilValue(atListState)
+    const resetATList  = useResetRecoilState(atListState)
+
     const { use } = useGhostHistory()
 
     // useEffect(()=>{
@@ -27,9 +31,9 @@ export const ATListView = ({className}: Props) => {
     //     // console.log(atListData)
     // }, [atListData])
 
-    // useEffect(()=>{
-        // console.log(atListRawData)
-    // }, [atListRawData])
+    useEffect(()=>{
+        return ()=>resetATList()
+    }, [])
 
     use({onPopState: ()=>setSelectedArea(null)}) // useGhostHistory를 사용하는 곳
 
@@ -43,13 +47,16 @@ export const ATListView = ({className}: Props) => {
                     <></>
                 }
                 <div className={ATListWrapper}>
-                    {
-                        atListData?.list?.map((data: any, i: any)=>{
-                            const {id, title, at_id, map_name, address, images, categories} = data
-                            return <ATCard id={id} key={i} title={title} at_id={at_id} map_name={map_name} address={address} images={images} categories={categories}/>
-                        })
-                    }
+                    <AnimatePresence mode="popLayout">
+                        {
+                            atListData?.list?.map((data: any, i: any)=>{
+                                const {id, title, at_id, map_name, address, images, categories} = data
+                                return <ATCard id={id} key={id} title={title} at_id={at_id} map_name={map_name} address={address} images={images} categories={categories}/>
+                            })
+                        }
+                    </AnimatePresence>
                 </div>
+                
                 <Observer/>
             </div>
 

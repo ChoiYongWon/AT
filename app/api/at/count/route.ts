@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { InternalServerError } from "../../error/server/InternalServer.error";
@@ -13,9 +15,10 @@ const prisma = new PrismaClient()
 const atQueryBuilder = new ATQueryBuilder()
   
   export async function GET(request: NextRequest) {
+    const {query, at_id, name} = Object.fromEntries(request.nextUrl.searchParams) as Query;
+
     try {
       // const session = await useAuth();
-      const {query, at_id, name} = Object.fromEntries(request.nextUrl.searchParams) as Query;
       let sqlQuery = atQueryBuilder.init()
       // TODO 서비스 레이어 코드정리
 
