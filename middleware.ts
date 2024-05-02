@@ -29,7 +29,16 @@ export default auth(async (req) => {
         userId: true
       }
     })
-    if (owner?.userId != session.user.id) return NextResponse.redirect(new URL("/403", req.url));
+    if (owner?.userId != session.user.id) return NextResponse.redirect(new URL("/error/403", req.url));
+  }
+  if (req.nextUrl.pathname.startsWith("/at")) {
+    const spotId = req.nextUrl.pathname.split("/").at(-1)
+    const exists = await prisma.spot.findUnique({
+      where: {
+        id: spotId
+      }
+    })
+    if (!exists) return NextResponse.redirect(new URL("/error/404", req.url));
   }
   if (req.nextUrl.pathname.startsWith("/onboard")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
@@ -46,5 +55,5 @@ export default auth(async (req) => {
 
 // Optionally, don't invoke Middleware on some paths
 export const config = {
-  matcher: ["/profile", "/", "/onboard", "/add", "/login", "/edit/:path*"],
+  matcher: ["/profile", "/", "/onboard", "/add", "/login", "/edit/:path*", "/at/:path*"],
 };

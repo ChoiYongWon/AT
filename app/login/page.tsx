@@ -14,7 +14,7 @@ import Logo from "../../public/images/Loading.svg"
 import BackLink from "./component/BackLink";
 
 
-export default function LoginLayout() {
+export default function Page() {
 
   return (
     <>
