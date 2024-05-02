@@ -42,7 +42,8 @@ const Observer = ({className}: Props) => {
 
 
     useEffect(()=>{
-        if(isIntersecting){
+        // 삭제하고나서 fetching하는거랑 겹침
+        if(isIntersecting && !isFetching){
             (async function f(){
                     await fetchNextPage()
             })()
