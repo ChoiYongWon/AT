@@ -106,11 +106,12 @@ const SubmitButton = ({ style }: Props) => {
 
             // Observer가 보일 경우 안됨
 
+            toast("등록 완료")
+
             await queryClient.invalidateQueries({ queryKey: ['/at/list', formState.address.address.split(" ")[0]],  refetchType: 'all' })
             await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
 
 
-            toast("등록 완료")
 
 
         }catch(e: any){

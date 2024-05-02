@@ -69,14 +69,12 @@ const Info = ({
 
             router.back()
 
+            toast("삭제 완료")
+
 
             await queryClient.invalidateQueries({ queryKey: ['/at/list', selectedArea],  refetchType: 'all' })
             await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
 
-
-
-            
-            toast("삭제 성공")
         }catch(e){
             setModal(false)
             toast.error("삭제 실패")
