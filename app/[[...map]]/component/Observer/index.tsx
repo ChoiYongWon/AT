@@ -42,10 +42,10 @@ const Observer = ({className}: Props) => {
 
 
     useEffect(()=>{
-        async function f(){
-            if(isIntersecting){
-                await fetchNextPage()
-            }
+        if(isIntersecting){
+            (async function f(){
+                    await fetchNextPage()
+            })()
         }
         
     }, [isIntersecting])
