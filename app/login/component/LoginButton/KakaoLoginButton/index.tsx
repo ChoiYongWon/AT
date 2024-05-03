@@ -4,7 +4,7 @@ import Image from "next/image";
 import KakaoLoginImage from "../../../../../public/images/KakaoLogin.png";
 import { LoginButtonStyle, LoginButtonWrapperStyle } from "../style.css";
 import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast/headless";
 
 type Props = {
@@ -16,6 +16,10 @@ type Props = {
 const KakaoLoginButton = ({ className, style, formAction }: Props) => {
 
   const [disable, setDisable] = useState(false)
+
+  useEffect(()=>{
+    setDisable(false)
+  }, [])
 
   const onClick = () => {
     setDisable(true)
