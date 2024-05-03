@@ -4,6 +4,8 @@ import Image from "next/image";
 import KakaoLoginImage from "../../../../../public/images/KakaoLogin.png";
 import { LoginButtonStyle, LoginButtonWrapperStyle } from "../style.css";
 import { signIn } from "next-auth/react";
+import { useState } from "react";
+import toast from "react-hot-toast/headless";
 
 type Props = {
   className?: string;
@@ -12,10 +14,22 @@ type Props = {
 };
 
 const KakaoLoginButton = ({ className, style, formAction }: Props) => {
+
+  const [disable, setDisable] = useState(false)
+
+  const onClick = () => {
+    setDisable(true)
+    signIn("kakao", { callbackUrl: "/" }).catch(()=>{
+      toast.error("로그인 오류")
+      setDisable(false)
+    })
+  }
+
   return (
     <>
       <button
-        onClick={() => signIn("kakao", { callbackUrl: "/" })}
+        disabled={disable}
+        onClick={onClick}
         formAction={formAction}
         style={style}
         className={`${LoginButtonWrapperStyle} ${className}`}

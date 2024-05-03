@@ -14,6 +14,11 @@ export const LoginButtonWrapperStyle = style({
   display: "flex",
   maxWidth: "300px",
 
+  ":disabled": {
+    // backgroundColor: vars.color.secondary,
+    opacity: 0.4
+  },
+
   "@media": {
     "screen and (min-width: 768px)": {
       maxWidth: "600px",

@@ -17,7 +17,9 @@ const LoginButtonGroup = () => {
         transition={{ duration: 0.4, delay: 0.1 }}
         className={LoginButtonLayoutStyle}
         >
-          <GoogleLoginButton/>
+          <GoogleLoginButton style={{
+            opacity: "0.3"
+          }}/>
         </motion.div>
         <motion.div
         key={'2'}
@@ -55,7 +57,9 @@ const LoginButtonGroup = () => {
         transition={{ duration: 0.4, delay: 0.3 }}
         className={LoginButtonLayoutStyle}
         >
-          <NaverLoginButton/>
+          <NaverLoginButton style={{
+            opacity: "0.3"
+          }}/>
         </motion.div>
       </AnimatePresence>    
     )
