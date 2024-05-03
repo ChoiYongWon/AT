@@ -8,8 +8,26 @@ import SubmitButton from "./component/SubmitButton";
 import MapForm from "./component/MapForm";
 import Form from "./component/Form";
 import CancelButton from "./component/CancelButton";
+import { redirect } from "next/navigation";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient()
 
 export default async function Page({ params }: { params: { id: string } }) {
+
+  const session = await auth()
+
+    if (!session) return redirect(`/`)
+    const owner = await prisma.spot.findUnique({
+      where: {
+        id: params.id
+      },
+      select: {
+        userId: true
+      }
+    })
+    if (owner?.userId != session.user.id) redirect(`/error/403`)
+
   return (
     <>
       <div className={CancelButtonLayout}>
