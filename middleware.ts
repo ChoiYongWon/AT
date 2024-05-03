@@ -6,7 +6,7 @@ import { withAccelerate } from "@prisma/extension-accelerate";
 
 export default auth(async (req) => {
 
-  const prisma = new PrismaClient().$extends(withAccelerate());
+  // const prisma = new PrismaClient().$extends(withAccelerate());
 
   const session = await auth();
   if (req.nextUrl.pathname.startsWith("/login")) {
