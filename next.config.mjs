@@ -17,7 +17,7 @@ const withPWA = nextPWA({
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    minimumCacheTTL: 1 * 60 * 10, // 5분
+    minimumCacheTTL: 1 * 60 * 60 * 24 * 365, // 1년
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
