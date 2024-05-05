@@ -4,7 +4,6 @@ import NextArrow from "../../../../public/images/NextArrow.svg"
 import Link from "next/link"
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
-import ImageMemo from "./ImageMemo"
 
 
 type Props = {
@@ -34,7 +33,8 @@ const ATCard = ({id, title, at_id, map_name, images, address, categories, classN
             <div className={ATCardImageWrapperStyle}>
                 {
                     images.map((data: any, i)=>{
-                        return <ImageMemo key={i} src={data} index={i}/>
+                        return <Image key={i} src={data} alt="" width={120} height={120} className={ATCardImageStyle} placeholder="blur" priority={true}
+                        blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
                     })
                 }
             </div>

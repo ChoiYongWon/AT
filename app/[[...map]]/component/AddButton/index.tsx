@@ -13,7 +13,7 @@ const AddButton = () => {
   return (
       <Link className={ButtonStyle} href={"/add"} prefetch={true}>
         <motion.div className={ButtonLinkStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
-          <Image className={ButtonImageStyle} src={AddImage} alt="+" />
+          <Image className={ButtonImageStyle} src={AddImage} alt="+" priority/>
         </motion.div>
       </Link>
    
