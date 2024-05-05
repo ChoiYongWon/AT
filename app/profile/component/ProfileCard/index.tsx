@@ -19,7 +19,7 @@ const ProfileCard = async ({className, style}: Props) => {
                 <span className={ProfileNameStyle}>{session?.user.name}</span>
                 <div className={ProfileATIDWrapper}>
                     <span className={ProfileATIDStyle}>@{session?.user.at_id}</span>
-                    <Link href={"/onboard"} prefetch={true} className={ProfileEditLinkStyle}>수정하기</Link>
+                    <Link href={"/rename"} prefetch={true} className={ProfileEditLinkStyle}>수정하기</Link>
                 </div>
             </div>
         </div>

@@ -23,7 +23,7 @@ const MoreCard = ({className, style}: Props) => {
                 <div className={FeedBackIconWrapperStyle}>
                     <Image src={FeedbackIcon} alt="" className={FeedBackIconStyle}/>
                 </div>
-                <Link href={'https://forms.gle/padVC81QrYiZDTEm7'} className={FeedBackButtonTextStyle}>A-Spot-Thur에게 피드백 보내기</Link>
+                <Link href={'https://forms.gle/padVC81QrYiZDTEm7'} className={FeedBackButtonTextStyle} target="_blank">A-Spot-Thur에게 피드백 보내기</Link>
                 <div className={GoWrapperStyle}>
                     <div className={GoButtonStyle}>
                         <Image src={GoIcon} alt="" className={GoIconStyle}/>
