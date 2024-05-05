@@ -1,15 +1,19 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { atAxios } from "../../axios/atAxios";
 
-export const URL = "/map"
+export const URL = "/map/aggregate"
 
-export type GetAllMapData = {
+export type GetAggregatedMapData = {
   id: string
-  name: string,
+  name: string
+  _count: {
+    spots: number
+  }
+  view: number
 }
 
-export type GetAllMapResponseDTO = {
-  data: GetAllMapData[];
+export type GetAggregatedMapDTO = {
+  data: GetAggregatedMapData[];
   message: string;
 };
 
@@ -17,8 +21,8 @@ export type GetAllMapResponseDTO = {
 export const fetcher = () =>
   atAxios.get(`${URL}`).then(({ data }) => data)
 
-export const useGetAllMap = (options?: UseQueryOptions | any): any => {
-  return useQuery<GetAllMapResponseDTO>({
+export const useGetAggregatedMap = (options?: UseQueryOptions | any): any => {
+  return useQuery<GetAggregatedMapDTO>({
     ...options,
     queryKey: [URL],
     queryFn: () => fetcher(),

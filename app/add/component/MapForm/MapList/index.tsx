@@ -43,9 +43,7 @@ const MapList = ({className, style, closeToggle}: Props) => {
             isSuccess: isGetAllMapSuccess,
             refetch: getAllMap,
             isFetching: isGetAllMapFetching,
-        } = useGetAllMap({
-            userId: session.data?.user.id as string
-        })
+        } = useGetAllMap()
     
         // 지도 불러 온 후 값
         useEffect(()=>{

@@ -12,11 +12,19 @@ export default auth(async (req) => {
   if (req.nextUrl.pathname.startsWith("/login")) {
     if (session) return NextResponse.redirect(new URL("/", req.url));
   }
-  if (req.nextUrl.pathname.startsWith("/profile")) {
+  else if (req.nextUrl.pathname.startsWith("/profile")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
+    else {
+      if (!session.user?.at_id)
+        return NextResponse.redirect(new URL("/onboard", req.url));
+    }
   }
-  if (req.nextUrl.pathname.startsWith("/add")) {
+  else if (req.nextUrl.pathname.startsWith("/add")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
+    else {
+      if (!session.user?.at_id)
+        return NextResponse.redirect(new URL("/onboard", req.url));
+    }
   }
   // if (req.nextUrl.pathname.startsWith("/edit")) {
   //   if (!session) return NextResponse.redirect(new URL("/", req.url));
@@ -40,11 +48,12 @@ export default auth(async (req) => {
   //   })
   //   if (!exists) return NextResponse.redirect(new URL("/error/404", req.url));
   // }
-  if (req.nextUrl.pathname.startsWith("/onboard")) {
+  else if (req.nextUrl.pathname.startsWith("/onboard")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
-    else if (session.user?.at_id)
-      return NextResponse.redirect(new URL("/", req.url));
-  } else {
+    // else if (session.user?.at_id)
+      // return NextResponse.redirect(new URL("/", req.url));
+  }
+  else {
     // at_id가 없으면 온보딩
     if (session) {
       if (!session.user?.at_id)

@@ -21,15 +21,6 @@ export const GridLayoutStyle = style({
   },
 });
 
-export const TmpLayout = style({
-  width: "100%",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "8px",
-  marginTop: "16px",
-});
-
 export const CancelButtonLayout = style({
   gridColumn: "1 / span 4",
   height: "auto",
@@ -48,21 +39,27 @@ export const CancelButtonLayout = style({
   },
 });
 
-export const TmpRestLayout = style({
-  margin: "4px auto",
-  gridColumn: "1 / span 4",
-  height: "auto",
-  width: "100%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
 
-  "@media": {
-    "screen and (min-width: 768px)": {
-      gridColumn: "3 / span 4",
+export const ProfileLayoutStyle = style({
+    gridColumn: "1 / span 4",
+    height: "auto",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    userSelect: 'none',
+  
+    "@media": {
+      "screen and (min-width: 768px)": {
+        gridColumn: "3 / span 4",
+      },
+      "screen and (min-width: 1000px)": {
+        gridColumn: "5 / span 4",
+      },
     },
-    "screen and (min-width: 1000px)": {
-      gridColumn: "5 / span 4",
-    },
-  },
-});
+  });
+
+  export const TitleStyle = style({
+    //   fontWeight: "bold",
+    fontSize: "18px",
+  });
+  

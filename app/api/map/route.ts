@@ -4,7 +4,10 @@ import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
 import { MapDuplicatedError } from "../error/map/MapDuplicated.error";
 import { InvalidMapNameError } from "../error/map/InvalidMapName.error";
+import { fromEnv } from "@aws-sdk/credential-providers";
+import { S3Client, DeleteObjectsCommand, DeleteObjectsRequest } from "@aws-sdk/client-s3";
 import { UnauthorizedError } from "../error/auth/Unauthorized.error";
+
 
 export type PostBody = {
   name: string
@@ -55,13 +58,13 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
+  // const searchParams = request.nextUrl.searchParams
 
   try {
     const session = await useAuth();
-    const userId = searchParams.get('userId')
+    // const userId = searchParams.get('userId')
 
-    if(session.user.id != userId) return UnauthorizedError()
+    // if(session.user.id != userId) return UnauthorizedError()
 
     const result = await prisma.map.findMany({
       select: {
@@ -69,7 +72,7 @@ export async function GET(request: NextRequest) {
         name: true
       },
       where: {
-        userId
+        userId: session.user.id
       }
   })
 
@@ -83,3 +86,72 @@ export async function GET(request: NextRequest) {
     return InternalServerError(e);
   }
 }
+
+// type DeleteBody = {
+//   id: string
+// }
+
+// const client = new S3Client({
+//   region: 'ap-northeast-2',
+//   credentials: fromEnv(),
+//   // endpoint: "https://s3.a-spot-thur.app/",
+//   // bucketEndpoint: true
+// });
+
+// export async function DELETE(request: NextRequest) {
+//   try {
+//     const session = await useAuth();
+//     const body: DeleteBody = await request.json()
+
+//     const owner = await prisma.spot.findUnique({
+//       where: {id: body.id},
+//       select: {userId: true}
+//     })
+
+//     if(owner?.userId != session.user.id) return UnauthorizedError()
+
+//     const result =  await prisma.$transaction(async (tx) => {
+
+//       const deleteResponse = await tx.spot.delete({
+//         where: {
+//           id: body.id
+//         },
+//         select: {
+//           images: {
+//             select: {
+//               url: true
+//             }
+//           }
+//         }
+//       })
+
+//       const imageUrls = deleteResponse.images.map(image=>{
+//         const Key = `user/${image.url.split("/").at(-2)}/${image.url.split("/").at(-1)}`
+//         return {
+//           Key
+//         }
+//       })
+
+//       const input: DeleteObjectsRequest = { // DeleteObjectsRequest
+//         Bucket: "a-spot-thur", // required
+//         Delete: { // Delete
+//           Objects: [ // ObjectIdentifierList // required
+//             ...imageUrls
+//           ],
+//         },
+//       };
+//       const command = new DeleteObjectsCommand(input);
+//       const response = await client.send(command);
+
+//       return response
+//     })
+
+//     return new NextResponse(
+//       JSON.stringify({ data: true, message: "데이터가 성공적으로 삭제되었습니다." }),
+//     { status: 200, headers: { "content-type": "application/json" } }
+//   )
+
+//   } catch (e) {
+//     return InternalServerError(e);
+//   }
+// }
