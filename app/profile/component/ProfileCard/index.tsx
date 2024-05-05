@@ -14,7 +14,7 @@ const ProfileCard = async ({className, style}: Props) => {
 
     return (
         <div className={`${className} ${ProfileCardWrapperStyle}`} style={style}>
-            <Image width={50} height={50} src={session?.user.image as string} alt="" className={ProfileImageStyle}/>
+            <Image width={50} height={50} src={session?.user.image as string} alt="" className={ProfileImageStyle} priority={true}/>
             <div className={ProfileInfoWrapperStyle}>
                 <span className={ProfileNameStyle}>{session?.user.name}</span>
                 <div className={ProfileATIDWrapper}>

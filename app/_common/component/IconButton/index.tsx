@@ -35,10 +35,10 @@ const IconButton = ({size, style, className, onClick, type, disabled }: Props) =
         onClick={onClick}
       >
         <motion.div className={ButtonLinkStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
-            {type == 'next' ? <Image className={ButtonImageStyle} src={NextImage} alt="x" /> : <></>}
-            {type == 'prev' ? <Image className={ButtonImageStyle} src={PrevImage} alt="x" /> : <></>}
-            {type == 'cancel' ? <Image className={CancelButtonImageStyle} src={CancelImage} alt="x" /> : <></>}
-            {type == 'search' ? <Image className={SearchButtonImageStyle} src={Search} alt="x" /> : <></>}
+            {type == 'next' ? <Image className={ButtonImageStyle} src={NextImage} alt="x" priority={true}/> : <></>}
+            {type == 'prev' ? <Image className={ButtonImageStyle} src={PrevImage} alt="x" priority={true}/> : <></>}
+            {type == 'cancel' ? <Image className={CancelButtonImageStyle} src={CancelImage} alt="x" priority={true}/> : <></>}
+            {type == 'search' ? <Image className={SearchButtonImageStyle} src={Search} alt="x" priority={true}/> : <></>}
 
           
         </motion.div>
