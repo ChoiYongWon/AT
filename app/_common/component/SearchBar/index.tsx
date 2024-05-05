@@ -125,7 +125,7 @@ const SearchBar = ({
             onClick={onSearchBtnClick}
           >
             {/* <IconButton size="34px" className={SearchIconWrapperStyle} type="search"/> */}
-            <Image src={SearchIcon} alt="" className={SearchIconStyle} />
+            <Image src={SearchIcon} alt="" className={SearchIconStyle} priority={true}/>
           </label>
           <input
             ref={checkRef}
