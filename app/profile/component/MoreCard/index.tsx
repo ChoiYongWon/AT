@@ -16,8 +16,6 @@ type Props = {
 
 const MoreCard = ({className, style}: Props) => {
 
-
-
     return (
 
         <div className={`${className} ${MoreCardWrapperStyle}`} style={style}>

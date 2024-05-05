@@ -29,7 +29,7 @@ export const MapCardNameWrapperStyle = style({
 })
 
 export const MapCardNameStyle = style({
-    fontSize: "14px"
+    fontSize: "12px"
 })
 
 export const MapCardMenuStyle = style({
@@ -89,7 +89,7 @@ export const MapCardMenuWrapperStyle = style({
     position: "absolute",
     top: "100%",
     right: 0,
-    gap: "8px",
+    gap: "10px",
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: "6px",
     backgroundColor: vars.color.white,
@@ -106,18 +106,18 @@ export const MapCardMenuButtonStyle = style({
 })
 
 export const MapCardShareIconStyle = style({
-    width: "9px",
+    width: "10px",
     height: "auto"
 })
 
 export const MapCardDeleteIconStyle = style({
     fill: "#FF5353",
-    width: "13px",
+    width: "15px",
     height: "auto",
 })
 
 export const MapCardIconWrapperStyle = style({
-    width: "13px",
+    width: "15px",
     height: "auto",
     display: "flex",
     alignItems: "center",
@@ -127,6 +127,6 @@ export const MapCardIconWrapperStyle = style({
 
 export const MapCardTextStyle = style({
     // flexBasis: "content",
-    fontSize: "10px",
+    fontSize: "11px",
     wordBreak: "keep-all",
 })
