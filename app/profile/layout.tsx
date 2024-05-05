@@ -7,8 +7,8 @@ export default function ProfileLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <PageAnimateOpacity key="/profile" className={GridLayoutStyle}>
+    <div key="/profile" className={GridLayoutStyle}>
       {children}
-    </PageAnimateOpacity>
+    </div>
   );
 }
