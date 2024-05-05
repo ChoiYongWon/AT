@@ -9,6 +9,7 @@ type Props = {
 }
 
 const ImageMemo = ({index, src, className}: Props) => {
+    console.log(src)
     return (
         <Image key={index} src={src} alt="" width={120} height={120} className={ATCardImageStyle} placeholder="blur"
                         blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
