@@ -41,7 +41,7 @@ const Query = ({className, style}: Props) => {
                                     {data}
                                 </div>
                                 <div className={QueryDeleteButtonStyle}>
-                                    <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x"/>
+                                    <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x" priority={true}/>
                                 </div>
                             </motion.div>
                         )
