@@ -1,4 +1,3 @@
-import PageAnimateOpacity from "../_common/provider/PageAnimate/PageAnimateOpacity";
 import ContentManagePage from "./view";
 import { MainLayoutStyle } from "./style.css";
 import AddButton from "./component/AddButton";

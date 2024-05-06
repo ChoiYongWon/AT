@@ -66,7 +66,7 @@ const ImageCarousel = ({
                     {
                     images.map((image, i)=>{
                         return  (<SwiperSlide className={SliderStyle} key={i}>
-                                    <Image src={image.url} priority alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
+                                    <Image src={image.url} alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
                                 </SwiperSlide>)
                     })
                     }
