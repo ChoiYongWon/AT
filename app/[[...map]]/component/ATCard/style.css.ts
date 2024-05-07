@@ -46,6 +46,7 @@ export const ATCardImageStyle = style({
     borderRadius: "5px",
     minHeight: '120px',
     minWidth: '120px',
+    textIndent: "-10000px",
 
     ':before': {
         content: "",
