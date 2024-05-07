@@ -1,5 +1,5 @@
 import { vars } from "@/app/_common/theme/contract.css";
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 export const ATCardWrapperStyle = style({
     padding: "16px",
@@ -46,6 +46,12 @@ export const ATCardImageStyle = style({
     borderRadius: "5px",
     minHeight: '120px',
     minWidth: '120px',
+
+    ':before': {
+        content: "",
+        display: "block",
+        marginBottom: "120px",
+    },
 })
 
 export const ATCardInfoWrapperStyle = style({
