@@ -15,9 +15,12 @@ import { useMutateUserInfo } from "@/app/_common/query/put/useMutateUserInfo";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import ConfirmButton from "@/app/_common/component/ConfirmButton";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Form = () => {
   const router = useRouter();
+  const queryClient = useQueryClient()
+
   const { update, data } = useSession();
   const [inputName, setInputName] = useDebounceValue("", 500);
   const {
@@ -48,6 +51,9 @@ const Form = () => {
         onSuccess: async (res) => {
           // 성공시 서버에 세션 업데이트 (AT_ID 추가)
           await update({ at_id: res.data.at_id, id: res.data.id });
+          await queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
+          await queryClient.invalidateQueries({ queryKey: ['/at'], refetchType: 'all'  })
+          await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
           // 홈화면 이동
           router.push("/");
         },
