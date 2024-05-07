@@ -65,6 +65,8 @@ export const DividerStyle = style({
 
 export const RegularButtonStyle = style({
     fontSize: "14px",
+    marginTop: "2px",
+    marginBottom: "2px",
     // fontWeight: "bold",
     color: vars.color.fontBlack
 })
