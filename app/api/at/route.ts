@@ -10,7 +10,7 @@ import { UnauthorizedError } from "../error/auth/Unauthorized.error";
 
 export type PostBody = {
   mapId: string;
-  imagesUrl: string[];
+  key: string[];
   category: string[];
   name: string;
   address: string;
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     const body: PostBody = await request.json()
 
     // 데이터 검증 로직
-    if(body.imagesUrl.length == 0 || body.category.length == 0 || body.name.length == 0 || body.address.length == 0 || body.detail.length == 0) return InvalidDataError()
+    if(body.key.length == 0 || body.category.length == 0 || body.name.length == 0 || body.address.length == 0 || body.detail.length == 0) return InvalidDataError()
 
     // 카테고리 검증
     if(body.category.filter((c=>{
@@ -72,8 +72,10 @@ export async function POST(request: NextRequest) {
         },
         images: {
           createMany: {
-            data: body.imagesUrl.map((url, i)=>({
-              url, 
+            data: body.key.map((key, i)=>({
+              originUrl: `${process.env.AWS_S3_URL}/${key}`,
+              compressUrl: `${process.env.AWS_S3_COMPRESSED_URL}/${key}`,
+              key,
               sequence: i+1,
               userId: session.user.id as string,
             }))
@@ -140,7 +142,8 @@ export async function GET(request: NextRequest) {
         },
         images: {
           select: {
-            url: true,
+            originUrl: true,
+            compressUrl: true,
             sequence: true
           }
         },
@@ -176,7 +179,7 @@ export async function GET(request: NextRequest) {
 export type PutBody = {
   id: string;
   mapId: string;
-  imagesUrl: string[];
+  key: string[];
   category: string[];
   name: string;
   address: string;
@@ -202,7 +205,7 @@ export async function PUT(request: NextRequest) {
     if(prevSpot?.userId != session.user.id) return UnauthorizedError()
 
     // 데이터 검증 로직
-    if(body.imagesUrl.length == 0 || body.category.length == 0 || body.name.length == 0 || body.address.length == 0 || body.detail.length == 0) return InvalidDataError()
+    if(body.key.length == 0 || body.category.length == 0 || body.name.length == 0 || body.address.length == 0 || body.detail.length == 0) return InvalidDataError()
 
     // 카테고리 검증
     if(body.category.filter((c=>{
@@ -259,8 +262,10 @@ export async function PUT(request: NextRequest) {
           },
           images: {
             createMany: {
-              data: body.imagesUrl.map((url, i)=>({
-                url, 
+              data: body.key.map((key, i)=>({
+                originUrl: `${process.env.AWS_S3_URL}/${key}`,
+                compressUrl: `${process.env.AWS_S3_COMPRESSED_URL}/${key}`,
+                key,
                 sequence: i+1,
                 userId: session.user.id as string,
               }))
@@ -349,14 +354,14 @@ export async function DELETE(request: NextRequest) {
         select: {
           images: {
             select: {
-              url: true
+              key: true,
             }
           }
         }
       })
 
       const imageUrls = deleteResponse.images.map(image=>{
-        const Key = `user/${image.url.split("/").at(-2)}/${image.url.split("/").at(-1)}`
+        const Key = image.key
         return {
           Key
         }

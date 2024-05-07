@@ -4,29 +4,33 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 
 type Props = {
-    originSrc: string
-    src: string
+    originUrl: string
+    compressUrl: string
     alt: string
+    className: any
+    style: any
 }
 
 const ImageWithFallback = ({
-    originSrc,
+    originUrl,
     alt,
-    src,
+    compressUrl,
+    // className,
+    // style,
     ...props
   }: Props | any) => {
     const [error, setError] = useState<any>(null)
   
     useEffect(() => {
       setError(null)
-    }, [src])
+    }, [compressUrl])
   
     return (
       <Image
         priority
         alt={alt}
         onError={setError}
-        src={error ? originSrc : src}
+        src={error ? originUrl : compressUrl}
         {...props}
       />
     )

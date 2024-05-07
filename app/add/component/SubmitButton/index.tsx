@@ -69,7 +69,7 @@ const SubmitButton = ({ style }: Props) => {
             
 
             const postBody:PostBody = {
-                imagesUrl: imageNameList.map((image: string)=>(`https://s3.a-spot-thur.app/user/${session.data?.user.id}/${image}`)),
+                key: imageNameList.map((image: string)=>(`user/${session.data?.user.id}/${image}`)),
                 category: [...formState.category],
                 name: formState.address.name,
                 address: formState.address.address,

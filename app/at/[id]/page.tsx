@@ -15,6 +15,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         id: params.id
       }
     })
+    console.log(exists)
     if (!exists) redirect(`/error/404`)
   
 

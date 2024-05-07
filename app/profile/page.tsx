@@ -31,8 +31,8 @@ export default function Profile() {
           <MoreCard style={{ marginBottom: "30px" }}/>
 
           {/* -- 테스트 영역 */}
-          <div className={TitleStyle} style={{ marginBottom: "10px" }}>테스트</div>
-          <ImageWithFallback width={100} height={100} originSrc={"https://s3.a-spot-thur.app/user/cluc24zkw0001zfznbuxsokqq/20cc5961-9100-438b-9f63-d802b8c801e7.jpeg"} src={"https://s3.a-spot-thur.app/user/cluc24zkw0001zfznbuxsokqq/20cc5961-9100-438b-9f63-d802b8c80e1e7.jpeg"} alt=""/>
+          {/* <div className={TitleStyle} style={{ marginBottom: "10px" }}>테스트</div> */}
+          {/* <ImageWithFallback width={100} height={100} originSrc={"https://s3.a-spot-thur.app/user/cluc24zkw0001zfznbuxsokqq/20cc5961-9100-438b-9f63-d802b8c801e7.jpeg"} src={"https://s3.a-spot-thur.app/user/cluc24zkw0001zfznbuxsokqq/20cc5961-9100-438b-9f63-d802b8c80e1e7.jpeg"} alt=""/> */}
 
 
       </div>

@@ -7,7 +7,7 @@ export const URL = "/at";
 export type PutATDTO = {
     id: string;
     mapId: string;
-    imagesUrl: string[];
+    key: string[];
     category: string[];
     name: string;
     address: string;

@@ -18,6 +18,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import IconButton from "@/app/_common/component/IconButton";
+import ImageWithFallback from "@/app/_common/component/ImageWithFallback";
 
 
 type Props = {
@@ -66,7 +67,7 @@ const ImageCarousel = ({
                     {
                     images.map((image, i)=>{
                         return  (<SwiperSlide className={SliderStyle} key={i}>
-                                    <Image src={image.url} alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
+                                    <ImageWithFallback unoptimized originUrl={image.originUrl} compressUrl={image.compressUrl} alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
                                 </SwiperSlide>)
                     })
                     }

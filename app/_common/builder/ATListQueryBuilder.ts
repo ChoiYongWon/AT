@@ -47,7 +47,8 @@ export class ATListQueryBuilder {
             },
             images: {
                 select: {
-                    url: true,
+                    originUrl: true,
+                    compressUrl: true,
                     sequence: true
                 },
                 orderBy: {

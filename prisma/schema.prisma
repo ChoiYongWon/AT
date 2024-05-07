@@ -107,7 +107,9 @@ model Image {
   id                    String @id @default(cuid())
   userId                String
   spotId                String
-  url                   String
+  key                   String
+  originUrl             String
+  compressUrl           String
   sequence              Int
   created_at            DateTime @default(now()) @db.Timestamptz(6)
 

@@ -32,7 +32,7 @@ const Form = ({children, id}: Props) => {
                         id: map.id,
                         name: map.name,
                     },
-                    image: images.map((i: any)=>({previewUrl: i.url, isNew: false, name: i.url.split("/").at(-1).split(".")[0], ext: i.url.split("/").at(-1).split(".")[1]})),
+                    image: images.map((i: any)=>({previewUrl: i.compressUrl, isNew: false, name: i.compressUrl.split("/").at(-1).split(".")[0], ext: i.compressUrl.split("/").at(-1).split(".")[1]})),
                     category: categories.map((c: any)=>({id: uuidv4(), name: c.name})),
                     address: {
                         enable: true,

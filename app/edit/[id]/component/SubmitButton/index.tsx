@@ -94,7 +94,7 @@ const SubmitButton = ({ style }: Props) => {
 
             const putBody:PutATDTO = {
                 id: formState.id,
-                imagesUrl: formState.image.map((image)=>(`https://s3.a-spot-thur.app/user/${session.data?.user.id}/${image.name}.${image.ext}`)),
+                key: formState.image.map((image)=>(`user/${session.data?.user.id}/${image.name}.${image.ext}`)),
                 category: [...formState.category],
                 name: formState.address.name,
                 address: formState.address.address,

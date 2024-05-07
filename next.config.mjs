@@ -45,6 +45,11 @@ const nextConfig = {
         hostname: "s3.a-spot-thur.app",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "s3-compressed.a-spot-thur.app",
+        pathname: "/**",
+      },
     ],
   },
   headers: async () => {
