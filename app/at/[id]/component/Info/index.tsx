@@ -106,7 +106,7 @@ const Info = ({
                 }
                 </div>
                 {
-                        isLoading || initialLoading ? <Skeleton circle style={{width: "34px", height: "34px"}}/> :  <IconButton size="34px" type="next" onClick={()=>alert("구현중")}/>
+                        isLoading || initialLoading ? <Skeleton circle style={{width: "34px", height: "34px"}}/> :  <Link target="_blank" href={`https://map.naver.com/p/search/${encodeURI(`${title} ${address}`)}`}><IconButton size="34px" type="next"/></Link>
                 }
                 
             </div>

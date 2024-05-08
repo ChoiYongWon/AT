@@ -81,7 +81,9 @@ export const ATCardTitleStyle = style({
 
 export const ATCardAddressStyle = style({
     fontSize: "12px",
-    whiteSpace: "nowrap",
+    lineHeight: 1.4
+    // wordBreak: 'keep-all'
+    // whiteSpace: "nowrap",
 })
 
 export const ATCardNaverButtonStyle = style({
