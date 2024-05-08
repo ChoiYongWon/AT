@@ -22,7 +22,6 @@ export type GetATData = {
     },
     images: {
         originUrl: string;
-        compressUrl: string;
         sequence: number;
     }[],
     body: string;

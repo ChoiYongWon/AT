@@ -163,7 +163,7 @@ export const atListSelector = selector({
                         address: d.address,
                         at_id: d.user.at_id,
                         map_name: d.map.name,
-                        images: d.images.map((image:any)=>({originUrl: image.originUrl, compressUrl: image.compressUrl})),
+                        images: d.images.map((image:any)=>({originUrl: image.originUrl})),
                         categories: d.categories.map((category:any)=>category.name),
                     })
                 })

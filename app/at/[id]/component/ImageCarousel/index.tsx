@@ -6,10 +6,6 @@ import { atDataState } from "../../recoil";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y } from 'swiper/modules';
 
-import NextArrow from "../../../../../public/images/NextArrow.svg"
-import PrevArrow from "../../../../../public/images/PrevArrow.svg"
-
-
 // Import Swiper styles
 import 'swiper/css';
 // import 'swiper/css/pagination';
@@ -18,7 +14,6 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import IconButton from "@/app/_common/component/IconButton";
-import ImageWithFallback from "@/app/_common/component/ImageWithFallback";
 
 
 type Props = {
@@ -67,7 +62,7 @@ const ImageCarousel = ({
                     {
                     images.map((image, i)=>{
                         return  (<SwiperSlide className={SliderStyle} key={i}>
-                                    <ImageWithFallback priority unoptimized originUrl={image.originUrl} compressUrl={image.compressUrl} alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
+                                    <Image priority unoptimized src={`https://images.weserv.nl/?url=${image.originUrl}&w=800&h=800`} alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
                                 </SwiperSlide>)
                     })
                     }

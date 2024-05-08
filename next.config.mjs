@@ -50,6 +50,11 @@ const nextConfig = {
         hostname: "s3-compressed.a-spot-thur.app",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.weserv.nl",
+        pathname: "/**",
+      },
     ],
   },
   headers: async () => {

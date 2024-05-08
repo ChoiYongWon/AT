@@ -4,7 +4,6 @@ import NextArrow from "../../../../public/images/NextArrow.svg"
 import Link from "next/link"
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
-import ImageWithFallback from "@/app/_common/component/ImageWithFallback"
 
 
 type Props = {
@@ -34,7 +33,8 @@ const ATCard = ({id, title, at_id, map_name, images, address, categories, classN
             <div className={ATCardImageWrapperStyle}>
                 {
                     images.map((data: any, i)=>{
-                        return <ImageWithFallback priority unoptimized key={i} originUrl={data.originUrl} compressUrl={data.compressUrl} alt="" width={120} height={120} className={ATCardImageStyle}/>
+                        return <Image priority unoptimized key={i} src={`https://images.weserv.nl/?url=${data.originUrl}&w=180&h=180`} alt="" width={120} height={120} className={ATCardImageStyle}/>
+
                     })
                 }
             </div>

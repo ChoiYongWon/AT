@@ -6,7 +6,6 @@ import MapListCard from "./component/MapListCard";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
 import MoreCard from "./component/MoreCard";
-import ImageWithFallback from "../_common/component/ImageWithFallback";
 
 export default function Profile() {
 
