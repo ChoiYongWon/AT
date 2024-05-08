@@ -13,9 +13,9 @@ export const MapCardStyle = style({
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: "6px",
     backgroundColor: vars.color.white,
-    padding: "8px 22px",
+    padding: "8px 16px",
     display: "flex",
-    gap: "20px",
+    gap: "24px",
     alignItems: "center",
     justifyContent: "center"
     

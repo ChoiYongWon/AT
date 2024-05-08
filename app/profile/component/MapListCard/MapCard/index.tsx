@@ -12,6 +12,7 @@ import { useDetectClickOutside } from "react-detect-click-outside"
 import Modal from "@/app/_common/component/Modal"
 import ConfirmButton from "@/app/_common/component/ConfirmButton"
 import toast from "react-hot-toast/headless"
+import millify from "millify"
 
 
 
@@ -84,11 +85,11 @@ const MapCard = ({className, style, id, at_id, name, count, view}: Props) => {
                 <div className={MapCardInfoWrapperStyle}>
                     <div className={MapCardInfoTextWrapperStyle}>
                         <div className={MapCardATCountColorStyle}/>
-                        <span className={MapCardInfoTextStyle}>{count} AT</span>
+                        <span className={MapCardInfoTextStyle}>등록 : {millify(count || 0, {precision: 1,lowercase: true})}</span>
                     </div>
                     <div className={MapCardInfoTextWrapperStyle}>
                         <div className={MapCardATViewColorStyle}/>
-                        <span className={MapCardInfoTextStyle}>{view} View</span>
+                        <span className={MapCardInfoTextStyle}>조회 : {millify(view || 0, {precision: 1,lowercase: true})}</span>
                     </div>
                 </div>
             </Link>

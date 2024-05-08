@@ -10,6 +10,7 @@ export const MoreCardWrapperStyle = style({
     padding: "18px 16px",
     display: "flex",
     gap: "18px",
+    userSelect: "none",
     flexDirection: "column",
 })
 
