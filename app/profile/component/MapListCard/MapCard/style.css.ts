@@ -15,7 +15,7 @@ export const MapCardStyle = style({
     backgroundColor: vars.color.white,
     padding: "8px 22px",
     display: "flex",
-    gap: "24px",
+    gap: "20px",
     alignItems: "center",
     justifyContent: "center"
     

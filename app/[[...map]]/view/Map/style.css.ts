@@ -8,15 +8,16 @@ export const MapLayoutStyle = style({
     padding: '0 10px',
     display: "flex",
     justifyContent: "center",
+    // width: "95%",
+
   
     // "@media": {
-    //   "screen and (min-width: 768px)": {
-    //     gridColumn: "2 / span 6",
-    //     // marginTop: '80px',
+    //   "screen and (min-width: 500px)": {
+    //     width: "73%"
+
     //   },
     //   "screen and (min-width: 1000px)": {
-    //     gridColumn: "5 / span 4",
-    //     // marginTop: '80px',
+    //     width: "73%"
     //   },
     // },
   })

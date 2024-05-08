@@ -26,6 +26,7 @@ export const MapLayoutStyle = style({
   export const MapStyle = style({
     width: '90%',
     height: 'auto',
+    // maxWidth: "340px",
   
     "@media": {
       "screen and (min-width: 768px)": {

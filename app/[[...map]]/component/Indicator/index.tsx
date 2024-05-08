@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { CardSyle, CountStyle, IndicatorTapGroupStyle, IndicatorWrapperStyle, LoadingStyle, NameStyle } from "./style.css"
 import { useCountUp } from 'react-countup';
 import { AnimatePresence, motion } from "framer-motion";
+import millify from "millify";
 
 type Props = {
     x: number
@@ -16,20 +17,20 @@ type Props = {
 
 const Indicator = ({x, y, name, count, onClick, isLoading}: Props) => {
 
-    const countUpRef = useRef(null)
+    // const countUpRef = useRef(null)
     const width = useRef(56)
     const height = useRef(38)
 
-    const { start, pauseResume, reset, update } = useCountUp({
-		end: count,
-		duration: 2,
-		useEasing: true,
-		ref: countUpRef,
-	});
+    // const { start, pauseResume, reset, update } = useCountUp({
+	// 	end: count,
+	// 	duration: 2,
+	// 	useEasing: true,
+	// 	ref: countUpRef,
+	// });
 
-    useEffect(()=>{
-        start()
-    }, [count])
+    // useEffect(()=>{
+    //     start()
+    // }, [count])
 
     return (
         <g transform={`translate(${x},${y}) scale(1.1)`} className={IndicatorWrapperStyle} onClick={onClick}>
@@ -54,7 +55,7 @@ const Indicator = ({x, y, name, count, onClick, isLoading}: Props) => {
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: -5, opacity: 0 }}
                             transition={{ duration: 0.2 }}
-                            ref={countUpRef} className={CountStyle} x={width.current / 2} y={height.current - 10}>{count || 0}</motion.text>
+                            className={CountStyle} x={width.current / 2} y={height.current - 9}>{millify(count || 0, {precision: 1,lowercase: true})}</motion.text>
                     }
 
                 </AnimatePresence>
