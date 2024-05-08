@@ -117,10 +117,10 @@ const Info = ({
                 
                 <div className={EditWrapperStyle}>
                     {
-                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  session.data?.user.at_id == user.at_id ? <button onClick={()=>setModal(true)} className={EditStyle}>삭제</button> : <></>
+                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  session.data?.user.id == user.id ? <button onClick={()=>setModal(true)} className={EditStyle}>삭제</button> : <></>
                     }
                     {
-                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :   session.data?.user.at_id == user.at_id ? <Link href={`/edit/${id}`} className={EditStyle} prefetch={true}>수정</Link> : <></>
+                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :   session.data?.user.id == user.id ? <Link href={`/edit/${id}`} className={EditStyle} prefetch={true}>수정</Link> : <></>
                     }
                     {
                         isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  <>조회 {view_count.toLocaleString()}</>
