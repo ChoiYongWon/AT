@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
           createMany: {
             data: body.key.map((key, i)=>({
               originUrl: `${process.env.AWS_S3_URL}/${key}`,
-              compressUrl: `${process.env.AWS_S3_COMPRESSED_URL}/${key}`,
+              compressUrl: `${process.env.AWS_S3_COMPRESSED_URL}/${key.split(".")[0]}.webp`,
               key,
               sequence: i+1,
               userId: session.user.id as string,
@@ -264,7 +264,7 @@ export async function PUT(request: NextRequest) {
             createMany: {
               data: body.key.map((key, i)=>({
                 originUrl: `${process.env.AWS_S3_URL}/${key}`,
-                compressUrl: `${process.env.AWS_S3_COMPRESSED_URL}/${key}`,
+                compressUrl: `${process.env.AWS_S3_COMPRESSED_URL}/${key.split(".")[0]}.webp`,
                 key,
                 sequence: i+1,
                 userId: session.user.id as string,

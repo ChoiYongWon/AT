@@ -67,7 +67,7 @@ const ImageCarousel = ({
                     {
                     images.map((image, i)=>{
                         return  (<SwiperSlide className={SliderStyle} key={i}>
-                                    <ImageWithFallback unoptimized originUrl={image.originUrl} compressUrl={image.compressUrl} alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
+                                    <ImageWithFallback priority unoptimized originUrl={image.originUrl} compressUrl={image.compressUrl} alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
                                 </SwiperSlide>)
                     })
                     }

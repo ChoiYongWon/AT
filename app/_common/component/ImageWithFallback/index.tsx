@@ -20,17 +20,39 @@ const ImageWithFallback = ({
     ...props
   }: Props | any) => {
     const [error, setError] = useState<any>(null)
-  
+    const[src, setSrc] = useState<string>(compressUrl)
+    const [timer, setTimer] = useState<any>(null)
+    const [attempt, setAttempt] = useState(0)
+
     useEffect(() => {
       setError(null)
-    }, [compressUrl])
+    }, [src])
+
+    useEffect(()=>{
+      if(error && attempt < 3) {
+        setSrc("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg==")
+
+        // 4초뒤에 재요청
+        setTimer(setTimeout(()=>{
+          setSrc(compressUrl)
+          setAttempt(prev=>prev+1)
+        },4000))
+      }
+    }, [error])
+
+    useEffect(()=>{
+      return ()=>{
+        if(timer) clearTimeout(timer)
+      }
+    }, [timer])
   
     return (
       <Image
-        priority
         alt={alt}
         onError={setError}
-        src={error ? originUrl : compressUrl}
+        src={src}
+        placeholder="blur"
+        blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="
         {...props}
       />
     )
