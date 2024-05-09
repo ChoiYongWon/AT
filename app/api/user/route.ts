@@ -1,3 +1,6 @@
+export const maxDuration = 60;
+
+
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { InvalidATIDError } from "../error/user/InvalidATID.error";
