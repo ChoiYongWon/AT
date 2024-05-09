@@ -10,6 +10,7 @@ export const ProfileCardWrapperStyle = style({
     padding: "24px 14px",
     display: "flex",
     gap: "24px",
+    alignItems: "center"
 })
 
 export const ProfileImageStyle = style({
@@ -32,7 +33,6 @@ export const ProfileNameStyle = style({
 export const ProfileATIDWrapper = style({
     display: "flex",
     alignItems: "flex-end",
-    gap: "8px"
 })
 
 export const ProfileATIDStyle = style({
@@ -45,5 +45,15 @@ export const ProfileEditLinkStyle = style({
     paddingBottom: "1px",
     borderBottom: `${vars.color.primary} 1px solid`,
     fontSize: "10px",
-    color: vars.color.primary
+    color: vars.color.primary,
+    marginLeft: '8px'
+})
+
+export const ProfileLoginLinkStyle = style({
+    paddingBottom: "1px",
+    borderBottom: `${vars.color.primary} 1px solid`,
+    fontSize: "10px",
+    color: vars.color.primary,
+    marginLeft: '4px'
+
 })

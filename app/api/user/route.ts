@@ -6,6 +6,10 @@ import { InternalServerError } from "../error/server/InternalServer.error";
 import { UnavailableATIDError } from "../error/user/UnavailableATID.error";
 import { DuplicatedATIDError } from "../error/user/DuplicatedATID.error";
 import { ROUTES } from "@/app/_common/util/constant";
+import { fromEnv } from "@aws-sdk/credential-providers";
+import { S3Client, DeleteObjectsCommand, DeleteObjectsRequest } from "@aws-sdk/client-s3";
+import { UnauthorizedError } from "../error/auth/Unauthorized.error";
+
 
 type Query = {
   at_id: string;
@@ -48,6 +52,68 @@ export async function PUT(request: NextRequest) {
       JSON.stringify({ data: updatedUser, message: "정보가 수정되었습니다." }),
       { status: 200, headers: { "content-type": "application/json" } }
     );
+  } catch (e) {
+    return InternalServerError(e);
+  }
+}
+
+const client = new S3Client({
+  region: 'ap-northeast-2',
+  credentials: fromEnv(),
+  // endpoint: "https://s3.a-spot-thur.app/",
+  // bucketEndpoint: true
+});
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const session = await useAuth();
+
+    await prisma.$transaction(async (tx) => {
+
+      const deleteResponse = await tx.user.delete({
+        where: {
+          id: session.user.id
+        },
+        select: {
+          images: {
+            select: {
+              key: true
+            }
+          }
+        }
+      })
+
+      const promises = []
+      const imageUrls = deleteResponse.images.map(image=>({Key: image.key}))
+
+      for(let i=0;i<Math.ceil(imageUrls.length / 1000);i++){
+        const start = 1000 * i
+        const end = 1000 * (i+1)
+        const currentObjects = imageUrls.slice(start, end)
+
+        const input: DeleteObjectsRequest = { // DeleteObjectsRequest
+          Bucket: "a-spot-thur", // required
+          Delete: { // Delete
+            Objects: [ // ObjectIdentifierList // required
+              ...currentObjects
+
+            ],
+          },
+        };
+              
+        const command = new DeleteObjectsCommand(input);
+        const response = client.send(command);
+        promises.push(response)
+      
+      }
+      await Promise.all(promises)
+    })
+
+    return new NextResponse(
+      JSON.stringify({ data: true, message: "데이터가 성공적으로 삭제되었습니다." }),
+    { status: 200, headers: { "content-type": "application/json" } }
+  )
+
   } catch (e) {
     return InternalServerError(e);
   }

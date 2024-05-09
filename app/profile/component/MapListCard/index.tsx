@@ -64,8 +64,8 @@ const MapListCard = ({className, style}: Props) => {
                        <Skeleton className={MapCardSkeletonStyle}/>
                        <Skeleton className={MapCardSkeletonStyle}/>
                        <Skeleton className={MapCardSkeletonStyle}/>
-                       <Skeleton className={MapCardSkeletonStyle}/>
-                       <Skeleton className={MapCardSkeletonStyle}/>
+                       {/* <Skeleton className={MapCardSkeletonStyle}/> */}
+                       {/* <Skeleton className={MapCardSkeletonStyle}/> */}
 
                     </div>
                 ) : (

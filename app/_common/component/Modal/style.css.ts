@@ -40,6 +40,7 @@ export const ModalTitleStyle = style({
 
 export const ModalContentStyle = style({
     fontSize: "12px",
+    lineHeight: 1.5
     // fontWeight: 800
 })
 

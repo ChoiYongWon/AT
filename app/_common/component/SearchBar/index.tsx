@@ -15,6 +15,8 @@ import {
 } from "./style.css";
 import SearchIcon from "../../../../public/images/SearchIcon.svg";
 import Logo from "../../../../public/images/Loading.svg"
+import Menu from "../../../../public/images/MenuBar.svg"
+
 import { useRef } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { setFocusTimeout } from "@toss/utils";
@@ -105,15 +107,15 @@ const SearchBar = ({
           state ? 
           <IconButton size="34px" type="prev" onClick={onPrevClick}/>
           :
-          image ? (
-            <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
-              <Image src={image} alt="" width={100} height={100} priority={true} />
-            </Link>
-          ) : (
-            <Link className={ProfileImageWrapperStyle} href={"/login"} prefetch={true}>
-              <Image src={Logo} className={LogoStyle} alt="" width={100} height={100} />
-            </Link>
-          )
+          // <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
+          // {
+          //   image ? <Image src={image} alt="" width={100} height={100} priority={true} /> : <Image src={Menu} className={LogoStyle} alt="" width={100} height={100} />
+          // }
+          
+          // </Link>
+          <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
+            <Image src={Menu} className={LogoStyle} alt="" width={100} height={100} />
+          </Link>
         }
         
 

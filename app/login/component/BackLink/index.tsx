@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { BackLinkStyle } from "./style.css"
+import Link from "next/link"
 
 type Props = {
     children: any
@@ -12,9 +13,9 @@ const BackLink = ({children}: Props) => {
     const router = useRouter()
 
     return (
-        <span onClick={()=>router.back()} className={BackLinkStyle}>
+        <Link href={"/"} className={BackLinkStyle} prefetch>
             {children}
-        </span>
+        </Link>
     )
 }
 

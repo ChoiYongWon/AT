@@ -10,25 +10,29 @@ export default auth(async (req) => {
 
   const session = await auth();
 
-  if (session) {
-    if (!session.user?.at_id)
-      return NextResponse.redirect(new URL("/onboard", req.url));
-  }
   if (req.nextUrl.pathname.startsWith("/login")) {
-    if (session) return NextResponse.redirect(new URL("/", req.url));
+    if (session) {
+      if (!session.user?.at_id) return NextResponse.redirect(new URL("/onboard", req.url));
+      return NextResponse.redirect(new URL("/", req.url));
+    }
   }
   else if (req.nextUrl.pathname.startsWith("/profile")) {
-    if (!session) return NextResponse.redirect(new URL("/login", req.url));
+    // if (!session) return NextResponse.redirect(new URL("/login", req.url));
+    if (session && !session.user?.at_id) return NextResponse.redirect(new URL("/onboard", req.url)); // 로그인되어있는데 at_id가 없을 때
   }
   else if (req.nextUrl.pathname.startsWith("/rename")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
+    if (session && !session.user?.at_id) return NextResponse.redirect(new URL("/onboard", req.url)); // 로그인되어있는데 at_id가 없을 때
   }
   else if (req.nextUrl.pathname.startsWith("/add")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
+    if (session && !session.user?.at_id) return NextResponse.redirect(new URL("/onboard", req.url)); // 로그인되어있는데 at_id가 없을 때
   }
   else if (req.nextUrl.pathname.startsWith("/onboard")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
     else if (session.user?.at_id) return NextResponse.redirect(new URL("/", req.url));
+  }else {
+    if (session && !session.user?.at_id) return NextResponse.redirect(new URL("/onboard", req.url)); // 로그인되어있는데 at_id가 없을 때
   }
 });
 

@@ -94,7 +94,7 @@ const MapCard = ({className, style, id, at_id, name, count, view}: Props) => {
 
         }catch(e){
             setDeleteLocalLoading(false)
-            toast("삭제 실패")
+            toast.error("삭제 실패")
             
         }
 
@@ -148,7 +148,7 @@ const MapCard = ({className, style, id, at_id, name, count, view}: Props) => {
             </div>
             <Modal show={showModal} setShow={setModal}>
                 <Modal.Title>정말 삭제할까요?</Modal.Title>
-                <Modal.Content>한번 삭제하면 되돌릴 수 없습니다.</Modal.Content>
+                <Modal.Content>{count}개의 장소들이 전부 삭제됩니다.<br></br>한번 삭제하면 되돌릴 수 없습니다.</Modal.Content>
                 <Modal.ButtonGroup style={{marginTop: "14px"}}>
                     <Modal.Button onClick={()=>setModal(false)}>취소</Modal.Button>
                     <ConfirmButton loading={isDeleteLocalLoading || isDeleteMapPending} onClick={onDeleteClick} style={{flex: 1}} text="삭제"/>
