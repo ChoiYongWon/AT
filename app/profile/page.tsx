@@ -21,7 +21,7 @@ export default function Profile() {
           <ProfileCard style={{ marginBottom: "30px" }}/>
 
 
-          {/* -- 내 정보 영역 */}
+          {/* -- 내 지도 영역 */}
           <div className={TitleStyle} style={{ marginBottom: "10px" }}>내 지도</div>
           <MapListCard style={{ marginBottom: "30px" }}/>
 

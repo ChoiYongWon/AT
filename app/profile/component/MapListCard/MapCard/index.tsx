@@ -13,6 +13,8 @@ import Modal from "@/app/_common/component/Modal"
 import ConfirmButton from "@/app/_common/component/ConfirmButton"
 import toast from "react-hot-toast/headless"
 import millify from "millify"
+import { useDeleteMap } from "@/app/_common/query/delete/useDeleteMap"
+import { useQueryClient } from "@tanstack/react-query"
 
 
 
@@ -42,6 +44,11 @@ const MapCard = ({className, style, id, at_id, name, count, view}: Props) => {
 
     const [toggle, setToggle] = useState(false)
     const [showModal, setModal] = useState(false)
+    const queryClient = useQueryClient()
+    const [isDeleteLocalLoading , setDeleteLocalLoading] = useState(false)
+    const {mutateAsync: deleteMap, isPending: isDeleteMapPending} = useDeleteMap()
+    
+
 
     const onMenuClick = (e: any) => {
         e.preventDefault()
@@ -73,9 +80,24 @@ const MapCard = ({className, style, id, at_id, name, count, view}: Props) => {
 
     }
 
-    const onDeleteClick = (e: any) => {
-        toast("기다려봐요 구현중.. ㅠㅠ")
-        setModal(false)
+    const onDeleteClick = async (e: any) => {
+        try{
+            setDeleteLocalLoading(true)
+            await deleteMap({id})
+
+            // 성공시
+            setDeleteLocalLoading(false)
+            setModal(false)
+            await queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
+            await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
+            await queryClient.invalidateQueries({ queryKey: ['/map/aggregate'], refetchType: 'all'  })
+
+        }catch(e){
+            setDeleteLocalLoading(false)
+            toast("삭제 실패")
+            
+        }
+
     }
 
     return (
@@ -129,7 +151,7 @@ const MapCard = ({className, style, id, at_id, name, count, view}: Props) => {
                 <Modal.Content>한번 삭제하면 되돌릴 수 없습니다.</Modal.Content>
                 <Modal.ButtonGroup style={{marginTop: "14px"}}>
                     <Modal.Button onClick={()=>setModal(false)}>취소</Modal.Button>
-                    <ConfirmButton onClick={onDeleteClick} style={{flex: 1}} text="삭제"/>
+                    <ConfirmButton loading={isDeleteLocalLoading || isDeleteMapPending} onClick={onDeleteClick} style={{flex: 1}} text="삭제"/>
                 </Modal.ButtonGroup>
             </Modal>
         </div>

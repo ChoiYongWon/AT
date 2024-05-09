@@ -1,3 +1,5 @@
+export const maxDuration = 60;
+
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { useAuth } from "@/app/_common/util/useAuth";
@@ -87,71 +89,84 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// type DeleteBody = {
-//   id: string
-// }
+type DeleteBody = {
+  id: string
+}
 
-// const client = new S3Client({
-//   region: 'ap-northeast-2',
-//   credentials: fromEnv(),
-//   // endpoint: "https://s3.a-spot-thur.app/",
-//   // bucketEndpoint: true
-// });
+const client = new S3Client({
+  region: 'ap-northeast-2',
+  credentials: fromEnv(),
+  // endpoint: "https://s3.a-spot-thur.app/",
+  // bucketEndpoint: true
+});
 
-// export async function DELETE(request: NextRequest) {
-//   try {
-//     const session = await useAuth();
-//     const body: DeleteBody = await request.json()
+export async function DELETE(request: NextRequest) {
+  try {
+    const session = await useAuth();
+    const body: DeleteBody = await request.json()
 
-//     const owner = await prisma.spot.findUnique({
-//       where: {id: body.id},
-//       select: {userId: true}
-//     })
+    const owner = await prisma.map.findUnique({
+      where: {id: body.id, userId: session.user.id},
+      select: {userId: true}
+    })
 
-//     if(owner?.userId != session.user.id) return UnauthorizedError()
+    if(!owner) return UnauthorizedError()
 
-//     const result =  await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx) => {
 
-//       const deleteResponse = await tx.spot.delete({
-//         where: {
-//           id: body.id
-//         },
-//         select: {
-//           images: {
-//             select: {
-//               url: true
-//             }
-//           }
-//         }
-//       })
+      const deleteResponse = await tx.map.delete({
+        where: {
+          id: body.id
+        },
+        select: {
+          spots: {
+            select: {
+              images: {
+                select: {
+                  key: true
+                }
+              }
+            }
+          }
+        }
+      })
 
-//       const imageUrls = deleteResponse.images.map(image=>{
-//         const Key = `user/${image.url.split("/").at(-2)}/${image.url.split("/").at(-1)}`
-//         return {
-//           Key
-//         }
-//       })
+      const promises = []
+      const imageUrls = deleteResponse.spots.reduce((acc: any, spot)=>{
+        const urls = spot.images.map(image=>({Key: image.key}))
+        return [...acc, ...urls]
+      }, [])
 
-//       const input: DeleteObjectsRequest = { // DeleteObjectsRequest
-//         Bucket: "a-spot-thur", // required
-//         Delete: { // Delete
-//           Objects: [ // ObjectIdentifierList // required
-//             ...imageUrls
-//           ],
-//         },
-//       };
-//       const command = new DeleteObjectsCommand(input);
-//       const response = await client.send(command);
+      for(let i=0;i<Math.ceil(imageUrls.length / 1000);i++){
+        const start = 1000 * i
+        const end = 1000 * (i+1)
+        const currentObjects = imageUrls.slice(start, end)
 
-//       return response
-//     })
+        const input: DeleteObjectsRequest = { // DeleteObjectsRequest
+          Bucket: "a-spot-thur", // required
+          Delete: { // Delete
+            Objects: [ // ObjectIdentifierList // required
+              ...currentObjects
 
-//     return new NextResponse(
-//       JSON.stringify({ data: true, message: "데이터가 성공적으로 삭제되었습니다." }),
-//     { status: 200, headers: { "content-type": "application/json" } }
-//   )
+            ],
+          },
+        };
+              
+        const command = new DeleteObjectsCommand(input);
+        const response = client.send(command);
+        promises.push(response)
+      
+      }
 
-//   } catch (e) {
-//     return InternalServerError(e);
-//   }
-// }
+      await Promise.all(promises)
+    })
+
+    return new NextResponse(
+      JSON.stringify({ data: true, message: "데이터가 성공적으로 삭제되었습니다." }),
+    { status: 200, headers: { "content-type": "application/json" } }
+  )
+
+  } catch (e) {
+    return InternalServerError(e);
+  }
+}

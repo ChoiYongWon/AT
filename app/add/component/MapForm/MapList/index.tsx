@@ -14,6 +14,7 @@ import { useGetAllMap } from "@/app/_common/query/get/useGetAllMap"
 import { useSession } from "next-auth/react"
 import { useDetectClickOutside } from "react-detect-click-outside"
 import Loading from "@/app/_common/component/Loading"
+import { useQueryClient } from "@tanstack/react-query"
 
 type Props = {
     className ?: any
@@ -44,6 +45,8 @@ const MapList = ({className, style, closeToggle}: Props) => {
             refetch: getAllMap,
             isFetching: isGetAllMapFetching,
         } = useGetAllMap()
+        const queryClient = useQueryClient()
+
     
         // 지도 불러 온 후 값
         useEffect(()=>{
@@ -81,13 +84,19 @@ const MapList = ({className, style, closeToggle}: Props) => {
         const onMapAddClick = async () => {
             const regexp = /^[가-힣a-zA-Z0-9]{1,6}$/g
             if(regexp.test(mapInput)){
-                // TODO 에러 처리 고민해보기
+
                 // 지도 추가 로직
                 try{
                     const {data} = await createMap({ name: mapInput })
+
+                    // 성공시 (좀 더럽군)
                     setMapInput("")
                     setSelectedMap({id: data.id, name: data.name})
                     closeToggle()
+
+                    await queryClient.invalidateQueries({ queryKey: ['/map/aggregate'], refetchType: 'all'  })
+                    // await queryClient.invalidateQueries({ queryKey: ['/map'], refetchType: 'all'  })
+
                     getAllMap()
     
                 }catch(e: any){
