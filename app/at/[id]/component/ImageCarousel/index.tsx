@@ -62,7 +62,7 @@ const ImageCarousel = ({
                     {
                     images.map((image, i)=>{
                         return  (<SwiperSlide className={SliderStyle} key={i}>
-                                    <Image priority unoptimized src={`https://images.weserv.nl/?url=${image.originUrl}&w=800&h=800`} alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
+                                    <Image priority unoptimized src={`https://images.weserv.nl/?url=${image.originUrl}&w=800&h=800&output=webp&q=75`} alt="" width={500} height={500} className={ImageStyle} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
                                 </SwiperSlide>)
                     })
                     }

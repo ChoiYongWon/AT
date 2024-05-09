@@ -33,7 +33,7 @@ const ATCard = ({id, title, at_id, map_name, images, address, categories, classN
             <div className={ATCardImageWrapperStyle}>
                 {
                     images.map((data: any, i)=>{
-                        return <Image priority unoptimized key={i} src={`https://images.weserv.nl/?url=${data.originUrl}&w=180&h=180`} alt="" width={120} height={120} className={ATCardImageStyle}/>
+                        return <Image priority unoptimized key={i} src={`https://images.weserv.nl/?url=${data.originUrl}&w=180&h=180&output=webp&q=75`} alt="" width={120} height={120} className={ATCardImageStyle}/>
 
                     })
                 }
