@@ -2,10 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { cookies } from "next/headers"
 import MapSmallImage from "../../../../public/images/MapSmall.svg"
 import AddButton from "../../../../public/images/AddButton.svg"
-import MenuIcon from "../../../../public/images/Menu.svg"
 import { useGetAggregatedMap } from "@/app/_common/query/get/useAggregatedMap"
 import { useEffect, useState } from "react"
 import Skeleton from "react-loading-skeleton"

@@ -1,9 +1,7 @@
-import { signOut, useSession } from "next-auth/react";
 import { CancelButtonLayout, ProfileLayoutStyle, TitleStyle } from "./style.css";
 import CancelButton from "./component/CancelButton";
 import ProfileCard from "./component/ProfileCard";
 import MapListCard from "./component/MapListCard";
-import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
 import MoreCard from "./component/MoreCard";
 import { auth } from "@/auth";
