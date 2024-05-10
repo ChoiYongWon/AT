@@ -42,7 +42,8 @@ const PreviewImageItem = (
     >
       <motion.div className={ImageWrapperStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
         <Image
-          src={image.previewUrl}
+          unoptimized
+          src={`https://images.weserv.nl/?url=${image.previewUrl}&w=150&h=150&output=webp&q=75`}
           alt={image.name}
           width={100}
           height={100}
