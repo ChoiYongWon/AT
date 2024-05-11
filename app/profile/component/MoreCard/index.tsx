@@ -66,6 +66,7 @@ const MoreCard = ({className, style}: Props) => {
                 </Link>
                 <div className={DividerStyle}/>
                 <button className={RegularButtonStyle} onClick={()=>toast("구현중입니다!!!!!!!!")}>FAQ</button>
+                <button className={RegularButtonStyle} onClick={()=>toast("구현중입니다!!!!!!!!")}>공지사항</button>
                 <button className={RegularButtonStyle} onClick={()=>toast("구현중입니다!!!!!!!!")}>서비스 소개</button>
                 <button className={RegularButtonStyle} onClick={()=>toast("구현중입니다!!!!!!!!")}>이용 약관</button>
                 <button className={RegularButtonStyle} onClick={()=>toast("구현중입니다!!!!!!!!")}>개인정보처리방침</button>
