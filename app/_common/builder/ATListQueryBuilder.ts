@@ -9,6 +9,9 @@ export class ATListQueryBuilder {
         this.query = {
             orderBy: {
                 created_at: 'desc'
+            },
+            where: {
+
             }
             
         }
@@ -62,52 +65,46 @@ export class ATListQueryBuilder {
     }
 
     addArea(area: string){
-        this.query.where = {
-            ...this.query.where,
-            primary_address: area
-        }
+        this.query.where.primary_address = area
         return this
     }
 
     addQuery(query: string[]){
-        this.query.where = {
-            ...this.query.where,
-            OR: [
-                {
-                    map: {
+        this.query.where.OR = [
+            {
+                map: {
+                  name: {
+                    in: query
+                  }
+                }
+              },
+              {
+                user: {
+                  at_id: {
+                    in: query
+                  }
+                }
+              },
+              {
+                secondary_address: {
+                    in: query
+                }
+              },
+              {
+                third_address: {
+                    in: query
+                }
+              },
+              {
+                categories: {
+                  some: {
                       name: {
                         in: query
-                      }
                     }
-                  },
-                  {
-                    user: {
-                      at_id: {
-                        in: query
-                      }
-                    }
-                  },
-                  {
-                    secondary_address: {
-                        in: query
-                    }
-                  },
-                  {
-                    third_address: {
-                        in: query
-                    }
-                  },
-                  {
-                    categories: {
-                      some: {
-                          name: {
-                            in: query
-                        }
-                      }
-                    }
-                  },
-            ]
-        }
+                  }
+                }
+              },
+        ]
         return this
     }
 
