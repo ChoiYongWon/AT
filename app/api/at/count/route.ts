@@ -33,11 +33,9 @@ const atQueryBuilder = new ATQueryBuilder()
       }
 
       sqlQuery = sqlQuery.build()
-      console.log(sqlQuery)
 
   
       const result = await prisma.spot.groupBy(sqlQuery as any)
-      console.log(result)
   
       return new NextResponse(
         JSON.stringify({ data: result, message: "데이터 조회가 성공적으로 수행되었습니다." }),
