@@ -26,7 +26,7 @@ const ContentManage = () => {
             selectedArea ? 
                 <ATListView key={"ListView"} className={ATListLayoutStyle}/>
                 :
-                <MapView key={"MapView"} style={{marginTop: '50px'}}/>
+                <MapView key={"MapView"} style={{marginTop: '40px'}}/>
 
 
         }

@@ -8,7 +8,8 @@ export const MapLayoutStyle = style({
     padding: '0 10px',
     display: "flex",
     justifyContent: "center",
-    // width: "95%",
+    width: "100%",
+    maxWidth: "360px"
 
   
     // "@media": {
