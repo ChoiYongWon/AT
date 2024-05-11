@@ -9,6 +9,7 @@ import { InvalidMapNameError } from "../error/map/InvalidMapName.error";
 import { fromEnv } from "@aws-sdk/credential-providers";
 import { S3Client, DeleteObjectsCommand, DeleteObjectsRequest } from "@aws-sdk/client-s3";
 import { UnauthorizedError } from "../error/auth/Unauthorized.error";
+import { MapLimitError } from "../error/map/MapLimit.error";
 
 
 export type PostBody = {
@@ -25,7 +26,7 @@ export async function POST(request: NextRequest) {
     const body: PostBody = await request.json()
     const regexp = /^[가-힣a-zA-Z0-9]{1,6}$/g
 
-    const map = await prisma.map.findFirst({
+    const curMap = await prisma.map.findFirst({
         where:{
             name: body.name,
             userId: session.user.id
@@ -33,7 +34,18 @@ export async function POST(request: NextRequest) {
     })
 
     // 지도명 중복
-    if(map !== null) return MapDuplicatedError()
+    if(curMap !== null) return MapDuplicatedError()
+
+    const ownedMap = await prisma.map.findMany({
+        where:{
+            userId: session.user.id
+        }
+    })
+
+    // 지도 갯수
+    // TODO 멤버십 조건
+    if(ownedMap.length == 4) return MapLimitError()
+    
 
     // 지도명 검사
     if(!regexp.test(body.name)) return InvalidMapNameError()

@@ -3,8 +3,7 @@ import Search from "../../../../../public/images/SearchIcon.svg"
 import Check from "../../../../../public/images/Check.svg"
 import Add from "../../../../../public/images/AddButton.svg"
 
-// import Loading from "../../../../../public/images/loading.gif"
-import { Divider, MapFormCheckStyle, MapFormContentFooterStyle, MapFormContentWrapperStyle, MapFormCreateButtonImageStyle, MapFormCreateButtonStyle, MapFormCreateInfoTextWrapperStyle, MapFormCreateTextBoldStyle, MapFormCreateTextWrapperStyle, MapFormInputErrorMessageStyle, MapFormInputSearchIconStyle, MapFormInputStyle, MapFormInputWrapperStyle, MapFormListItemWrapperStyle, MapFormListWrapperStyle, MapFormLoadingStyle, MapFormLoadingWrapperStyle } from "./style.css"
+import { MapFormCheckStyle, MapFormContentFooterStyle, MapFormContentWrapperStyle, MapFormCreateButtonImageStyle, MapFormCreateButtonStyle, MapFormCreateInfoTextWrapperStyle, MapFormCreateTextBoldStyle, MapFormCreateTextWrapperStyle, MapFormInputErrorMessageStyle, MapFormInputSearchIconStyle, MapFormInputStyle, MapFormInputWrapperStyle, MapFormListItemWrapperStyle, MapFormListWrapperStyle, MapFormLoadingStyle, MapFormLoadingWrapperStyle } from "./style.css"
 import { useEffect, useState } from "react"
 import { useRecoilState } from "recoil"
 import { Map, mapState } from "../../../recoil"
@@ -83,28 +82,38 @@ const MapList = ({className, style, closeToggle}: Props) => {
         // 지도 추가 클릭 시
         const onMapAddClick = async () => {
             const regexp = /^[가-힣a-zA-Z0-9]{1,6}$/g
-            if(regexp.test(mapInput)){
+            if(!regexp.test(mapInput)) {
+                setError({enabled: true, message: "한글, 숫자, 영어 6자 내로 구성해주세요."})
+                return
+            }
 
-                // 지도 추가 로직
-                try{
-                    const {data} = await createMap({ name: mapInput })
+            // TODO 멤버십 조건 추가
+            if(mapList.length == 4) {
+                setError({enabled: true, message: "지도는 최대 4개까지 만들 수 있습니다."})
+                return
+            }
 
-                    // 성공시 (좀 더럽군)
-                    setMapInput("")
-                    setSelectedMap({id: data.id, name: data.name})
-                    closeToggle()
+            // 지도 추가 로직
+            try{
+                const {data} = await createMap({ name: mapInput })
 
-                    await queryClient.invalidateQueries({ queryKey: ['/map/aggregate'], refetchType: 'all'  })
-                    // await queryClient.invalidateQueries({ queryKey: ['/map'], refetchType: 'all'  })
+                // 성공시 (좀 더럽군)
+                setMapInput("")
+                setSelectedMap({id: data.id, name: data.name})
+                closeToggle()
 
-                    getAllMap()
+                
+                await queryClient.invalidateQueries({ queryKey: ['/map/aggregate'], refetchType: 'all'  })
+                // await queryClient.invalidateQueries({ queryKey: ['/map'], refetchType: 'all'  })
+
+                getAllMap()
+
+            }catch(e: any){
+                const message = e.message
+                setError({enabled: true, message})
+            }
     
-                }catch(e: any){
-                    const message = e.message
-                    setError({enabled: true, message})
-                }
-    
-            }else setError({enabled: true, message: "한글, 숫자, 영어 6자 내로 구성해주세요."})
+            
         }
         const detectRef = useDetectClickOutside({
             onTriggered: () => {
