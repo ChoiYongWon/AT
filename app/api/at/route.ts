@@ -96,6 +96,7 @@ export async function POST(request: NextRequest) {
         address: body.address,
         primary_address: body.address.split(" ")[0],
         secondary_address: body.address.split(" ")[1],
+        third_address: body.address.split(" ")[2],
         body: body.detail,
       }
     })
@@ -287,6 +288,7 @@ export async function PUT(request: NextRequest) {
           address: body.address,
           primary_address: body.address.split(" ")[0],
           secondary_address: body.address.split(" ")[1],
+          third_address: body.address.split(" ")[2],
           body: body.detail,
         }
       })

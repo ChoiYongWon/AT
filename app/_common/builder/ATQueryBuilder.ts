@@ -40,6 +40,11 @@ export class ATQueryBuilder {
                 }
               },
               {
+                third_address: {
+                    in: query
+                }
+              },
+              {
                 categories: {
                   some: {
                       name: {

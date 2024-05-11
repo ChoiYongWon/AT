@@ -92,6 +92,11 @@ export class ATListQueryBuilder {
                 }
               },
               {
+                third_address: {
+                    in: query
+                }
+              },
+              {
                 categories: {
                   some: {
                       name: {
