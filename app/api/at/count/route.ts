@@ -14,7 +14,7 @@ const atQueryBuilder = new ATQueryBuilder()
   
   export async function GET(request: NextRequest) {
     const {query, at_id, name} = Object.fromEntries(request.nextUrl.searchParams) as Query;
-
+    console.log(query, at_id, name)
     try {
       // const session = await useAuth();
       let sqlQuery = atQueryBuilder.init()
@@ -33,8 +33,11 @@ const atQueryBuilder = new ATQueryBuilder()
       }
 
       sqlQuery = sqlQuery.build()
+      console.log(sqlQuery)
+
   
       const result = await prisma.spot.groupBy(sqlQuery as any)
+      console.log(result)
   
       return new NextResponse(
         JSON.stringify({ data: result, message: "데이터 조회가 성공적으로 수행되었습니다." }),

@@ -11,15 +11,14 @@ export class ATQueryBuilder {
             _count:{
               primary_address: true
             },
-            where: {
-    
-            }
         }
         return this
     }
 
     addQuery(query: string[]){
-        this.query.where.OR = [
+        this.query.where = {
+          ...this.query.where,
+          OR: [
             {
                 map: {
                   name: {
@@ -54,6 +53,7 @@ export class ATQueryBuilder {
                 }
               },
         ]
+        }
         return this
     }
 
