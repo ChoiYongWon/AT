@@ -53,6 +53,11 @@ const SubmitButton = ({ style }: Props) => {
                 setErrorState({isError: true, message: "폼을 모두 입력해주세요"})
                 return;
             }
+            if(formState.image.length > 10){
+                setErrorState({isError: true, message: "이미지는 최대 10개만 등록할 수 있습니다."})
+                toast.error("이미지는 최대 10개만 등록할 수 있습니다.")
+                return;
+            }
 
             setLoading(true)
 
@@ -112,10 +117,9 @@ const SubmitButton = ({ style }: Props) => {
             await queryClient.invalidateQueries({ queryKey: ['/map/aggregate'], refetchType: 'all'  })
             await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
 
-
-
-
         }catch(e: any){
+
+            // TODO presigned 에서 용량 문제로 업로드 실패시 알림
             setLoading(false)
             toast.error(e.message)
             setErrorState({isError: true, message: e.message})
@@ -128,18 +132,6 @@ const SubmitButton = ({ style }: Props) => {
     return (
             <div style={style} className={ButtonWrapperStyle}> 
                 <ConfirmButton loading={loading} onClick={onClick} disabled={isDisabled} text="추가하기" style={{height: "50px", fontSize: "18px", marginTop: "8px" }}/>
-                {/* <motion.button className={ButtonStyle} onClick={onClick} disabled={isDisabled} {...(!isDisabled ? { whileTap: { scale: 0.9, transition: { duration: 0.08 } } } : {})}>
-                    
-                    {(loading) ? (
-                    <Lottie
-                        animationData={loadingJson}
-                        loop={true}
-                        className={LoadingLottieStyle}
-                    />
-                    ) : ( "추가 하기" )}         
-                </motion.button> */}
-                
-                {/* { isPresignedUrlError || isUplaodError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>업로드 에러 {isUplaodError ? uploadError.message : ""}</div> : <></>} */}
                 { errorState.isError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>{errorState.message}</div> : <></>}
             </div>
             

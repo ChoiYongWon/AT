@@ -7,6 +7,7 @@ import { InvalidDataError } from "../error/at/InvalidData.error";
 import { S3Client, DeleteObjectsCommand, DeleteObjectsRequest } from "@aws-sdk/client-s3";
 import { fromEnv } from "@aws-sdk/credential-providers";
 import { UnauthorizedError } from "../error/auth/Unauthorized.error";
+import { TooManyImageError } from "../error/at/TooManyImage.error";
 
 export type PostBody = {
   mapId: string;
@@ -29,6 +30,9 @@ export async function POST(request: NextRequest) {
     // 데이터 검증 로직
     if(body.key.length == 0 || body.category.length == 0 || body.name.length == 0 || body.address.length == 0 || body.detail.length == 0) return InvalidDataError()
 
+    // 이미지 갯수 제한
+    if(body.key.length > 10) return TooManyImageError()
+    
     // 카테고리 검증
     if(body.category.filter((c=>{
       const regexp = /^[가-힣a-z0-9]{1,10}$/g
@@ -204,6 +208,9 @@ export async function PUT(request: NextRequest) {
 
     // 데이터 검증 로직
     if(body.key.length == 0 || body.category.length == 0 || body.name.length == 0 || body.address.length == 0 || body.detail.length == 0) return InvalidDataError()
+
+    // 이미지 갯수 제한
+    if(body.key.length > 10) return TooManyImageError()
 
     // 카테고리 검증
     if(body.category.filter((c=>{

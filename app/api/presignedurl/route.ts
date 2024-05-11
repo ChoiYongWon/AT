@@ -33,6 +33,7 @@ export async function POST(req: Request) {
       ["eq", "$bucket", process.env.AWS_S3_BUCKET as string], // 버킷
       ["starts-with", "$Content-Type", "image/"], // 이미지 타입만
       ["starts-with", "$key", `user/${session.user.id}/`], // 사용자 폴더에만
+      ["content-length-range", 1, 10485760 * 2] // 각 사진은 최대 20mb
     ];
     const Fields = {
       acl: "public-read",
