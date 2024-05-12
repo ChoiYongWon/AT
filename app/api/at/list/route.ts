@@ -16,7 +16,7 @@ type Query = {
   const prisma = new PrismaClient()
   const atListQueryBuilder = new ATListQueryBuilder()
 
-  export const revalidate = 0;
+  // export const revalidate = 0;
   
   
   export async function GET(request: NextRequest) {
