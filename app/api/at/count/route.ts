@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic"
-
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { InternalServerError } from "../../error/server/InternalServer.error";
@@ -13,6 +11,7 @@ type Query = {
   
 const prisma = new PrismaClient()
 const atQueryBuilder = new ATQueryBuilder()
+export const revalidate = 0;
   
   export async function GET(request: NextRequest) {
     const {query, at_id, name} = Object.fromEntries(request.nextUrl.searchParams) as Query;
@@ -36,7 +35,13 @@ const atQueryBuilder = new ATQueryBuilder()
       sqlQuery = sqlQuery.build()
 
   
-      const result = await prisma.spot.groupBy(sqlQuery as any)
+      // const result = await prisma.spot.groupBy(sqlQuery as any)
+      const result = await prisma.spot.groupBy({
+        by: ['primary_address'],
+            _count:{
+              primary_address: true
+            },
+      })
   
       return new NextResponse(
         JSON.stringify({ data: result, message: "데이터 조회가 성공적으로 수행되었습니다." }),
