@@ -6,7 +6,7 @@ export const GridLayoutStyle = style({
   gridAutoRows: "auto",
   gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
   columnGap: "16px",
-  marginTop: "40px",
+  marginTop: "25px",
   marginLeft: "16px",
   marginRight: "16px",
   boxSizing: "content-box",
