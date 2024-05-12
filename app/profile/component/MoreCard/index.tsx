@@ -12,6 +12,7 @@ import Modal from "@/app/_common/component/Modal"
 import { useState } from "react"
 import ConfirmButton from "@/app/_common/component/ConfirmButton"
 import { useQueryClient } from "@tanstack/react-query"
+import { useUnlinkAccount } from "@/app/_common/query/post/useUnlinkAccount"
 
 
 type Props = {
@@ -22,6 +23,7 @@ type Props = {
 const MoreCard = ({className, style}: Props) => {
 
     const {mutateAsync: deleteUser, isPending: isDeleteUserPending} = useDeleteUser()
+    const {mutateAsync: unlinkUser, isPending: isUnlinkPending} = useUnlinkAccount()
     const [showDeleteModal, setDeleteModal] = useState(false)
     const [isDeleteLocalLoading, setDeleteLocalLoading] = useState(false)
     const queryClient = useQueryClient()
@@ -31,7 +33,8 @@ const MoreCard = ({className, style}: Props) => {
     const onDeleteClick = async () => {
         try{ 
             setDeleteLocalLoading(true)
-            await deleteUser()
+            await unlinkUser() // OAuth 탈퇴
+            await deleteUser() // 유저 정보 삭제
             // 성공시
 
             setDeleteLocalLoading(false)
@@ -39,11 +42,14 @@ const MoreCard = ({className, style}: Props) => {
             await queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
             await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
             await signOut({callbackUrl: "/"})
+            // await signOut()
 
             toast("탈퇴 완료")
 
-        }catch(e){
-            toast.error("서버 오류")
+        }catch(e: any){
+            toast.error(e.message)
+            setDeleteLocalLoading(false)
+            setDeleteModal(false)
         }
 
     }

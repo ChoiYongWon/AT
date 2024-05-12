@@ -52,7 +52,6 @@ const MapCard = ({className, style, id, at_id, name, count, view}: Props) => {
 
     const onMenuClick = (e: any) => {
         e.preventDefault()
-        console.log("CLICK")
         setToggle(prev=>!prev)
     }
 
