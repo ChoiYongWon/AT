@@ -18,12 +18,11 @@ export const FAQWrapperStyle = style({
 
 
 export const FAQSummaryWrapperStyle = style({
-    fontSize: "16px",
+    fontSize: "15px",
     fontWeight: "bold",
     display: "flex",
     alignItems: "center",
     height: "fit-content",
-    userSelect: "text",
     listStyleType: "none",
     //@ts-ignore
     "&::-webkit-details-marker": {
@@ -89,6 +88,7 @@ export const FAQImageStyle = style({
 })
 
 export const FAQDetailWrapperStyle = style({
+    userSelect:"text"
 })
 
 export const FAQDetailStyle = style({

@@ -12,6 +12,8 @@ export const MoreCardWrapperStyle = style({
     gap: "18px",
     userSelect: "none",
     flexDirection: "column",
+    outline: 'none',
+    WebkitTapHighlightColor: 'transparent'
 })
 
 export const FeedBackButtonStyle = style({
