@@ -23,7 +23,13 @@ export const FAQSummaryWrapperStyle = style({
     display: "flex",
     alignItems: "center",
     height: "fit-content",
-    userSelect: "text"
+    userSelect: "text",
+    listStyleType: "none",
+    //@ts-ignore
+    "&::-webkit-details-marker": {
+        display: "none"
+    }
+    
 })
 
 export const FAQSummaryQuestionStyle = style({
