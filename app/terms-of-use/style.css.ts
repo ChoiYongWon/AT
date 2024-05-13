@@ -9,7 +9,9 @@ export const GridLayoutStyle = style({
   marginTop: "25px",
   marginLeft: "16px",
   marginRight: "16px",
-  boxSizing: "content-box",
+  boxSizing: "border-box",
+  padding: "0 16px",
+
 
   "@media": {
     "screen and (min-width: 768px)": {
@@ -71,6 +73,7 @@ export const TermsOfUseLayout = style({
         gridColumn: "5 / span 4",
       },
     },
+    wordBreak: "keep-all"
 })
 
 export const TitleStyle = style({
