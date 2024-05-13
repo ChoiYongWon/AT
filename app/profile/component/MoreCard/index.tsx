@@ -73,7 +73,7 @@ const MoreCard = ({className, style}: Props) => {
                 <div className={DividerStyle}/>
                 <Link className={RegularButtonStyle} href={"/faq"} prefetch>FAQ</Link>
                 <button className={RegularButtonStyle} onClick={()=>toast("구현중입니다!!!!!!!!")}>서비스 소개</button>
-                <Link className={RegularButtonStyle} href={"/terms-of-use"} prefetch>이용 약관</Link>
+                <Link className={RegularButtonStyle} href={"/terms-of-use"} prefetch>서비스 이용 약관</Link>
                 <Link className={RegularButtonStyle} href={"/privacy-policy"} prefetch>개인정보처리방침</Link>
                 {session.data?.user ? <button className={RegularButtonStyle} onClick={()=>setDeleteModal(true)}>회원탈퇴</button> : <></>}
                 {session.data?.user ? <button className={RegularButtonStyle} onClick={()=>signOut()}>로그아웃</button> : <></>}
