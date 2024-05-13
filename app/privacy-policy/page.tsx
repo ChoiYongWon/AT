@@ -12,7 +12,7 @@ export default function Page() {
         <CancelButton />
       </div>
       <div className={TitleLayout} style={{marginTop: "30px"}}>
-        <span style={{fontSize: "24px", marginBottom: "24px", fontWeight: 800}}>A-spot-thur 개인정보처리방침</span>
+        <span style={{fontSize: "24px", marginBottom: "24px", fontWeight: 800}}>개인정보처리방침</span>
         
       </div>
       <div className={PrivacyPolicyLayout} style={{marginTop: "20px"}}>
