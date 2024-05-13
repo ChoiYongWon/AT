@@ -2,8 +2,8 @@ import { redirect } from "next/navigation";
 import ATProvider from "./component/ATProvider";
 import ImageCarousel from "./component/ImageCarousel";
 import Info from "./component/Info";
-import { ATWrapperStyle } from "./style.css";
 import { PrismaClient } from "@prisma/client";
+import { ATWrapperStyle } from "./style.css";
 
 
 const prisma = new PrismaClient()
