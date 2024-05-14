@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../../error/server/InternalServer.error";
 import { UnlinkUnavailableError } from "../../error/auth/unlink/UnlinkUnavailable.error";
+import { getToken } from "next-auth/jwt"
 
 
 const prisma = new PrismaClient()
@@ -12,6 +13,14 @@ export async function POST(request: NextRequest) {
   try {
 
     const session = await useAuth()
+    const token = await getToken({
+      req: request,
+      secret: process.env.AUTH_SECRET!,
+      secureCookie: process.env.NODE_ENV === "production",
+      salt: process.env.NODE_ENV === "production"
+        ? "__Secure-authjs.session-token"
+        : "authjs.session-token",
+    })
 
     const account = await prisma.account.findFirst({
         where: {
@@ -24,7 +33,7 @@ export async function POST(request: NextRequest) {
     const res = await fetch('https://kapi.kakao.com/v1/user/unlink',{
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${account?.access_token}`,
+        'Authorization': `Bearer ${token?.access_token}`,
         'Content-Type': 'application/json'
       }
     })
@@ -32,7 +41,7 @@ export async function POST(request: NextRequest) {
     if(!res.ok) return UnlinkUnavailableError()
 
     return new NextResponse(
-      JSON.stringify({ data: res, message: "AT이 등록되었습니다." }),
+      JSON.stringify({ data: true, message: "AT 탈퇴가 완료되었습니다." }),
       { status: 200, headers: { "content-type": "application/json" } }
     );
   } catch (e) {

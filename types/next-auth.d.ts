@@ -7,8 +7,21 @@ declare module "next-auth" {
     email?: string | null;
     image?: string | null;
     at_id?: string | null;
+    id?: string | null;
   }
   interface Session {
     user: User;
+    error?: "RefreshAccessTokenError"
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    access_token: string
+    access_token_expires_at: number
+    refresh_token: string
+    id: string
+    at_id: string
+    error?: "RefreshAccessTokenError"
   }
 }

@@ -37,14 +37,16 @@ const MoreCard = ({className, style}: Props) => {
             await deleteUser() // 유저 정보 삭제
             // 성공시
 
+            toast("탈퇴 완료")
+
             setDeleteLocalLoading(false)
             setDeleteModal(false)
             await queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
             await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
+            
             await signOut({callbackUrl: "/"})
             // await signOut()
 
-            toast("탈퇴 완료")
 
         }catch(e: any){
             toast.error(e.message)
