@@ -10,7 +10,7 @@ export const GridLayoutStyle = style({
   marginLeft: "16px",
   marginRight: "16px",
   boxSizing: "border-box",
-  padding: "0 16px",
+  padding: "0 8px",
 
 
   "@media": {
