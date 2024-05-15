@@ -26,9 +26,9 @@ async function refreshToken(token: any){
 
     return {
       ...token,
-      accessToken: refreshedTokens.access_token,
+      access_token: refreshedTokens.access_token,
       access_token_expires_at: Date.now() + refreshedTokens.expires_in * 1000, // 현재 시간 + 유효 시간 (밀리초) + 1000
-      refreshToken: refreshedTokens.refresh_token ?? token.refreshToken // 한달 이내로 남으면 refresh
+      refresh_token: refreshedTokens.refresh_token ?? token.refreshToken // 한달 이내로 남으면 refresh
     }
 
   } catch (error) { // refresh에 실패하면 그냥 삭제해버림
