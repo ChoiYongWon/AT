@@ -60,8 +60,8 @@ export const TitleStyle = style({
   //   fontWeight: "bold",
   fontSize: "32px",
   wordBreak: "keep-all",
-  lineHeight: 1.3,
-  fontWeight: "bold"
+  lineHeight: 1.4,
+  fontWeight: 800
 });
 
 export const SubTitleStyle = style({
