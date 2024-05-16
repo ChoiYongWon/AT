@@ -65,7 +65,14 @@ export const TitleStyle = style({
 });
 
 export const SubTitleStyle = style({
-  fontSize: '20px'
+  fontSize: '20px',
+  fontWeight: 800
+})
+
+export const DescriptionTitleStyle = style({
+  fontSize: '16px',
+  lineHeight: 1.6,
+  fontWeight: "bold"
 })
 
 export const DescriptionStyle = style({
@@ -76,6 +83,12 @@ export const DescriptionStyle = style({
 export const LinkStyle = style({
   color: vars.color.primary,
   borderBottom: `${vars.color.primary} 1px solid`,
+  paddingBottom: "1px",
+})
+
+export const LinkBlackStyle = style({
+  color: vars.color.fontBlack,
+  borderBottom: `${vars.color.strokeBlack} 1px solid`,
   paddingBottom: "1px",
 })
 
