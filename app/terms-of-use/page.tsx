@@ -80,11 +80,13 @@ export default function Page() {
 
         <div className={TitleStyle} style={{marginBottom: TITLE_MARGIN}}>제9조 (‘서비스’ 이용제한)</div>
         <ul className={UlStyle} style={{marginBottom: CONTENT_MARGIN}}>
-          <li className={NumberListStyle} style={{marginBottom: "8px"}}>1. ‘회사’는 ‘회원’이 본 약관의 의무를 위반하거나 ‘서비스’의 정상적인 운영을 방해한 경우, ‘서비스’ 이용을 제한할 수 있습니다.</li>
+          <li className={NumberListStyle} style={{marginBottom: "8px"}}>1. ‘회사’는 ‘회원’이 본 약관의 의무를 위반하거나 ‘서비스’의 정상적인 운영을 방해한 경우, 점진적 (1일, 3일, 7일, 30일 영구정지)으로 ‘서비스’ 이용을 제한할 수 있습니다. </li>
           <li className={NumberListStyle} style={{marginBottom: "8px"}}>2. 본 조에 따라 ‘서비스’ 이용을 제한하는 경우, ‘회사’는 ‘회원’에게 이용제한 사유, 이용제한 유형 및 기간, 이용제한에 대한 이의신청 방법을 통지합니다.</li>
           <li className={NumberListStyle} style={{marginBottom: "8px"}}>3. ‘회원’은 본 조에 따른 이용제한 등에 대해 ‘회사’가 정한 절차에 따라 이의신청을 할 수 있습니다. 이 때 이의가 정당하다고 ‘회사’가 인정하는 경우 ‘회사’는 즉시 ‘서비스’의 이용을 재개합니다.</li>
         </ul>
 
+        <div className={TitleStyle} style={{marginBottom: TITLE_MARGIN}}>부칙</div>
+        <p className={ContentStyle} style={{marginBottom: CONTENT_MARGIN}}>본 약관은 2024년 05월 18일부터 시행됩니다.</p>
       </div>
     </>
   );
