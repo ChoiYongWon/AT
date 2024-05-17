@@ -98,11 +98,11 @@ const Info = ({
 
     const onReportClick = async () => {
         try{
-            if(session.data?.user.id == user.id) {
-                setReportModal(false)
-                toast.error("본인 게시물은 신고할 수 없습니다.")
-                return
-            }
+            // if(session.data?.user.id == user.id) {
+            //     setReportModal(false)
+            //     toast.error("본인 게시물은 신고할 수 없습니다.")
+            //     return
+            // }
             setReportLoading(true)
             const result = await reportAT({
                 at_id: id,

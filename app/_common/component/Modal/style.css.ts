@@ -65,6 +65,20 @@ export const ModalButtonStyle = style({
     color: vars.color.fontBlack
 })
 
+
+export const ModalInputStyle = style({
+    padding: "10px 10px",
+    fontSize: "13px",
+    border: `${vars.color.strokeBlack} 1px solid`,
+    borderRadius: "5px",
+    color: vars.color.fontBlack,
+    backgroundColor: vars.color.white,
+    "::placeholder":{
+        color: "#e3e2e1",
+        fontSize: "13px"
+      }
+})
+
 export const RadioButtonWrapperStyle = style({
     display: "inline-flex",
     position: "relative",
