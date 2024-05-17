@@ -1,1 +1,1 @@
-export const ROUTES = ["add", "at", "edit", "error", "login", "onboard", "profile", "rename", "index"];
+export const ROUTES = ["admin", "add", "at", "edit", "error", "faq", "introduce", "login", "onboard", "privacy-policy", "profile", "rename", "terms-of-use", "index"];
