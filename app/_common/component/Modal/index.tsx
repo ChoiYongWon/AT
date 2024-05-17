@@ -1,7 +1,7 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic"
 import { BackgroundStyle, ModalButtonGroupStyle, ModalButtonStyle, ModalContentStyle, ModalTitleStyle, ModalWrapperStyle, RadioButtonCheckedStyle, RadioButtonInputStyle, RadioButtonStyle, RadioButtonWrapperStyle, RadioGroupStyle } from "./style.css"
 import { AnimatePresence, motion } from "framer-motion"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 type Props = {
     className?: any
@@ -12,6 +12,8 @@ type Props = {
 }
 
 const Modal = ({className, style, show, setShow, children}: Props) => {
+
+    const [entered, setEntered] = useState(false)
 
     useEffect(()=>{
 
@@ -55,13 +57,22 @@ const Modal = ({className, style, show, setShow, children}: Props) => {
             {
                 show ? 
                     <motion.div 
-                        onClick={()=>setShow(false)}
+                        // onClick={()=>setShow(false)}
+                        onMouseDown={()=>{
+                            setEntered(true)
+                        }}
+                        onMouseUp={()=>{
+                            if(entered){
+                                setShow(false)
+                            }
+                            setEntered(false)
+                        }}
                         key={'modal'}
                         initial={{ y: 5, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -5, opacity: 0 }}
                         transition={{ duration: 0.2 }} className={BackgroundStyle}>
-                            <div className={ModalWrapperStyle} onClick={(e)=>e.stopPropagation()}>
+                            <div className={ModalWrapperStyle} onClick={(e)=>e.stopPropagation()} onMouseDown={(e)=>e.stopPropagation()} onMouseUp={(e)=>e.stopPropagation()}>
                                 {children}
                             </div>
                     </motion.div>
