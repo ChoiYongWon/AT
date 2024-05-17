@@ -113,7 +113,7 @@ const SearchBar = ({
           // }
           
           // </Link>
-          <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
+          <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true} scroll={false}>
             <Image priority src={Menu} className={LogoStyle} alt="" width={100} height={100} />
           </Link>
         }

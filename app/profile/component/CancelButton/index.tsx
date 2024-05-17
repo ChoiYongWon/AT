@@ -7,7 +7,7 @@ const CancelButton = () => {
 
     const router = useRouter()
 
-    return <IconButton size="34px" type="cancel" onClick={()=>router.back()}/>
+    return <IconButton size="34px" type="cancel" onClick={()=>router.push("/", {scroll: false})}/>
 }
 
 export default CancelButton
