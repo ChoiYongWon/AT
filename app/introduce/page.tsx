@@ -26,7 +26,7 @@ export default async function AddPage() {
             <Link className={LinkStyle} href={"https://jyj-map.vercel.app"} style={{marginLeft: "4px"}} target="_blank">정용진 맛집 지도</Link>
             를 모티브로 삼아, 원하는 장소를 직접 추가하여 개인의 지도를 만들고 공유할 수 있는 서비스입니다.</p>
             <Image src={"https://github.com/ChoiYongWon/AT/assets/40623433/21f2f5c9-90c2-469c-9765-459eafb92766"} priority
-                alt="" width={500} height={200} style={{margin: "0 auto", marginTop: "16px", width: "60%", height: "auto"}}/>
+                alt="" width={500} height={2600} style={{margin: "0 auto", marginTop: "16px", width: "60%", height: "auto"}}/>
             <span className={DescriptionStyle} style={{marginTop: "8px", marginLeft: "auto", marginRight: "auto", fontSize: "12px", fontStyle: "italic"}}>A Spot Thur (AT)</span>
 
             

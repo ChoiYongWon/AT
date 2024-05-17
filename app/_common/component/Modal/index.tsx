@@ -1,5 +1,5 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic"
-import { BackgroundStyle, ModalButtonGroupStyle, ModalButtonStyle, ModalContentStyle, ModalTitleStyle, ModalWrapperStyle } from "./style.css"
+import { BackgroundStyle, ModalButtonGroupStyle, ModalButtonStyle, ModalContentStyle, ModalTitleStyle, ModalWrapperStyle, RadioButtonCheckedStyle, RadioButtonInputStyle, RadioButtonStyle, RadioButtonWrapperStyle, RadioGroupStyle } from "./style.css"
 import { AnimatePresence, motion } from "framer-motion"
 import { useEffect } from "react"
 
@@ -94,7 +94,7 @@ const Title = ({className, style, children}: BaseProps) => {
 
 const Content = ({className, style, children}: BaseProps) => {
     return (
-        <p className={ModalContentStyle}>{children}</p>
+        <p className={ModalContentStyle} style={style}>{children}</p>
     )
 }
 
@@ -110,10 +110,43 @@ const Button = ({className, style, children, onClick}: BaseProps) => {
     )
 }
 
+const RadioGroup = ({className, style, children}: BaseProps) => {
+    return (
+        <fieldset className={RadioGroupStyle} style={style}>
+            {children}
+        </fieldset>
+    )
+}
+
+interface RadioButtonProps extends BaseProps {
+    value: string
+    name: string
+    currentValue: string
+    onCheck: ()=>void
+}
+
+const RadioButton = ({className, style, children, value, name, currentValue, onCheck}: RadioButtonProps) => {
+
+    return (
+        <label className={RadioButtonWrapperStyle}>
+            <input checked={value == currentValue} onChange={onCheck} className={RadioButtonInputStyle} type="radio" value={value} name={name}></input>
+            <span className={RadioButtonStyle}>
+                <span className={RadioButtonCheckedStyle}></span>
+            </span>
+            {children}
+            
+            
+        </label>
+    )
+
+}
+
 Modal.Title = Title
 Modal.Content = Content
 Modal.ButtonGroup = ButtonGroup
 Modal.Button = Button
+Modal.RadioGroup = RadioGroup
+Modal.RadioButton = RadioButton
 
 
 export default Modal

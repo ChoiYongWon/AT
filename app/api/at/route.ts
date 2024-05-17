@@ -8,6 +8,7 @@ import { S3Client, DeleteObjectsCommand, DeleteObjectsRequest } from "@aws-sdk/c
 import { fromEnv } from "@aws-sdk/credential-providers";
 import { UnauthorizedError } from "../error/auth/Unauthorized.error";
 import { TooManyImageError } from "../error/at/TooManyImage.error";
+import { BannedError } from "../error/at/Banned.error";
 
 export type PostBody = {
   mapId: string;
@@ -26,6 +27,26 @@ export async function POST(request: NextRequest) {
 
     const session = await useAuth();
     const body: PostBody = await request.json()
+
+    // 밴 확인
+    const isBanned = await prisma.ban.findFirst({
+      where: {
+        email: session.user.email as string
+      },
+      select: {
+        expire_at: true,
+        day: true,
+        reason: true
+      },
+      orderBy: {
+        expire_at: 'desc' // 밴 만료일이 가장 큰거
+      }
+    })
+
+    // 벤 이력이 있고 벤 만료가 안되었을 때
+    if(isBanned && isBanned.expire_at.getTime() > Date.now()){ 
+      return BannedError(isBanned)
+    }
 
     // 데이터 검증 로직
     if(body.key.length == 0 || body.category.length == 0 || body.name.length == 0 || body.address.length == 0 || body.detail.length == 0) return InvalidDataError()

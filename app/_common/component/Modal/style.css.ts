@@ -15,10 +15,11 @@ export const BackgroundStyle = style({
 })
 
 export const ModalWrapperStyle = style({
-    flex: 0,
+    // flex: 0,
     userSelect: 'none',
     opacity: 1,
     minWidth: "260px",
+    maxWidth: "400px",
     width: "auto",
     height: "auto",
     backgroundColor: "white",
@@ -27,10 +28,12 @@ export const ModalWrapperStyle = style({
     flexDirection: "column",
     gap: "12px",
     fontSize: "14px",
-    padding: "14px",
+    padding: "0 24px",
     paddingTop: "28px",
+    paddingBottom: "14px",
     boxSizing: "border-box",
     borderRadius: "8px",
+    margin: "16px"
 })
 
 export const ModalTitleStyle = style({
@@ -40,7 +43,7 @@ export const ModalTitleStyle = style({
 
 export const ModalContentStyle = style({
     fontSize: "12px",
-    lineHeight: 1.5
+    lineHeight: 1.5,
     // fontWeight: 800
 })
 
@@ -62,10 +65,55 @@ export const ModalButtonStyle = style({
     color: vars.color.fontBlack
 })
 
-// globalStyle(`body:has(${BackgroundStyle})`, {
-    // height: "100vh",
-    // overflowY: "hidden",
-    // position: "fixed",
-    // paddingRight: "15px"
-// });
-  
+export const RadioButtonWrapperStyle = style({
+    display: "inline-flex",
+    position: "relative",
+    cursor: "pointer",
+    userSelect: "none",
+    alignItems: "flex-start",
+    alignSelf: "flex-start",
+    width: "fit-content",
+    whiteSpace: "nowrap",
+    gap: "8px",
+    fontSize: "13px",
+
+})
+
+export const RadioButtonStyle = style({
+    height: "14px",
+    width: "14px",
+    borderRadius: "50px",
+    border: `${vars.color.strokeBlack} 1px solid`,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+})
+
+
+export const RadioButtonInputStyle = style({
+    position: "absolute",
+    opacity: 0,
+    cursor: "pointer",
+    height: 0,
+    width: 0
+})
+
+export const RadioButtonCheckedStyle = style({
+    height: "7px",
+    width: "7px",
+    borderRadius: "50px",
+    // background: "#e7e7e7",
+
+    selectors: {
+        [`${RadioButtonWrapperStyle}:has(${RadioButtonInputStyle}:checked) &`]:{
+            background: vars.color.primary,
+        }
+    }
+})
+
+export const RadioGroupStyle = style({
+    display: "flex",
+    // width: "400px",
+    flexDirection: "column",
+    gap: "12px"
+})

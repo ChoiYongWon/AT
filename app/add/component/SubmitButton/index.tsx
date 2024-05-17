@@ -14,6 +14,9 @@ import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import ConfirmButton from "@/app/_common/component/ConfirmButton";
 import toast from "react-hot-toast/headless";
+import Modal from "@/app/_common/component/Modal";
+import { BanDataType } from "@/app/api/error/at/Banned.error";
+import dayjs from "dayjs";
 
 
 
@@ -34,6 +37,13 @@ const SubmitButton = ({ style }: Props) => {
         isError: false,
         message: ""
     })
+    const [showBanModal, setBanModal] = useState(false)
+    const [banData, setBanData] = useState<BanDataType>({
+        reason: '',
+        day: 0,
+        expire_at: new Date()
+    })
+
 
     const {mutateAsync: getPresignedUrl, data: presignedData, isSuccess, isError: isPresignedUrlError} = usePresignedUrl()
     const {mutateAsync: uploadImageToS3, isError: isUplaodError, error: uploadError, isPending: isUploadImagePending} = useUploadImageToS3()
@@ -122,6 +132,12 @@ const SubmitButton = ({ style }: Props) => {
             // TODO presigned 에서 용량 문제로 업로드 실패시 알림
             setLoading(false)
             toast.error(e.message)
+            console.log(e)
+            if(e.status == "E10003"){ // 벤 된 사용자
+                setBanData(e.data)
+                setBanModal(true)
+            }
+            
             setErrorState({isError: true, message: e.message})
         }finally{
             setLoading(false)
@@ -133,6 +149,12 @@ const SubmitButton = ({ style }: Props) => {
             <div style={style} className={ButtonWrapperStyle}> 
                 <ConfirmButton loading={loading} onClick={onClick} disabled={isDisabled} text="추가하기" style={{height: "50px", fontSize: "18px", marginTop: "8px" }}/>
                 { errorState.isError ? <div className={ButtonMessageStyle} style={assignInlineVars({animation: `${vibrate} .3s`})}>{errorState.message}</div> : <></>}
+                <Modal show={showBanModal} setShow={setBanModal}>
+                    <Modal.Title>제한된 사용자</Modal.Title>
+                    <Modal.Content style={{fontStyle: "italic"}}>사유 : {banData.reason}</Modal.Content>
+                    <Modal.Content style={{}}>사용 정지 {banData.day}일<br></br>정지 해제 일 : {dayjs(banData.expire_at).format('YYYY. MM. DD. HH시 mm분')}</Modal.Content>
+                    <ConfirmButton onClick={()=>setBanModal(false)} style={{marginTop: "8px"}} text="확인"/>
+                </Modal>
             </div>
             
 

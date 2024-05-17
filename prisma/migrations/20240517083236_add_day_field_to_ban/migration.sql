@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "ban" ADD COLUMN     "day" INTEGER NOT NULL DEFAULT 0;

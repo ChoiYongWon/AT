@@ -12,7 +12,6 @@ const CheckTokenValidation = ({ children }: { children: any }) => {
 
     useEffect(() => {
         (async function f(){
-            console.log("에러남", session)
             if (session?.data?.error === "RefreshAccessTokenError") {
                 toast("토큰이 만료되었습니다. 다시 로그인해주세요")
                 await signOut()

@@ -50,6 +50,7 @@ model User {
   spots         Spot[]
   images        Image[]
   categories    Category[]
+  reports       Report[]
   created_at    DateTime @default(now()) @db.Timestamptz(6)
   @@map("user")
 }
@@ -74,6 +75,7 @@ model Spot {
 
   images                Image[]
   categories            Category[]
+  reports               Report[]
 
   title                 String
   body                  String
@@ -119,3 +121,37 @@ model Image {
   @@map("image")
 }
 
+enum ReportType {
+  BAD_WORD
+  COMMERCIAL_USE
+  SEXUAL
+  UNRELATED
+}
+
+model Report {
+  id                    String @id @default(cuid())
+  userId                String
+  spotId                String
+  type                  ReportType
+  etc                   String @default("")
+  resolved              Boolean @default(false)
+  created_at            DateTime @default(now()) @db.Timestamptz(6)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  spot Spot @relation(fields: [spotId], references: [id], onDelete: Cascade)
+
+  @@map("report")
+
+}
+
+model Ban {
+  id                    String @id @default(cuid())
+  email                 String
+  reason                String
+  day                   Int @default(0)
+  expire_at             DateTime @db.Timestamptz(6)
+  created_at            DateTime @default(now()) @db.Timestamptz(6)
+
+  @@map("ban")
+
+}

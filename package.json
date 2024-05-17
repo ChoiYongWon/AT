@@ -26,6 +26,7 @@
     "@vercel/speed-insights": "^1.0.10",
     "axios": "^1.6.8",
     "browser-image-compression": "^2.0.2",
+    "dayjs": "^1.11.11",
     "fast-copy": "^3.0.2",
     "framer-motion": "^11.0.20",
     "lottie-react": "^2.4.0",
