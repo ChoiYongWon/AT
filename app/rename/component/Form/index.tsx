@@ -12,7 +12,7 @@ import {
   LogoutStyle,
 } from "./style.css";
 import { useMutateUserInfo } from "@/app/_common/query/put/useMutateUserInfo";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import ConfirmButton from "@/app/_common/component/ConfirmButton";
 import { useQueryClient } from "@tanstack/react-query";
@@ -55,11 +55,12 @@ const Form = () => {
           await queryClient.invalidateQueries({ queryKey: ['/at'], refetchType: 'all'  })
           await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
           // 홈화면 이동
-          router.push("/");
+          router.push("/profile");
+          router.refresh()
         },
         onError(error, variables, context) {
           alert(`알수없는 오류 ${error}`);
-          router.push("/");
+          router.push("/profile");
         },
       }
     );
