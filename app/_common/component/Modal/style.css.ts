@@ -80,8 +80,8 @@ export const RadioButtonWrapperStyle = style({
 })
 
 export const RadioButtonStyle = style({
-    height: "14px",
-    width: "14px",
+    height: "15px",
+    width: "15px",
     borderRadius: "50px",
     border: `${vars.color.strokeBlack} 1px solid`,
     display: "flex",
