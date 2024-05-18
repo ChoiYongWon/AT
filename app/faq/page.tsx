@@ -31,16 +31,16 @@ export default function Page() {
         <FAQ style={{marginBottom: MARGIN}}>
           <FAQ.Summary>앱처럼 사용하고 싶어요.</FAQ.Summary>
           <FAQ.Detail style={{marginTop: "20px"}}>
-            본 서비스는 PWA(Progressive Web App)를 지원하여 앱처럼 사용할 수 있습니다. 
+            본 서비스는 PWA(Progressive Web App)를 지원하여 앱처럼 사용이 가능합니다. 
             <br></br>
-            아이폰의 경우 사파리 또는 크롬에서 
+            아이폰 사용자는 사파리나 크롬에서 
             <Image src={ShareIcon} alt="" width={13} height={13} style={{marginLeft: "4px", marginRight: "2px", verticalAlign: "sub"}} priority/>
-             버튼을 클릭 후 홈화면에 추가 버튼을 클릭하여 설치할 수 있습니다.
+             버튼을 누른 후 '홈 화면에 추가'를 클릭하여 설치할 수 있습니다.
              <br></br>
              <br></br>
-             갤럭시의 경우 크롬에서
+             갤럭시 사용자는 크롬에서
             <Image src={MenuVerticalIcon} alt="" width={16} height={16} style={{marginLeft: "4px", marginRight: "2px", verticalAlign: "sub"}} priority/> 
-            버튼을 클릭 후 앱 설치 버튼을 클릭하여 설치하면 됩니다.
+            버튼을 클릭한 다음 '앱 설치'를 눌러 설치할 수 있습니다. 삼성 인터넷에서는 테마 오류가 발생할 수 있으니 사용을 권장하지 않습니다.
           </FAQ.Detail>
         </FAQ>
         <FAQ style={{marginBottom: MARGIN}}>
