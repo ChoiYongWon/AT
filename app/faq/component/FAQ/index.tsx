@@ -29,10 +29,10 @@ const Summary = ({children}: any) => {
     )
 }
 
-const Asset = ({src}: {src: string})=>{
+const Asset = ({src, width, height}: {src: string, width: number, height: number})=>{
     return(
         <div className={FAQImageWrapperStyle}>
-            <Image className={FAQImageStyle} src={src} alt="" width={400} height={63}/>
+            <Image className={FAQImageStyle} src={src} alt="" width={width} height={height}/>
         </div>
     )
 }
