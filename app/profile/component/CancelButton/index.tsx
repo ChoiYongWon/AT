@@ -1,13 +1,13 @@
-'use client'
-
 import IconButton from "@/app/_common/component/IconButton"
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 const CancelButton = () => {
 
-    const router = useRouter()
-
-    return <IconButton size="34px" type="cancel" onClick={()=>router.push("/", {scroll: false})}/>
+    return (
+        <Link href={"/profile"} prefetch scroll={false}>
+            <IconButton size="34px" type="cancel"/>
+        </Link>
+    )
 }
 
 export default CancelButton
