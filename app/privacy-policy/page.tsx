@@ -25,7 +25,7 @@ export default function Page() {
       
         <div className={TitleStyle} style={{marginBottom: TITLE_MARGIN}}>2. 수집하는 개인정보 항목</div>
         <p className={ContentStyle} style={{marginBottom: "8px"}}>AT는 로그인, 회원 가입, 장소 등록 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p>
-        <li className={ContentStyle} style={{marginBottom: CONTENT_MARGIN}}>회원정보 : 이름, 이메일</li>
+        <li className={ContentStyle} style={{marginBottom: CONTENT_MARGIN}}>회원정보 : 이름, 이메일, 프로필사진</li>
       
         <div className={TitleStyle} style={{marginBottom: TITLE_MARGIN}}>3. 개인정보의 보유 및 이용기간</div>
         <p className={ContentStyle} style={{marginBottom: CONTENT_MARGIN}}>AT는 이용자가 회원에서 탈퇴하였을 때 관련 개인정보를 지체없이 파기합니다.</p>
