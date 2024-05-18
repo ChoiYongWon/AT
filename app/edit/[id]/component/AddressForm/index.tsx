@@ -30,7 +30,7 @@ const AddressForm = ({style}: Props) => {
     const [selectedAddress, setSelectedAddress] = useRecoilState(addressState)
 
     // 주소 입력창 상태 
-    const [inputAddress, setInputAddress] = useDebounceValue("", 500);
+    const [inputAddress, setInputAddress] = useDebounceValue("", 600);
     const {
         refetch: getSearchAddress,
         isFetching: isSearchAddressFetching,

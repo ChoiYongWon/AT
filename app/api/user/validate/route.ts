@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const session = await useAuth();
-    const regexp = /^[a-z0-9_\.]{3,20}$/g;
+    const regexp = /^[a-z0-9_\.]{3,16}$/g;
     const decoded_at_id = decodeURIComponent(query.at_id);
 
     // AT_ID 규칙 검증

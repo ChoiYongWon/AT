@@ -22,7 +22,7 @@ const Form = () => {
   const queryClient = useQueryClient()
 
   const { update, data } = useSession();
-  const [inputName, setInputName] = useDebounceValue("", 500);
+  const [inputName, setInputName] = useDebounceValue("", 600);
   const {
     refetch: getIsValidId,
     isLoading: isValidIdLoading,
