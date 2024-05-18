@@ -1,6 +1,7 @@
 import ContentManagePage from "./view";
 import { MainLayoutStyle } from "./style.css";
 import AddButton from "./component/AddButton";
+import GpsButton from "./component/GpsButton";
 
 export default function Home() {
 
@@ -9,6 +10,7 @@ export default function Home() {
       <div className={MainLayoutStyle}>
         <ContentManagePage/>
       </div>
+      <GpsButton />
       <AddButton />
     </>
   );

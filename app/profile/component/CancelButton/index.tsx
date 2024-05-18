@@ -4,7 +4,7 @@ import Link from "next/link"
 const CancelButton = () => {
 
     return (
-        <Link href={"/profile"} prefetch scroll={false}>
+        <Link href={"/"} prefetch scroll={false}>
             <IconButton size="34px" type="cancel"/>
         </Link>
     )

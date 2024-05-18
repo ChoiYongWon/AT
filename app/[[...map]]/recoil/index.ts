@@ -116,6 +116,19 @@ export const atListState = atom<any>({
     default: {}
 })
 
+type GpsType = {
+    longitude: string
+    latitude: string
+}
+
+export const currentGps = atom<GpsType>({
+    key: "/gps",
+    default: {
+        longitude: "",
+        latitude: ""
+    }
+})
+
 
 // AT List Query Cache 초기화를 위한 셀렉터
 export const atUrlSelector = selector({
