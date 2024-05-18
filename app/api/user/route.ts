@@ -25,7 +25,7 @@ const prisma = new PrismaClient();
 export async function PUT(request: NextRequest) {
   try {
     const session = await useAuth();
-    const regexp = /^[a-z0-9_\.]{3,30}$/g;
+    const regexp = /^[a-z0-9_\.]{3,20}$/g;
     const body = (await request.json()) as Query;
 
     // body 검증
