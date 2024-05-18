@@ -23,7 +23,7 @@ const Summary = ({children}: any) => {
             <span className={FAQSummaryQuestionStyle}>Q.</span>
             {children}
             <div className={FAQSummaryButtonWrapperStyle}>
-                <Image className={FAQSummaryButtonStyle} src={ArrowDown} alt=""/>
+                <Image className={FAQSummaryButtonStyle} src={ArrowDown} alt="" priority/>
             </div>
         </summary>
     )

@@ -88,7 +88,8 @@ export const FAQImageStyle = style({
 })
 
 export const FAQDetailWrapperStyle = style({
-    userSelect:"text"
+    userSelect:"text",
+    wordBreak: "keep-all"
 })
 
 export const FAQDetailStyle = style({
