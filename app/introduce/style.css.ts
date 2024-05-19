@@ -45,6 +45,8 @@ export const IntroduceLayoutStyle = style({
   flexDirection: "column",
   gridColumn: "1 / span 4",
   height: "auto",
+  wordBreak: "keep-all",
+  
 
   "@media": {
     "screen and (min-width: 768px)": {

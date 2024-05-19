@@ -58,6 +58,7 @@ export default async function AddPage() {
             <span className={DescriptionStyle} style={{marginTop: "4px", marginLeft: "auto", marginRight: "auto", fontSize: "12px", fontStyle: "italic"}}>사진은 한번에 최대 10장까지 업로드할 수 있습니다.</span>
 
 
+
             {/* ---- 2. 등록된 장소 탐색하기 ---- */}
             <span className={DescriptionTitleStyle} style={{marginTop: "80px"}}>2. 등록된 장소 탐색하기</span>
 
@@ -89,9 +90,19 @@ export default async function AddPage() {
                 </span>
                 형식으로 공유할 수 있습니다.
             </div>
-            <div className={TextWrapperStyle} style={{marginLeft: "24px", marginTop: "4px", marginBottom: "100px"}}>
+            <div className={TextWrapperStyle} style={{marginLeft: "24px", marginTop: "4px"}}>
                 인스타그램 프로필소개, 카카오톡등에 공유해보세요! 
             </div>
+
+            <span className={DescriptionTitleStyle} style={{marginTop: "100px"}}>4. 그 외</span>
+            <span className={DescriptionStyle} style={{marginTop: "8px", marginLeft: "24px"}}>사용하시면서 궁금한게 생기시면 
+            <Link className={LinkStyle} href={"https://jyj-map.vercel.app"} style={{marginLeft: "4px"}} target="_blank">FAQ</Link>
+            를 참조하시거나 
+            <Link className={LinkStyle} href={"https://forms.gle/padVC81QrYiZDTEm7"} style={{marginLeft: "4px"}} target="_blank">문의</Link>
+            주세요!</span>
+
+            <span className={DescriptionStyle} style={{marginTop: "64px", marginLeft: "auto", marginRight: "auto", fontSize: "12px", fontStyle: "italic",marginBottom: "125px"}}>잘부탁드립니다.</span>
+
         </div>
     </>
   );
