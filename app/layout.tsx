@@ -10,6 +10,7 @@ import AnimateProvider from "./_common/provider/AnimateProvider";
 import RecoilRootProvider from "./_common/provider/RecoilRootProvider";
 import Toast from "./_common/component/Toast";
 import CheckTokenValidation from "./_common/provider/CheckTokenValidation";
+import GoogleAnalytics from "./_common/component/GoogleAnalytics";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics/>
       <body>
         <Toast/>
         <QueryProvider>
