@@ -3,7 +3,7 @@
 import SearchBarView from "@/app/_common/component/SearchBar";
 import { useInput } from "@/app/_common/hook/useInput";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { atQueryStageState, atQueryState, atUrlState, selectedAreaState } from "../../recoil";
+import { atQueryStageState, atQueryState, atUrlState, searchBarFocusState, selectedAreaState } from "../../recoil";
 import { useEffect } from "react";
 
 type Props = {
@@ -24,6 +24,7 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
 
   /* 현재 URL을 map과 at_id로 분류하여 상태로 관리 (SearchBar은 Layout 단위에서 관리되기 때문)*/
   const setATUrl = useSetRecoilState(atUrlState)
+  const setSearchBarFocus = useSetRecoilState(searchBarFocusState)
   const selectedArea = useRecoilValue(selectedAreaState)
   
 
@@ -59,6 +60,7 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
       const newArray = Array.from(duplicateless)
       return newArray
     })
+    setSearchBarFocus(false)
   }
 
   const onSearch = () => {
@@ -73,6 +75,10 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
     setQuery("")
 
   }
+
+  const onFocus = () => {
+    setSearchBarFocus(true)
+  }
   
 
   return (
@@ -85,6 +91,7 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
       onBlur={onQueryBlur}
       onContentChange={onQueryInput}
       onSearch={onSearch}
+      onFocus={onFocus}
     ></SearchBarView>
   );
 };

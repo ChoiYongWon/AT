@@ -1,11 +1,12 @@
 'use client'
 
 import { useRecoilState, useRecoilValue } from "recoil"
-import { atQueryStageState, atQueryState } from "../../recoil"
+import { atQueryStageState, atQueryState, searchBarFocusState } from "../../recoil"
 import { AnimatePresence, motion } from "framer-motion"
 import { QueryDeleteButtonStyle, QueryDeleteImageStyle, QueryStyle, QueryTextStyle, QueryWrapperStyle } from "./style.css"
 import CancelButton from "../../../../public/images/CancelButton.svg"
 import Image from "next/image"
+import { useEffect } from "react"
 
 type Props = {
     className?: any
@@ -16,6 +17,7 @@ const Query = ({className, style}: Props) => {
 
     const [queries, setQueries] = useRecoilState(atQueryState)
     const [queryStage, setQueryStage] = useRecoilState(atQueryStageState)
+    const isSearchBarFocused = useRecoilValue(searchBarFocusState)
 
     const removeQuery = (e: any, query: string) => {
         e.preventDefault();
@@ -52,10 +54,11 @@ const Query = ({className, style}: Props) => {
                 
             </AnimatePresence>
                 :
+            isSearchBarFocused ?
             <>
                 <div className={QueryStyle} style={{opacity: 0.4}}>
                     <div className={QueryTextStyle}>
-                        # 맛집
+                        맛집
                     </div>
                     <div className={QueryDeleteButtonStyle}>
                         <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x"/>
@@ -63,7 +66,7 @@ const Query = ({className, style}: Props) => {
                 </div>
                 <div className={QueryStyle} style={{opacity: 0.4}}>
                     <div className={QueryTextStyle}>
-                        # 방탈출
+                        방탈출
                     </div>
                     <div className={QueryDeleteButtonStyle}>
                         <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x"/>
@@ -71,7 +74,7 @@ const Query = ({className, style}: Props) => {
                 </div>
                 <div className={QueryStyle} style={{opacity: 0.4}}>
                     <div className={QueryTextStyle}>
-                        # 캠핑
+                        캠핑
                     </div>
                     <div className={QueryDeleteButtonStyle}>
                         <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x"/>
@@ -79,13 +82,13 @@ const Query = ({className, style}: Props) => {
                 </div>
                 <div className={QueryStyle} style={{opacity: 0.4}}>
                     <div className={QueryTextStyle}>
-                        # 클라이밍
+                        클라이밍
                     </div>
                     <div className={QueryDeleteButtonStyle}>
                         <Image className={QueryDeleteImageStyle} src={CancelButton} alt="x"/>
                     </div>
                 </div>
-            </>
+            </> : <></>
             
             }
                 

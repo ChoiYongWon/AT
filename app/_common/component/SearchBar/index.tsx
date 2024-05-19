@@ -34,6 +34,7 @@ type Props = {
   onBlur?: () => any;
   onSearch: () => any;
   onContentChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
+  onFocus?: () => any;
 };
 
 const SearchBar = ({
@@ -46,6 +47,7 @@ const SearchBar = ({
   onSearch,
   onBlur,
   onContentChange,
+  onFocus,
 }: Props) => {
   const inputRef = useRef<any>(null);
   const checkRef = useRef<any>(null);
@@ -145,6 +147,7 @@ const SearchBar = ({
             value={content}
             onChange={onContentChange}
             onBlur={onBlur}
+            onFocus={onFocus}
           />
           <input type="submit" hidden onClick={onSubmitBtnClick} />
         </form>

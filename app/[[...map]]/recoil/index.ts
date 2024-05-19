@@ -129,6 +129,11 @@ export const currentGps = atom<GpsType>({
     }
 })
 
+export const searchBarFocusState = atom<boolean>({
+    key: "/focus",
+    default: false
+})
+
 
 // AT List Query Cache 초기화를 위한 셀렉터
 export const atUrlSelector = selector({
