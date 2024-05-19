@@ -72,7 +72,7 @@ export const MapView = ({className, style}: Props) => {
              style={style}>
             
             <Map>
-                <GpsButton x={312} y={1} />
+                <GpsButton x={310} y={1} />
 
                 {
                     indicatorData.data.map((data, i)=>{
