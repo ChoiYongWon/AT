@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AT - A Spot Thur",
     description: "나만의 지도를 만들어보세요!",
-    images: "https://github.com/ChoiYongWon/AT/assets/40623433/0778fc41-8e9e-43ea-82e2-ca54bfc1ce7f",
+    images: "https://github.com/ChoiYongWon/AT/assets/40623433/d368ab12-3f30-42e0-9141-3901ebdaceaa",
     type: "website",
     url: "https://a-spot-thur.app/",
   },
