@@ -64,8 +64,8 @@ const GpsButton = ({x, y}: Props) => {
             enableLocationQuery() // prevent refetch on initial mount
             
         }catch(e){
-            toast.error(JSON.stringify(e))
-            // toast.error("위치를 불러올 수 없습니다. 위치 액세스를 허용해주세요.")
+            // toast.error(JSON.stringify(e))
+            toast.error("위치 액세스를 허용하거나 앱을 재시작하세요.")
         }finally{
             setLoading(false)
         }
