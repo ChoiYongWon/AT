@@ -9,7 +9,8 @@ export const MapLayoutStyle = style({
     display: "flex",
     justifyContent: "center",
     width: "100%",
-    maxWidth: "360px"
+    maxWidth: "360px",
+    position: "relative"
 
   
     // "@media": {

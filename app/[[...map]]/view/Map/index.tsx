@@ -10,6 +10,7 @@ import { useGetATCount } from "@/app/_common/query/get/useGetATCount"
 import indicatorData from "../../data/indicator.json"
 import Indicator from "../../component/Indicator"
 import { useGhostHistory } from "@/app/_common/hook/useGhostHistory"
+import GpsButton from "../../component/GpsButton"
 
 
 type Props = {
@@ -69,7 +70,10 @@ export const MapView = ({className, style}: Props) => {
             // exit={{ y: -10, opacity: 0 }}
             // transition={{ duration: 0.1 }}
              style={style}>
+            
             <Map>
+                <GpsButton x={312} y={1} />
+
                 {
                     indicatorData.data.map((data, i)=>{
                         return (
