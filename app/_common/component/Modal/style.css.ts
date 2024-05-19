@@ -48,6 +48,7 @@ export const ModalContentStyle = style({
 })
 
 export const ModalButtonGroupStyle = style({
+    // flex: 1,
     display: "flex",
     gap: "10px"
 })

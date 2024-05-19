@@ -26,12 +26,15 @@ const ConfirmButton = ({ disabled, loading, onClick, className, style, text }: P
     >
       
       {loading ?
-       (<Lottie
+      (<div className={LoadingLottieStyle}>
+        <Lottie
           animationData={loadingJson}
           loop={true}
           className={LoadingLottieStyle}
         />
-        ) : ( text ) }
+      </div>)
+       
+         : ( text ) }
   </motion.button>
   );
 };
