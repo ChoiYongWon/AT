@@ -99,7 +99,7 @@ export default {
         if (Date.now() < token.access_token_expires_at) {
           return token
         }
-        return refreshToken(token)
+        return await refreshToken(token)
       }
       return token      
     },
