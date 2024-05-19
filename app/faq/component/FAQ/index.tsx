@@ -32,7 +32,7 @@ const Summary = ({children}: any) => {
 const Asset = ({src, width, height}: {src: string, width: number, height: number})=>{
     return(
         <div className={FAQImageWrapperStyle}>
-            <Image className={FAQImageStyle} src={src} alt="" width={width} height={height}/>
+            <Image className={FAQImageStyle} src={src} alt="" priority width={width} height={height} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
         </div>
     )
 }
