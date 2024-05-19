@@ -6,9 +6,9 @@ type Props = {
 
 export const useGhostHistory = () => {
 
-    const push = () => {
+    const push = (url: string) => {
         // ghost stack 하나 쌓기
-        window.history.pushState(null, "", '/')
+        window.history.pushState(null, "", `/${url}`)
     }
 
     function use({onPopState}: Props){

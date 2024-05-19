@@ -57,7 +57,7 @@ export const MapView = ({className, style}: Props) => {
   
     const onIndicatorClick = (name: string) => {
         // 스택만 쌓기 위해 (뒤로가기를 위한 스택)
-        push()
+        push(name)
         setSelectedArea(areaNameReverse[name])
     }
   
