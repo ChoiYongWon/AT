@@ -17,7 +17,7 @@ const ProfileCard = async ({className, style}: Props) => {
         <div className={`${className} ${ProfileCardWrapperStyle}`} style={style}>
             {
                 session ? (
-                    <Image unoptimized width={50} height={50} src={`https://images.weserv.nl/?url=${session?.user.image}&w=100&h=100&output=webp&q=75`} alt="" className={ProfileImageStyle} priority placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
+                    <Image unoptimized width={50} height={50} src={`https://images.weserv.nl/?url=${session?.user.image}&w=125&h=125&output=webp&q=75`} alt="" className={ProfileImageStyle} priority placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88uR5PQAIkwMweFOllAAAAABJRU5ErkJggg=="/>
                 ): (
                     <Image src={Logo} alt="" width={37} height={37}/>
                 )
