@@ -17,7 +17,7 @@ import SearchIcon from "../../../../public/images/SearchIcon.svg";
 import Logo from "../../../../public/images/Loading.svg"
 import Menu from "../../../../public/images/MenuBar.svg"
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { setFocusTimeout } from "@toss/utils";
 import Link from "next/link";
@@ -60,6 +60,11 @@ const SearchBar = ({
       inputRef.current.blur();
     },
   });
+
+
+  useEffect(()=>{
+    router.prefetch("/profile");
+  }, [router])
 
   // 검색이 되는 경우
   // 1. 검색 버튼
@@ -115,9 +120,9 @@ const SearchBar = ({
           // }
           
           // </Link>
-          <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true} scroll={false}>
+          <button className={ProfileImageWrapperStyle} onClick={()=>router.push("/profile")}>
             <Image priority src={Menu} className={LogoStyle} alt="" width={100} height={100} />
-          </Link>
+          </button>
         }
         
 
