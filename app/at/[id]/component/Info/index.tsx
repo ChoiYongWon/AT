@@ -156,7 +156,8 @@ const Info = ({
 
                 <div className={EditWrapperStyle}>
                     {
-                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  session.data?.user.id == user.id ? <button onClick={()=>setDeleteModal(true)} className={EditStyle}>삭제</button> : <></>
+                        isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> : <button onClick={()=>setDeleteModal(true)} className={EditStyle}>삭제</button>
+                        // isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :  session.data?.user.id == user.id ? <button onClick={()=>setDeleteModal(true)} className={EditStyle}>삭제</button> : <></>
                     }
                     {
                         isLoading || initialLoading ? <Skeleton style={{width: "20px", height: "12px"}}/> :   session.data?.user.id == user.id ? <Link href={`/edit/${id}`} className={EditStyle} prefetch={true}>수정</Link> : <></>

@@ -362,15 +362,18 @@ const client = new S3Client({
 
 export async function DELETE(request: NextRequest) {
   try {
-    const session = await useAuth();
+
+    // 주석 어드민 전용
+    // const session = await useAuth();
+
     const body: DeleteBody = await request.json()
 
-    const owner = await prisma.spot.findUnique({
-      where: {id: body.id},
-      select: {userId: true}
-    })
+    // const owner = await prisma.spot.findUnique({
+    //   where: {id: body.id},
+    //   select: {userId: true}
+    // })
 
-    if(owner?.userId != session.user.id) return UnauthorizedError()
+    // if(owner?.userId != session.user.id) return UnauthorizedError()
 
     const result =  await prisma.$transaction(async (tx) => {
 
