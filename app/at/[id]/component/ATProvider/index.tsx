@@ -2,8 +2,9 @@
 
 import { GetATData, useGetAT } from "@/app/_common/query/get/useGetAT";
 import { useEffect } from "react";
-import { useRecoilState, useResetRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { atDataState, loadingState } from "../../recoil";
+import { Area, selectedAreaState } from "@/app/[[...map]]/recoil";
 
 type Props = {
     children: any;
@@ -23,6 +24,7 @@ const ATProvider = ({
         id: encodeURI(id),
     })
     const resetData = useResetRecoilState(atDataState)
+    const setSelectedArea = useSetRecoilState(selectedAreaState)
 
     useEffect(()=>{
         setLoading(isGetATLoading || isGetATFetching)
@@ -32,6 +34,7 @@ const ATProvider = ({
         const data: GetATData | undefined = atData?.data
         if(data){
             setAT(atData.data)
+            setSelectedArea(data.address.split(" ")[0] as Area)
         }
     }, [atData])
 
