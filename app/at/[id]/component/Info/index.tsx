@@ -151,7 +151,7 @@ const Info = ({
                 }
                 </div>
                 {
-                        isLoading || initialLoading ? <Skeleton circle style={{width: "34px", height: "34px"}}/> :  <Link target="_blank" href={`https://map.naver.com/p/search/${encodeURI(`${title} ${address}`)}`}><IconButton size="34px" type="next"/></Link>
+                        isLoading || initialLoading ? <Skeleton circle style={{width: "34px", height: "34px"}}/> :  <Link target="_blank" href={`https://map.naver.com/p/search/${encodeURI(`${address.split(" ")[0]} ${address.split(" ")[1]} ${address.split(" ")[2]} ${title}`)}`}><IconButton size="34px" type="next"/></Link>
                 }
 
             </div>
