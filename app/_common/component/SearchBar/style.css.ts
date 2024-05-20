@@ -45,7 +45,7 @@ export const EmptyProfileImageStyle = style({
 export const ProfileNameStyle = style({
   fontSize: "18px",
   cursor: "pointer"
-  // fontWeight: "bold"
+  // fontWeight: 600
 })
 
 

@@ -75,7 +75,7 @@ export const ATCardTextWrapperStyle = style({
 
 export const ATCardTitleStyle = style({
     fontSize: "24px",
-    fontWeight: 800,
+    fontWeight: 700,
     // color: vars.color.primary
 })
 
@@ -149,5 +149,5 @@ export const ATCardCategoryStyle = style({
     border: `${vars.color.strokeBlack} 1px solid`,
     borderRadius: "14px",
     whiteSpace: "nowrap",
-    fontWeight: "bold"
+    fontWeight: 600
 })

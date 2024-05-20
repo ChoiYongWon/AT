@@ -19,7 +19,7 @@ export const FAQWrapperStyle = style({
 
 export const FAQSummaryWrapperStyle = style({
     fontSize: "15px",
-    fontWeight: "bold",
+    fontWeight: 600,
     display: "flex",
     alignItems: "center",
     height: "fit-content",
@@ -34,7 +34,7 @@ export const FAQSummaryWrapperStyle = style({
 export const FAQSummaryQuestionStyle = style({
     color: vars.color.primary,
     marginRight: "8px",
-    fontWeight: 900,
+    fontWeight: 800,
     flex: 0,
     
 })

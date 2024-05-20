@@ -38,13 +38,13 @@ export const ModalWrapperStyle = style({
 
 export const ModalTitleStyle = style({
     fontSize: "16px",
-    fontWeight: 800
+    fontWeight: 700
 })
 
 export const ModalContentStyle = style({
     fontSize: "12px",
     lineHeight: 1.5,
-    // fontWeight: 800
+    // fontWeight: 700
 })
 
 export const ModalButtonGroupStyle = style({

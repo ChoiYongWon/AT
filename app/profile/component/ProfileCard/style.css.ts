@@ -27,7 +27,7 @@ export const ProfileInfoWrapperStyle = style({
 
 export const ProfileNameStyle = style({
     fontSize: "24px",
-    fontWeight: 800
+    fontWeight: 700
 })
 
 export const ProfileATIDWrapper = style({

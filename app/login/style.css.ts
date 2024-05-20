@@ -49,7 +49,7 @@ export const DescriptionKorStyle = style({
   fontSize: "16px",
   gridColumn: "1 / span 4",
   marginTop: "30px",
-  fontWeight: "lighter",
+  fontWeight: 300,
 
   "@media": {
     "screen and (min-width: 768px)": {
@@ -70,7 +70,7 @@ export const DescriptionEngStyle = style({
   gridColumn: "1 / span 4",
   marginTop: "16px",
   fontFamily: "Poppins",
-  fontWeight: "lighter",
+  fontWeight: 300,
   marginBottom: "20px",
 
   "@media": {
@@ -94,7 +94,7 @@ export const FooterWrapperStyle = style({
   bottom: "40px",
   left: "50%",
   transform: "translate(-50%, 0)",
-  fontWeight: "lighter",
+  fontWeight: 300,
   width: "100%",
 
   "@media": {
@@ -134,7 +134,7 @@ export const FooterBackStyle = style({
   position: "relative",
   textAlign: "center",
   fontSize: "10px",
-  fontWeight: "lighter",
+  fontWeight: 300,
   marginTop: "6px",
 
   "@media": {

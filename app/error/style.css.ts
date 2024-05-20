@@ -27,7 +27,7 @@ export const ErrorTextStyle = style({
 
 export const ErrorNumberStyle = style({
     fontSize: "56px",
-    fontWeight: 900,
+    fontWeight: 800,
 })
 
 export const ErrorHomeStyle = style({

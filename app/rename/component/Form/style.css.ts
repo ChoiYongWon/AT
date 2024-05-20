@@ -24,6 +24,6 @@ export const LogoutDescriptionStyle = style({
 export const LogoutStyle = style({
   fontSize: "12px",
   color: vars.color.fontBlack,
-  fontWeight: "bold",
+  fontWeight: 600,
   opacity: 0.5,
 });

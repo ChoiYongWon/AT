@@ -32,13 +32,13 @@ export const TmpLayout = style({
 
 export const TitleStyle = style({
   fontSize: "24px",
-  fontWeight: "bold",
+  fontWeight: 600,
 });
 
 export const DescriptionStyle = style({
   marginTop: "16px",
   fontSize: "14px",
-  fontWeight: "lighter",
+  fontWeight: 300,
   textAlign: "center",
   lineHeight: 1.5,
 });

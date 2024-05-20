@@ -13,5 +13,5 @@ export const ToastStyle = style({
     height: "auto",
     // color: vars.color.white,
     fontSize: "12px",
-    fontWeight: 800
+    fontWeight: 700
 })

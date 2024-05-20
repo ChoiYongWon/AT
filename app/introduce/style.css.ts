@@ -63,18 +63,18 @@ export const TitleStyle = style({
   fontSize: "32px",
   wordBreak: "keep-all",
   lineHeight: 1.4,
-  fontWeight: 800
+  fontWeight: 700
 });
 
 export const SubTitleStyle = style({
   fontSize: '20px',
-  fontWeight: 800
+  fontWeight: 700
 })
 
 export const DescriptionTitleStyle = style({
   fontSize: '16px',
   lineHeight: 1.6,
-  fontWeight: "bold"
+  fontWeight: 600
 })
 
 export const DescriptionStyle = style({

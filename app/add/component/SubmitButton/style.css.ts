@@ -37,7 +37,7 @@ export const ButtonStyle = style({
 
 export const ButtonMessageStyle = style({
     fontSize: "12px",
-    fontWeight: "lighter",
+    // fontWeight: "lighter",
     color: "#ee2e3d",
     transformOrigin: "center"
 })

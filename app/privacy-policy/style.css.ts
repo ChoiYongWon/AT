@@ -77,7 +77,7 @@ export const PrivacyPolicyLayout = style({
 
 export const TitleStyle = style({
     fontSize: "18px",
-    fontWeight: "bold",
+    fontWeight: 600,
 })
 
 export const ContentStyle = style({

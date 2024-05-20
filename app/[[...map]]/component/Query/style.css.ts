@@ -29,7 +29,7 @@ export const QueryStyle = style({
   // paddingLeft: "25px",
   boxSizing: "border-box",
   fontSize: "12px",
-  fontWeight: "bold",
+  fontWeight: 600,
   border: `${vars.color.strokeBlack} 1px solid`,
   borderRadius: "100px",
   width: "auto",
@@ -51,7 +51,7 @@ export const QueryTextStyle = style({
   justifyContent: "center",
   alignItems: "center",
   whiteSpace: "nowrap",
-  fontWeight: 800
+  fontWeight: 700
 })
 
 export const QueryDeleteButtonStyle = style({

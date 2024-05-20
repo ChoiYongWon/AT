@@ -12,7 +12,7 @@ export const InfoWrapperStyle = style({
 
 export const AuthorInfoStyle = style({
     fontSize: "12px",
-    fontWeight: "bold",
+    fontWeight: 600,
     color: vars.color.fontBlack,
     borderBottom: `${vars.color.strokeBlack} 1px solid`,
     paddingBottom: "0.5px",
@@ -37,7 +37,7 @@ export const TitleStyle = style({
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
     overflow: "hidden",
-    fontWeight: 900,
+    fontWeight: 800,
     color: vars.color.fontBlack,
 
     "@media": {
@@ -50,7 +50,7 @@ export const TitleStyle = style({
 
 export const AddressStyle = style({
     fontSize: "12px",
-    fontWeight: "bold",
+    fontWeight: 600,
     color: vars.color.fontBlack,
 })
 

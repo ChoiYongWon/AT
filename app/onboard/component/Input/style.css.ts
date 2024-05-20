@@ -34,6 +34,6 @@ export const InputStyle = style({
 
 export const ErrorMessageStyle = style({
   fontSize: "12px",
-  fontWeight: "lighter",
+  fontWeight: 300,
   color: "#ee2e3d",
 });

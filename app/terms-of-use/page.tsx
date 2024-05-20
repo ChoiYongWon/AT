@@ -12,7 +12,7 @@ export default function Page() {
         <CancelButton />
       </div>
       <div className={TitleLayout} style={{marginTop: "30px"}}>
-        <span style={{fontSize: "24px", marginBottom: "24px", fontWeight: 800}}>서비스 이용 약관</span>
+        <span style={{fontSize: "24px", marginBottom: "24px", fontWeight: 700}}>서비스 이용 약관</span>
         
       </div>
       <div className={TermsOfUseLayout} style={{marginTop: "20px"}}>

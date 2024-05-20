@@ -48,7 +48,7 @@ export const CancelButtonLayout = style({
 });
 
 export const TitleStyle = style({
-  //   fontWeight: "bold",
+  //   fontWeight: 600,
   fontSize: "18px",
 });
 

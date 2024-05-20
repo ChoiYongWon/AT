@@ -131,7 +131,7 @@ export const MapFormCreateButtonImageStyle = style({
 })
 
 export const MapFormCreateTextBoldStyle = style({
-    fontWeight: "bold",
+    fontWeight: 600,
 })
 
 export const Divider = style({

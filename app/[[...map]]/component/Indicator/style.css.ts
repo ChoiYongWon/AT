@@ -25,14 +25,14 @@ export const NameStyle = style({
     textAnchor: "middle",
     fill: vars.color.fontBlack,
     fontSize: "10px",
-    fontWeight: 800
+    fontWeight: 700
 })
 
 export const CountStyle = style({
     textAnchor: "middle",
     fill: vars.color.primary,
     fontSize: "12px",
-    fontWeight: 900
+    fontWeight: 800
 })
 
 export const LoadingStyle = style({
@@ -53,12 +53,12 @@ export const LoadingStyle = style({
 //     textAnchor: "middle",
 //     fill: vars.color.white,
 //     fontSize: "10px",
-//     fontWeight: 800
+//     fontWeight: 700
 // })
 
 // export const CountStyle = style({
 //     textAnchor: "middle",
 //     fill: vars.color.primary,
 //     fontSize: "14px",
-//     fontWeight: 900
+//     fontWeight: 800
 // })

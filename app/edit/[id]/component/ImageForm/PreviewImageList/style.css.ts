@@ -34,7 +34,7 @@ export const ImageAddButtonStyle = style({
 
 export const ImageAddButtonTitleStyle = style({
   fontSize: "12px",
-  fontWeight: "bold",
+  fontWeight: 600,
 });
 
 export const ImageContainerStyle = style({

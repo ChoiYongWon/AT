@@ -57,7 +57,7 @@ export const CategoryInputStyle = style({
 
 export const ErrorMessageStyle = style({
   fontSize: "12px",
-  fontWeight: "lighter",
+  // fontWeight: "lighter",
   color: "#ee2e3d",
   marginTop: '4px',
 });

@@ -47,6 +47,7 @@ export const ProfileLayoutStyle = style({
     display: "flex",
     flexDirection: "column",
     userSelect: 'none',
+    // fontWeight: 300,
   
     "@media": {
       "screen and (min-width: 768px)": {
