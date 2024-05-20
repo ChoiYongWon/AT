@@ -73,6 +73,7 @@ const MoreCard = ({className, style}: Props) => {
                     
                 </Link>
                 <div className={DividerStyle}/>
+                <button onClick={()=>toast.error("서버에 알수없는 오류가 발생했습니다.")}>서버</button>
                 <Link className={RegularButtonStyle} href={"/faq"} prefetch>FAQ</Link>
                 <Link className={RegularButtonStyle}  href={"/introduce"} prefetch>서비스 소개</Link>
                 <Link className={RegularButtonStyle} href={"/terms-of-use"} prefetch>서비스 이용 약관</Link>
