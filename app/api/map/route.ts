@@ -2,7 +2,6 @@ export const maxDuration = 60;
 
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
 import { MapDuplicatedError } from "../error/map/MapDuplicated.error";
 import { InvalidMapNameError } from "../error/map/InvalidMapName.error";
@@ -10,6 +9,7 @@ import { fromEnv } from "@aws-sdk/credential-providers";
 import { S3Client, DeleteObjectsCommand, DeleteObjectsRequest } from "@aws-sdk/client-s3";
 import { UnauthorizedError } from "../error/auth/Unauthorized.error";
 import { MapLimitError } from "../error/map/MapLimit.error";
+import { auth } from "@/auth";
 
 
 export type PostBody = {
@@ -22,7 +22,8 @@ const prisma = new PrismaClient()
 export async function POST(request: NextRequest) {
   try {
 
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     const body: PostBody = await request.json()
     const regexp = /^[가-힣a-zA-Z0-9]{1,6}$/g
 
@@ -75,7 +76,8 @@ export async function GET(request: NextRequest) {
   // const searchParams = request.nextUrl.searchParams
 
   try {
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     // const userId = searchParams.get('userId')
 
     // if(session.user.id != userId) return UnauthorizedError()
@@ -114,7 +116,8 @@ const client = new S3Client({
 
 export async function DELETE(request: NextRequest) {
   try {
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     const body: DeleteBody = await request.json()
 
     const owner = await prisma.map.findUnique({

@@ -4,7 +4,6 @@ export const maxDuration = 60;
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { InvalidATIDError } from "../error/user/InvalidATID.error";
-import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
 import { UnavailableATIDError } from "../error/user/UnavailableATID.error";
 import { DuplicatedATIDError } from "../error/user/DuplicatedATID.error";
@@ -12,6 +11,7 @@ import { ROUTES } from "@/app/_common/util/constant";
 import { fromEnv } from "@aws-sdk/credential-providers";
 import { S3Client, DeleteObjectsCommand, DeleteObjectsRequest } from "@aws-sdk/client-s3";
 import { UnauthorizedError } from "../error/auth/Unauthorized.error";
+import { auth } from "@/auth";
 
 
 type Query = {
@@ -24,7 +24,8 @@ const prisma = new PrismaClient();
 //at_id 변경 목적
 export async function PUT(request: NextRequest) {
   try {
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     const regexp = /^[a-z0-9_\.]{3,16}$/g;
     const body = (await request.json()) as Query;
 
@@ -69,7 +70,8 @@ const client = new S3Client({
 
 export async function DELETE(request: NextRequest) {
   try {
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
 
     await prisma.$transaction(async (tx) => {
 

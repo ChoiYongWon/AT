@@ -16,7 +16,6 @@ const atQueryBuilder = new ATQueryBuilder()
   export async function GET(request: NextRequest) {
     const {query, at_id, name} = Object.fromEntries(request.nextUrl.searchParams) as Query;
     try {
-      // const session = await useAuth();
       let sqlQuery = atQueryBuilder.init()
       // TODO 서비스 레이어 코드정리
 

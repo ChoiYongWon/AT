@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
+import { auth } from "@/auth";
+import { UnauthorizedError } from "../error/auth/Unauthorized.error";
 
 type Query = {
   query: string;
@@ -10,7 +11,8 @@ export async function GET(request: NextRequest) {
   const query = Object.fromEntries(request.nextUrl.searchParams) as Query;
 
   try {
-    const session = useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     // const decoded_query = decodeURIComponent(query.query);
     var api_url = 'https://openapi.naver.com/v1/search/local.json?display=5&query=' + query.query;
     const res = await fetch(`${api_url}`, {

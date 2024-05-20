@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
 import { createPresignedPost } from "@aws-sdk/s3-presigned-post";
 import { S3Client } from "@aws-sdk/client-s3";
 import { fromEnv } from "@aws-sdk/credential-providers";
+import { auth } from "@/auth";
+import { UnauthorizedError } from "../error/auth/Unauthorized.error";
 
 export type ImageMetaData = {
   filename: string;
@@ -24,7 +25,8 @@ const client = new S3Client({
 export async function POST(req: Request) {
   try {
 
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     const body: PresignedUrlBody = await req.json()
     const result: any = {}
 

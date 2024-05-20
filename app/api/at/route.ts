@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../error/server/InternalServer.error";
 import { SpotDuplicatedError } from "../error/at/SpotDuplicated.error";
 import { InvalidDataError } from "../error/at/InvalidData.error";
@@ -9,6 +8,7 @@ import { fromEnv } from "@aws-sdk/credential-providers";
 import { UnauthorizedError } from "../error/auth/Unauthorized.error";
 import { TooManyImageError } from "../error/at/TooManyImage.error";
 import { BannedError } from "../error/at/Banned.error";
+import { auth } from "@/auth";
 
 export type PostBody = {
   mapId: string;
@@ -25,7 +25,8 @@ const prisma = new PrismaClient()
 export async function POST(request: NextRequest) {
   try {
 
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     const body: PostBody = await request.json()
 
     // 밴 확인
@@ -141,7 +142,6 @@ export async function GET(request: NextRequest) {
   const {id} = Object.fromEntries(request.nextUrl.searchParams) as Query;
 
   try {
-    // const session = await useAuth();
     
     const result = await prisma.spot.findUnique({
       select: {
@@ -215,7 +215,8 @@ export type PutBody = {
 export async function PUT(request: NextRequest) {
   try {
 
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     const body: PutBody = await request.json()
 
     const prevSpot = await prisma.spot.findUnique({
@@ -362,7 +363,8 @@ const client = new S3Client({
 
 export async function DELETE(request: NextRequest) {
   try {
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     const body: DeleteBody = await request.json()
 
     const owner = await prisma.spot.findUnique({

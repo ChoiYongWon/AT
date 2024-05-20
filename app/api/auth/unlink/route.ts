@@ -1,9 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../../error/server/InternalServer.error";
 import { UnlinkUnavailableError } from "../../error/auth/unlink/UnlinkUnavailable.error";
 import { getToken } from "next-auth/jwt"
+import { auth } from "@/auth";
+import { UnauthorizedError } from "../../error/auth/Unauthorized.error";
 
 
 const prisma = new PrismaClient()
@@ -12,7 +13,8 @@ const prisma = new PrismaClient()
 export async function POST(request: NextRequest) {
   try {
 
-    const session = await useAuth()
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     const token = await getToken({
       req: request,
       secret: process.env.AUTH_SECRET!,

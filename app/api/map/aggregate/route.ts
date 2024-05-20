@@ -1,8 +1,8 @@
-import { useAuth } from "@/app/_common/util/useAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { UnauthorizedError } from "../../error/auth/Unauthorized.error";
 import { PrismaClient } from "@prisma/client";
 import { InternalServerError } from "../../error/server/InternalServer.error";
+import { auth } from "@/auth";
 
 const prisma = new PrismaClient()
 
@@ -10,7 +10,8 @@ const prisma = new PrismaClient()
 export async function GET(request: NextRequest) {
   
     try {
-      const session = await useAuth();
+      const session = await auth();
+      if (!session) return UnauthorizedError();
 
       let result = {
 

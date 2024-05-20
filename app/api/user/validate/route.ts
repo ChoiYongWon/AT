@@ -1,11 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { InvalidATIDError } from "../../error/user/InvalidATID.error";
-import { useAuth } from "@/app/_common/util/useAuth";
 import { InternalServerError } from "../../error/server/InternalServer.error";
 import { UnavailableATIDError } from "../../error/user/UnavailableATID.error";
 import { DuplicatedATIDError } from "../../error/user/DuplicatedATID.error";
 import { ROUTES } from "@/app/_common/util/constant";
+import { auth } from "@/auth";
+import { UnauthorizedError } from "../../error/auth/Unauthorized.error";
 
 type Query = {
   at_id: string;
@@ -15,7 +16,8 @@ export async function GET(request: NextRequest) {
   const query = Object.fromEntries(request.nextUrl.searchParams) as Query;
 
   try {
-    const session = await useAuth();
+    const session = await auth();
+    if (!session) return UnauthorizedError();
     const regexp = /^[a-z0-9_\.]{3,16}$/g;
     const decoded_at_id = decodeURIComponent(query.at_id);
 
