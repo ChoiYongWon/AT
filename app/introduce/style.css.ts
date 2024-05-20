@@ -79,7 +79,8 @@ export const DescriptionTitleStyle = style({
 
 export const DescriptionStyle = style({
   fontSize: '14px',
-  lineHeight: 1.6
+  lineHeight: 1.6,
+  fontSynthesis: 'style'
 })
 
 export const LinkStyle = style({
