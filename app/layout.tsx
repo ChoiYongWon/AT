@@ -11,6 +11,8 @@ import RecoilRootProvider from "./_common/provider/RecoilRootProvider";
 import Toast from "./_common/component/Toast";
 import CheckTokenValidation from "./_common/provider/CheckTokenValidation";
 import GoogleAnalytics from "./_common/component/GoogleAnalytics";
+import localFont from 'next/font/local'
+import { Poppins } from 'next/font/google'
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -41,13 +43,26 @@ export const viewport:Viewport = {
   themeColor: "#f7f7f7",
 }
 
+const nanumSquareNeo = localFont({
+  src: './_asset/fonts/NanumSquareNeo-Variable.woff2',
+  variable: '--font-nanumSquare-neo',
+  display: 'swap',
+})
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${nanumSquareNeo.variable} ${poppins.variable}`}>
       <GoogleAnalytics/>
       <body>
         <Toast/>
