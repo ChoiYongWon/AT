@@ -55,7 +55,8 @@ import "./reset.css";
 globalStyle("html, body", {
   // fontFamily: `${nanumSquareNeo}, ${poppins}`,
   fontFamily: `var(--font-nanumSquare-neo), var(--font-poppins)`,
-  backgroundColor: "#F7F7F7",  
+  backgroundColor: "#F7F7F7",
+  fontSynthesis: "none !important",
   fontWeight: 300,
   padding: 0,
   margin: 0,
