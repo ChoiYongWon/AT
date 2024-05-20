@@ -81,6 +81,7 @@ export const DividerStyle = style({
 export const BodyStyle = style({
     lineHeight: "1.6",
     fontSize: "14px",
+    wordBreak: "keep-all"
 })
 
 export const ReportStyle = style({
