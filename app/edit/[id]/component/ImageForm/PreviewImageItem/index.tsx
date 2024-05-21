@@ -41,18 +41,35 @@ const PreviewImageItem = (
       transition={{ type: "just" }}
     >
       <motion.div className={ImageWrapperStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
-        <Image
-          unoptimized
-          src={`https://images.weserv.nl/?url=${image.previewUrl}&w=150&h=150&output=webp&q=75`}
-          alt={image.name}
-          width={100}
-          height={100}
-          draggable={false}
-          className={ImageStyle}
-          onClick={() => {
-            removeImage();
-          }}
-        />
+        {
+          image.isNew ? (
+            <Image
+              // unoptimized
+              src={`${image.previewUrl}`}
+              alt={image.name}
+              width={100}
+              height={100}
+              draggable={false}
+              className={ImageStyle}
+              onClick={() => {
+                removeImage();
+              }}
+            />
+          ) : (
+            <Image
+              unoptimized
+              src={`https://images.weserv.nl/?url=${image.previewUrl}&w=150&h=150&output=webp&q=75`}
+              alt={image.name}
+              width={100}
+              height={100}
+              draggable={false}
+              className={ImageStyle}
+              onClick={() => {
+                removeImage();
+              }}
+            />
+          )
+        }
       </motion.div>
       
       <div
