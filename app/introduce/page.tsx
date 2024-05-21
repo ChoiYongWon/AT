@@ -68,7 +68,7 @@ export default async function AddPage() {
             </div>
             <Image src={"https://github.com/ChoiYongWon/AT/assets/40623433/6f8bb952-c8aa-4112-98a4-92a3819cee73"} priority
                 alt="" width={400} height={53} style={{margin: "0 auto", marginTop: "10px", width: "80%", height: "auto"}}/>
-            <span className={DescriptionStyle} style={{marginTop: "12px", marginLeft: "auto", marginRight: "auto", fontSize: "12px", fontStyle: "italic"}}>스페이스나 엔터로 카테고리를 추가할 수 있습니다.</span>
+            <span className={DescriptionStyle} style={{marginTop: "12px", marginLeft: "auto", marginRight: "auto", fontSize: "12px", fontStyle: "italic"}}>스페이스나 엔터로 검색어를 추가할 수 있습니다.</span>
 
 
             {/* ---- 3. 지도 공유하기 ---- */}
