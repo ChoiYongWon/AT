@@ -44,7 +44,7 @@ const MoreCard = ({className, style}: Props) => {
             await queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
             await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
             
-            await signOut({callbackUrl: "/"})
+            await signOut()
             // await signOut()
 
 
