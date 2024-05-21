@@ -94,14 +94,24 @@ export default async function AddPage() {
                 인스타그램 프로필소개, 카카오톡등에 공유해보세요! 
             </div>
 
-            <span className={DescriptionTitleStyle} style={{marginTop: "100px"}}>4. 그 외</span>
+
+            {/* ---- 4. 다른 유저의 지도 탐방하기 ---- */}
+            <span className={DescriptionTitleStyle} style={{marginTop: "100px"}}>4. 다른 유저의 지도 탐방하기</span>
+            <p className={DescriptionStyle} style={{marginTop: "8px", marginLeft: "24px"}}>마음에 드는 게시물을 발견하셨다면 <span className={LinkBlackStyle}>@~의 ~지도</span> 버튼을 눌러 해당 유저의 지도를 탐방해보세요!</p>
+            <Image src={"https://github.com/ChoiYongWon/AT/assets/40623433/0e81e10e-c02e-41a5-8792-7c008f32f1ee"} priority
+                alt="" width={400} height={100} style={{margin: "0 auto", marginTop: "16px", maxWidth: "400px", width: "80%", height: "auto"}}/>
+            <span className={DescriptionStyle} style={{marginTop: "16px", marginLeft: "auto", marginRight: "auto", fontSize: "12px", fontStyle: "italic"}}>게시물 정보</span>
+
+
+            {/* ---- 5. 그 외---- */}
+            <span className={DescriptionTitleStyle} style={{marginTop: "100px"}}>5. 그 외</span>
             <span className={DescriptionStyle} style={{marginTop: "8px", marginLeft: "24px"}}>사용하시면서 궁금한게 생기시면 
             <Link className={LinkStyle} href={"https://jyj-map.vercel.app"} style={{marginLeft: "4px"}} target="_blank">FAQ</Link>
             를 참조하시거나 
             <Link className={LinkStyle} href={"https://forms.gle/padVC81QrYiZDTEm7"} style={{marginLeft: "4px"}} target="_blank">문의</Link>
             주세요!</span>
 
-            <span className={DescriptionStyle} style={{marginTop: "64px", marginLeft: "auto", marginRight: "auto", fontSize: "12px", fontStyle: "italic",marginBottom: "125px"}}>잘부탁드립니다.</span>
+            <span className={DescriptionStyle} style={{marginTop: "64px", marginLeft: "auto", marginRight: "auto", fontSize: "12px", fontStyle: "italic",marginBottom: "125px"}}>맛집, 술집, 모각코 등등 다양한 지도를 만들어보세요~</span>
 
         </div>
     </>
