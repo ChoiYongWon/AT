@@ -24,7 +24,7 @@ export default async function AddPage() {
             <span className={SubTitleStyle} style={{marginTop: "30px", fontWeight: 600}}>소개</span>
             <p className={DescriptionStyle} style={{marginTop: "18px"}}>AT(A Spot Thur)는 
             <Link className={LinkStyle} href={"https://jyj-map.vercel.app"} style={{marginLeft: "4px"}} target="_blank">정용진 맛집 지도</Link>
-            를 모티브로 삼아, 원하는 장소를 직접 추가하여 개인의 지도를 만들고 공유할 수 있는 서비스입니다.</p>
+            를 모티브로 삼아 맛집, 카페, 캠핑, 클라이밍, 방탈출 등 위치 기반한 오프라인 취미활동에 재미를 더하고자 개발되었습니다. 자신만의 지도를 생성하여 장소를 기록하고, 다른 사람들과 공유하여 취미를 나눠보세요~!</p>
             <Image src={"https://github.com/ChoiYongWon/AT/assets/40623433/21f2f5c9-90c2-469c-9765-459eafb92766"} priority
                 alt="" width={500} height={2600} style={{margin: "0 auto", marginTop: "16px", width: "60%", height: "auto"}}/>
             <span className={DescriptionStyle} style={{marginTop: "8px", marginLeft: "auto", marginRight: "auto", fontSize: "12px", fontStyle: "italic"}}>A Spot Thur (AT)</span>
