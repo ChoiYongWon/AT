@@ -54,7 +54,7 @@ const Form = () => {
           await queryClient.invalidateQueries({ queryKey: ['/at/list'],  refetchType: 'all' })
           await queryClient.invalidateQueries({ queryKey: ['/at'], refetchType: 'all'  })
           await queryClient.invalidateQueries({ queryKey: ['/at/count'], refetchType: 'all'  })
-          await queryClient.invalidateQueries({ queryKey: ['map/aggregate'], refetchType: 'all'  })
+          await queryClient.invalidateQueries({ queryKey: ['/map/aggregate'], refetchType: 'all'  })
 
           // 홈화면 이동
           router.push("/profile");
