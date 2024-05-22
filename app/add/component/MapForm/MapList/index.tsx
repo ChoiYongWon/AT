@@ -129,7 +129,12 @@ const MapList = ({className, style, closeToggle}: Props) => {
                총 {mapList.length}개의 지도
             </div>
             <div className={MapFormInputWrapperStyle}>
-                <input type="text" className={MapFormInputStyle} placeholder="지도 명" value={mapInput} onChange={onMapInputChange}/>
+                <input type="text" className={MapFormInputStyle} placeholder="지도 명" value={mapInput} onChange={onMapInputChange} onKeyDown={(e:any)=>{
+                    if(e.keyCode == 13){
+                        e.preventDefault()
+                        onMapAddClick()
+                    }
+                }}/>
                 <Image src={Search} alt="" className={MapFormInputSearchIconStyle}/>
             </div>
 
