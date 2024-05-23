@@ -28,6 +28,8 @@ const IconButton = ({size, style, className, onClick, type, disabled }: Props) =
         style={{
             width: size,
             height: size,
+            minWidth: size,
+            minHeight: size,
             ...style,
 
         }}
