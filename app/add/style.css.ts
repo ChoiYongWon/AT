@@ -61,3 +61,9 @@ export const ImageAddLayoutStyle = style({
   width: "100%",
 });
 
+export const DescriptionStyle = style({
+  fontSize: '12px',
+  fontSynthesis: 'style',
+  fontStyle: "italic",
+  
+})

@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { CancelButtonLayout, SubTitleStyle, TitleStyle } from "./style.css";
+import { CancelButtonLayout, DescriptionStyle, SubTitleStyle, TitleStyle } from "./style.css";
 import ImageForm from "./component/ImageForm";
 import CategoryForm from "./component/CategoryForm";
 import AddressForm from "./component/AddressForm";
@@ -19,7 +19,10 @@ export default async function AddPage() {
 
         {/* -- 지도 선택 영역 */}
         <div className={TitleStyle} style={{ marginBottom: "10px" }}>지도 선택</div>
+        <span className={DescriptionStyle} style={{marginBottom: "10px"}}>※ 지도는 카테고리와 같은 역할을 합니다 (맛집, 방탈출, 카페 등등)</span>
+
         <MapForm style={{ marginBottom: "30px" }}/>
+
 
         {/* -- 사진 영역 */}
         <div className={TitleStyle} style={{ marginBottom: "10px" }}>사진 추가</div>
@@ -30,7 +33,10 @@ export default async function AddPage() {
           태그
           <span className={SubTitleStyle} style={{marginLeft: '4px'}}>(스페이스로 추가)</span>
         </div>
+        <span className={DescriptionStyle} style={{marginBottom: "10px"}}>※ 태그는 장소의 특징을 나열하는 역할을 합니다 (한식, 분위기, 가성비 등등)</span>
+
         <CategoryForm/>
+
 
         {/* -- 주소추가 영역 */}
         <div className={TitleStyle} style={{ marginBottom: "10px", marginTop: "40px" }}>주소 추가</div>

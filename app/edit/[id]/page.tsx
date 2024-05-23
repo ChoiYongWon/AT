@@ -10,6 +10,7 @@ import Form from "./component/Form";
 import CancelButton from "./component/CancelButton";
 import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
+import { DescriptionStyle } from "./style.css";
 
 const prisma = new PrismaClient()
 
@@ -37,6 +38,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
         {/* -- 지도 선택 영역 */}
         <div className={TitleStyle} style={{ marginBottom: "10px" }}>지도 선택</div>
+        <span className={DescriptionStyle} style={{marginBottom: "10px"}}>※ 지도는 카테고리와 같은 역할을 합니다 (맛집, 방탈출, 카페 등등)</span>
         <MapForm style={{ marginBottom: "30px" }}/>
 
         {/* -- 사진 영역 */}
@@ -48,6 +50,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           태그
           <span className={SubTitleStyle} style={{marginLeft: '4px'}}>(스페이스로 추가)</span>
         </div>
+        <span className={DescriptionStyle} style={{marginBottom: "10px"}}>※ 태그는 장소의 특징을 나열하는 역할을 합니다 (한식, 분위기, 가성비 등등)</span>
         <CategoryForm/>
 
         {/* -- 주소추가 영역 */}

@@ -28,3 +28,11 @@ export const LoadingImageStyle = style({
     width: "80px",
     height: "80px",
 })
+
+export const DescriptionStyle = style({
+    fontSize: '12px',
+    fontSynthesis: 'style',
+    fontStyle: "italic",
+    
+  })
+  
