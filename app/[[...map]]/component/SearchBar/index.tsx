@@ -36,7 +36,7 @@ const SearchBar = ({at_id, name, image, title, className}: Props) => {
   }, [name, at_id])
 
   const onQueryInput = (e: any) => {
-    // 카테고리 입력시 발동
+    // 태그 입력시 발동
     const query = e.target.value; 
     
     if (query.length > 0 && query[query.length - 1] == " ") {

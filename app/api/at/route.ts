@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     // 이미지 갯수 제한
     if(body.key.length > 10) return TooManyImageError()
     
-    // 카테고리 검증
+    // 태그 검증
     if(body.category.filter((c=>{
       const regexp = /^[가-힣a-z0-9]{1,10}$/g
       return regexp.test(c)
@@ -235,7 +235,7 @@ export async function PUT(request: NextRequest) {
     // 이미지 갯수 제한
     if(body.key.length > 10) return TooManyImageError()
 
-    // 카테고리 검증
+    // 태그 검증
     if(body.category.filter((c=>{
       const regexp = /^[가-힣a-z0-9]{1,10}$/g
       return regexp.test(c)
@@ -270,7 +270,7 @@ export async function PUT(request: NextRequest) {
         },
       })
 
-      // db내에 spotId와 관련된 모든 카테고리 제거
+      // db내에 spotId와 관련된 모든 태그 제거
       await tx.category.deleteMany({
         where: {
           spotId: body.id

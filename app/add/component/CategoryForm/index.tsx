@@ -29,17 +29,17 @@ const CategoryForm = () => {
       if(regexp.test(categoryInput)){
         const i = category.findIndex((c) => c.name == place); 
         if (i == -1) setCategory([...category, { name: place, id: uuidv4() }]);
-        else setCategoryError({enable: true, message: "카테고리는 중복될 수 없습니다."})
+        else setCategoryError({enable: true, message: "태그는 중복될 수 없습니다."})
         setCategoryInput("");
       }else {
-        setCategoryError({enable: true, message: "카테고리는 완성된 한글, 영소문자, 숫자가 10자 내외로 구성되야합니다."})
+        setCategoryError({enable: true, message: "태그는 완성된 한글, 영소문자, 숫자가 10자 내외로 구성되야합니다."})
         setCategoryInput("");
       }
     
   };
   
   const onCategoryInput = (e: any) => {
-    // 카테고리 입력시 발동
+    // 태그 입력시 발동
     const name = e.target.value; 
     if(categoryError.enable){
       setCategoryError({enable: false, message: ""})

@@ -25,9 +25,9 @@ export default async function AddPage() {
         <div className={TitleStyle} style={{ marginBottom: "10px" }}>사진 추가</div>
         <ImageForm style={{ marginBottom: "30px" }}/>
 
-        {/* -- 카테고리 영역 */}
+        {/* -- 태그 영역 */}
         <div style={{ marginBottom: "10px" }} className={TitleStyle}>
-          카테고리
+          태그
           <span className={SubTitleStyle} style={{marginLeft: '4px'}}>(스페이스로 추가)</span>
         </div>
         <CategoryForm/>
