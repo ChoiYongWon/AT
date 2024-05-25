@@ -53,9 +53,11 @@ const CategoryForm = () => {
     if(e.keyCode == 8 && categoryInput.length == 0){
       setCategory([...category.slice(0,category.length-1)])
     }
-    if(e.keyCode == 13 && categoryInput.length > 0){
+  }
+
+  const onKeyPress = (e: any) => {
+    if(e.key == "Enter" && categoryInput.length > 0){
       e.preventDefault()
-      e.stopPropagation()
       addCategory(categoryInput);
     }
   }
@@ -69,7 +71,7 @@ const CategoryForm = () => {
   };
 
     return (
-        <CategoryList ref={detectRef} onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError} onKeyDown={onKeyDown}>
+        <CategoryList ref={detectRef} onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError} onKeyDown={onKeyDown} onKeyPress={onKeyPress}>
             {category.map((category, i) => (
             <CategoryItem
                 key={category.id}
