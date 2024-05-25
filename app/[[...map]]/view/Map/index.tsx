@@ -1,7 +1,6 @@
 'use client'
 
-import { motion } from "framer-motion"
-import { forwardRef, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import Map from "../../component/Map"
 import { MapLayoutStyle } from "./style.css"
 import { useRecoilValue, useSetRecoilState } from "recoil"

@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useState } from "react";
 import PreviewImageList from "./PreviewImageList"
 import PreviewImageItem from "./PreviewImageItem";
 import { v4 as uuidv4 } from "uuid";

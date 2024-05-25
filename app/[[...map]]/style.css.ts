@@ -1,5 +1,4 @@
 import { style } from "@vanilla-extract/css";
-import { vars } from "../_common/theme/contract.css";
 
 export const GridLayoutStyle = style({
   display: "grid",

@@ -4,7 +4,7 @@ import { GetATData, useGetAT } from "@/app/_common/query/get/useGetAT"
 import { UploadFormLayoutStyle } from "./style.css"
 import { useEffect } from "react"
 import { useRecoilValue, useSetRecoilState } from "recoil"
-import { categoryState, editFormSelector, formSelector } from "../../recoil"
+import { editFormSelector, formSelector } from "../../recoil"
 import { v4 as uuidv4 } from "uuid";
 
 type Props = {

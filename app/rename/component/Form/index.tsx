@@ -1,10 +1,9 @@
 "use client";
 
-import { useValidId, useValidIdDTO } from "@/app/_common/query/get/useValidateId";
+import { useValidId } from "@/app/_common/query/get/useValidateId";
 import { useEffect } from "react";
 import { useDebounceValue } from "usehooks-ts";
 import Input from "../Input";
-import Button from "../Button";
 import {
   FormStyle,
   LogoutDescriptionStyle,
@@ -12,8 +11,8 @@ import {
   LogoutStyle,
 } from "./style.css";
 import { useMutateUserInfo } from "@/app/_common/query/put/useMutateUserInfo";
-import { redirect, useRouter } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import ConfirmButton from "@/app/_common/component/ConfirmButton";
 import { useQueryClient } from "@tanstack/react-query";
 

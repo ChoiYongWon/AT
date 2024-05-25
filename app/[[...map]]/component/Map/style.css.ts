@@ -1,6 +1,5 @@
 import { vars } from "@/app/_common/theme/contract.css"
 import { style } from "@vanilla-extract/css"
-import { color } from "framer-motion"
 
 export const MapLayoutStyle = style({
     userSelect: 'none',

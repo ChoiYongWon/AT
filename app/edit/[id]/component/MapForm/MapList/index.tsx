@@ -4,7 +4,7 @@ import Check from "../../../../../../public/images/Check.svg"
 import Add from "../../../../../../public/images/AddButton.svg"
 
 // import Loading from "../../../../../public/images/loading.gif"
-import { Divider, MapFormCheckStyle, MapFormContentFooterStyle, MapFormContentWrapperStyle, MapFormCreateButtonImageStyle, MapFormCreateButtonStyle, MapFormCreateInfoTextWrapperStyle, MapFormCreateTextBoldStyle, MapFormCreateTextWrapperStyle, MapFormInputErrorMessageStyle, MapFormInputSearchIconStyle, MapFormInputStyle, MapFormInputWrapperStyle, MapFormListItemWrapperStyle, MapFormListWrapperStyle, MapFormLoadingStyle, MapFormLoadingWrapperStyle } from "./style.css"
+import {  MapFormCheckStyle, MapFormContentFooterStyle, MapFormContentWrapperStyle, MapFormCreateButtonImageStyle, MapFormCreateButtonStyle, MapFormCreateInfoTextWrapperStyle, MapFormCreateTextBoldStyle, MapFormCreateTextWrapperStyle, MapFormInputErrorMessageStyle, MapFormInputSearchIconStyle, MapFormInputStyle, MapFormInputWrapperStyle, MapFormListItemWrapperStyle, MapFormListWrapperStyle, MapFormLoadingStyle, MapFormLoadingWrapperStyle } from "./style.css"
 import { useEffect, useState } from "react"
 import { useRecoilState } from "recoil"
 import { Map, mapState } from "../../../recoil"

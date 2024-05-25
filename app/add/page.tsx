@@ -1,4 +1,3 @@
-import { auth } from "@/auth";
 import { CancelButtonLayout, DescriptionStyle, SubTitleStyle, TitleStyle } from "./style.css";
 import ImageForm from "./component/ImageForm";
 import CategoryForm from "./component/CategoryForm";

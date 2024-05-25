@@ -1,7 +1,4 @@
 import {
-  fontFace,
-  style,
-  globalFontFace,
   globalStyle,
 } from "@vanilla-extract/css";
 import "./layers.css";

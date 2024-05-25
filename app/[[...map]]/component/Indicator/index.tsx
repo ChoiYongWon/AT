@@ -1,8 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { CardSyle, CountStyle, IndicatorTapGroupStyle, IndicatorWrapperStyle, LoadingStyle, NameStyle } from "./style.css"
-import { useCountUp } from 'react-countup';
 import { AnimatePresence, motion } from "framer-motion";
 import millify from "millify";
 

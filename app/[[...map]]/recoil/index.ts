@@ -1,6 +1,5 @@
 import { getATListResponseDTO } from "@/app/_common/query/get/useInfiniteATLists";
 import { atom, selector } from "recoil";
-import { v4 as uuidv4 } from "uuid";
 
 export type AT = {
     primary_address: string,

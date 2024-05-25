@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
 const withVanillaExtract = createVanillaExtractPlugin();
-
+import  bundleAnalyzer from '@next/bundle-analyzer'
 import nextPWA from 'next-pwa'
 
 const prod = process.env.NODE_ENV === 'production'
@@ -12,6 +12,10 @@ const withPWA = nextPWA({
   disable: prod ? false : true,
   skipWaiting: true
 });
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -76,4 +80,4 @@ const nextConfig = {
 
 };
 
-export default withPWA(withVanillaExtract(nextConfig));
+export default withBundleAnalyzer(withPWA(withVanillaExtract(nextConfig)));

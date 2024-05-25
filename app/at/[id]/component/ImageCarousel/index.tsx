@@ -9,7 +9,7 @@ import { A11y } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 // import 'swiper/css/pagination';
-import { BackButtonStyle, BackButtonWrapperStyle, CountStyle, ImageCarouselWrapperStyle, ImageStyle, NextButtonWrapperStyle, PrevButtonWrapperStyle, SliderStyle, SwiperStyle,  } from "./style.css";
+import { BackButtonWrapperStyle, CountStyle, ImageCarouselWrapperStyle, ImageStyle, NextButtonWrapperStyle, PrevButtonWrapperStyle, SliderStyle, SwiperStyle,  } from "./style.css";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";

@@ -1,4 +1,3 @@
-import PageAnimateRight from "../_common/provider/PageAnimate/PageAnimateRight";
 import { GridLayoutStyle } from "./style.css";
 
 export default function Layout({

@@ -14,10 +14,12 @@ import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import ConfirmButton from "@/app/_common/component/ConfirmButton";
 import toast from "react-hot-toast/headless";
-import Modal from "@/app/_common/component/Modal";
+// import Modal from "@/app/_common/component/Modal";
 import { BanDataType } from "@/app/api/error/at/Banned.error";
 import dayjs from "dayjs";
+import dynamic from "next/dynamic";
 
+const Modal: any = dynamic(()=>import("@/app/_common/component/Modal"), {ssr: false})
 
 
 type Props = {

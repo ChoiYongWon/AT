@@ -8,11 +8,15 @@ import FeedbackIcon from "../../../../public/images/Feedback.svg"
 import { signOut, useSession } from "next-auth/react";
 import toast from "react-hot-toast/headless"
 import { useDeleteUser } from "@/app/_common/query/delete/useDeleteUser"
-import Modal from "@/app/_common/component/Modal"
+// import Modal from "@/app/_common/component/Modal"
 import { useState } from "react"
 import ConfirmButton from "@/app/_common/component/ConfirmButton"
 import { useQueryClient } from "@tanstack/react-query"
 import { useUnlinkAccount } from "@/app/_common/query/post/useUnlinkAccount"
+import dynamic from "next/dynamic"
+
+const Modal: any = dynamic(()=>import("@/app/_common/component/Modal"), {ssr: false})
+
 
 
 type Props = {

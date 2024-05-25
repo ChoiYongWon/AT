@@ -1,7 +1,7 @@
 'use client'
 
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { atDataSelector, atDataState, loadingState } from "../../recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { atDataSelector, loadingState } from "../../recoil";
 import { AddressStyle, AddressWrapperStyle, AuthorInfoStyle, BodyStyle, CategoryStyle, CategoryWrapperStyle, DividerStyle, EditStyle, EditWrapperStyle, InfoWrapperStyle, MetaInfoWrapperStyle, ReportStyle, TitleStyle, TitleWrapperStyle } from "./style.css";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -10,13 +10,17 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { selectedAreaState } from "@/app/[[...map]]/recoil";
 import IconButton from "@/app/_common/component/IconButton";
-import Modal from "@/app/_common/component/Modal";
+// import Modal from "@/app/_common/component/Modal";
 import ConfirmButton from "@/app/_common/component/ConfirmButton";
 import { useDeleteAT } from "@/app/_common/query/delete/useDeleteAT";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast/headless";
 import { useReportAT } from "@/app/_common/query/post/useReportAT";
+import dynamic from "next/dynamic";
+
+const Modal: any = dynamic(()=>import("@/app/_common/component/Modal"), {ssr: false})
+
 
 type ReportType = "BAD_WORD" | "COMMERCIAL_USE" | "SEXUAL" | "UNRELATED"
 

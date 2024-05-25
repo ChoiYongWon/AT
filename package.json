@@ -13,6 +13,7 @@
     "@auth/prisma-adapter": "^1.5.0",
     "@aws-sdk/credential-providers": "^3.540.0",
     "@aws-sdk/s3-presigned-post": "^3.540.0",
+    "@next/bundle-analyzer": "^14.2.3",
     "@nextui-org/react": "^2.3.6",
     "@plaiceholder/next": "^3.0.0",
     "@prisma/client": "^5.11.0",

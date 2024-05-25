@@ -1,5 +1,4 @@
 import { atom, selector } from "recoil";
-import { v4 as uuidv4 } from "uuid";
 
 export type ImageType = {
     name: string;

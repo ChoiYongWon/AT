@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion"
 import { QueryDeleteButtonStyle, QueryDeleteImageStyle, QueryStyle, QueryTextStyle, QueryWrapperStyle } from "./style.css"
 import CancelButton from "../../../../public/images/CancelButton.svg"
 import Image from "next/image"
-import { useEffect } from "react"
 
 type Props = {
     className?: any

@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil"
 import { ATListCountStyle, ATListWrapper } from "./style.css"
 import ATCard from "../../component/ATCard"
 import Observer from "../../component/Observer"
-import { atListSelector, atListState, atUrlSelector, selectedAreaState } from "../../recoil"
+import { atListSelector, atListState, selectedAreaState } from "../../recoil"
 import { AnimatePresence } from "framer-motion"
 import { useEffect } from "react"
 
