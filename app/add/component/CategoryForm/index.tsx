@@ -55,6 +55,7 @@ const CategoryForm = () => {
     }
     if(e.keyCode == 13 && categoryInput.length > 0){
       e.preventDefault()
+      e.stopPropagation()
       addCategory(categoryInput);
     }
   }
