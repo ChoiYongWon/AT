@@ -1,5 +1,5 @@
 import { ButtonStyle, LoadingLottieStyle } from "./style.css";
-import Lottie from 'lottie-react'
+import Lottie from 'lottie-light-react'
 import loadingJson from '../../../../public/assets/loading.json'
 import { motion } from "framer-motion";
 
