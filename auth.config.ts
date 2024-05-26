@@ -49,6 +49,7 @@ export default {
   adapter: PrismaAdapter(prisma),
   pages: {
     signIn: "/login",
+    error: "/error/auth"
   },
   session: {
     maxAge: 60 * 60 * 24 * 30, // 30일
@@ -56,6 +57,7 @@ export default {
   },
   callbacks: {
     async jwt({ token, account, profile, trigger, session }) {
+      
       // 회원가입
       if (trigger == "signUp" && account) {
 
