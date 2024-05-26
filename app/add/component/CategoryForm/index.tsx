@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryItem from "./CategoryItem"
 import CategoryList from "./CategoryList"
 import { useDetectClickOutside } from "react-detect-click-outside";
@@ -53,14 +53,17 @@ const CategoryForm = () => {
     if(e.keyCode == 8 && categoryInput.length == 0){
       setCategory([...category.slice(0,category.length-1)])
     }
-  }
-
-  const onKeyPress = (e: any) => {
-    if(e.key == "Enter" && categoryInput.length > 0){
-      e.preventDefault()
-      addCategory(categoryInput);
+    if(e.key == "Enter"){
+          e.preventDefault()
     }
   }
+
+  // const onKeyPress = (e: any) => {
+  //   if(e.key == "Enter" && categoryInput.length > 0){
+  //     e.preventDefault()
+  //     addCategory(categoryInput);
+  //   }
+  // }
 
   const removeCategory = (e: any, id: string) => {
     e.preventDefault();
@@ -71,7 +74,7 @@ const CategoryForm = () => {
   };
 
     return (
-        <CategoryList ref={detectRef} onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError} onKeyDown={onKeyDown} onKeyPress={onKeyPress}>
+        <CategoryList ref={detectRef} onCategoryChange={onCategoryInput} categoryInput={categoryInput} categoryError={categoryError} onKeyDown={onKeyDown}>
             {category.map((category, i) => (
             <CategoryItem
                 key={category.id}

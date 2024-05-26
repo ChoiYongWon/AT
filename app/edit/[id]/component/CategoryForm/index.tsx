@@ -53,9 +53,8 @@ const CategoryForm = () => {
     if(e.keyCode == 8 && categoryInput.length == 0){
       setCategory([...category.slice(0,category.length-1)])
     }
-    if(e.keyCode == 13 && categoryInput.length > 0){
+    if(e.key == "Enter"){
       e.preventDefault()
-      addCategory(categoryInput);
     }
   }
 
