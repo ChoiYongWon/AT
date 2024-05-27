@@ -26,9 +26,11 @@ export const InputStyle = style({
   boxSizing: "border-box",
   marginTop: "16px",
   position: "relative",
+  fontSize: "15px",
 
   "::placeholder": {
     color: "#e3e2e1",
+    fontSize: "14px"
   },
 });
 

@@ -40,7 +40,7 @@ export const DescriptionStyle = style({
   fontSize: "14px",
   fontWeight: 300,
   textAlign: "center",
-  lineHeight: 1.5,
+  lineHeight: 1.6,
 });
 
 export const FormStyle = style({

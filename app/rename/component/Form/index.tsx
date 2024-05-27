@@ -71,7 +71,7 @@ const Form = () => {
     <>
       <form className={FormStyle}>
         <Input
-          placeholder="사용자 이름"
+          placeholder="사용자 닉네임"
           onChange={(e: any) => setInputName(e.target.value)}
           isError={isValidIdError as any}
           errorMessage={validIdError?.message || ""}

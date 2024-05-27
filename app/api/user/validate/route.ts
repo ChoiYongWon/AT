@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
 
     // 통과
     return new NextResponse(
-      JSON.stringify({ data: true, message: "해당 이름은 사용해도 좋습니다." }),
+      JSON.stringify({ data: true, message: "해당 닉네임은 사용해도 좋습니다." }),
       { status: 200, headers: { "content-type": "application/json" } }
     );
   } catch (e) {

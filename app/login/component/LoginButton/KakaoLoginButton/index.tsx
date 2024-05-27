@@ -23,7 +23,7 @@ const KakaoLoginButton = ({ className, style, formAction }: Props) => {
 
   const onClick = () => {
     setDisable(true)
-    signIn("kakao", { callbackUrl: "/" }).catch(()=>{
+    signIn("kakao", { callbackUrl: "/onboard" }).catch(()=>{
       toast.error("로그인 오류")
       setDisable(false)
     })

@@ -62,7 +62,7 @@ const Form = () => {
     <>
       <form className={FormStyle}>
         <Input
-          placeholder="사용자 이름"
+          placeholder="사용자 닉네임"
           onChange={(e: any) => setInputName(e.target.value)}
           isError={isValidIdError as any}
           errorMessage={validIdError?.message || ""}
@@ -77,9 +77,9 @@ const Form = () => {
         />
       </form>
       <div className={LogoutLayoutStyle} style={{ marginTop: "18px" }}>
-        <span className={LogoutDescriptionStyle}>동기화가 안되었다면 👉 </span>
-        <button className={LogoutStyle} onClick={() => signOut()}>
-          로그아웃
+        <span className={LogoutDescriptionStyle}>다음에 만들래요 👉 </span>
+        <button className={LogoutStyle} onClick={() => router.push("/")}>
+          홈으로
         </button>
       </div>
     </>

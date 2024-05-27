@@ -16,10 +16,6 @@ export default auth(async (req) => {
       return NextResponse.redirect(new URL("/", req.url));
     }
   }
-  else if (req.nextUrl.pathname.startsWith("/profile")) {
-    // if (!session) return NextResponse.redirect(new URL("/login", req.url));
-    if (session && !session.user?.at_id) return NextResponse.redirect(new URL("/onboard", req.url)); // 로그인되어있는데 at_id가 없을 때
-  }
   else if (req.nextUrl.pathname.startsWith("/rename")) {
     if (!session) return NextResponse.redirect(new URL("/login", req.url));
     if (session && !session.user?.at_id) return NextResponse.redirect(new URL("/onboard", req.url)); // 로그인되어있는데 at_id가 없을 때
@@ -38,5 +34,5 @@ export default auth(async (req) => {
 
 // Optionally, don't invoke Middleware on some paths
 export const config = {
-  matcher: ["/profile", "/onboard", "/add", "/login", "/rename"],
+  matcher: ["/onboard", "/add", "/login", "/rename"],
 };
