@@ -120,7 +120,7 @@ const SearchBar = ({
           // }
           
           // </Link>
-          <button name="profile_button" className={ProfileImageWrapperStyle} onClick={()=>router.push("/profile")}>
+          <button name="profile_button" aria-label="profile_button" className={ProfileImageWrapperStyle} onClick={()=>router.push("/profile")}>
             <Image priority src={Menu} className={LogoStyle} alt="" width={100} height={100} />
           </button>
         }
