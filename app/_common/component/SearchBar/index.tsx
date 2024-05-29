@@ -114,12 +114,15 @@ const SearchBar = ({
           state ? 
           <IconButton size="34px" type="prev" onClick={onPrevClick}/>
           :
-          <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
+          // <Link className={ProfileImageWrapperStyle} href={"/profile"} prefetch={true}>
+          // {
+          //   image ? <Image src={image} alt="" width={100} height={100} priority={true} /> : <Image src={Menu} className={LogoStyle} alt="" width={100} height={100} />
+          // }
+          
+          // </Link>
+          <button name="profile_button" className={ProfileImageWrapperStyle} onClick={()=>router.push("/profile")}>
             <Image priority src={Menu} className={LogoStyle} alt="" width={100} height={100} />
-          </Link>
-          // <button name={"search_bar_profile_button"} className={ProfileImageWrapperStyle} onClick={()=>router.push("/profile")}>
-          //   <Image priority src={Menu} className={LogoStyle} alt="" width={100} height={100} />
-          // </button>
+          </button>
         }
         
 
