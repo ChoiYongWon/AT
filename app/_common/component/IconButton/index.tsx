@@ -24,6 +24,7 @@ const IconButton = ({size, style, className, onClick, type, disabled }: Props) =
   return (
     
       <motion.button
+        name="icon_button"
         disabled={disabled}
         style={{
             width: size,

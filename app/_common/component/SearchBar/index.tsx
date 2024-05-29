@@ -126,7 +126,7 @@ const SearchBar = ({
         }
         
 
-        <div onClick={onTitleClick} className={ProfileNameStyle}>{title}</div>
+        <div onClick={onTitleClick} className={ProfileNameStyle}>{"" || title}</div>
         <div className={SearchIconWrapperStyle}>
           <label
             htmlFor="checkbox"
