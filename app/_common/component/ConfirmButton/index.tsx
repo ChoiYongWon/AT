@@ -18,6 +18,7 @@ type Props = {
 const ConfirmButton = ({ disabled, loading, onClick, className, style, text }: Props) => {
   return (
     <motion.button
+      name={"confirm_button"}
       className={`${ButtonStyle} ${className}`}
       style={style}
       disabled={disabled || loading}

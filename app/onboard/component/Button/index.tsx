@@ -15,6 +15,7 @@ type Props = {
 const Button = ({ disabled, loading, onClick }: Props) => {
   return (
     <motion.button
+      name="onboard_button"
       className={ButtonStyle}
       disabled={disabled || loading}
       onClick={onClick}
