@@ -25,7 +25,7 @@ const ATCard = ({id, title, at_id, map_name, images, address, categories, classN
             <div className={ATCardInfoWrapperStyle}>
                 <div className={ATCardIDStyle}>@{at_id}의 {map_name} 지도</div>
                 {/* <button className={ATCardNaverButtonStyle}>네이버 지도</button> */}
-                <button className={ATCardNextButtonSyle}>
+                <button name={"at_card_button"} className={ATCardNextButtonSyle}>
                     <Image className={ATCardNextImageStyle} src={NextArrow} alt="" priority={true}/>
                 </button>
             </div>

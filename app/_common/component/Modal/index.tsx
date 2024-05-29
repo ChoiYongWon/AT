@@ -117,7 +117,7 @@ const ButtonGroup = ({className, style, children}: BaseProps) => {
 
 const Button = ({className, style, children, onClick}: BaseProps) => {
     return (
-        <button onClick={onClick} className={`${ModalButtonStyle} ${className}`} style={style}>{children}</button>
+        <button name={"modal_button"} onClick={onClick} className={`${ModalButtonStyle} ${className}`} style={style}>{children}</button>
     )
 }
 

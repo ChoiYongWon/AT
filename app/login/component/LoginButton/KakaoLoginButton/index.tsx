@@ -32,6 +32,7 @@ const KakaoLoginButton = ({ className, style, formAction }: Props) => {
   return (
     <>
       <button
+        name={"kakao_button"}
         disabled={disable}
         onClick={onClick}
         formAction={formAction}

@@ -19,7 +19,7 @@ const AddButton = () => {
   }, [router])
 
   return (
-      <button className={ButtonStyle} onClick={()=>router.push("/add")}>
+      <button name={"add_button"} className={ButtonStyle} onClick={()=>router.push("/add")}>
         <motion.div className={ButtonLinkStyle} {...{whileTap: {scale: 0.9, transition: { duration: 0.08 }}}}>
           <Image className={ButtonImageStyle} src={AddImage} alt="+" priority/>
         </motion.div>

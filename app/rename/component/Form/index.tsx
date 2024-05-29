@@ -87,7 +87,7 @@ const Form = () => {
       </form>
       <div className={LogoutLayoutStyle} style={{ marginTop: "18px" }}>
         <span className={LogoutDescriptionStyle}>다음에 변경할래요 👉 </span>
-        <button className={LogoutStyle} onClick={() => router.back()}>
+        <button name={"next_time_button"} className={LogoutStyle} onClick={() => router.back()}>
           뒤로가기
         </button>
       </div>

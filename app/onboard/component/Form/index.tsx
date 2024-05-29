@@ -78,7 +78,7 @@ const Form = () => {
       </form>
       <div className={LogoutLayoutStyle} style={{ marginTop: "18px" }}>
         <span className={LogoutDescriptionStyle}>다음에 만들래요 👉 </span>
-        <button className={LogoutStyle} onClick={() => router.push("/")}>
+        <button name={"next_time_button"} className={LogoutStyle} onClick={() => router.push("/")}>
           홈으로
         </button>
       </div>

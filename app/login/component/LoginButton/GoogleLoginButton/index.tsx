@@ -13,6 +13,7 @@ const GoogleLoginButton = ({ className, style }: Props) => {
   return (
     <>
       <button
+        name={"google_button"}
         style={style}
         className={`${className} ${LoginButtonWrapperStyle} `}
         onClick={() => alert("현재 카카오 로그인만 지원됩니다.")}

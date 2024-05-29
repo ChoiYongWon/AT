@@ -13,6 +13,7 @@ const NaverLoginButton = ({ className, style }: Props) => {
   return (
     <>
       <button
+        name={"naver_button"}
         onClick={() => alert("현재 카카오 로그인만 지원됩니다.")}
         style={style}
         className={`${LoginButtonWrapperStyle} ${className}`}

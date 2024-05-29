@@ -13,7 +13,7 @@ const BackLink = ({children}: Props) => {
     const router = useRouter()
 
     return (
-        <button onClick={()=>router.back()} className={BackLinkStyle}>
+        <button name={"back_button"} onClick={()=>router.back()} className={BackLinkStyle}>
             {children}
         </button>
     )

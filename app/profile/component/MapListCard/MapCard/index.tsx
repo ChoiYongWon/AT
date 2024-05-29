@@ -120,7 +120,7 @@ const MapCard = ({className, style, id, at_id, name, count, view}: Props) => {
             </Link>
             <div className={MapCardNameWrapperStyle}>
                 <Link href={`${at_id}/${name}`} className={MapCardNameStyle} prefetch={true}>{name}</Link>
-                <button className={MapCardMenuStyle} onClick={onMenuClick}>
+                <button name={"menu_button"} className={MapCardMenuStyle} onClick={onMenuClick}>
                     <Image src={MenuIcon} alt="" className={MapCardMenuImageStyle}/>
                     {
                         toggle ? (

@@ -81,8 +81,8 @@ const MoreCard = ({className, style}: Props) => {
                 <Link className={RegularButtonStyle}  href={"/introduce"} prefetch>서비스 소개</Link>
                 <Link className={RegularButtonStyle} href={"/terms-of-use"} prefetch>서비스 이용 약관</Link>
                 <Link className={RegularButtonStyle} href={"/privacy-policy"} prefetch>개인정보처리방침</Link>
-                {session.data?.user ? <button className={RegularButtonStyle} onClick={()=>setDeleteModal(true)}>회원탈퇴</button> : <></>}
-                {session.data?.user ? <button className={RegularButtonStyle} onClick={()=>signOut()}>로그아웃</button> : <></>}
+                {session.data?.user ? <button name={"unregister_button"} className={RegularButtonStyle} onClick={()=>setDeleteModal(true)}>회원탈퇴</button> : <></>}
+                {session.data?.user ? <button name={"logout_button"} className={RegularButtonStyle} onClick={()=>signOut()}>로그아웃</button> : <></>}
             </div>
             <Modal show={showDeleteModal} setShow={setDeleteModal}>
                 <Modal.Title>정말 탈퇴하시나요?</Modal.Title>
