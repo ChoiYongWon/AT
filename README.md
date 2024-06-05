@@ -7,6 +7,10 @@
 _본 서비스는 맛집, 카페, 캠핑, 클라이밍, 방탈출 등 위치를 기반한 오프라인 취미활동에 재미를 더하고자 개발되었습니다.
 자신만의 지도를 생성하여 장소를 기록하고, 다른 사람들과 공유하여 취미를 나눠보세요~!_
 
+## 데모 (클릭해주세요)
+
+[![Video Label](https://github.com/ChoiYongWon/AT/assets/40623433/7f872462-46e5-4c85-882e-78d9b859e1a3)](https://youtu.be/ZeOVSkJxmoM)
+
 ## ⚠️ 배경
 
 🎁 기록하고 싶은 장소를 남들에게 자랑하고 공유하고 싶다.
@@ -31,3 +35,7 @@ _본 서비스는 맛집, 카페, 캠핑, 클라이밍, 방탈출 등 위치를 
  ## 인프라
 
 ![](https://github.com/ChoiYongWon/AT/assets/40623433/b3371f14-127d-45e1-ac26-34303bdf1cab)
+
+## ERD
+
+![AT (3)](https://github.com/ChoiYongWon/AT/assets/40623433/fb31c0f9-1933-45a9-9821-078fb89fb4f9)
