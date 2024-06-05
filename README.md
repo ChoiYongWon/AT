@@ -7,9 +7,7 @@
 _본 서비스는 맛집, 카페, 캠핑, 클라이밍, 방탈출 등 위치를 기반한 오프라인 취미활동에 재미를 더하고자 개발되었습니다.
 자신만의 지도를 생성하여 장소를 기록하고, 다른 사람들과 공유하여 취미를 나눠보세요~!_
 
-## 데모 (클릭해주세요)
-
-[![Video Label](https://github.com/ChoiYongWon/AT/assets/40623433/7f872462-46e5-4c85-882e-78d9b859e1a3)](https://youtu.be/ZeOVSkJxmoM)
+[DEMO](https://youtu.be/ZeOVSkJxmoM) | [WEBSITE](https://a-spot-thur.app)
 
 ## ⚠️ 배경
 
