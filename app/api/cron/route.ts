@@ -14,7 +14,7 @@ export async function GET() {
     await prisma.spot.count()
 
     return new NextResponse(
-        JSON.stringify({ data: true, message: "Cron Successfully Prewarming." }),
+        JSON.stringify({ data: process.env.VERCEL_URL, message: "Cron Successfully Prewarming." }),
         { status: 200, headers: { "content-type": "application/json" } }
     )
 
