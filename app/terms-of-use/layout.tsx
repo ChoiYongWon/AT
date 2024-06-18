@@ -1,3 +1,5 @@
+'use client'
+
 import { GridLayoutStyle } from "./style.css";
 
 export default function Layout({

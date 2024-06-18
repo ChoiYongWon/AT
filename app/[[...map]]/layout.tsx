@@ -1,19 +1,16 @@
-'use client'
-
-// import { auth } from "@/auth";
+import { auth } from "@/auth";
 import SearchBar from "./component/SearchBar";
 import { GridLayoutStyle, QueryLayoutStyle, SearchBarLayoutStyle } from "./style.css";
 import Query from "./component/Query";
 import { redirect } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 const shortenArea = [
     "서울", "인천", "경기", "강원", "충남", "대전", "세종", "충북", "경북", "대구", "광주", "전남", "전북", "경남", "울산", "부산", "제주"
 ]
 
 
-export default function Layout({ params, children }: { params: { map: string[] },  children: React.ReactNode}) {
-    const session = useSession()
+export default async function Layout({ params, children }: { params: { map: string[] },  children: React.ReactNode}) {
+    const session = await auth()
     let [at_id, name]: any = params.map || []
     let title = "전국 통합 지도"
     
@@ -31,7 +28,7 @@ export default function Layout({ params, children }: { params: { map: string[] }
     return (
         // <RecoilRootProvider>
             <div className={GridLayoutStyle}>
-                <SearchBar name={name} at_id={at_id} image={session.data?.user.image} title={title} className={SearchBarLayoutStyle}/>
+                <SearchBar name={name} at_id={at_id} image={session?.user.image} title={title} className={SearchBarLayoutStyle}/>
                 <Query className={QueryLayoutStyle} style={{marginTop: '12px'}}/>
                 {children}
             </div>
