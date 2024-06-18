@@ -1,17 +1,14 @@
-'use client'
-
 import { CancelButtonLayout, ProfileLayoutStyle, TitleStyle } from "./style.css";
 import CancelButton from "./component/CancelButton";
 import ProfileCard from "./component/ProfileCard";
 import MapListCard from "./component/MapListCard";
 import 'react-loading-skeleton/dist/skeleton.css'
 import MoreCard from "./component/MoreCard";
-import { useSession } from "next-auth/react";
-// import { auth } from "@/auth";
+import { auth } from "@/auth";
 
-export default function Profile() {
+export default async function Profile() {
 
-  const session = useSession()
+  const session = await auth()
 
   return (
     <>
@@ -27,7 +24,7 @@ export default function Profile() {
 
           {/* -- 내 지도 영역 */}
           {
-            session.data ? (
+            session ? (
               <>
                 <div className={TitleStyle} style={{ marginBottom: "10px" }}>내 지도</div>
                 <MapListCard style={{ marginBottom: "30px" }}/>
