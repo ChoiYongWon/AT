@@ -1,3 +1,5 @@
+'use client'
+
 import { auth } from "@/auth";
 import SearchBar from "./component/SearchBar";
 import { GridLayoutStyle, QueryLayoutStyle, SearchBarLayoutStyle } from "./style.css";

@@ -1,5 +1,3 @@
-'use client'
-
 import { CancelButtonLayout, DescriptionStyle, DescriptionTitleStyle, DividerStyle, IntroduceLayoutStyle, LinkBlackStyle, LinkStyle, SubTitleStyle, TextWrapperStyle, TitleStyle } from "./style.css";
 import CancelButton from "./component/CancelButton";
 import Link from "next/link";
