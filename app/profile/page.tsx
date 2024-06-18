@@ -1,3 +1,5 @@
+'use client'
+
 import { CancelButtonLayout, ProfileLayoutStyle, TitleStyle } from "./style.css";
 import CancelButton from "./component/CancelButton";
 import ProfileCard from "./component/ProfileCard";

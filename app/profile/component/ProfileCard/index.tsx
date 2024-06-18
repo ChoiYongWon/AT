@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image"
 import { ProfileATIDStyle, ProfileATIDWrapper, ProfileCardWrapperStyle, ProfileEditLinkStyle, ProfileImageStyle, ProfileInfoWrapperStyle, ProfileLoginLinkStyle, ProfileNameStyle } from "./style.css"
 // import { auth } from "@/auth"
