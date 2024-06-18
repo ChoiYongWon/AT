@@ -1,3 +1,5 @@
+'use client'
+
 import ContentManagePage from "./view";
 import { MainLayoutStyle } from "./style.css";
 import AddButton from "./component/AddButton";
