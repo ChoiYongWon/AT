@@ -1,3 +1,5 @@
+'use client'
+
 import PageAnimateRight from "../_common/provider/PageAnimate/PageAnimateRight";
 import RecoilRootProvider from "../_common/provider/RecoilRootProvider";
 import { GridLayoutStyle } from "./style.css";
