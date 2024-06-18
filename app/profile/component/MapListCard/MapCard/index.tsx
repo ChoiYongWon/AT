@@ -9,15 +9,15 @@ import ShareIcon from "../../../../../public/images/Share.svg"
 import { MapCardATCountColorStyle, MapCardATViewColorStyle, MapCardDeleteIconStyle, MapCardIconWrapperStyle, MapCardImageStyle, MapCardInfoTextStyle, MapCardInfoTextWrapperStyle, MapCardInfoWrapperStyle, MapCardMenuButtonStyle, MapCardMenuImageStyle, MapCardMenuStyle, MapCardMenuWrapperStyle, MapCardNameStyle, MapCardNameWrapperStyle, MapCardShareIconStyle, MapCardStyle, MapCardTextStyle, MapCardWrapperStyle } from "./style.css"
 import { useState } from "react"
 import { useDetectClickOutside } from "react-detect-click-outside"
-import Modal from "@/app/_common/component/Modal"
+// import Modal from "@/app/_common/component/Modal"
 import ConfirmButton from "@/app/_common/component/ConfirmButton"
 import toast from "react-hot-toast/headless"
 import millify from "millify"
 import { useDeleteMap } from "@/app/_common/query/delete/useDeleteMap"
 import { useQueryClient } from "@tanstack/react-query"
-// import dynamic from "next/dynamic"
+import dynamic from "next/dynamic"
 
-// const Modal: any = dynamic(()=>import("@/app/_common/component/Modal"), {ssr: false})
+const Modal: any = dynamic(()=>import("@/app/_common/component/Modal"), {ssr: false})
 
 
 

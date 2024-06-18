@@ -8,10 +8,8 @@ const prisma = new PrismaClient()
 
 export async function GET() {
   try {
-    // supabase warming용
     await fetch(`https://a-spot-thur.app`)
-    // await fetch(`https://${process.env.VERCEL_URL}/api/count`)
-    await prisma.spot.count()
+    await prisma.spot.count() // supabase warming용
 
     return new NextResponse(
         JSON.stringify({ data: true, message: "Cron Successfully Prewarming." }),
