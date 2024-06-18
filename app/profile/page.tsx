@@ -4,11 +4,12 @@ import ProfileCard from "./component/ProfileCard";
 import MapListCard from "./component/MapListCard";
 import 'react-loading-skeleton/dist/skeleton.css'
 import MoreCard from "./component/MoreCard";
-import { auth } from "@/auth";
+import { useSession } from "next-auth/react";
+// import { auth } from "@/auth";
 
-export default async function Profile() {
+export default function Profile() {
 
-  const session = await auth()
+  const session = useSession()
 
   return (
     <>
@@ -24,7 +25,7 @@ export default async function Profile() {
 
           {/* -- 내 지도 영역 */}
           {
-            session ? (
+            session.data ? (
               <>
                 <div className={TitleStyle} style={{ marginBottom: "10px" }}>내 지도</div>
                 <MapListCard style={{ marginBottom: "30px" }}/>

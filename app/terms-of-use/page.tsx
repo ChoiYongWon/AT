@@ -1,5 +1,3 @@
-'use client'
-
 import CancelButton from "./component/CancelButton";
 import { CancelButtonLayout, ContentStyle, NumberListStyle, TermsOfUseLayout, TitleLayout, TitleStyle, UlStyle } from "./style.css";
 const TITLE_MARGIN = '12px'
