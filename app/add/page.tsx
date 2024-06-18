@@ -1,4 +1,3 @@
-'use client'
 
 import { CancelButtonLayout, DescriptionStyle, SubTitleStyle, TitleStyle } from "./style.css";
 import ImageForm from "./component/ImageForm";
