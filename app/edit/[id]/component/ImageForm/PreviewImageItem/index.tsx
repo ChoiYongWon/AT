@@ -58,7 +58,8 @@ const PreviewImageItem = (
           ) : (
             <Image
               unoptimized
-              src={`https://images.weserv.nl/?url=${image.previewUrl}&w=200&h=200&output=webp&q=80`}
+              src={image.previewUrl}
+              // src={`https://images.weserv.nl/?url=${image.previewUrl}&w=200&h=200&output=webp&q=80`}
               alt={image.name}
               width={100}
               height={100}
