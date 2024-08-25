@@ -105,7 +105,7 @@ export default async function AddPage() {
             {/* ---- 5. 그 외---- */}
             <span className={DescriptionTitleStyle} style={{marginTop: "100px"}}>5. 그 외</span>
             <span className={DescriptionStyle} style={{marginTop: "8px", marginLeft: "24px"}}>사용하시면서 궁금한게 생기시면 
-            <Link className={LinkStyle} href={"https://jyj-map.vercel.app"} style={{marginLeft: "4px"}} target="_blank">FAQ</Link>
+            <Link className={LinkStyle} href={"/faq"} style={{marginLeft: "4px"}} >FAQ</Link>
             를 참조하시거나 
             <Link className={LinkStyle} href={"https://forms.gle/padVC81QrYiZDTEm7"} style={{marginLeft: "4px"}} target="_blank">문의</Link>
             주세요!</span>
